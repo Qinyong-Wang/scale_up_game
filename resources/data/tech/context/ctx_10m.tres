@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="TechNode" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/tech_node.gd" id="1_tn"]
+
+[resource]
+script = ExtResource("1_tn")
+id = &"ctx_10m"
+tree = &"context"
+display_name = "上下文 10M 超长 (前沿)"
+description = "千万 token 上下文, 2030+ 前沿. 训练成本 ×2.2, agent 评估 +20."
+prerequisites = Array[StringName]([&"ctx_1m"])
+research_cost = 0
+research_months = 48
+effects = {
+	&"max_tokens": 10000000,
+	&"train_penalty": 2.20,
+	&"agent_bonus": 20.0,
+	&"serving_penalty": 12.0,
+}
+effects_summary = "10M · 训练 ×2.20 · agent +20"
+min_researchers = 5
+min_engineers = 5
+min_gpu_count = 256
+capability_cap = 0.0

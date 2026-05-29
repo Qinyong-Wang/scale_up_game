@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scenes/ui/components/sidebar_group/sidebar_group.gd" id="1_sbgroup"]
+
+[node name="SidebarGroup" type="VBoxContainer"]
+script = ExtResource("1_sbgroup")

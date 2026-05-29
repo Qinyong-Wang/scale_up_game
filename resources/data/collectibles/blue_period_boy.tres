@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CollectibleSpec" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/collectible_spec.gd" id="1_col"]
+
+[resource]
+script = ExtResource("1_col")
+id = &"blue_period_boy"
+category = &"painting"
+display_name = "《蓝色时期·少年》"
+description = "巨匠蓝色时期的忧郁少年像。"
+curve_years = Array[int]([1903, 2040, 2070])
+curve_prices = Array[int]([400000000, 640000000, 800000000])
+appear_weight = 0.2

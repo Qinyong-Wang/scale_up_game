@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CollectibleSpec" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/collectible_spec.gd" id="1_col"]
+
+[resource]
+script = ExtResource("1_col")
+id = &"track_only_extreme"
+category = &"supercar"
+display_name = "赛道专属·极限版"
+description = "不能上路、只为赛道而生的极限版。"
+curve_years = Array[int]([2016, 2040, 2070])
+curve_prices = Array[int]([48000000, 112000000, 160000000])
+appear_weight = 0.5

@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="EventCard" load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/event_card.gd" id="1_ec"]
+[ext_resource type="Script" path="res://scripts/resources/event_option.gd" id="2_eo"]
+[ext_resource type="Script" path="res://scripts/resources/event_effect.gd" id="3_ef"]
+
+[sub_resource type="Resource" id="eff_0"]
+script = ExtResource("3_ef")
+kind = &"economy_spend"
+params = {"pct": 0.012, "floor": 2500, "cap": 5000000}
+
+[sub_resource type="Resource" id="opt_fancy"]
+script = ExtResource("2_eo")
+id = &"fancy"
+label = "豪华团建, 团队嗨翻"
+effects = [SubResource("eff_0")]
+
+[sub_resource type="Resource" id="eff_1"]
+script = ExtResource("3_ef")
+kind = &"economy_spend"
+params = {"pct": 0.002, "floor": 300, "cap": 200000}
+
+[sub_resource type="Resource" id="opt_cheap"]
+script = ExtResource("2_eo")
+id = &"cheap"
+label = "楼下烧烤摊打卡"
+effects = [SubResource("eff_1")]
+
+[resource]
+script = ExtResource("1_ec")
+id = &"routine_team_building"
+category = &"routine"
+title = "该团建了"
+body = "HR 在群里发了个问号, 大家都懂——团建该安排了。"
+min_turn = 4
+requires_staff_min = 1
+weight = 10
+cooldown_months = 10
+options = [SubResource("opt_fancy"), SubResource("opt_cheap")]

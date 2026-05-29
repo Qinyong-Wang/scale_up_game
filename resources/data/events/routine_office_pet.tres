@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="EventCard" load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/event_card.gd" id="1_ec"]
+[ext_resource type="Script" path="res://scripts/resources/event_option.gd" id="2_eo"]
+[ext_resource type="Script" path="res://scripts/resources/event_effect.gd" id="3_ef"]
+
+[sub_resource type="Resource" id="eff_0"]
+script = ExtResource("3_ef")
+kind = &"economy_spend"
+params = {"pct": 0.003, "floor": 600, "cap": 60000}
+
+[sub_resource type="Resource" id="opt_adopt"]
+script = ExtResource("2_eo")
+id = &"adopt"
+label = "正式领养, 配猫粮预算"
+effects = [SubResource("eff_0")]
+
+[sub_resource type="Resource" id="opt_shoo"]
+script = ExtResource("2_eo")
+id = &"shoo"
+label = "礼貌请它出门"
+effects = []
+
+[resource]
+script = ExtResource("1_ec")
+id = &"routine_office_pet"
+category = &"routine"
+title = "办公室来了只流浪猫"
+body = "一只橘猫赖在工位上不走, 实习生提议让它当『首席摸鱼官』。"
+min_turn = 4
+weight = 10
+cooldown_months = 10
+max_triggers = 2
+options = [SubResource("opt_adopt"), SubResource("opt_shoo")]

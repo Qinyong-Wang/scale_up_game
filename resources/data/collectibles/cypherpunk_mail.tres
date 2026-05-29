@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CollectibleSpec" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/collectible_spec.gd" id="1_col"]
+
+[resource]
+script = ExtResource("1_col")
+id = &"cypherpunk_mail"
+category = &"crypto"
+display_name = "密码朋克·创始邮件 NFT"
+description = "那封点燃加密革命的原始邮件，铸成唯一 NFT。"
+curve_years = Array[int]([2018, 2025, 2035, 2070])
+curve_prices = Array[int]([600000, 180000000, 1350000000, 3000000000])
+appear_weight = 0.08

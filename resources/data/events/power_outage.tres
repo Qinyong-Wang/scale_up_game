@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="EventCard" load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/event_card.gd" id="1_ec"]
+[ext_resource type="Script" path="res://scripts/resources/event_option.gd" id="2_eo"]
+[ext_resource type="Script" path="res://scripts/resources/event_effect.gd" id="3_ef"]
+
+[sub_resource type="Resource" id="eff_0"]
+script = ExtResource("3_ef")
+kind = &"economy_spend"
+params = {"pct": 0.03, "floor": 6000, "cap": 30000000}
+
+[sub_resource type="Resource" id="opt_generator"]
+script = ExtResource("2_eo")
+id = &"generator"
+label = "紧急租用柴油发电机"
+effects = [SubResource("eff_0")]
+
+[sub_resource type="Resource" id="eff_1"]
+script = ExtResource("3_ef")
+kind = &"product_boost_subscribers"
+params = {"pct": -0.05, "floor": 30, "cap": 100000000}
+
+[sub_resource type="Resource" id="opt_wait"]
+script = ExtResource("2_eo")
+id = &"wait"
+label = "干等电网恢复"
+effects = [SubResource("eff_1")]
+
+[resource]
+script = ExtResource("1_ec")
+id = &"power_outage"
+category = &"crisis"
+title = "电网故障, 机房面临断电"
+body = "片区电网检修, 你的机房随时可能停摆。"
+min_turn = 4
+requires_datacenter = true
+requires_product = true
+weight = 10
+cooldown_months = 20
+options = [SubResource("opt_generator"), SubResource("opt_wait")]

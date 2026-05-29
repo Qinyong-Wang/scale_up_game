@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="TechNode" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/tech_node.gd" id="1_tn"]
+
+[resource]
+script = ExtResource("1_tn")
+id = &"embodied_v1"
+tree = &"arch"
+display_name = "具身 AI v1 (2032+)"
+description = "动作/感知/决策三位一体的模型架构路线."
+prerequisites = Array[StringName]([&"world_model_v1"])
+research_cost = 0
+research_months = 48
+effects = {
+	&"train_coef": 0.65,
+	&"inference_coef": 0.9,
+	&"capability_coef": 1.15,
+}
+effects_summary = "训练 ×0.65 · capability ×1.15"
+min_researchers = 5
+min_engineers = 5
+min_gpu_count = 500
+capability_cap = 0.0

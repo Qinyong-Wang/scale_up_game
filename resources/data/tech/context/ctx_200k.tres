@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="TechNode" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/tech_node.gd" id="1_tn"]
+
+[resource]
+script = ExtResource("1_tn")
+id = &"ctx_200k"
+tree = &"context"
+display_name = "上下文 200k 长文档"
+description = "长文档分析尺度. 训练成本 +30%, agent 评估 +5."
+prerequisites = Array[StringName]([&"ctx_32k"])
+research_cost = 0
+research_months = 32
+effects = {
+	&"max_tokens": 200000,
+	&"train_penalty": 1.30,
+	&"agent_bonus": 5.0,
+	&"serving_penalty": 3.0,
+}
+effects_summary = "200k · 训练 ×1.30 · agent +5"
+min_researchers = 3
+min_engineers = 2
+min_gpu_count = 64
+capability_cap = 0.0

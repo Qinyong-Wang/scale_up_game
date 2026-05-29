@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="UserTuning" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/user_tuning.gd" id="1_usr"]
+
+[resource]
+script = ExtResource("1_usr")
+total_rank_1_rate = 0.01
+total_rank_top3_rate = 0.0
+total_rank_below_rate = -0.02
+sub_rank_1_rate = 0.0025
+sub_rank_top3_rate = 0.0
+sub_rank_below_rate = -0.025
+base_curve_knot_turns = Array[int]([0, 100, 280, 400])
+base_curve_knot_values = Array[int]([0, 100, 10000, 100000])
+base_attraction_rank_1 = 1.0
+base_attraction_rank_2 = 0.5
+base_attraction_rank_3 = 0.25
+base_attraction_rank_else = 0.0
+api_tokens_per_sub_per_week = 10000000
+orphan_product_churn = 5
+marketing_conversion_rate = 0.0125

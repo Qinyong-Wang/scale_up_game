@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EventCard" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/event_card.gd" id="1_ec"]
+[resource]
+script = ExtResource("1_ec")
+id = &"history_attention_turning_point"
+category = &"flavor"
+title = "历史档案: 纯注意力架构成为新底座"
+body = "2017 年, 一篇只依赖注意力机制的序列建模论文改变了路线图。它让长距离依赖、并行训练和规模化预训练更容易结合, 也解释了为什么你的公司刚开局就站在新范式的门口。"
+min_turn = 1
+weight = 0
+cooldown_months = 9999
+max_triggers = 1

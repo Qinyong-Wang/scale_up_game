@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="TechNode" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/tech_node.gd" id="1_tn"]
+
+[resource]
+script = ExtResource("1_tn")
+id = &"o1_rl"
+tree = &"loss"
+display_name = "长 CoT 推理 RL (o1 风格)"
+description = "Long Chain-of-Thought RL. reasoning 维度大幅加成 (capability_coef 1.18)."
+prerequisites = Array[StringName]([&"rlvr"])
+research_cost = 0
+research_months = 40
+effects = {
+	&"train_coef": 0.8,
+	&"capability_coef": 1.18,
+}
+effects_summary = "训练 ×0.80 · capability ×1.18 (reasoning 强)"
+min_researchers = 4
+min_engineers = 2
+min_gpu_count = 128
+capability_cap = 0.0

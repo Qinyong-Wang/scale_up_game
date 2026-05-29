@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="TaskTemplate" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/task_template.gd" id="1_tt"]
+
+[resource]
+script = ExtResource("1_tt")
+id = &"train_otter_m"
+subtype = &"pretrain"
+display_name = "Train Otter-M"
+base_cost = 0
+weekly_cost = 0
+duration_func = &"scaling_law"
+base_duration = 1
+output_arch = &"ant_v2"
+output_size_params = 800.0
+output_flops_per_token = 1600000000.0
+output_input_modalities = Array[StringName]([&"text"])
+output_output_modalities = Array[StringName]([&"text"])
+error_rate_per_week = 0.10

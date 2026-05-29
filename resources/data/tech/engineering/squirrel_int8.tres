@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="TechNode" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/tech_node.gd" id="1_tn"]
+
+[resource]
+script = ExtResource("1_tn")
+id = &"squirrel_int8"
+tree = &"engineering"
+display_name = "Int8 量化"
+description = "权重 / 激活量化到 int8; 单 token 算力需求减半. v4 (PR-B): 量化不再有降质惩罚."
+prerequisites = Array[StringName]([&"owl_cache"])
+research_cost = 0
+research_months = 24
+effects = {
+	&"flops_per_token_reduction": 0.6,
+}
+effects_summary = "token 算力 -40% (推理吞吐 ×1.67)"
+min_researchers = 2
+min_engineers = 3
+min_gpu_count = 32

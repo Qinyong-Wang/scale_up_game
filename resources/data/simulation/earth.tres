@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SimulationStageSpec" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/simulation_stage_spec.gd" id="1_sim"]
+
+[resource]
+script = ExtResource("1_sim")
+id = &"earth"
+order = 2
+display_name = "地球模拟"
+description = "整颗行星的数字孪生——地质、生物圈、人类活动一并纳入，一个活着的地球在机房里运转。"
+cost = 50000000000
+weeks = 26
+min_train_tflops = 1200000000.0

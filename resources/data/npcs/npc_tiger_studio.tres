@@ -1,0 +1,312 @@
+[gd_resource type="Resource" script_class="NpcCompany" load_steps=23 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/npc_company.gd" id="1_npc"]
+[ext_resource type="Script" path="res://scripts/resources/npc_model_release.gd" id="2_rel"]
+
+[sub_resource type="Resource" id="release_tiger_1"]
+script = ExtResource("2_rel")
+id = &"release_tiger_1"
+display_name = "Tiger-1"
+release_turn = 100
+capability = {"general": 8.0, "code": 3.0, "reasoning": 4.0, "multimodal": 2.0, "agent": 0.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"bamboo_t1"
+cluster_gpu_count = 2048
+training_weeks = 22
+params_b = 1.0
+active_params_b = 1.0
+dataset_tokens_b = 50.0
+arch_codename = &"ant_v1"
+
+[sub_resource type="Resource" id="release_tiger_1_5"]
+script = ExtResource("2_rel")
+id = &"release_tiger_1_5"
+display_name = "Tiger-1.5"
+release_turn = 145
+capability = {"general": 14.0, "code": 6.0, "reasoning": 8.0, "multimodal": 5.0, "agent": 0.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"bamboo_t1"
+cluster_gpu_count = 3072
+training_weeks = 22
+params_b = 10.0
+active_params_b = 10.0
+dataset_tokens_b = 180.0
+arch_codename = &"ant_v2"
+
+[sub_resource type="Resource" id="release_tiger_2"]
+script = ExtResource("2_rel")
+id = &"release_tiger_2"
+display_name = "Tiger-2"
+release_turn = 200
+capability = {"general": 32.0, "code": 22.0, "reasoning": 26.0, "multimodal": 15.0, "agent": 0.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"bamboo_t2"
+cluster_gpu_count = 6144
+training_weeks = 28
+params_b = 540.0
+active_params_b = 540.0
+dataset_tokens_b = 800.0
+arch_codename = &"ant_v3"
+
+[sub_resource type="Resource" id="release_tiger_2_3"]
+script = ExtResource("2_rel")
+id = &"release_tiger_2_3"
+display_name = "Tiger-2.3"
+release_turn = 240
+capability = {"general": 38.0, "code": 28.0, "reasoning": 32.0, "multimodal": 22.0, "agent": 0.0}
+release_kind = &"rlhf"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_tiger_2_5"]
+script = ExtResource("2_rel")
+id = &"release_tiger_2_5"
+display_name = "Tiger-2.5"
+release_turn = 265
+capability = {"general": 45.0, "code": 35.0, "reasoning": 40.0, "multimodal": 32.0, "agent": 5.0}
+release_kind = &"multimodal_posttrain"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_tiger_3"]
+script = ExtResource("2_rel")
+id = &"release_tiger_3"
+display_name = "Tiger-3"
+release_turn = 305
+capability = {"general": 72.0, "code": 62.0, "reasoning": 68.0, "multimodal": 55.0, "agent": 15.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"bamboo_t2"
+cluster_gpu_count = 16384
+training_weeks = 26
+params_b = 1500.0
+active_params_b = 220.0
+dataset_tokens_b = 15000.0
+arch_codename = &"octopus_v2"
+
+[sub_resource type="Resource" id="release_tiger_3_3"]
+script = ExtResource("2_rel")
+id = &"release_tiger_3_3"
+display_name = "Tiger-3.3"
+release_turn = 335
+capability = {"general": 76.0, "code": 65.0, "reasoning": 71.0, "multimodal": 65.0, "agent": 22.0}
+release_kind = &"rlhf"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_tiger_3_5"]
+script = ExtResource("2_rel")
+id = &"release_tiger_3_5"
+display_name = "Tiger-3.5"
+release_turn = 360
+capability = {"general": 78.0, "code": 66.0, "reasoning": 74.0, "multimodal": 88.0, "agent": 28.0}
+release_kind = &"multimodal_posttrain"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_tiger_3_7"]
+script = ExtResource("2_rel")
+id = &"release_tiger_3_7"
+display_name = "Tiger-3.7"
+release_turn = 400
+capability = {"general": 86.0, "code": 76.0, "reasoning": 82.0, "multimodal": 96.0, "agent": 38.0}
+release_kind = &"reasoning_rl"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_tiger_4"]
+script = ExtResource("2_rel")
+id = &"release_tiger_4"
+display_name = "Tiger-4"
+release_turn = 420
+capability = {"general": 95.0, "code": 85.0, "reasoning": 96.0, "multimodal": 108.0, "agent": 55.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"bamboo_t4"
+cluster_gpu_count = 70000
+training_weeks = 26
+params_b = 2400.0
+active_params_b = 340.0
+dataset_tokens_b = 28000.0
+arch_codename = &"octopus_sparse"
+
+[sub_resource type="Resource" id="release_tiger_4_5"]
+script = ExtResource("2_rel")
+id = &"release_tiger_4_5"
+display_name = "Tiger-4.5"
+release_turn = 460
+capability = {"general": 102.0, "code": 92.0, "reasoning": 105.0, "multimodal": 118.0, "agent": 68.0}
+release_kind = &"multimodal_posttrain"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_tiger_5"]
+script = ExtResource("2_rel")
+id = &"release_tiger_5"
+display_name = "Tiger-5"
+release_turn = 490
+capability = {"general": 112.0, "code": 102.0, "reasoning": 118.0, "multimodal": 130.0, "agent": 82.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"bamboo_t4"
+cluster_gpu_count = 180000
+training_weeks = 28
+params_b = 5500.0
+active_params_b = 720.0
+dataset_tokens_b = 46000.0
+arch_codename = &"octopus_sparse"
+
+[sub_resource type="Resource" id="release_tiger_5_5"]
+script = ExtResource("2_rel")
+id = &"release_tiger_5_5"
+display_name = "Tiger-5.5"
+release_turn = 540
+capability = {"general": 122.0, "code": 112.0, "reasoning": 128.0, "multimodal": 142.0, "agent": 95.0}
+release_kind = &"reasoning_rl"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_tiger_6"]
+script = ExtResource("2_rel")
+id = &"release_tiger_6"
+display_name = "Tiger-6"
+release_turn = 600
+capability = {"general": 132.0, "code": 122.0, "reasoning": 138.0, "multimodal": 152.0, "agent": 112.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"bamboo_t4"
+cluster_gpu_count = 450000
+training_weeks = 28
+params_b = 12000.0
+active_params_b = 1500.0
+dataset_tokens_b = 80000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_tiger_6_5"]
+script = ExtResource("2_rel")
+id = &"release_tiger_6_5"
+display_name = "Tiger-6.5"
+release_turn = 660
+capability = {"general": 142.0, "code": 132.0, "reasoning": 150.0, "multimodal": 165.0, "agent": 124.0}
+release_kind = &"multimodal_posttrain"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_tiger_7"]
+script = ExtResource("2_rel")
+id = &"release_tiger_7"
+display_name = "Tiger-7"
+release_turn = 740
+capability = {"general": 155.0, "code": 145.0, "reasoning": 162.0, "multimodal": 178.0, "agent": 138.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"bamboo_t4"
+cluster_gpu_count = 1000000
+training_weeks = 28
+params_b = 20000.0
+active_params_b = 2400.0
+dataset_tokens_b = 130000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_tiger_8"]
+script = ExtResource("2_rel")
+id = &"release_tiger_8"
+display_name = "Tiger-8"
+release_turn = 870
+capability = {"general": 185.0, "code": 175.0, "reasoning": 195.0, "multimodal": 215.0, "agent": 175.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"bamboo_t4"
+cluster_gpu_count = 2200000
+training_weeks = 30
+params_b = 35000.0
+active_params_b = 4000.0
+dataset_tokens_b = 230000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_tiger_9"]
+script = ExtResource("2_rel")
+id = &"release_tiger_9"
+display_name = "Tiger-9"
+release_turn = 1000
+capability = {"general": 220.0, "code": 212.0, "reasoning": 232.0, "multimodal": 252.0, "agent": 215.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"bamboo_t4"
+cluster_gpu_count = 3800000
+training_weeks = 30
+params_b = 58000.0
+active_params_b = 6500.0
+dataset_tokens_b = 380000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_tiger_10"]
+script = ExtResource("2_rel")
+id = &"release_tiger_10"
+display_name = "Tiger-10"
+release_turn = 1130
+capability = {"general": 258.0, "code": 252.0, "reasoning": 272.0, "multimodal": 295.0, "agent": 258.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"bamboo_t4"
+cluster_gpu_count = 5500000
+training_weeks = 30
+params_b = 85000.0
+active_params_b = 9300.0
+dataset_tokens_b = 540000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_tiger_11"]
+script = ExtResource("2_rel")
+id = &"release_tiger_11"
+display_name = "Tiger-11"
+release_turn = 1250
+capability = {"general": 298.0, "code": 295.0, "reasoning": 315.0, "multimodal": 340.0, "agent": 302.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"bamboo_t4"
+cluster_gpu_count = 8000000
+training_weeks = 30
+params_b = 125000.0
+active_params_b = 13500.0
+dataset_tokens_b = 740000.0
+arch_codename = &"octopus_super_sparse"
+
+[resource]
+script = ExtResource("1_npc")
+id = &"npc_tiger_studio"
+display_name = "Tiger Studio"
+is_open_source = false
+board_membership = [&"closed_source", &"sub_multimodal"]
+model_releases = [SubResource("release_tiger_1"), SubResource("release_tiger_1_5"), SubResource("release_tiger_2"), SubResource("release_tiger_2_3"), SubResource("release_tiger_2_5"), SubResource("release_tiger_3"), SubResource("release_tiger_3_3"), SubResource("release_tiger_3_5"), SubResource("release_tiger_3_7"), SubResource("release_tiger_4"), SubResource("release_tiger_4_5"), SubResource("release_tiger_5"), SubResource("release_tiger_5_5"), SubResource("release_tiger_6"), SubResource("release_tiger_6_5"), SubResource("release_tiger_7"), SubResource("release_tiger_8"), SubResource("release_tiger_9"), SubResource("release_tiger_10"), SubResource("release_tiger_11")]

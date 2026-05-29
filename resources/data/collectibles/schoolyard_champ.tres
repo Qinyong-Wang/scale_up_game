@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CollectibleSpec" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/collectible_spec.gd" id="1_col"]
+
+[resource]
+script = ExtResource("1_col")
+id = &"schoolyard_champ"
+category = &"trading_card"
+display_name = "校园赛·纪念卡"
+description = "一代人校园对战的纪念冠军卡。"
+curve_years = Array[int]([2004, 2025, 2045, 2070])
+curve_prices = Array[int]([800000, 10000000, 26000000, 40000000])
+appear_weight = 1.0

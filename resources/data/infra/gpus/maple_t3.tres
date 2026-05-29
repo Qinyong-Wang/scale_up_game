@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="GPUSpec" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/gpu_spec.gd" id="1_gpu"]
+
+[resource]
+script = ExtResource("1_gpu")
+id = &"maple_t3"
+display_name = "Maple T3"
+brand = &"maple"
+tier = &"t3"
+per_card_tflops = 1300.0
+per_card_inference_tflops = 390.0
+purchase_price = 26000
+maintenance_per_week = 20
+ecosystem_score = 0.8
+native_cluster_eff = 0.82
+release_turn = 339
+rent_weekly_cost = 650
+power_factor = 1.9

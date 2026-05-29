@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="TaskTemplate" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/task_template.gd" id="1_tt"]
+
+[resource]
+script = ExtResource("1_tt")
+id = &"tech_research_default"
+subtype = &"tech_research"
+display_name = "Research Tech Node"
+base_cost = 0
+weekly_cost = 0
+duration_func = &"node_defined"
+base_duration = 1
+input_schema = {
+	&"needs_target_node": true,
+	&"needs_dc": true,
+}
+output_arch = &""

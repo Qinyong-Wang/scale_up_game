@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EventCard" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/event_card.gd" id="1_ec"]
+[resource]
+script = ExtResource("1_ec")
+id = &"history_diffusion_image_wave"
+category = &"flavor"
+title = "历史档案: 文生图扩散模型破圈"
+body = "2022 年, 扩散式图像生成从研究演示变成大众工具。提示词、风格迁移和版权争议一起涌来, 也提醒所有模型公司: 多模态不是装饰, 而是新的产品入口。"
+min_turn = 260
+weight = 0
+cooldown_months = 9999
+max_triggers = 1

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EventCard" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/event_card.gd" id="1_ec"]
+
+[resource]
+script = ExtResource("1_ec")
+id = &"paradigm_long_ctx"
+category = &"flavor"
+title = "长上下文 + 原生多模态成标配"
+body = "百万 token 上下文、原生图像与音频输入成为头部模型标配. 一年前还需专门 VL 模型才能做的事, 现在一个通用模型就能干. 头部闭源 + 开源公司同步跟进."
+min_turn = 366
+weight = 0
+cooldown_months = 9999

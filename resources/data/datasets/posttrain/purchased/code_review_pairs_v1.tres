@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="PosttrainDatasetTemplate" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/posttrain_dataset_template.gd" id="1_pst"]
+
+[resource]
+script = ExtResource("1_pst")
+id = &"code_review_pairs_v1"
+display_name = "Code Review Pairs v1"
+source = &"purchased"
+size = 0.04
+quality = 0.90
+target_capability = &"code"
+coverage_tags = Array[StringName]([&"code", &"review"])
+price = 6000000
+released_at_week = 312

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EventCard" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/event_card.gd" id="1_ec"]
+[resource]
+script = ExtResource("1_ec")
+id = &"history_multimodal_tool_wave"
+category = &"flavor"
+title = "历史档案: 多模态与工具使用进入主线"
+body = "2023 年, 模型开始更自然地处理图像、文本、代码和外部工具。聊天框不再只是聊天框, 而是能看图、调用函数、检索资料、执行步骤的工作台雏形。"
+min_turn = 335
+weight = 0
+cooldown_months = 9999
+max_triggers = 1

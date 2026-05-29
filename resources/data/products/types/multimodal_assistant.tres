@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="ProductTypeSpec" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/product_type_spec.gd" id="1_pts"]
+
+[resource]
+script = ExtResource("1_pts")
+id = &"multimodal_assistant"
+display_name = "Multimodal Assistant"
+unlock_thresholds = {
+&"multimodal": 40.0,
+}
+required_modalities = Array[StringName]([&"image"])
+tokens_per_user_per_month = 1250000
+tokens_per_user_per_week = 1250000
+default_subscription_price = 10
+subscription_price_guidance = 10
+capability_penalty_axis = &"multimodal"
+capability_penalty_tiers = [{
+"below": 55.0,
+"rate": -0.025
+}, {
+"below": 70.0,
+"rate": -0.015
+}]
+lead_specialty_bonus = &"chief_engineer"
+application_node_required = &""
+max_subscribers = 1000000000

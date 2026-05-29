@@ -1,0 +1,50 @@
+[gd_resource type="Resource" script_class="EventCard" load_steps=10 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/event_card.gd" id="1_ec"]
+[ext_resource type="Script" path="res://scripts/resources/event_option.gd" id="2_eo"]
+[ext_resource type="Script" path="res://scripts/resources/event_effect.gd" id="3_ef"]
+
+[sub_resource type="Resource" id="eff_0"]
+script = ExtResource("3_ef")
+kind = &"economy_spend"
+params = {"pct": 0.04, "floor": 20000, "cap": 30000000}
+
+[sub_resource type="Resource" id="eff_1"]
+script = ExtResource("3_ef")
+kind = &"product_boost_subscribers"
+params = {"pct": -0.03, "floor": 60, "cap": 30000000}
+
+[sub_resource type="Resource" id="opt_pull"]
+script = ExtResource("2_eo")
+id = &"pull"
+label = "立刻下架该语音 + 私下和解"
+effects = [SubResource("eff_0"), SubResource("eff_1")]
+
+[sub_resource type="Resource" id="eff_2"]
+script = ExtResource("3_ef")
+kind = &"product_boost_subscribers"
+params = {"pct": 0.06, "floor": 80, "cap": 60000000}
+
+[sub_resource type="Resource" id="eff_3"]
+script = ExtResource("3_ef")
+kind = &"economy_spend"
+params = {"pct": 0.015, "floor": 4000, "cap": 4000000}
+
+[sub_resource type="Resource" id="opt_deny"]
+script = ExtResource("2_eo")
+id = &"deny"
+label = "嘴硬:『纯属巧合, 是另一位配音演员』"
+effects = [SubResource("eff_2"), SubResource("eff_3")]
+
+[resource]
+script = ExtResource("1_ec")
+id = &"celebrity_voice"
+category = &"crisis"
+title = "影星指控你的语音助手盗用她的声音"
+body = "一位国民级影星发声明, 说你新上线的语音助手『那个嗓音』和她一模一样, 而她明明拒绝过你们的合作邀约。律师函正在路上。"
+min_turn = 40
+requires_product = true
+weight = 8
+cooldown_months = 60
+max_triggers = 1
+options = [SubResource("opt_pull"), SubResource("opt_deny")]

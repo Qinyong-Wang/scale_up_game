@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scenes/ui/components/filter_bar/filter_bar.gd" id="1_filter"]
+
+[node name="FilterBar" type="Control"]
+custom_minimum_size = Vector2(0, 36)
+script = ExtResource("1_filter")

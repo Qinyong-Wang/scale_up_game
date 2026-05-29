@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="TechNode" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/tech_node.gd" id="1_tn"]
+
+[resource]
+script = ExtResource("1_tn")
+id = &"bert_scale_encoder"
+tree = &"arch"
+display_name = "BERT 规模化编码器"
+description = "继续把 encoder-only 路线推向更大 batch 与更多数据. 能 scale 到一段不错的上限, 但仍受范式天花板限制."
+prerequisites = Array[StringName]([&"deberta_encoder"])
+research_cost = 0
+research_months = 38
+effects = {
+	&"train_coef": 0.95,
+	&"inference_coef": 0.95,
+	&"capability_coef": 1.04,
+}
+effects_summary = "训练 ×0.95 · 推理 ×0.95 · 评分上限 60"
+min_researchers = 4
+min_engineers = 3
+min_gpu_count = 64
+capability_cap = 60.0

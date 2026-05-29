@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="MarketingTuning" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/marketing_tuning.gd" id="1_mkg"]
+
+[resource]
+script = ExtResource("1_mkg")
+max_concurrent_campaigns = 5
+min_staff_per_campaign = 2
+max_staff_per_campaign = 8
+budget_per_extra_staff = 100000

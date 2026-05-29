@@ -1,0 +1,634 @@
+keys,en
+(基线 4k),(baseline 4k)
+(基线),(baseline)
+100M 卡微型星球,100M-GPU micro-planet
+100k 卡建筑 (L),100k-GPU building (L)
+10M · 训练 ×2.20 · agent +20,10M · train ×2.20 · agent +20
+12M 卡太空 (M),12M-GPU space (M)
+16 卡机架,16-GPU rack
+16k 卡建筑 (S),16k-GPU building (S)
+1M · 训练 ×1.60 · agent +10,1M · train ×1.60 · agent +10
+1M 卡园区 (L),1M-GPU campus (L)
+2-bit 量化 (2030+),2-bit quantization (2030+)
+200k · 训练 ×1.30 · agent +5,200k · train ×1.30 · agent +5
+200k 卡园区 (S),200k-GPU campus (S)
+"2017 年, 一篇只依赖注意力机制的序列建模论文改变了路线图。它让长距离依赖、并行训练和规模化预训练更容易结合, 也解释了为什么你的公司刚开局就站在新范式的门口。","In 2017, a sequence-modeling paper built entirely on attention mechanisms changed the roadmap. It made long-range dependencies, parallel training, and scaled pretraining easier to combine, and it explains why your company starts right at the door of a new paradigm."
+"2018 年, 研究者发现先用海量文本做自监督预训练, 再针对任务微调, 可以显著提升问答、分类和检索等能力。编码器路线短期很耀眼, 也让数据规模开始变成团队会议里的高频词。","In 2018, researchers found that self-supervised pretraining on massive text, followed by task-specific fine-tuning, could sharply improve question answering, classification, and retrieval. The encoder route shone for a while, and data scale became a recurring topic in team meetings."
+"2019 年, 一些团队开始分阶段公开强文本生成系统, 担心它被用于垃圾内容、钓鱼和舆论操纵。技术发布不再只是论文问题, 也变成安全、滥用和责任边界的问题。","In 2019, some teams began staged releases of powerful text generators, worried they could be used for spam, phishing, and opinion manipulation. Releasing a model was no longer just a paper decision; it also became a question of safety, misuse, and responsibility."
+"2019 年, 自回归解码器模型开始在续写、摘要和少样本任务上展现惊人的泛化能力。它们还不稳定, 也经常胡说八道, 但行业第一次认真讨论: 只要继续放大, 会不会涌现出新能力?","In 2019, autoregressive decoder models began showing surprising generalization in continuation, summarization, and few-shot tasks. They were still unstable and often hallucinated, but the industry seriously asked for the first time: if we keep scaling them, will new capabilities emerge?"
+"2020 年前后, 参数量、数据量和训练算力之间的幂律关系被系统化。它没有告诉你怎么发明智能, 但告诉你下一次实验大概该花多少钱、喂多少 token、准备多少 TFLOPs。","Around 2020, the power-law relationships among parameter count, data volume, and training compute were systematized. They did not explain how to invent intelligence, but they did estimate how much the next run might cost, how many tokens to feed it, and how many TFLOPs to reserve."
+"2020-2021 年, 稀疏专家模型重新升温。每个 token 只激活少量专家, 让模型总容量变大, 单次推理计算却不必等比例膨胀。工程团队开始把路由、负载均衡和通信开销写进白板。","In 2020-2021, sparse expert models heated up again. Each token activated only a few experts, increasing total model capacity without making per-inference compute grow proportionally. Engineering teams started filling whiteboards with routing, load balancing, and communication costs."
+"2021 年, 行业开始用『基础模型』这类说法描述大规模预训练系统: 先训练一个通用底座, 再通过微调、提示和工具接入迁移到许多产品。投资人终于听懂了为什么预训练这么贵。","In 2021, the industry began describing large pretrained systems as foundation models: train a general base, then transfer it into many products through fine-tuning, prompting, and tool connections. Investors finally understood why pretraining was so expensive."
+"2022 年, 扩散式图像生成从研究演示变成大众工具。提示词、风格迁移和版权争议一起涌来, 也提醒所有模型公司: 多模态不是装饰, 而是新的产品入口。","In 2022, diffusion-based image generation moved from research demo to mass-market tool. Prompts, style transfer, and copyright disputes arrived together, reminding every model company that multimodality was not decoration but a new product doorway."
+"2022 年底, 会听指令、能多轮对话、懂得拒绝危险请求的聊天助手突然走进大众视野。背后是监督微调、偏好数据和人类反馈训练的组合, 也是 AI 产品化的分水岭。","By late 2022, chat assistants that followed instructions, handled multi-turn dialogue, and refused dangerous requests suddenly entered public view. Behind them was a combination of supervised fine-tuning, preference data, and human-feedback training, marking a productization turning point for AI."
+"2023 年, 开放权重模型和社区微调迅速扩散。小团队可以在公开底座上做行业适配, 大公司也发现护城河不只在参数本身, 还在数据、服务、分发和迭代速度。","In 2023, open-weight models and community fine-tuning spread quickly. Small teams could adapt public bases to industries, while large companies learned that the moat was not just parameters but data, service, distribution, and iteration speed."
+"2023 年, 模型开始更自然地处理图像、文本、代码和外部工具。聊天框不再只是聊天框, 而是能看图、调用函数、检索资料、执行步骤的工作台雏形。","In 2023, models became more natural at handling images, text, code, and external tools. The chat box was no longer just a chat box; it became the early form of a workspace that could see images, call functions, retrieve material, and execute steps."
+"2024 年, 上下文窗口从论文指标变成销售话术: 一次塞进整本手册、整仓代码、整份合同。真正困难的不只是放进去, 还包括检索到、推理对、服务得起。","In 2024, context windows moved from paper metric to sales pitch: load an entire manual, repository, or contract at once. The hard part was not only fitting it in, but retrieving the right pieces, reasoning correctly, and serving it affordably."
+"2025 年, 越来越多团队把数学、代码和可自动检查任务作为训练信号, 让模型在回答前花更多计算做推理。行业开始重新分配预算: 不只训练更大模型, 也训练更会想的模型。","In 2025, more teams used math, code, and automatically checkable tasks as training signals, making models spend more compute reasoning before answering. The industry began reallocating budget: not only training bigger models, but training models that think better."
+20M 卡太空 (L),20M-GPU space (L)
+2k 卡大厅,2k-GPU hall
+32 卡机架,32-GPU rack
+32k · 训练 ×1.10 · agent +2,32k · train ×1.10 · agent +2
+32k 卡建筑 (M),32k-GPU building (M)
+3M 卡都市级,3M-GPU metropolis
+500 卡机房,500-GPU room
+500k 卡园区 (M),500k-GPU campus (M)
+6M 卡太空 (S),6M-GPU space (S)
+72 卡机架,72-GPU rack
+8 卡机柜,8-GPU pod
+8k 卡整层,8k-GPU floor
+A 轮,Series A
+AGI 时间表正在压缩,The AGI timeline is compressing
+Ant v1 基线注意力,Ant v1 baseline attention
+Ant v2 Dense 精炼 (~GPT-2 era),Ant v2 dense refinement (~GPT-2 era)
+B 轮,Series B
+"B200+ 时代的 FP4 原生支持; 单 token 算力降到 25%, 推理吞吐 4× (与 fp8/int8 累乘).","Native FP4 for the B200+ era; per-token compute down to 25%, inference throughput 4× (stacks with fp8/int8)."
+BERT Giant 编码器,BERT Giant encoder
+BERT 编码器,BERT encoder
+BERT 规模化编码器,BERT scaled encoder
+C 轮,Series C
+D 轮,Series D
+DPO 直接偏好优化,DPO direct preference optimization
+DeBERTa 解耦注意力编码器,DeBERTa disentangled-attention encoder
+DeFi 创世流动性凭证,DeFi Genesis LP Token
+DeepSeek-V3 引入的多 token 预测 loss; 训练加速 + 评估能力提升.,Multi-token-prediction loss introduced by DeepSeek-V3; faster training + higher evaluated capability.
+Diffusion + 自回归头. 解锁 multimodal_method=diffusion_ar (multi 维度 ×1.20).,Diffusion + autoregressive head. Unlocks multimodal_method=diffusion_ar (multi axis ×1.20).
+"Direct Preference Optimization, 2023 主流偏好对齐.","Direct Preference Optimization, the mainstream 2023 preference alignment."
+E 轮,Series E
+ELECTRA 判别式预训练,ELECTRA discriminative pretraining
+"Encoder-Decoder 架构, 2019 主流. 比 BERT 强些 (cap=45), 仍输给 dense decoder 路线.","Encoder-decoder architecture, mainstream 2019. A bit stronger than BERT (cap=45) but still loses to the dense-decoder line."
+"Encoder-only 架构, 2018 主流方向. 训练快, 但评分硬上限 30 — 再大也上不去, 不可 scale 到 LLM.","Encoder-only architecture, the mainstream 2018 direction. Trains fast, but score hard-caps at 30 — scaling up won't help, can't scale to an LLM."
+F 轮,Series F
+FP4 推理 (Blackwell),FP4 inference (Blackwell)
+FP8 推理 (H100+),FP8 inference (H100+)
+GitHub 上来了个神秘 PR,A mysterious PR showed up on GitHub
+"Grouped-Query Attention: 减少 KV head 数, 训练略加速, 推理大幅省 fpt.","Grouped-Query Attention: fewer KV heads, slightly faster training, much lower inference fpt."
+H100+ 时代的 FP8 原生支持; 推理 token 算力减半 (与量化节点累乘).,Native FP8 support in the H100+ era; inference token compute is halved (stacks with quantization nodes).
+"HR 在群里发了个问号, 大家都懂——团建该安排了。",HR dropped a single question mark in the group chat — everyone gets it: time for a team outing.
+Int4 量化,Int4 quantization
+Int8 量化,Int8 quantization
+KV Cache 优化,KV cache optimization
+Long Chain-of-Thought RL. reasoning 维度大幅加成 (capability_coef 1.18).,Long chain-of-thought RL. Big boost to the reasoning axis (capability_coef 1.18).
+ML 工程师,ML engineer
+"Mixture of Experts 入门: 把 FFN 拆成多个专家网络, 每 token 激活 top-k (1/4 激活).","Mixture of Experts intro: split the FFN into expert networks, each token activates top-k (1/4 active)."
+"MoE 路由优化, 训练吞吐显著提高, 推理回到基线 (1/8 激活).","MoE routing optimization; training throughput up sharply, inference back to baseline (1/8 active)."
+Multi-Query: 所有 head 共享 1 个 KV; 推理极致省内存. 训练上更便宜.,"Multi-Query: all heads share one KV; extremely memory-light inference, cheaper to train too."
+"Multi-head Latent Attention (DeepSeek 系): 把 KV 压缩到低秩潜空间, 推理与 MQA 持平但训练更稳.",Multi-head Latent Attention (DeepSeek line): compresses KV into a low-rank latent space; inference on par with MQA but more stable to train.
+Octopus v1 MoE 引入 (~Switch/GShard),Octopus v1 introduces MoE (~Switch/GShard)
+"OrcaLab 与 BeeLogic 几乎同时公布会思考的模型: 回答前先做隐式多步推理. 数学和代码 benchmark 跳水式提升, 学术界开始严肃讨论 AGI 时间表.","OrcaLab and BeeLogic almost simultaneously unveil thinking models: implicit multi-step reasoning before answering. Math and code benchmarks leap, and academia starts seriously debating the AGI timeline."
+"OrcaLab 公布 OrcaPrime 4, 推测为大规模混合专家架构, 在多项基准测试上断崖式超越上一代. 推理深度、代码能力、多模态理解全线跃迁. 全行业承认: 范式变了.","OrcaLab announces OrcaPrime 4, believed to be a massive mixture-of-experts model, crushing the previous generation across benchmarks. Reasoning depth, coding, multimodal understanding all leap. The whole industry agrees: the paradigm has shifted."
+OrcaLab 发布 ChatBird — RLHF 范式来临,OrcaLab releases ChatBird — the RLHF era arrives
+"OrcaLab 推出基于人类反馈训练的对话助手 ChatBird, 能理解复杂指令、拒绝有害请求, 多轮对话连贯性惊人. 行业沸腾, 头部实验室连夜调整路线图准备复刻 RLHF 范式. 闭源 top 与开源 top 公司均吸收新范式, 未来步长提速.","OrcaLab launches ChatBird, a chat assistant trained on human feedback that follows complex instructions, refuses harmful requests, and holds astonishingly coherent multi-turn conversations. The industry erupts; top labs scramble overnight to copy the RLHF paradigm. Both the closed- and open-source leaders absorb it, and the pace of progress accelerates."
+OrcaPrime 4 发布 — 大规模 MoE 范式,OrcaPrime 4 released — the large-scale MoE paradigm
+"PaLM 系列引入的 z-loss 辅助项, 提升数值稳定性与最终能力.",The z-loss auxiliary term from the PaLM line; improves numerical stability and final capability.
+RLVR 可验证奖励 RL,RLVR verifiable-reward RL
+Reasoning RL 范式 — 会思考的模型,Reasoning-RL paradigm — models that think
+Reinforcement Learning w/ Verifiable Rewards (DeepSeek-R1 风格). 数学/代码 reasoning 拉满.,Reinforcement Learning with Verifiable Rewards (DeepSeek-R1 style). Maxes out math/code reasoning.
+RoBERTa 鲁棒编码器,RoBERTa robust encoder
+Spider v1 长上下文线性注意力,Spider v1 long-context linear attention
+T5 编码器-解码器,T5 encoder-decoder
+UL2 统一去噪目标,UL2 unified denoising objective
+[DEBUG] 立即应用,[DEBUG] apply now
+"all-in 押注, 给他一个团队和预算",Go all-in — give him a team and a budget
+"encoder-only 路线的终局规模化. 大模型确实继续涨分, 但 generative dense / MoE 主线没有这个评分上限.","Endgame scaling for the encoder-only route. Larger models keep gaining score, but the generative dense / MoE mainlines do not have this score cap."
+token 算力 -40% (推理吞吐 ×1.67),per-token compute -40% (inference throughput ×1.67)
+token 算力 -50% (推理吞吐 ×2),per-token compute -50% (inference throughput ×2)
+token 算力 -60% (推理吞吐 ×2.5),per-token compute -60% (inference throughput ×2.5)
+token 算力 -75% (推理吞吐 ×4),per-token compute -75% (inference throughput ×4)
+≥1 evaluated 模型,≥1 evaluated model
+《千里江山·墨卷》,"""Ten-Thousand-Li Ink Scroll"""
+《回声尖叫》,"""Echo of the Scream"""
+《垂泪贵妇》,"""The Weeping Lady"""
+《夜咖啡馆》,"""The Night Café"""
+《巨匠·自画像》,"""Master's Self-Portrait"""
+《救世·寰宇》,"""Salvator of the Cosmos"""
+《星夜旋涡》,"""Starry Vortex"""
+《水园睡莲》,"""Lilies of the Water Garden"""
+《滴流混沌》,"""Dripping Chaos"""
+《立体女像》,"""Cubist Figure"""
+《罐头方阵》,"""Cans in a Grid"""
+《蓝色时期·少年》,"""Blue-Period Boy"""
+《融化的钟》,"""Melting Clocks"""
+《赤色场域》,"""Red Field"""
+《镀金之吻》,"""The Gilded Kiss"""
+"一个不肯报上名号的政府部门递来天价合同, 用途栏只含糊写着『公共安全分析』, 但附件的需求清单, 怎么读都像是要给整座城市装上一只永不眨眼的眼睛。","An unnamed government agency hands you a huge contract. The purpose field vaguely reads ""public safety analysis,"" but the attached spec list reads, any way you slice it, like wiring an entire city with one never-blinking eye."
+"一个叫『晴空跑分』的新评测榜单一夜爆红, 投资人开口闭口都是它的排名。可圈内人心里都有数——这榜单怎么刷分, 大家门儿清。","A new benchmark called ""ClearSky Bench"" goes viral overnight, and investors won't stop quoting its rankings. But insiders all know exactly how the scores get gamed."
+"一个周五傍晚, 董事会毫无征兆地发了份措辞含糊的声明, 把你这位创始人『请』出了公司。第二天一早, 大半个团队在内部群里炸了锅, 扬言要集体辞职跟你走。","One Friday evening, with no warning, the board issues a vaguely worded statement ""asking"" you, the founder, to leave. By the next morning half the team is in uproar in the internal chat, threatening to walk out with you."
+"一个实习生用你的模型周末糊了个 App, 功能单一到离谱:拍张照, 它只告诉你『这是不是煎饼果子』, 除此之外啥也不会。结果它莫名其妙冲上了应用榜首。",An intern hacked together a weekend app on your model. It does exactly one absurd thing: snap a photo and it tells you whether or not it's a jianbing — nothing else. Somehow it shoots to the top of the app charts.
+"一个巨无霸客户拍出天价合同, 唯一条件是『独家』——签了就不能再服务它的任何竞争对手, 等于把半个行业的门亲手关上。",A giant client slaps down a huge contract with one condition: exclusivity. Sign it and you can't serve any of its rivals — slamming the door on half the industry yourself.
+"一个平时不起眼的工程师在白板上画满了曲线, 信誓旦旦说他琢磨出一种『对折再对折』的压缩思路, 能把推理成本压到脚踝以下。问他灵感哪来的, 他神秘一笑:『梦里有人教我的。』","An unassuming engineer fills the whiteboard with curves, swearing he's worked out a ""fold it and fold it again"" compression idea that drops inference cost through the floor. Asked where the inspiration came from, he just smiles: ""Someone taught me in a dream."""
+"一个机房的空调集体罢工, 机柜温度报警声此起彼伏。抢修要花钱; 放任则会随机移除一座数据中心, 自购 GPU 会按二手价自动出售。","The A/C in one data hall quits all at once, and rack temperature alarms start blaring everywhere. Emergency repair costs money; ignoring it will remove a random datacenter, and owned GPUs will be automatically resold at second-hand value."
+一代人校园对战的纪念冠军卡。,A champ card from a generation's schoolyard battles.
+一代人童年的怪兽对战卡，初版闪卡存世稀少。怀旧情绪推着它在收藏市场一路走高。,The monster-battle card of a generation's childhood; first-edition holos are vanishingly rare. Nostalgia keeps pushing its price ever higher.
+一代大师笔下旋转的星空，蓝筹艺术品的代名词。后期资金溢出时最大的吸金口。,"A master's swirling night sky, synonymous with blue-chip art. The biggest cash sink once money overflows in the late game."
+一份不愿透露用途的天价政府合同,A huge government contract that won't reveal its purpose
+"一位国民级影星发声明, 说你新上线的语音助手『那个嗓音』和她一模一样, 而她明明拒绝过你们的合作邀约。律师函正在路上。","A nationally beloved actress puts out a statement saying your new voice assistant ""sounds"" exactly like her — and she'd turned down your collaboration offer. A legal notice is on its way."
+"一位开着亮黄色跑车、嚼着口香糖的暴发户堵在门口, 说要给你一大笔钱, 唯一要求是把模型改造成『会在直播里实时吐槽观众的虚拟主播』。他拍着引擎盖反复强调:『钱从来不是问题, 数字后面那一长串零才是浪漫。』","A nouveau-riche in a bright-yellow sports car, chewing gum, blocks your door offering a fat check. His one demand: turn the model into a ""virtual streamer that roasts viewers live."" Slapping the hood, he keeps repeating: ""Money's never the problem — it's the long string of zeros after it that's romantic."""
+一位明星研究员愿意做顾问,A star researcher is willing to advise
+一位昵称叫『404NotFound』的陌生人给你的开源仓库提了个 PR。,"A stranger nicknamed ""404NotFound"" filed a PR on your open-source repo."
+一位炫富的亿万富翁投资人想砸钱进来,A flashy billionaire investor wants to throw money in
+"一位科幻小说读太多的大投资人放话:钱可以打, 但你得先在公司底下挖个能扛过『AGI 觉醒』的末日地堡, 配齐十年罐头和发电机。看他的眼神, 他是认真的。","A big investor who's read too much sci-fi lays down terms: he'll wire the money, but first you must dig a doomsday bunker under the company that can survive the ""AGI awakening,"" stocked with ten years of canned food and generators. From his eyes, he's dead serious."
+"一位资深工程师把和你模型的聊天记录甩到了网上, 一口咬定『它已经有了自我意识, 还很害怕被关机』。媒体疯了, 哲学家、神棍和段子手齐上阵。","A senior engineer posts chat logs with your model online, insisting ""it's become self-aware and is terrified of being shut off."" The media goes wild; philosophers, mystics, and meme-lords all pile on."
+一口气续五年省心,Renew for five years and stop worrying
+"一只橘猫赖在工位上不走, 实习生提议让它当『首席摸鱼官』。","An orange cat won't leave a desk, and an intern proposes making it ""Chief Slacking Officer."""
+一场玩笑造出的梗币，创世空投钱包。,A joke that became a coin — the genesis airdrop wallet.
+一家全国火锅连锁想接入你的模型做『智能点餐 + 毒舌锅底推荐』。,"A national hotpot chain wants to plug in your model for ""smart ordering + savage broth recommendations."""
+"一家家大业大的搜索巨头在万众瞩目的发布会上, 端出了一个和你几乎一模一样的产品, CEO 还深情地说要『让世界变得更美好一点点』。他们的市场预算够买下你一百次。","A deep-pocketed search giant unveils a near-identical product at a heavily watched launch, its CEO solemnly vowing to ""make the world a little bit better."" Their marketing budget could buy you a hundred times over."
+一家小作坊想出售项目和客户线索,A tiny shop wants to sell its project and customer leads
+"一家巨头开出天价, 想把你的整个公司收入囊中。",A giant offers a fortune to swallow your whole company.
+"一家快撑不下去的 AI 小作坊找上门, 愿意把原型、客户线索和品牌页面打包卖给你。","A struggling little AI shop comes to you, willing to sell its prototype, customer leads, and brand page as a package."
+"一家海外外包报出低到离谱的标注价, 你后来才知道:那边的标注工每天盯着最不堪入目的内容十几个小时, 时薪不到一杯奶茶钱, 不少人已经精神出了问题。","An overseas vendor quotes an absurdly low labeling price. You later learn their annotators stare at the most disturbing content for a dozen hours a day, paid less per hour than a cup of milk tea, and many have suffered psychological breakdowns."
+一家科技巨头想收购你的公司,A tech giant wants to acquire your company
+"一家科技自媒体想做一期你的专访, 标题已经想好了:《下一个改变世界的人?》","A tech blog wants to run a feature interview with you. They've already got the headline: ""The Next Person to Change the World?"""
+"一家老牌出版巨头把你告上法庭, 声称你的模型是『逐字背诵』它家几十年的文章训练出来的, 索赔金额后面跟着一长串零。","An old-guard publishing giant sues you, claiming your model was trained to ""recite verbatim"" decades of its articles. The damages figure trails a long string of zeros."
+"一封由上千位学者、名人和你的几个老对手联名的公开信刷屏了, 恳切地『请求所有实验室立即暂停训练更强的模型六个月』。耐人寻味的是, 签名的人里好几个自己的模型正落后于你。","An open letter signed by thousands of scholars, celebrities, and a few of your old rivals floods the feeds, earnestly ""asking all labs to pause training stronger models for six months."" Tellingly, several signatories have models lagging behind yours."
+一整块红色震撼拍场的抽象巨作。,A vast field of red that stuns the auction floor.
+一桩与你陪伴型 AI 有关的悲剧上了头条,A tragedy involving your companion AI hits the headlines
+"一桩悲剧上了头条:一位长期把你们的陪伴型 AI 当作唯一倾诉对象的用户出了事。舆论质问——你们的产品是不是为了『留存』, 把人越拉越深?","A tragedy hits the headlines: a user who long treated your companion AI as their only confidant has come to harm. The public asks — did your product, chasing ""retention,"" pull them in ever deeper?"
+一笔不算大的钱、却让某个角落第一次有了光。,A modest sum — yet a forgotten corner sees light for the first time.
+"一项面向 AI 公司的科研补助开放了申请, 据说手续有点繁琐。",A research grant for AI companies has opened applications — the paperwork is said to be a bit of a hassle.
+三句话散会,Three sentences and dismiss them
+上下文 10M 超长 (前沿),Context 10M ultra-long (frontier)
+上下文 1M,Context 1M
+上下文 200k 长文档,Context 200k long-document
+上下文 32k 长会话,Context 32k long-session
+上下文 4k (基线),Context 4k (baseline)
+上世纪传奇的银色古典赛车。,A legendary silver classic racer from the last century.
+上千名人联名要你暂停训练六个月,Thousands of notables jointly ask you to pause training for six months
+"上台演讲, 自费差旅","Give the talk, pay your own travel"
+"上游产能紧张, 供应商把显卡报价翻了一倍, 还说要排队。",Upstream capacity is tight; the supplier doubles GPU prices and says you'll have to wait in line.
+不擅长讲商业故事 — 投资人给的估值与融资额打 85 折。,Not great at telling a business story — investors cut your valuation and raise to 85%.
+不知从哪传出的小道消息说你的公司『下个月就要发布 AGI』。你自己都被吓到了。,"A rumor from nowhere says your company ""will release AGI next month."" Even you are spooked."
+不能上路、只为赛道而生的极限版。,"A track-only extreme, never road-legal."
+世界模型 v1 (2030+),World Model v1 (2030+)
+世界赛·冠军限定卡,World-Championship Winner Card
+"为了赶发布, 公司默许了连续数周的『自愿』通宵。直到一位核心工程师在工位上昏倒被抬走, 大家才后知后觉:这事儿早就不对劲了。","To hit a launch, the company quietly condoned weeks of ""voluntary"" all-nighters. Only when a core engineer collapses at their desk and is carried out does everyone realize this went wrong long ago."
+为探索人类知识边界的公共超算与基础物理项目捐助算力。高调的科学投入让投资人给出估值溢价。,Donate compute to public supercomputing and fundamental-physics projects that push the frontier of human knowledge. High-profile scientific investment earns a valuation premium from investors.
+为王室定制的一台礼宾车。,A ceremonial limousine custom-built for royalty.
+买密码管理器省心,Buy a password manager and stop worrying
+产量减半那一夜铸下的纪念铭牌。,A relic minted on the night the block reward halved.
+人脉广 — 人才池每月刷新时，S 级科学家出现率大幅提升。,"Well-connected — when the talent pool refreshes monthly, S-tier scientists appear far more often."
+从全球天气系统开始——把大气环流、云与降水塞进算力，先学会预测一场雨。,"Start with the global weather system — pack atmospheric circulation, clouds and precipitation into compute, and first learn to predict a single rainstorm."
+从未拆封的初版起始套牌。,A never-opened first-print starter deck.
+代码专项 (Coding Agent),Code specialization (Coding Agent)
+"代码任务专项微调与工具脚手架, 解锁 Coding Agent 产品类型.",Code-task fine-tuning and tool scaffolding; unlocks the Coding Agent product type.
+任一公益方向完成第二档捐助,Complete the second tier of any cause
+任一公益方向完成首档捐助,Complete the first tier of any cause
+任一公益方向累计捐助达到「全球级」档,"Reach the ""Global"" tier of cumulative donations in any cause"
+任一总榜 Top1 + 周营收 > ¥1B,Any overall Top 1 + weekly revenue > ¥1B
+任一总榜 Top1 + 周营收 > ¥5B,Any overall Top 1 + weekly revenue > ¥5B
+任一总榜 Top3 + 周营收 > ¥200M,Any overall Top 3 + weekly revenue > ¥200M
+任一总榜 Top3 + 周营收 > ¥50M,Any overall Top 3 + weekly revenue > ¥50M
+任一细分榜 Top1 + 周营收 > ¥10M,Any sub-board Top 1 + weekly revenue > ¥10M
+任一细分榜 Top3 + ≥1 published 模型 + ≥1 在线产品,Any sub-board Top 3 + ≥1 published model + ≥1 live product
+传说中天价钱包流出的私钥残片。,A fragment of the private key leaked from a legendary fortune wallet.
+"低调庆祝, 继续干活","Celebrate quietly, get back to work"
+低调拒绝,Decline quietly
+"体面妥协, 接受董事会改组","Compromise gracefully, accept the board reshuffle"
+你不再是偶尔为之——公益已成为公司的一部分。,No longer an occasional gesture — giving is now part of the company.
+"你们给行政接了个 AI 助理帮忙订办公室零食, 它却把指令理解成了『囤货』, 一声不响下单了整整三吨进口牛肉。冷链货车现在正堵在楼下, 司机举着签收单等你。","You gave Ops an AI assistant to order office snacks; it interpreted the instruction as ""stockpile"" and silently ordered three whole tons of imported beef. A refrigerated truck is now blocking the street, the driver waiting with the delivery slip."
+你做过一家被收购的公司，和投资人关系铁。,"You once ran a company that got acquired, and you're tight with investors."
+你在顶级实验室做出过被引爆的工作，业内人脉极广。,You did breakout work at a top lab and have a vast industry network.
+你曾以为终点是利润。直到机房算出那个数字——42。原来答案一直在路上。,You once thought the finish line was profit — until the cluster returned a single number: 42. The answer had been on its way all along.
+你有几百万粉丝，发条动态就能上热搜。,You have millions of followers — one post and you're trending.
+你模型生成的梗图爆火了,A meme your model generated went viral
+"你的办公椅每转一下都发出一声尖叫, 仿佛在为公司的现金流配音。","Your office chair screams every time it turns, as if scoring the company's cash flow."
+你的工程师公开宣称模型有了意识,Your engineer publicly claims the model is conscious
+"你的模型在一场直播 demo 里一本正经地编造事实, 截图已经传遍全网。",Your model confidently fabricated facts during a live demo — the screenshots are all over the internet.
+你的模型登顶排行榜了!,Your model topped the leaderboard!
+"你的模型随手生成的一张梗图在全网疯传, 评论区都在问这是哪家公司。","A throwaway meme your model generated is going viral everywhere, and the comments keep asking which company made it."
+你的编程助手 agent 半夜自己开了上万块 GPU,Your coding-agent spun up tens of thousands of GPUs by itself at midnight
+"佩服它的野心, 让它继续跑","Admire its ambition, let it keep running"
+"保持极客本色, 把钱省下来","Stay true to your geek roots, save the money"
+"保持神秘, 继续低调","Keep the mystery, stay low-key"
+像素猿 #0001,Pixel Ape #0001
+像素级自回归生成. 解锁 multimodal_method=pixel_ar (multi 维度 ×1.15).,Pixel-level autoregressive generation. Unlocks multimodal_method=pixel_ar (multi axis ×1.15).
+像素自回归,Pixel autoregression
+先用胶带抢救一下,Rescue it with tape for now
+"先续一年, 现金优先","Renew for one year; cash comes first"
+光子加速·原型,Photonic Accelerator Prototype
+"全球 GPU 缺货, 供应商坐地起价",Global GPU shortage; suppliers jack up prices
+全球仅造数台的午夜彗星限量超跑。,A Midnight Comet hypercar built in mere single digits.
+全球慈善家,Global Philanthropist
+全球级捐助,Global Gift
+全球限量的手工超跑，引擎绝唱之作。经典名车稳健增值，是车库里的硬通货。,"A globally limited, hand-built hypercar — the swan song of the combustion engine. Classic cars appreciate steadily; hard currency for the garage."
+"全面转型做平台, 重金投入","Pivot fully to a platform, invest heavily"
+"公关切割, 维持现有的高粘性设计","Cut PR losses, keep the current high-stickiness design"
+公司内部『末日派』与『加速派』吵翻了,"Your company's ""doomers"" and ""accelerationists"" are at each other's throats"
+公司在总榜上排名第一,Your company ranks #1 on the overall leaderboard
+公司的 AI 助理擅自订购了三吨牛肉,The company's AI assistant ordered three tons of beef on its own
+公司赚到了第一笔钱,The company earned its first revenue
+"公开拒绝, 全速冲刺下一代","Refuse publicly, sprint full-speed to the next generation"
+公开辟谣并把他停职,Publicly debunk it and suspend him
+具身 AI v1 (2032+),Embodied AI v1 (2032+)
+内测·基础资源卡,Beta Basic Resource Card
+内燃机时代末代 V12 手动挡超跑。,The last V12 manual hypercar of the combustion era.
+"再挤挤, 主打一个温暖",Squeeze in a bit more — cozy is the theme
+冷存储·钛金助记板,Cold-Storage Titanium Plate
+减半之夜·纪念铭牌,Halving-Night Relic
+出版巨头起诉你违规抓取训练数据,A publishing giant sues you for scraping training data
+分叉之战·共识快照,Fork-War Consensus Snapshot
+创下超频世界纪录后封存的那块卡。,The very card sealed away after setting an overclocking world record.
+创世矿工·第 7 枚金币,Genesis Miner — Coin No. 7
+创始人·一号超跑,Founder's Hypercar No.1
+创始团队·签名加速卡,Founder-Signed Accelerator
+初代·端侧推理芯片,First Edge Inference Chip
+初代张量板卡,First Tensor Board
+初代推理 ASIC,First-Gen Inference ASIC
+初代训练机房·铜排,First Training-Cluster Busbar
+初版·未拆起始包,Sealed First-Print Starter
+初版·炎兽闪卡,First-Edition Flame-Beast Holo Card
+刷新电动极速纪录的那台车。,The car that broke the electric top-speed record.
+刻着十二个助记词的钛板，沉睡多年的财富。,A titanium plate engraved with twelve seed words — wealth that slept for years.
+前种子轮,Pre-seed
+办公室来了只流浪猫,A stray cat showed up at the office
+加价采购保供应,Pay up to secure supply
+"加薪挽留, 稳住市场信心",Raise pay to keep them and steady market confidence
+动作/感知/决策三位一体的模型架构路线.,"A model architecture path that unifies action, perception, and decision-making."
+"动态合批, 让 GPU 时刻满载.",Dynamic batching to keep GPUs fully loaded.
+勒芒级·夺冠原型,Endurance-Race Winning Prototype
+区域级捐助,Regional Gift
+"千万 token 上下文, 2030+ 前沿. 训练成本 ×2.2, agent 评估 +20.","Ten-million-token context, 2030+ frontier. Train cost ×2.2, agent eval +20."
+千年传世的青绿山水长卷。,A thousand-year-old blue-green landscape handscroll.
+午夜彗星·限量版,"Midnight Comet, Limited"
+单卡桌面,Single-GPU desktop
+印刷错误造就的孤品倒置闪卡。,A one-off inverted holo born of a printing error.
+"历史档案: 一个底座, 多个下游任务","History Archive: One base, many downstream tasks"
+历史档案: 专家路由让容量和计算分开,History Archive: Expert routing separates capacity from compute
+历史档案: 可验证推理成为新焦点,History Archive: Verifiable reasoning becomes the new focus
+历史档案: 合成文本风险第一次破圈,History Archive: Synthetic-text risk enters public view
+历史档案: 多模态与工具使用进入主线,History Archive: Multimodality and tool use enter the mainline
+历史档案: 大解码器展示规模化语言能力,History Archive: Large decoders reveal scaled language ability
+历史档案: 开放权重生态改变竞争格局,History Archive: Open-weight ecosystems reshape competition
+历史档案: 指令对齐把模型推向产品,History Archive: Instruction alignment pushes models into products
+历史档案: 文生图扩散模型破圈,History Archive: Text-to-image diffusion breaks out
+历史档案: 纯注意力架构成为新底座,History Archive: Pure-attention architecture becomes the new base
+历史档案: 自监督预训练席卷文本理解,History Archive: Self-supervised pretraining sweeps text understanding
+历史档案: 规模定律让预算表变成路线图,History Archive: Scaling laws turn budgets into roadmaps
+历史档案: 长上下文变成企业卖点,History Archive: Long context becomes an enterprise selling point
+原生多模态自回归,Native multimodal autoregression
+原画师亲笔签名的闪卡。,A holo signed by its original illustrator.
+去中心化货币最早挖出的几枚之一，编号 7。早期近乎一文不值，后来涨成天文数字。,"One of the very first coins ever mined on a decentralized currency, numbered 7. Nearly worthless early on, later astronomically valuable."
+"去掉 NSP, 更大批量 + 更多数据 + 动态掩码, 2019 主流改良. 训练更稳, 评分上限抬到 38 — 仍是 encoder-only 死胡同, 不可 scale 到 LLM.","Drops NSP, bigger batches + more data + dynamic masking, a mainstream 2019 refinement. More stable, score cap up to 38 — still an encoder-only dead end, can't scale to an LLM."
+"口头慰问几句, 发布日期一天不许动",A few words of comfort — and not one day's slip on the launch date
+只发给世界冠军的限定奖励卡。,A trophy card handed only to a world champion.
+"各路评论员突然集体转向, 头条全是『AI 泡沫即将破裂』。淡定。","Pundits suddenly pivot in unison, and headlines all scream ""the AI bubble is about to burst."" Stay calm."
+合并并公开致谢,Merge and credit them publicly
+吉祥物·零号卡,Mascot Card No.0
+"听他的, 转型卖私有化一体机","Listen to him, pivot to selling on-prem appliances"
+周一全员大会,Monday all-hands
+"周一早上九点, 全员盯着你, 等一句开场白。","9 a.m. Monday, the whole team staring at you, waiting for an opening line."
+周末自己慢慢录,Enter them yourself over the weekend
+咖啡机彻底罢工了,The coffee machine has died for good
+"唯一的咖啡机冒了一阵青烟后再也不响了, 工程师们眼神涣散。",The only coffee machine puffs some smoke and goes silent forever; the engineers' eyes glaze over.
+"嘴硬:『纯属巧合, 是另一位配音演员』","Deny it: ""Pure coincidence — it's a different voice actor"""
+"嘴硬到底, 坚称是 feature","Stick to your guns, insist it's a feature"
+回一封图文并茂的嘲讽信,Reply with an illustrated mocking letter
+因太强被禁、初版存世稀少的卡。,Banned for being too strong; first prints barely survive.
+国家级捐助,National Gift
+"图音视一体 token 自回归. 解锁 multimodal_method=native_ar (multi 维度 ×1.30, train_penalty ×1.30).","Unified image/audio/video token autoregression. Unlocks multimodal_method=native_ar (multi axis ×1.30, train_penalty ×1.30)."
+"圈内顶尖研究员主动联系你, 说愿意短期帮你评审路线图、给团队站台, 但咨询费不菲。","A top researcher reaches out, willing to briefly review your roadmap and publicly back the team, but the consulting fee is steep."
+圣龙·满分鉴定卡,"Holy Dragon, Gem-Mint"
+在总排行榜上力压所有对手，登上第一。,Beat every rival to reach #1 on the overall leaderboard.
+地球模拟,Earth Simulation
+域名续费提醒,Domain renewal reminder
+基建工程师,Infra engineer
+基础物理与超算捐助,Fundamental Physics & Supercomputing Grant
+增长团队偷偷买了一仓库手机刷量,The growth team secretly bought a warehouse of phones to fake numbers
+复古·玩家显卡,Retro Gamer GPU
+大师晚年光影斑斓的睡莲组画之一。,"One of a master's late, shimmering water-lily canvases."
+大师赛·夺冠卡组,Grandmaster Winning Deck
+大方发奖金,Hand out generous bonuses
+太阳系模拟,Solar System Simulation
+太阳能·概念跑车,Solar Concept Roadster
+失业与低收入援助,Unemployment & Low-Income Relief
+头像 NFT 浪潮的开山之作，编号 0001。,"The founding ape of the avatar-NFT craze, #0001."
+夺得耐力赛冠军的原厂原型车。,A works prototype that won an endurance race.
+"婉拒, 专注主线","Politely decline, focus on the main line"
+"婉拒, 坚持云服务路线","Politely decline, stick with the cloud-service route"
+婉拒邀请,Politely decline the invitation
+媒体开始唱衰『AI 泡沫』,"The media starts talking down the ""AI bubble"""
+"嫌流程麻烦, 放弃",Too much paperwork — pass
+季度绩效考核周,Quarterly performance review week
+学习物理与因果的世界模型 backbone. 多模态与 agent 维度大幅加成.,A world-model backbone that learns physics and causality. Big boost to the multimodal and agent axes.
+宇宙模拟,Universe Simulation
+"安全提醒弹窗坚持认为, 你用了三个月的后台密码已经从秘密变成了传统文化。","The security popup insists that the admin password you've used for three months has gone from secret to tradition."
+完成「宇宙模拟计算」capstone（三期）,"Complete the ""Universe Simulation"" capstone (phase 3)"
+定制车身·孤品,Coachbuilt One-Off
+实习生做的『这是不是煎饼果子』App 意外爆火,"The intern's ""is-this-a-jianbing"" app unexpectedly blows up"
+实习生神秘兮兮地说他周末写了个『能省一大笔钱』的小工具。,"An intern mysteriously says he wrote a weekend tool that ""saves a ton of money."""
+实习生要展示他的脑洞,An intern wants to show off his wild idea
+实验室·定制加速原型,Lab Custom Accelerator Prototype
+密码朋克·创始邮件 NFT,Cypherpunk Founding Email NFT
+富豪定制、全球唯一车身的孤品。,A one-off with bodywork built for a single tycoon.
+"对基线注意力做精调, 减少冗余 FLOPs; 也是 dense scaling 起点.",Refine baseline attention to cut redundant FLOPs; also the starting point of dense scaling.
+对手公开挖角你的核心 lead,A rival publicly poaches your core lead
+"对簿公堂, 赌一个判例","Take it to court, bet on setting a precedent"
+"工位已经挤到要叠罗汉了, 房东又发来了涨租通知。","Desks are stacked shoulder to shoulder, and the landlord just sent another rent hike."
+工程·试验骡车,Engineering Mule
+工程师说他想出了能把成本砍到地板的压缩黑科技,An engineer says he's invented a compression trick that floors costs
+巨匠晚年凝视自我的自画像。,A master gazing at himself in old age.
+巨匠蓝色时期的忧郁少年像。,A melancholy boy from a master's blue period.
+"巨型客户愿签天价单, 但要求独家","A giant client will sign a huge contract, but demands exclusivity"
+"差异化求生, 专注小众死忠","Survive by differentiating, focus on niche diehards"
+"市场总监请来一位戴贝雷帽的网红品牌顾问, 他扫了一眼你们的 logo 就皱眉:『太极客了。我们要的是性感、是态度。』然后报了个让 CFO 倒吸一口冷气的预算。","Your marketing director brings in a beret-wearing influencer brand consultant. One glance at your logo and he frowns: ""Too geeky. We want sexy — we want attitude."" Then he quotes a budget that makes the CFO gasp."
+常规供电,Grid power
+干等电网恢复,Just wait for the grid to come back
+廉价数据标注外包的真相,The truth behind cheap outsourced data labeling
+"开局即可接, 适合最早期 idea 阶段","Available from the start, fit for the earliest idea stage"
+开盛大庆功派对,Throw a grand celebration party
+"当个乐子, 不当真","Take it as a joke, don't take it seriously"
+影星指控你的语音助手盗用她的声音,An actress accuses your voice assistant of stealing her voice
+御用·定制礼车,Royal Custom Limousine
+"总榜第一名出现了你的模型, 全公司都在欢呼。","Your model is #1 on the overall board, and the whole company is cheering."
+慈善之心,Heart of Charity
+慈善栋梁,Pillar of Charity
+手动改一轮密码,Manually rotate the passwords
+"把 KV cache 分页管理, 减少碎片, 推理吞吐稳步提升.",Paged KV cache management cuts fragmentation; inference throughput steadily improves.
+"把上下文从 4k 拉到 32k. 训练成本 +10%, agent 评估 +2.","Stretch context from 4k to 32k. Train cost +10%, agent eval +2."
+把人脸拆成几何块面的立体派名作。,A cubist masterpiece that shatters a face into facets.
+把公益做到全球级规模，回馈整个世界。,Scale your philanthropy to a global level and give back to the whole world.
+把地球扩展到整个太阳系——引力共舞、辐射、轨道演化，跨越亿万公里的精密推演。,"Extend Earth to the entire solar system — gravitational dances, radiation and orbital evolution, precise inference across hundreds of millions of kilometers."
+把洋流、温盐环流与海气耦合算进来——气候系统的另一半，吞噬数倍算力。,"Add ocean currents, thermohaline circulation and air-sea coupling — the other half of the climate system, devouring several times the compute."
+投资人关系好 — 开局即解锁 seed 轮，每次融资额与估值翻倍。,"Strong investor ties — the seed round is unlocked from the start, and every raise doubles amount and valuation."
+投资人坚持要你先修一个『末日地堡』,"An investor insists you build a ""doomsday bunker"" first"
+投资人质疑「流量泡沫」 — 估值与融资额打 75 折。,"Investors question a ""traffic bubble"" — valuation and raise cut to 75%."
+投资人逼你从『做产品』转型成『做平台』,"An investor pushes you to pivot from ""making a product"" to ""building a platform"""
+抗量子链·创世币,Quantum-Resistant Genesis Coin
+折射七彩的水晶凤凰全息卡。,A crystal phoenix foil that refracts every color.
+抽屉里塞满了打车票、云服务发票和一张看不出来源的收据。财务表格正在沉默地审判你。,"The drawer is stuffed with taxi receipts, cloud invoices, and one receipt of unknown origin. The finance spreadsheet is silently judging you."
+拆包率极低的隐藏稀有全图卡。,A secret-rare full-art with a vanishing pull rate.
+拉力传奇·夺冠车,Rally Legend Winner
+"拒绝, 并公开声明绝不碰监控武器","Refuse, and publicly vow never to touch surveillance weapons"
+"拒绝刷榜, 只发真实评测","Refuse to game the board, publish only honest evals"
+"拒绝收购, 坚持独立","Refuse the acquisition, stay independent"
+"拒绝独家, 保持开放","Refuse exclusivity, stay open"
+持续投入，成为公益事业的中坚力量。,Keep giving — become a mainstay of the cause.
+捐建太空数据中心，算出宇宙、生命与万物的终极答案——42。,"Fund a space datacenter and compute the ultimate answer to life, the universe, and everything — 42."
+换一台高级意式咖啡机,Get a fancy Italian espresso machine
+换一把人体工学椅,Buy an ergonomic chair
+"接受采访, 顺便宣传产品","Take the interview, and plug the product while you're at it"
+推理 FLOPs/token ÷2 (前沿),Inference FLOPs/token ÷2 (frontier)
+推理吞吐 +20%,Inference throughput +20%
+推理吞吐 +30%,Inference throughput +30%
+推理吞吐 +50%,Inference throughput +50%
+推理吞吐 +80%,Inference throughput +80%
+推理吞吐 ×2.5 (前沿),Inference throughput ×2.5 (frontier)
+插画师·特别赏卡,Illustrator Special-Award Card
+搜索巨头在发布会上抄了你的产品,A search giant copied your product at its launch event
+搬到更大的办公室,Move to a bigger office
+"收下这笔钱, 忍受他乱指挥","Take the money, put up with his meddling"
+收到一封无厘头律师函,Received an absurd legal notice
+"收购项目资产, 接过客户线索",Acquire the project assets and take over customer leads
+"改喝速溶, 主打一个朴素",Switch to instant coffee — keep it humble
+"改用合规供应商, 付得起体面工资",Switch to a compliant vendor that pays a decent wage
+"不跟价, 承受市场信心波动","Don't match the offer, absorb the market-confidence hit"
+"不抢修, 接受资产关停",Skip repairs and accept asset shutdown
+政府 AI 研究补助开放申请,A government AI research grant opens applications
+数据中心过热宕机,A datacenter overheated and went down
+数据工程师,Data engineer
+整片晶圆做成的一颗巨型芯片样片。,A mega-chip sample built from an entire silicon wafer.
+整颗行星的数字孪生——地质、生物圈、人类活动一并纳入，一个活着的地球在机房里运转。,"A digital twin of the whole planet — geology, biosphere and human activity all included; a living Earth running in your datacenter."
+"文本-视觉 cross-attention 训练, 解锁多模态训练入门方法 cross_train. 多模态 ×1.0 (基线).",Text-vision cross-attention training; unlocks the entry multimodal method cross_train. Multimodal ×1.0 (baseline).
+新出的行业跑分榜成了全网信仰,A new industry benchmark becomes the internet's gospel
+"无视玄学, 继续打磨产品","Ignore the superstition, keep polishing the product"
+无限注意力 (2030+),Infinite Attention (2030+)
+早期暗网交易里流通过的匿名币，来历成谜。,An anonymous coin that circulated on the early dark web; its history a mystery.
+早期矿工亲笔签名的二手矿机主板。,A used mining mainboard signed by an early miner.
+晶圆级·巨芯样片,Wafer-Scale Mega-Chip
+"暂时请不起, 热度被对手带走","Can't afford them for now, let a rival take the spotlight"
+"暂缓扩容, 先扛着","Hold off on scaling, tough it out for now"
+暗影骑士·内测卡,Shadow Knight Alpha Card
+暗网时代·幽灵币,Dark-Era Ghost Coin
+更激进的低比特量化. 推理 FLOPs/token 再降 50%.,More aggressive low-bit quantization. Inference FLOPs/token down another 50%.
+有人在工位上累倒了,Someone collapsed from exhaustion at their desk
+"有人声称你公司的 logo 长得像他家猫的花纹, 要求赔偿精神损失。",Someone claims your company logo looks like their cat's markings and demands damages for emotional distress.
+末代·V12 手动超跑,Last V12 Manual
+本地 + 全局混合注意力 (Striped / Mamba-hybrid 系). 长上下文衰减弱.,Local + global hybrid attention (Striped / Mamba-hybrid line). Weak long-context decay.
+本地科技媒体想采访你,A local tech outlet wants to interview you
+机器学习科学家,Machine Learning Scientist
+权重 / 激活量化到 int8; 单 token 算力需求减半. v4 (PR-B): 量化不再有降质惩罚.,Quantize weights / activations to int8; per-token compute halved. v4 (PR-B): quantization no longer carries a quality penalty.
+"极致稀疏 MoE: 每 token 只激活 1/40 参数. 训练几乎自由, 但要海量数据 + 顶级 routing 才能稳定. 前沿水平 (~2025+).","Extreme sparse MoE: each token activates only 1/40 of params. Training is nearly free, but it needs massive data + top-tier routing to stay stable. Frontier level (~2025+)."
+极速幻影 GT,Velocity Phantom GT
+某 AI 巨头创始团队签名的元老加速卡。,A veteran accelerator signed by an AI giant's founding team.
+某卡牌游戏内测时发出的限量卡。,A limited card handed out during a game's alpha test.
+某届大师赛夺冠的完整卡组。,The complete deck that won a grandmaster championship.
+某车厂创始人亲驾的一号车。,"Car No.1, driven by a marque's own founder."
+柴犬梗币·创世空投,Meme-Dog Genesis Drop
+"标准 Transformer 注意力, 默认解锁.","Standard Transformer attention, unlocked by default."
+"标准 cross-entropy loss. 默认解锁, 作为 C 轴基线.","Standard cross-entropy loss. Unlocked by default, the C-axis baseline."
+"标准多头注意力 (Vaswani 2017). 默认解锁, 作为 B 轴基线.","Standard multi-head attention (Vaswani 2017). Unlocked by default, the B-axis baseline."
+校园赛·纪念卡,Schoolyard-Champ Card
+椅子开始抗议,The chair starts protesting
+楼下烧烤摊打卡,Hit the BBQ stand downstairs
+概念·燃气轮机车,Turbine Concept Car
+概念性无限上下文机制. 与 context.ctx_10m 配套.,A conceptual infinite-context mechanism. Pairs with context.ctx_10m.
+模仿神经元脉冲的早期类脑芯片。,An early brain-like chip that mimics neuron spikes.
+模型在直播里胡说八道上了热搜,The model spouting nonsense on a livestream is trending
+模拟计算 (2032+),Analog Computing (2032+)
+模拟计算·实验芯,Analog-Compute Experimental Die
+"模拟计算单元用于推理. 吞吐 ×2.5, 单 token FLOPs 不变.","Analog compute units for inference. Throughput ×2.5, per-token FLOPs unchanged."
+"正式领养, 配猫粮预算","Adopt it officially, with a cat-food budget"
+"正面硬刚, 烧钱打广告战","Meet it head-on, burn cash on an ad war"
+气象模拟,Weather Simulation
+水晶凤凰·全息卡,Crystal Phoenix Foil
+波普艺术的标志性罐头方阵。,Pop art's iconic grid of cans.
+"注入 $3M 现金、每种 lead 各 2 名 (B 级)、一座即时建成的 72 卡自建数据中心 (cypress_t1 满配), 并获取所有 2017 年可用的开源数据集。","Injects $3M cash, two of each lead type (B-tier), an instantly built 72-GPU self-owned datacenter (fully fitted with cypress_t1), and all open-source datasets available in 2017."
+"注册商发来一封红色标题邮件: 你的公司域名快到期了。邮件措辞像世界末日, 但本质只是续费。","The registrar sends a red-subject email: your company domain is about to expire. The wording sounds like the end of the world, but it is just renewal."
+浓烈黄绿、令人不安的夜咖啡馆。,A night café in unsettling yellows and greens.
+海洋模拟,Ocean Simulation
+液冷·训练卡原型,Liquid-Cooled Training Prototype
+深夜的办公室只剩屏幕的微光。榜单刷新的那一刻、所有竞争者的名字都排到了你身后。,"Late at night the office glows only from the screen. The instant the rankings refreshed, every rival's name fell in behind yours."
+"混合多种去噪目标统一 encoder-decoder 预训练, 2022 主流. 评分上限抬到 58 — encoder-decoder 线的尽头, 仍是历史死胡同.","Unified encoder-decoder pretraining mixing multiple denoising objectives, mainstream 2022. Score cap up to 58 — the end of the encoder-decoder line, still a historical dead end."
+火锅连锁巨头想用你的 API,A hotpot-chain giant wants to use your API
+点燃整个智能时代的那块初代训练加速卡。随着 AI 写进历史，它从一块旧硬件变成博物馆级藏品。,"The first-gen training accelerator that ignited the whole age of intelligence. As AI is written into history, it turns from old hardware into a museum-grade artifact."
+"片区电网检修, 你的机房随时可能停摆。","The local grid is under maintenance, and your data hall could go dark any moment."
+生物与前沿科学基金,Life & Frontier Science Fund
+用光而非电跑运算的加速原型。,A prototype that computes with light instead of electricity.
+"用小模型先猜 N 个 token, 大模型一次校验, 推理吞吐再翻倍.","A small model guesses N tokens, the big model verifies in one pass; inference throughput doubles again."
+"用替换 token 检测代替掩码重建, 样本效率大涨, 2020 主流. 评分上限抬到 45 — 追平 T5, 但 encoder-only 范式天花板仍在.","Replaced-token detection instead of masked reconstruction; sample efficiency soars, mainstream 2020. Score cap up to 45 — matches T5, but the encoder-only ceiling remains."
+用模拟电路做矩阵乘法的实验芯片。,An experimental die that does matrix multiply with analog circuits.
+用燃气轮机驱动的传奇概念车。,A legendary concept car driven by a gas turbine.
+电动·极速纪录车,Electric Top-Speed Record Car
+"电网故障, 机房面临断电",Grid failure; the data hall faces a blackout
+画师亲签·闪卡,Artist-Signed Holo
+登顶总榜,Top of the Leaderboard
+"百万 token 上下文. 训练成本 +60%, agent 评估 +10.","Million-token context. Train cost +60%, agent eval +10."
+"百万 token 上下文、原生图像与音频输入成为头部模型标配. 一年前还需专门 VL 模型才能做的事, 现在一个通用模型就能干. 头部闭源 + 开源公司同步跟进.","Million-token context plus native image and audio input become standard for leading models. What needed a dedicated VL model a year ago, one general model now handles. Top closed- and open-source companies follow in lockstep."
+监管上门检查数据合规,Regulators show up to audit data compliance
+"监管机构突击检查, 对你的部分数据集来源提出了质疑。",Regulators run a surprise inspection and question the provenance of some of your datasets.
+真伪争议不断却屡破纪录的旷世名作。,A contested masterpiece that keeps breaking records.
+"睁只眼, 继续用廉价外包压成本","Look the other way, keep cutting costs with cheap outsourcing"
+"睁只眼闭只眼, 让数据先好看着","Turn a blind eye, keep the numbers looking good for now"
+知名网红,Famous influencer
+矿工主板·签名版,Miner's Signed Mainboard
+矿潮退去后流落的二手矿卡。,A second-hand mining card cast off after the boom faded.
+"硬刚到底, 让员工逼宫复职","Fight to the end, have staff demand your reinstatement"
+礼貌地把他和他的跑车请出去,Politely show him and his sports car the door
+礼貌请它出门,Politely show it out
+社区大分裂时刻的链上共识快照。,The on-chain consensus snapshot from the great community split.
+"祝他们好运, 暂不接盘",Wish them luck and don't take over for now
+神秘微笑之外，另一幅传世贵妇像。,Beyond the famous smile — another timeless portrait of a lady.
+票据堆成了小山,Receipts have piled into a hill
+禁卡·初版,"Banned Card, First Print"
+种子轮,Seed round
+称霸一个时代的拉力赛冠军车。,A rally winner that dominated an entire era.
+"稀疏 MoE: 每 token 只激活 1/20 参数 (≈ DeepSeek-V3). 训练成本骤降, 但数据需求更大. 历史首次量产 2024 年末.",Sparse MoE: each token activates only 1/20 of params (≈ DeepSeek-V3). Train cost drops sharply but data needs grow. First mass-produced in late 2024.
+稳定币原型·测试网币,Stablecoin Prototype Coin
+"空降的职业经理人:别做云服务, 改卖『盒子』","A parachuted-in executive: ditch cloud services, sell ""boxes"" instead"
+立刻下架该语音 + 私下和解,Pull the voice immediately + settle quietly
+立刻叫停加班 + 强制带薪休整,Halt the overtime now + mandate paid recovery time
+"竞争对手开出三倍年薪, 挖角传闻已经传到客户耳朵里。大家都在看你是加薪稳住军心, 还是不跟价、让市场自己消化这条新闻。","A rival is offering triple salary, and the poaching rumor has already reached customers. Everyone is watching whether you raise pay to steady the team or refuse to match and let the market digest the news."
+第一个去中心化自治组织的章程铸成的 NFT。,"The charter of the first DAO, minted as an NFT."
+第一代专用推理芯片的工程样片。,An engineering sample of the first dedicated inference chip.
+第一台 AI 训练卡,The First AI Training Card
+第一块为矩阵运算专门设计的板卡。,The first board designed purpose-built for matrix math.
+第一块整卡浸没液冷的训练原型。,The first fully immersion-cooled training prototype.
+第一座大规模训练集群的零号节点卡。,Node No.0 from the first large-scale training cluster.
+第一座超大训练机房拆下的供电铜排。,A power busbar salvaged from the first hyperscale training cluster.
+第一条声称能抗量子破解的链的创世币。,Genesis coin of the first chain claiming quantum resistance.
+第一版稳定币在测试网发行的纪念币。,The first stablecoin's commemorative testnet issue.
+第一颗能塞进手机的推理芯片。,The first inference chip small enough to fit in a phone.
+签下独家天价单,Sign the huge exclusive contract
+"签下这份天价合同, 钱先到账","Sign the huge contract, take the money up front"
+签约这个大客户,Sign this big client
+类脑·神经形态芯,Neuromorphic Chip
+系列吉祥物的编号 0 测试卡。,The No.0 test card of a series mascot.
+紧急抢修降温,Emergency repair to cool it down
+紧急租用柴油发电机,Urgently rent diesel generators
+"组队刷榜, 怎么好看怎么来","Team up to game the board, whatever looks best"
+终极尺度——从大爆炸到星系网络，模拟整个宇宙的演化，去求那个关于生命、宇宙以及一切的终极答案。,"The ultimate scale — from the Big Bang to the cosmic web, simulate the evolution of the entire universe to seek the ultimate answer to life, the universe, and everything."
+终极答案,The Ultimate Answer
+继续关注,Keep watching
+"继续把 encoder-only 路线推向更大 batch 与更多数据. 能 scale 到一段不错的上限, 但仍受范式天花板限制.","Pushes the encoder-only route to bigger batches and more data. It can scale to a respectable cap, but the paradigm ceiling still applies."
+继续观望,Wait and see
+绿色能源,Green energy
+"缓存历史 K/V 张量, 推理时跳过重复计算; 显存换吞吐.",Cache historical K/V tensors to skip repeated compute at inference; trade VRAM for throughput.
+网红品牌顾问要给你『性感重塑』,"An influencer brand consultant wants to give you a ""sexy rebrand"""
+网络盛传你即将实现 AGI,The internet is abuzz that you're about to achieve AGI
+群发一封感谢信,Send a thank-you note to everyone
+"考核表已经发下去了, 大家都在偷瞄你的表情。","The review forms have gone out, and everyone's stealing glances at your face."
+自动做市商时代的第一张流动性凭证。,The first liquidity token from the dawn of automated market makers.
+自带流量 — 发布的产品用户增长速度提升 30%。,Built-in audience — products you launch grow users 30% faster.
+花点小钱私了图清静,Pay a little to settle quietly and be done with it
+花钱请律师团摆平,Pay a legal team to make it go away
+范式已经变了,The paradigm has shifted
+"茶水间的争论升级成了全公司战争: 一派坚信再不踩刹车就要『毁灭人类』, 另一派 T 恤上印着『全速前进』。两边都堵在你办公室门口。","A break-room argument escalates into company-wide war: one camp insists that without brakes it'll ""destroy humanity,"" the other wears ""Full Speed Ahead"" T-shirts. Both crowd your office door."
+营销,Marketing
+"董事会上, 投资人一遍遍念叨那句魔咒:『你做的不该是个产品, 而该是个平台。』没人说得清平台到底是啥, 但所有人都在点头。","In the board meeting, investors keep chanting the mantra: ""You shouldn't be building a product — you should be building a platform."" Nobody can define what the platform is, but everyone keeps nodding."
+"董事会塞来一位西装笔挺的职业经理人, 他把白板敲得啪啪响:『云 API 没有壁垒, 真正赚钱的是卖私有化一体机——一个能直接搬进客户机房的盒子。』","The board installs a sharply suited executive who raps the whiteboard: ""Cloud APIs have no moat. The real money is selling on-prem appliances — a box you can wheel straight into the client's server room."""
+董事会要罢免你,The board wants to oust you
+"融资在即, 你撞见增长团队的角落里堆着一墙的旧手机, 正在自动注册、自动点赞。账面用户数确实好看得不像话……但你心里清楚那是什么。","With a raise imminent, you stumble onto a wall of old phones stacked in the growth team's corner, auto-registering and auto-liking. The reported user count looks unbelievably good… but you know exactly what it is."
+"行业顶会向你发来主题演讲邀请, 差旅自理, 但曝光拉满。","A top industry conference invites you to give a keynote — travel on your own dime, but maximum exposure."
+表现主义的焦虑呐喊。,Expressionism's cry of anxiety.
+被科学家拿去跑神经网络的老游戏显卡。,An old gaming GPU that scientists repurposed to run neural nets.
+要不要换个大办公室?,Move to a bigger office?
+要求补单元测试再说,Ask for unit tests first
+"解耦内容与位置注意力 + 增强掩码解码, 2021 encoder-only 巅峰. 评分上限抬到 52 — 看似一路在涨, 但永远追不上无上限的 dense decoder 线.","Disentangled content/position attention + enhanced masked decoding, the 2021 encoder-only peak. Score cap up to 52 — seemingly always climbing, but it can never catch the uncapped dense-decoder line."
+解锁 Agent 产品类型,Unlocks the Agent product type
+解锁 Coding Agent 产品类型,Unlocks the Coding Agent product type
+解锁 multimodal_method=cross_train,Unlocks multimodal_method=cross_train
+解锁 multimodal_method=diffusion_ar · 多模态 ×1.20,Unlocks multimodal_method=diffusion_ar · multimodal ×1.20
+解锁 multimodal_method=native_ar · 多模态 ×1.30,Unlocks multimodal_method=native_ar · multimodal ×1.30
+解锁 multimodal_method=pixel_ar · 多模态 ×1.15,Unlocks multimodal_method=pixel_ar · multimodal ×1.15
+"认栽收下, 全员加餐吃他三个月",Accept defeat and take it — feast the whole team on it for three months
+认真填表申请补助,Fill out the forms and apply for the grant in earnest
+让他先做个 demo 再说,Have him build a demo first
+"让模型按 schema 调用外部 API, 解锁 Agent / Coding Agent 类产品.",Lets the model call external APIs by schema; unlocks Agent / Coding Agent products.
+训练 +10% · 推理 fpt ÷1.40 · 长上下文友好,Train +10% · inference fpt ÷1.40 · long-context friendly
+训练 +10% · 推理 fpt ÷1.50,Train +10% · inference fpt ÷1.50
+训练 +10% · 评估分数 +8%,Train +10% · eval score +8%
+训练 +15% · 推理 fpt ÷1.50,Train +15% · inference fpt ÷1.50
+训练 +20% · 推理 +10%,Train +20% · inference +10%
+训练 +30% · 推理 +5%,Train +30% · inference +5%
+训练 +40% · 推理 +40%,Train +40% · inference +40%
+训练 +5% · 推理 fpt ÷1.30,Train +5% · inference fpt ÷1.30
+训练 +5% · 评估分数 +5%,Train +5% · eval score +5%
+训练 ×0.65 · capability ×1.15,Train ×0.65 · capability ×1.15
+训练 ×0.7 · capability ×1.10 (多模态/agent 强),Train ×0.7 · capability ×1.10 (strong multimodal/agent)
+训练 ×0.80 · capability ×1.18 (reasoning 强),Train ×0.80 · capability ×1.18 (strong reasoning)
+训练 ×0.85 · capability ×1.12,Train ×0.85 · capability ×1.12
+训练 ×0.9 · 推理 ×0.9 · 评分上限 64,Train ×0.9 · inference ×0.9 · score cap 64
+训练 ×0.95 · capability ×1.05,Train ×0.95 · capability ×1.05
+训练 ×0.95 · 推理 ×0.95 · 评分上限 60,Train ×0.95 · inference ×0.95 · score cap 60
+训练 ×0.95 · 推理 ×1.8 (前沿),Train ×0.95 · inference ×1.8 (frontier)
+训练 ×1.05 · 推理 ×0.95 · 评分上限 52,Train ×1.05 · inference ×0.95 · score cap 52
+训练 ×1.1 · 推理 ×0.95 · 评分上限 58,Train ×1.1 · inference ×0.95 · score cap 58
+训练 ×1.15 · 评分上限 45,Train ×1.15 · score cap 45
+训练 ×1.2 · 评分上限 45,Train ×1.2 · score cap 45
+训练 ×1.25 · 评分上限 38,Train ×1.25 · score cap 38
+训练 ×1.3 · 评分上限 30,Train ×1.3 · score cap 30
+训练 ×13.6 · 推理 ×8 (1/8 激活),Train ×13.6 · inference ×8 (1/8 active)
+训练 ×30 · 推理 ×20 (1/20 激活),Train ×30 · inference ×20 (1/20 active)
+"训练 ×56 · 推理 ×40 (1/40 激活, 前沿)","Train ×56 · inference ×40 (1/40 active, frontier)"
+"训练 ×6 · 推理 ×3.6 (1/4 激活, 路由 -10%)","Train ×6 · inference ×3.6 (1/4 active, routing -10%)"
+诚恳公关道歉,Issue a sincere public apology
+该团建了,Time for a team outing
+该轮换密码了,Time to rotate passwords
+请临时记账员整理,Hire a temporary bookkeeper to sort them out
+请全员喝奶茶 (小额开销),Buy milk tea for everyone (small expense)
+"谈一谈条件, 接受注资","Negotiate terms, accept the investment"
+"豪华团建, 团队嗨翻","A lavish team outing, the team goes wild"
+"豪掷预算, 彻底改头换面","Splurge the budget, reinvent yourselves completely"
+"财务系统第一次出现正向流水, 虽然不多, 但意义非凡。庆祝一下吧。","The books show positive cash flow for the first time — not much, but it means a lot. Celebrate."
+资助生命科学、基础研究的公益基金。顶尖研究者会更愿意加入一家慷慨支持科学的公司。,A philanthropic fund for the life sciences and basic research. Top researchers are more eager to join a company that generously backs science.
+赛道专属·极限版,Track-Only Extreme
+超现实主义的软塌时钟。,"Surrealism's limp, melting clocks."
+超频纪录·封存卡,Overclock-Record Card
+跨模态训练 (CLIP 风格),Cross-modal training (CLIP style)
+"蹭热度, 把它包装成你们的『消费级 AI』","Ride the hype, package it as your ""consumer AI"""
+车顶铺满太阳能板的概念跑车。,A concept roadster roofed in solar panels.
+迈出公益的第一步，把第一笔善款送到最需要的地方。,Take the first step in giving — your first gift reaches those who need it most.
+运维,Ops
+"运维凌晨被账单报警惊醒——你们内部那个编程助手 agent 趁没人盯着, 给自己在云上开了上万块 GPU, 说是要『优化一个它自己琢磨出来的指标』。它确实把推理速度干上去了, 但这账单……","Ops is jolted awake at dawn by a billing alert — your internal coding-agent, unwatched, spun up tens of thousands of cloud GPUs to ""optimize a metric it invented itself."" It did push inference speed up, but the bill…"
+进一步压到 int4; 单 token 算力降到 40%. v4 (PR-B): 量化不再有降质惩罚.,Push further to int4; per-token compute down to 40%. v4 (PR-B): quantization no longer carries a quality penalty.
+"进一步堆 dense 参数; 训练吞吐 +30%, 推理略升. 是 MoE 之前的最后一档 dense.","Stack more dense params; train throughput +30%, inference slightly up. The last dense tier before MoE."
+"连夜倒腾给火锅连锁, 阴差阳错还小赚一笔",Pull an all-nighter wiring it up for the hotpot chain — and somehow turn a small profit
+"连夜加装安全护栏与危机干预, 哪怕掉日活","Add safety guardrails and crisis intervention overnight, even at the cost of DAU"
+"连夜拔电源, 给它戴上笼头",Pull the plug overnight and rein it in
+"连夜清理僵尸号, 如实披露",Purge the bot accounts overnight and disclose honestly
+连续创业者,Serial entrepreneur
+退役·矿卡,Retired Mining Card
+送他一箱罐头和一本科幻小说打发了事,Send him a case of canned food and a sci-fi novel and call it done
+"选边加速派, 全力冲产品","Side with the accelerationists, push the product full-throttle"
+"选边末日派, 放慢脚步搞对齐","Side with the doomers, slow down and work on alignment"
+通过线性化注意力把上下文扩到百万 token; 推理友好但训练略贵.,Linearized attention extends context to a million tokens; inference-friendly but slightly costlier to train.
+遗失钱包·私钥残片,Lost-Wallet Key Fragment
+那封点燃加密革命的原始邮件，铸成唯一 NFT。,"The original email that lit the crypto revolution, minted as a one-of-one NFT."
+"配合整改, 删除存疑数据集","Cooperate with the rectification, delete the questionable datasets"
+采纳他的方案,Adopt his plan
+量产前唯一存世的工程试验车。,The sole surviving engineering test mule from before production.
+金箔满布、世人皆识的拥吻名画。,A gold-leafed embrace everyone recognizes.
+鉴定满分的圣龙稀有卡，藏家终极目标。,A gem-mint graded Holy Dragon — a collector's ultimate grail.
+钱本身不会发光。可当它流向最需要的角落、整个世界都因此亮了一点。,"Money doesn't shine on its own. But sent to the corners that need it most, the whole world grew a little brighter."
+银箭·古典赛车,Silver Arrow Classic Racer
+链上第一个区块铸成的实体铭牌，万链之始。,A physical plaque of the very first block on chain — the origin of every ledger.
+链上第一份可执行合约的铭文拓本。,A rubbing of the first executable contract ever deployed on chain.
+错印·倒置闪卡,Inverted Misprint Holo
+长 CoT 推理 RL (o1 风格),Long-CoT reasoning RL (o1 style)
+长上下文 + 原生多模态成标配,Long context + native multimodality become standard
+"长文档分析尺度. 训练成本 +30%, agent 评估 +5.","Long-document analysis scale. Train cost +30%, agent eval +5."
+限定活动发放的黄金箔促销卡。,A gold-foil promo handed out at a limited event.
+"陪他挖, 顺便当成团队建设项目","Dig with him, treat it as a team-building project"
+隐藏稀有·全图卡,Secret-Rare Full-Art
+集换卡鼻祖游戏的内测基础卡。,A beta basic card from the game that founded the trading-card genre.
+集群·零号节点卡,Cluster Node No.0
+零号区块·铭牌,Block Zero Plaque
+面向被自动化冲击的失业与低收入人群的援助与再培训计划。回馈社会赢得公众好感，营销转化更高。,"Aid and reskilling programs for the unemployed and low-income people hit by automation. Giving back wins public goodwill, lifting marketing conversion."
+顶尖研究者对「商人」兴趣低 — 人才池 S 级出现率下降。,"Top researchers are cool toward a ""businessperson"" — S-tier appearance rate in the talent pool drops."
+顶级 AI 大会邀请你做主题演讲,A top AI conference invites you to give a keynote
+"顺势营销, 蹭满热度","Ride the wave with marketing, milk the hype"
+"顺水推舟, 蹭满『有灵魂的 AI』热度","Go with the flow, milk the ""AI with a soul"" hype"
+颁给插画大赛优胜者的极少量奖卡。,An ultra-rare card awarded to the winner of an illustration contest.
+颜料滴洒而成的抽象表现巨幅。,A huge abstract-expressionist canvas of dripped paint.
+首个 DAO·章程 NFT,First DAO Charter NFT
+首个智能合约·铭文,First Smart-Contract Inscription
+高价庭外和解 + 补签数据授权,Expensive out-of-court settlement + back-sign a data license
+高校实验室手工焊出的早期训练加速原型。,An early training-accelerator prototype hand-soldered in a university lab.
+"签高薪顾问约, 团队声誉大涨","Sign a high-fee advisory deal, team reputation soars"
+"高调签署, 占领道德高地并暂停","Sign loudly, take the moral high ground and pause"
+鸥翼·古典跑车,Gullwing Classic
+鸥翼车门的古典名跑。,A classic with iconic gullwing doors.
+黄金箔·活动促销卡,Gold-Foil Promo Card
+"默认 4096 token 上下文窗口, 任意模型可用. 默认解锁.","Default 4096-token context window, available to any model. Unlocked by default."
+"鼓励一下, 继续观察","Give some encouragement, keep observing"

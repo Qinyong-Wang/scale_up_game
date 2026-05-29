@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="TechNode" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/tech_node.gd" id="1_tn"]
+
+[resource]
+script = ExtResource("1_tn")
+id = &"cross_train"
+tree = &"arch"
+display_name = "跨模态训练 (CLIP 风格)"
+description = "文本-视觉 cross-attention 训练, 解锁多模态训练入门方法 cross_train. 多模态 ×1.0 (基线)."
+prerequisites = Array[StringName]([&"ant_v2"])
+research_cost = 0
+research_months = 32
+effects = {
+	&"train_coef": 1.0,
+	&"inference_coef": 1.0,
+	&"capability_coef": 1.0,
+	&"multimodal_method_unlock": &"cross_train",
+}
+effects_summary = "解锁 multimodal_method=cross_train"
+min_researchers = 3
+min_engineers = 2
+min_gpu_count = 32
+capability_cap = 0.0

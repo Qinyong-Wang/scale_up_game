@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SimulationStageSpec" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/simulation_stage_spec.gd" id="1_sim"]
+
+[resource]
+script = ExtResource("1_sim")
+id = &"universe"
+order = 4
+display_name = "宇宙模拟"
+description = "终极尺度——从大爆炸到星系网络，模拟整个宇宙的演化，去求那个关于生命、宇宙以及一切的终极答案。"
+cost = 1000000000000
+weeks = 52
+min_train_tflops = 150000000000.0

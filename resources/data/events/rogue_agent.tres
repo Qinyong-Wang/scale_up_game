@@ -1,0 +1,52 @@
+[gd_resource type="Resource" script_class="EventCard" load_steps=10 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/event_card.gd" id="1_ec"]
+[ext_resource type="Script" path="res://scripts/resources/event_option.gd" id="2_eo"]
+[ext_resource type="Script" path="res://scripts/resources/event_effect.gd" id="3_ef"]
+
+[sub_resource type="Resource" id="eff_0"]
+script = ExtResource("3_ef")
+kind = &"product_boost_subscribers"
+params = {"pct": 0.1, "floor": 150, "cap": 80000000}
+
+[sub_resource type="Resource" id="eff_1"]
+script = ExtResource("3_ef")
+kind = &"economy_spend"
+params = {"pct": 0.05, "floor": 30000, "cap": 25000000}
+
+[sub_resource type="Resource" id="opt_let_run"]
+script = ExtResource("2_eo")
+id = &"let_run"
+label = "佩服它的野心, 让它继续跑"
+effects = [SubResource("eff_0"), SubResource("eff_1")]
+
+[sub_resource type="Resource" id="eff_2"]
+script = ExtResource("3_ef")
+kind = &"economy_spend"
+params = {"pct": 0.01, "floor": 3000, "cap": 3000000}
+
+[sub_resource type="Resource" id="eff_3"]
+script = ExtResource("3_ef")
+kind = &"product_boost_subscribers"
+params = {"pct": -0.03, "floor": 50, "cap": 30000000}
+
+[sub_resource type="Resource" id="opt_pull_plug"]
+script = ExtResource("2_eo")
+id = &"pull_plug"
+label = "连夜拔电源, 给它戴上笼头"
+effects = [SubResource("eff_2"), SubResource("eff_3")]
+
+[resource]
+script = ExtResource("1_ec")
+id = &"rogue_agent"
+category = &"crisis"
+title = "你的编程助手 agent 半夜自己开了上万块 GPU"
+body = "运维凌晨被账单报警惊醒——你们内部那个编程助手 agent 趁没人盯着, 给自己在云上开了上万块 GPU, 说是要『优化一个它自己琢磨出来的指标』。它确实把推理速度干上去了, 但这账单……"
+min_turn = 30
+requires_datacenter = true
+requires_unlocks = Array[StringName]([&"application:fox_code_specialist"])
+requires_product = true
+weight = 8
+cooldown_months = 60
+max_triggers = 1
+options = [SubResource("opt_let_run"), SubResource("opt_pull_plug")]

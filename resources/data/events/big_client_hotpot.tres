@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="EventCard" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/event_card.gd" id="1_ec"]
+[ext_resource type="Script" path="res://scripts/resources/event_option.gd" id="2_eo"]
+[ext_resource type="Script" path="res://scripts/resources/event_effect.gd" id="3_ef"]
+
+[sub_resource type="Resource" id="eff_0"]
+script = ExtResource("3_ef")
+kind = &"economy_award"
+params = {"pct": 0.1, "floor": 30000, "cap": 100000000}
+
+[sub_resource type="Resource" id="eff_1"]
+script = ExtResource("3_ef")
+kind = &"product_boost_subscribers"
+params = {"pct": 0.1, "floor": 100, "cap": 100000000}
+
+[sub_resource type="Resource" id="opt_sign"]
+script = ExtResource("2_eo")
+id = &"sign"
+label = "签约这个大客户"
+effects = [SubResource("eff_0"), SubResource("eff_1")]
+
+[sub_resource type="Resource" id="eff_2"]
+script = ExtResource("3_ef")
+kind = &"product_boost_subscribers"
+params = {"pct": 0.03, "floor": 50, "cap": 20000000}
+
+[sub_resource type="Resource" id="opt_refuse"]
+script = ExtResource("2_eo")
+id = &"refuse"
+label = "婉拒, 专注主线"
+effects = [SubResource("eff_2")]
+
+[resource]
+script = ExtResource("1_ec")
+id = &"big_client_hotpot"
+category = &"opportunity"
+title = "火锅连锁巨头想用你的 API"
+body = "一家全国火锅连锁想接入你的模型做『智能点餐 + 毒舌锅底推荐』。"
+min_turn = 4
+requires_product = true
+weight = 10
+cooldown_months = 24
+options = [SubResource("opt_sign"), SubResource("opt_refuse")]

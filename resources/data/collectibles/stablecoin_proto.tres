@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CollectibleSpec" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/collectible_spec.gd" id="1_col"]
+
+[resource]
+script = ExtResource("1_col")
+id = &"stablecoin_proto"
+category = &"crypto"
+display_name = "稳定币原型·测试网币"
+description = "第一版稳定币在测试网发行的纪念币。"
+curve_years = Array[int]([2019, 2025, 2035, 2070])
+curve_prices = Array[int]([24000, 7200000, 54000000, 120000000])
+appear_weight = 0.5

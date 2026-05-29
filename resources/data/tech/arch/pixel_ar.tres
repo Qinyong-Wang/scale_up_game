@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="TechNode" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/tech_node.gd" id="1_tn"]
+
+[resource]
+script = ExtResource("1_tn")
+id = &"pixel_ar"
+tree = &"arch"
+display_name = "像素自回归"
+description = "像素级自回归生成. 解锁 multimodal_method=pixel_ar (multi 维度 ×1.15)."
+prerequisites = Array[StringName]([&"cross_train"])
+research_cost = 0
+research_months = 32
+effects = {
+	&"train_coef": 0.95,
+	&"inference_coef": 1.0,
+	&"capability_coef": 1.0,
+	&"multimodal_method_unlock": &"pixel_ar",
+}
+effects_summary = "解锁 multimodal_method=pixel_ar · 多模态 ×1.15"
+min_researchers = 3
+min_engineers = 2
+min_gpu_count = 48
+capability_cap = 0.0

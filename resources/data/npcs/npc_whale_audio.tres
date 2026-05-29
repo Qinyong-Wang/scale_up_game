@@ -1,0 +1,162 @@
+[gd_resource type="Resource" script_class="NpcCompany" load_steps=13 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/npc_company.gd" id="1_npc"]
+[ext_resource type="Script" path="res://scripts/resources/npc_model_release.gd" id="2_rel"]
+
+[sub_resource type="Resource" id="release_whale_1"]
+script = ExtResource("2_rel")
+id = &"release_whale_1"
+display_name = "Whale-1"
+release_turn = 280
+capability = {"general": 12.0, "code": 5.0, "reasoning": 12.0, "multimodal": 42.0, "agent": 0.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t1"
+cluster_gpu_count = 4000
+training_weeks = 24
+params_b = 110.0
+active_params_b = 110.0
+dataset_tokens_b = 3000.0
+arch_codename = &"ant_v3"
+
+[sub_resource type="Resource" id="release_whale_2"]
+script = ExtResource("2_rel")
+id = &"release_whale_2"
+display_name = "Whale-2"
+release_turn = 370
+capability = {"general": 38.0, "code": 22.0, "reasoning": 38.0, "multimodal": 82.0, "agent": 18.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t2"
+cluster_gpu_count = 12000
+training_weeks = 26
+params_b = 650.0
+active_params_b = 100.0
+dataset_tokens_b = 8000.0
+arch_codename = &"octopus_v2"
+
+[sub_resource type="Resource" id="release_whale_2_5"]
+script = ExtResource("2_rel")
+id = &"release_whale_2_5"
+display_name = "Whale-2.5"
+release_turn = 415
+capability = {"general": 45.0, "code": 28.0, "reasoning": 44.0, "multimodal": 95.0, "agent": 28.0}
+release_kind = &"multimodal_posttrain"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_whale_3"]
+script = ExtResource("2_rel")
+id = &"release_whale_3"
+display_name = "Whale-3"
+release_turn = 450
+capability = {"general": 62.0, "code": 45.0, "reasoning": 62.0, "multimodal": 112.0, "agent": 48.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t2"
+cluster_gpu_count = 32000
+training_weeks = 26
+params_b = 1700.0
+active_params_b = 240.0
+dataset_tokens_b = 19000.0
+arch_codename = &"octopus_sparse"
+
+[sub_resource type="Resource" id="release_whale_3_5"]
+script = ExtResource("2_rel")
+id = &"release_whale_3_5"
+display_name = "Whale-3.5"
+release_turn = 510
+capability = {"general": 72.0, "code": 55.0, "reasoning": 72.0, "multimodal": 125.0, "agent": 62.0}
+release_kind = &"multimodal_posttrain"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_whale_4"]
+script = ExtResource("2_rel")
+id = &"release_whale_4"
+display_name = "Whale-4"
+release_turn = 560
+capability = {"general": 85.0, "code": 68.0, "reasoning": 88.0, "multimodal": 142.0, "agent": 78.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 100000
+training_weeks = 28
+params_b = 4000.0
+active_params_b = 550.0
+dataset_tokens_b = 38000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_whale_5"]
+script = ExtResource("2_rel")
+id = &"release_whale_5"
+display_name = "Whale-5"
+release_turn = 730
+capability = {"general": 110.0, "code": 95.0, "reasoning": 115.0, "multimodal": 175.0, "agent": 108.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 350000
+training_weeks = 28
+params_b = 8500.0
+active_params_b = 1100.0
+dataset_tokens_b = 80000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_whale_6"]
+script = ExtResource("2_rel")
+id = &"release_whale_6"
+display_name = "Whale-6"
+release_turn = 900
+capability = {"general": 138.0, "code": 125.0, "reasoning": 145.0, "multimodal": 210.0, "agent": 142.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 900000
+training_weeks = 28
+params_b = 16000.0
+active_params_b = 2000.0
+dataset_tokens_b = 150000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_whale_7"]
+script = ExtResource("2_rel")
+id = &"release_whale_7"
+display_name = "Whale-7"
+release_turn = 1080
+capability = {"general": 170.0, "code": 158.0, "reasoning": 178.0, "multimodal": 248.0, "agent": 178.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 1900000
+training_weeks = 28
+params_b = 28000.0
+active_params_b = 3300.0
+dataset_tokens_b = 240000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_whale_8"]
+script = ExtResource("2_rel")
+id = &"release_whale_8"
+display_name = "Whale-8"
+release_turn = 1260
+capability = {"general": 202.0, "code": 192.0, "reasoning": 212.0, "multimodal": 285.0, "agent": 215.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 3800000
+training_weeks = 28
+params_b = 48000.0
+active_params_b = 5500.0
+dataset_tokens_b = 380000.0
+arch_codename = &"octopus_super_sparse"
+
+[resource]
+script = ExtResource("1_npc")
+id = &"npc_whale_audio"
+display_name = "Whale Audio"
+is_open_source = false
+board_membership = [&"sub_multimodal"]
+model_releases = [SubResource("release_whale_1"), SubResource("release_whale_2"), SubResource("release_whale_2_5"), SubResource("release_whale_3"), SubResource("release_whale_3_5"), SubResource("release_whale_4"), SubResource("release_whale_5"), SubResource("release_whale_6"), SubResource("release_whale_7"), SubResource("release_whale_8")]

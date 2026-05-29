@@ -1,0 +1,177 @@
+[gd_resource type="Resource" script_class="NpcCompany" load_steps=14 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/npc_company.gd" id="1_npc"]
+[ext_resource type="Script" path="res://scripts/resources/npc_model_release.gd" id="2_rel"]
+
+[sub_resource type="Resource" id="release_otter_1"]
+script = ExtResource("2_rel")
+id = &"release_otter_1"
+display_name = "Otter-1"
+release_turn = 455
+capability = {"general": 18.0, "code": 20.0, "reasoning": 24.0, "multimodal": 6.0, "agent": 35.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t2"
+cluster_gpu_count = 6000
+training_weeks = 24
+params_b = 250.0
+active_params_b = 40.0
+dataset_tokens_b = 4500.0
+arch_codename = &"octopus_v2"
+
+[sub_resource type="Resource" id="release_otter_1_5"]
+script = ExtResource("2_rel")
+id = &"release_otter_1_5"
+display_name = "Otter-1.5"
+release_turn = 500
+capability = {"general": 24.0, "code": 30.0, "reasoning": 35.0, "multimodal": 12.0, "agent": 52.0}
+release_kind = &"tool_use_posttrain"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_otter_2"]
+script = ExtResource("2_rel")
+id = &"release_otter_2"
+display_name = "Otter-2"
+release_turn = 535
+capability = {"general": 38.0, "code": 45.0, "reasoning": 56.0, "multimodal": 25.0, "agent": 78.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 30000
+training_weeks = 26
+params_b = 1200.0
+active_params_b = 180.0
+dataset_tokens_b = 14000.0
+arch_codename = &"octopus_sparse"
+
+[sub_resource type="Resource" id="release_otter_2_5"]
+script = ExtResource("2_rel")
+id = &"release_otter_2_5"
+display_name = "Otter-2.5"
+release_turn = 600
+capability = {"general": 46.0, "code": 55.0, "reasoning": 66.0, "multimodal": 32.0, "agent": 95.0}
+release_kind = &"reasoning_rl"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_otter_3"]
+script = ExtResource("2_rel")
+id = &"release_otter_3"
+display_name = "Otter-3"
+release_turn = 650
+capability = {"general": 62.0, "code": 75.0, "reasoning": 88.0, "multimodal": 52.0, "agent": 120.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 120000
+training_weeks = 28
+params_b = 3500.0
+active_params_b = 480.0
+dataset_tokens_b = 32000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_otter_3_5"]
+script = ExtResource("2_rel")
+id = &"release_otter_3_5"
+display_name = "Otter-3.5"
+release_turn = 730
+capability = {"general": 72.0, "code": 88.0, "reasoning": 105.0, "multimodal": 64.0, "agent": 138.0}
+release_kind = &"tool_use_posttrain"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_otter_4"]
+script = ExtResource("2_rel")
+id = &"release_otter_4"
+display_name = "Otter-4"
+release_turn = 780
+capability = {"general": 86.0, "code": 108.0, "reasoning": 128.0, "multimodal": 82.0, "agent": 158.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 350000
+training_weeks = 28
+params_b = 8000.0
+active_params_b = 1050.0
+dataset_tokens_b = 72000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_otter_5"]
+script = ExtResource("2_rel")
+id = &"release_otter_5"
+display_name = "Otter-5"
+release_turn = 940
+capability = {"general": 115.0, "code": 140.0, "reasoning": 165.0, "multimodal": 115.0, "agent": 195.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 900000
+training_weeks = 28
+params_b = 15000.0
+active_params_b = 1900.0
+dataset_tokens_b = 130000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_otter_6"]
+script = ExtResource("2_rel")
+id = &"release_otter_6"
+display_name = "Otter-6"
+release_turn = 1100
+capability = {"general": 145.0, "code": 175.0, "reasoning": 200.0, "multimodal": 148.0, "agent": 235.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 1900000
+training_weeks = 28
+params_b = 26000.0
+active_params_b = 3100.0
+dataset_tokens_b = 215000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_otter_7"]
+script = ExtResource("2_rel")
+id = &"release_otter_7"
+display_name = "Otter-7"
+release_turn = 1260
+capability = {"general": 178.0, "code": 212.0, "reasoning": 238.0, "multimodal": 182.0, "agent": 275.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 3500000
+training_weeks = 28
+params_b = 42000.0
+active_params_b = 4800.0
+dataset_tokens_b = 330000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_otter_8"]
+script = ExtResource("2_rel")
+id = &"release_otter_8"
+display_name = "Otter-8"
+release_turn = 1390
+capability = {"general": 210.0, "code": 250.0, "reasoning": 275.0, "multimodal": 218.0, "agent": 318.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 5200000
+training_weeks = 28
+params_b = 62000.0
+active_params_b = 7000.0
+dataset_tokens_b = 460000.0
+arch_codename = &"octopus_super_sparse"
+
+[resource]
+script = ExtResource("1_npc")
+id = &"npc_otter_tools"
+display_name = "Otter Tools"
+is_open_source = true
+board_membership = [&"sub_agent"]
+model_releases = [SubResource("release_otter_1"), SubResource("release_otter_1_5"), SubResource("release_otter_2"), SubResource("release_otter_2_5"), SubResource("release_otter_3"), SubResource("release_otter_3_5"), SubResource("release_otter_4"), SubResource("release_otter_5"), SubResource("release_otter_6"), SubResource("release_otter_7"), SubResource("release_otter_8")]

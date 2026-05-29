@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="TechNode" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/tech_node.gd" id="1_tn"]
+
+[resource]
+script = ExtResource("1_tn")
+id = &"ctx_4k"
+tree = &"context"
+display_name = "上下文 4k (基线)"
+description = "默认 4096 token 上下文窗口, 任意模型可用. 默认解锁."
+prerequisites = Array[StringName]([])
+research_cost = 0
+research_months = 0
+effects = {
+	&"max_tokens": 4096,
+	&"train_penalty": 1.00,
+	&"agent_bonus": 0.0,
+	&"serving_penalty": 1.0,
+}
+effects_summary = "(基线 4k)"
+min_researchers = 0
+min_engineers = 0
+min_gpu_count = 0
+capability_cap = 0.0

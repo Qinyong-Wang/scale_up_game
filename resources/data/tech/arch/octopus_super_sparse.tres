@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="TechNode" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/tech_node.gd" id="1_tn"]
+
+[resource]
+script = ExtResource("1_tn")
+id = &"octopus_super_sparse"
+tree = &"arch"
+display_name = "Octopus Hyper-Sparse MoE 1/40"
+description = "极致稀疏 MoE: 每 token 只激活 1/40 参数. 训练几乎自由, 但要海量数据 + 顶级 routing 才能稳定. 前沿水平 (~2025+)."
+prerequisites = Array[StringName]([&"octopus_sparse"])
+research_cost = 0
+research_months = 48
+effects = {
+	&"train_coef": 1.4,
+	&"inference_coef": 1.0,
+}
+effects_summary = "训练 ×56 · 推理 ×40 (1/40 激活, 前沿)"
+min_researchers = 5
+min_engineers = 10
+min_gpu_count = 500

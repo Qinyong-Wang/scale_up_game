@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="PowerSupplySpec" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/power_supply_spec.gd" id="1_pwr"]
+
+[resource]
+script = ExtResource("1_pwr")
+id = &"green"
+display_name = "绿色能源"
+weekly_cost_per_card = 4
+install_cost_per_card = 5200
+build_cost_modifier = 0.0
+efficiency_modifier = 1.0
+carbon_kg_per_card_week = 1.0

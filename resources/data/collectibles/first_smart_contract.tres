@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CollectibleSpec" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/collectible_spec.gd" id="1_col"]
+
+[resource]
+script = ExtResource("1_col")
+id = &"first_smart_contract"
+category = &"crypto"
+display_name = "首个智能合约·铭文"
+description = "链上第一份可执行合约的铭文拓本。"
+curve_years = Array[int]([2019, 2025, 2035, 2070])
+curve_prices = Array[int]([400000, 120000000, 900000000, 2000000000])
+appear_weight = 0.08

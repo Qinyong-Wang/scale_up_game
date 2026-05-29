@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="PretrainDatasetTemplate" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/pretrain_dataset_template.gd" id="1_pdt"]
+
+[resource]
+script = ExtResource("1_pdt")
+id = &"image_corpus_v1"
+display_name = "Image Corpus v1"
+source = &"open_source"
+size = 50.0
+quality = 0.40
+coverage_tags = Array[StringName]([&"multimodal", &"image"])
+price = 0
+released_at_week = 0

@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="EventCard" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/event_card.gd" id="1_ec"]
+[ext_resource type="Script" path="res://scripts/resources/event_option.gd" id="2_eo"]
+[ext_resource type="Script" path="res://scripts/resources/event_effect.gd" id="3_ef"]
+
+[sub_resource type="Resource" id="effect_kit"]
+script = ExtResource("3_ef")
+kind = &"debug_starter_kit"
+params = {}
+
+[sub_resource type="Resource" id="opt_apply"]
+script = ExtResource("2_eo")
+id = &"apply"
+label = "[DEBUG] 立即应用"
+effects = [SubResource("effect_kit")]
+
+[resource]
+script = ExtResource("1_ec")
+id = &"debug_add_starter"
+category = &"debug"
+title = "[DEBUG] Add Starter Kit"
+body = "注入 $3M 现金、每种 lead 各 2 名 (B 级)、一座即时建成的 72 卡自建数据中心 (cypress_t1 满配), 并获取所有 2017 年可用的开源数据集。"
+min_turn = 0
+weight = 0
+cooldown_months = 0
+options = [SubResource("opt_apply")]

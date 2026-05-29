@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CollectibleSpec" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/collectible_spec.gd" id="1_col"]
+
+[resource]
+script = ExtResource("1_col")
+id = &"electric_record_car"
+category = &"supercar"
+display_name = "电动·极速纪录车"
+description = "刷新电动极速纪录的那台车。"
+curve_years = Array[int]([2022, 2040, 2070])
+curve_prices = Array[int]([60000000, 140000000, 200000000])
+appear_weight = 0.5

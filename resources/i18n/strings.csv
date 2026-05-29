@@ -1,0 +1,997 @@
+keys,zh,en
+APP_TITLE,Scaling Up,Scaling Up
+NAV_OPERATIONS,运营,Operations
+NAV_RND,研发,R&D
+NAV_MARKET,竞争对手,Competitors
+ACTION_NEW,新建,New
+ACTION_CANCEL,取消,Cancel
+ACTION_CONFIRM,确认,Confirm
+ACTION_OK,确定,OK
+ACTION_DELETE,删除,Delete
+SETTINGS_TITLE,设置,Settings
+SETTINGS_SECTION_DISPLAY,显示,Display
+SETTINGS_SECTION_AUDIO,音频,Audio
+SETTINGS_SECTION_SYSTEM,系统,System
+SETTINGS_LANGUAGE,语言,Language
+SETTINGS_AUTOSAVE,推进回合时自动存档,Autosave on turn advance
+SETTINGS_MUSIC,背景音乐,Background Music
+SETTINGS_MUSIC_VOLUME,音乐音量,Music Volume
+SETTINGS_SFX,界面音效,UI Sound Effects
+SETTINGS_FULLSCREEN,全屏,Fullscreen
+SETTINGS_UI_SCALE,界面缩放,UI Scale
+SETTINGS_UI_SCALE_AUTO,自动,Auto
+SETTINGS_RETURN_TO_MENU,返回主菜单,Return to Main Menu
+RETURN_TO_MENU_CONFIRM_TITLE,返回主菜单？,Return to Main Menu?
+RETURN_TO_MENU_CONFIRM_BODY,当前进度将自动存档，可从「继续游戏」恢复。,Progress is auto-saved; resume it from Continue.
+RETURN_TO_MENU_CONFIRM_OK,返回,Return
+APP_SUBTITLE,经营一家 AI 模型公司,Run an AI model company
+MENU_NEW_GAME,新游戏,New Game
+MENU_CONTINUE,继续游戏,Continue
+MENU_LOAD,读取存档,Load Game
+MENU_QUIT,退出游戏,Quit
+MENU_NO_SAVE,没有可继续的存档,No save to continue
+MENU_LOAD_FAILED,读档失败: %s,Load failed: %s
+NAV_GROUP_MARKET,市场,Market
+NAV_OVERVIEW,概览,Overview
+NAV_ECONOMY,经济,Economy
+NAV_HIRING,招聘,Hiring
+NAV_STAFF,员工,Staff
+NAV_TASKS,任务,Tasks
+NAV_EVENTS,事件,Events
+NAV_MODELS,模型,Models
+NAV_INFRA,基建,Infrastructure
+NAV_DATASET,数据,Data
+NAV_TECH,科技,Tech
+NAV_PRODUCT,产品,Products
+NAV_MARKETING,营销,Marketing
+NAV_MONETIZATION,营收,Revenue
+TOPBAR_TURN,回合,Turn
+TOPBAR_CASH,现金,Cash
+TOPBAR_NET_CASHFLOW,周净流,Weekly net
+TOPBAR_PUBLISHED,已发布,Published
+TOPBAR_PUBLISHED_VALUE,%d 个,%d
+TOPBAR_PAID_USERS,付费用户,Paid users
+TOPBAR_COMPUTE,算力,Compute
+TOPBAR_ADVANCE,推进回合 →,Advance →
+ACTION_SAVE,存档,Save
+SECTION_OVERVIEW_COMPANY,公司概览,Company Overview
+SECTION_OVERVIEW_NEXT_STEPS,下一步建议,Next Steps
+SECTION_OVERVIEW_ASSETS,资产清单,Assets
+SECTION_ECONOMY_FUNDING,融资轮 (顺序解锁),Funding Rounds (sequential)
+SECTION_ECONOMY_LOANS,贷款,Loans
+SECTION_ECONOMY_LAST_WEEK,上周收支明细,Last Week's Cashflow
+SECTION_ECONOMY_FINANCE_12W,最近 12 周财务表,Last 12 Weeks Financials
+SECTION_ECONOMY_CASH_DEBT_EQUITY,现金 / 负债 / 股权,Cash / Debt / Equity
+SECTION_MARKET_LEADERBOARD,排行榜 (玩家总榜名次: %s),Leaderboard (your overall rank: %s)
+SECTION_REVENUE_LAST_WEEK,上周营收,Last Week's Revenue
+SECTION_REVENUE_API,API 营收 (按模型 / 产品),API Revenue (by model / product)
+SECTION_REVENUE_SUBSCRIPTION,订阅营收 (按产品),Subscription Revenue (by product)
+SECTION_REVENUE_TOKEN_DEMAND,Token 需求 (按模型),Token Demand (by model)
+BTN_FUNDING_DONE,已完成,Completed
+BTN_FUNDING_ACCEPT,接受融资,Accept Funding
+BTN_FUNDING_LOCKED,未解锁,Locked
+BTN_APPLY_LOAN,申请贷款 ...,Apply for Loan ...
+BTN_REPAY_FULL,提前还清 $%s,Repay $%s
+BOARD_TOTAL,总榜,Overall
+BOARD_CLOSED_SOURCE,闭源榜,Closed-source
+BOARD_OPEN_SOURCE,开源榜,Open-source
+BOARD_SUB_GENERAL,通用细分榜,General
+BOARD_SUB_CODE,代码细分榜,Code
+BOARD_SUB_REASONING,推理细分榜,Reasoning
+BOARD_SUB_MULTIMODAL,多模态细分榜,Multimodal
+BOARD_SUB_AGENT,Agent 细分榜,Agent
+EVENT_PENDING,待处理事件,Pending Events
+EVENT_HISTORY,历史,History
+EVENT_HISTORY_RECENT,历史 (最近 %d),History (last %d)
+MSG_NONE,(无),(none)
+EVENT_DISMISS,知道了,Got it
+EVENT_FIELD_BODY,说明,Details
+EVENT_CAT_OPPORTUNITY,机会,Opportunity
+EVENT_CAT_CRISIS,危机,Crisis
+EVENT_CAT_ROUTINE,日常,Routine
+EVENT_CAT_FLAVOR,新闻,News
+EVENT_CAT_DEBUG,调试,Debug
+EVENT_CONSEQ_NONE,无直接影响,No direct effect
+EVENT_CONSEQ_SPEND,支出约 $%s,Spend ~$%s
+EVENT_CONSEQ_AWARD,获得约 $%s,Gain ~$%s
+EVENT_CONSEQ_SUBS_UP,订阅约 +%s,Subscribers ~+%s
+EVENT_CONSEQ_SUBS_DOWN,订阅约 -%s,Subscribers ~-%s
+EVENT_CONSEQ_DC_TERMINATE,随机移除一座数据中心；自购 GPU 会二手出售,Remove a random datacenter; owned GPUs are resold
+EVENT_CONSEQ_DATASET_DELETE,随机永久删除一份数据集,Permanently delete a random dataset
+EVENT_CONSEQ_TECH_GRANT,解锁一项科技节点,Unlock a tech node
+EVENT_CONSEQ_MODEL_BUFF,改变某个模型的能力,Alter a model's capability
+TECH_TREE_LABEL,%s科技树,%s Tech Tree
+TECH_LOCKED_PREFIX,锁定 ·,Locked ·
+TECH_RESEARCH_BTN,研究 (%d 周),Research (%d wk)
+TECH_RESEARCHING,研究中…,Researching…
+TECH_STATUS_UNLOCKED,已解锁,Unlocked
+TECH_STATUS_AVAILABLE,可研究,Available
+TECH_STATUS_RESEARCHING,研究中,Researching
+TECH_STATUS_LOCKED,锁定,Locked
+TECH_SUMMARY_UNLOCKED,已解锁 %d,Unlocked %d
+TECH_SUMMARY_AVAILABLE,可研究 %d,Available %d
+TECH_SUMMARY_RESEARCHING,研究中 %d,Researching %d
+TECH_SUMMARY_LOCKED,锁定 %d,Locked %d
+TECH_PREREQ_LABEL,需要: %s,Needs: %s
+STATUS_LOCKED,未解锁,Locked
+HIRING_FOUNDER,创始人 (你自己),Founder (you)
+HIRING_POOL,"候选 Lead 池 (本周, 月底刷新)","Candidate Leads (this week, monthly refresh)"
+HIRING_BECOME_FOUNDER_RESEARCHER,+ 成为创始研究员,+ Become founding researcher
+HIRING_POOL_EMPTY,"(本周还未刷新, 推进一回合查看)",(Not refreshed yet — advance a turn)
+FILTER_ALL,全部,All
+MODEL_FILTER_PRETRAINED,已预训练,Pretrained
+MODEL_FILTER_POSTTRAINED,已后训,Post-trained
+MODEL_FILTER_EVALUATED,已评估,Evaluated
+MODEL_FILTER_PUBLISHED,已发布,Published
+MODEL_SORT_RECENT,最近创建,Recent
+MODEL_SORT_NAME,按化名,By codename
+MODEL_SORT_SIZE,按参数量,By params
+MODEL_SECTION,我的模型,My Models
+MODEL_NEW,+ 训练新模型...,+ Train new model...
+MODEL_SEARCH_PLACEHOLDER,搜索化名,Search codename
+MODEL_EMPTY_TITLE,还没有模型,No models yet
+MODEL_EMPTY_HINT,"训练第一个模型, 开启你的模型库",Train your first model to start your library
+STATUS_IN_PROGRESS,进行中,In progress
+FIELD_PROGRESS,进度,Progress
+FIELD_TARGET,目标,Target
+FIELD_DATACENTER,数据中心,Datacenter
+FIELD_DATASET,数据集,Datasets
+COUNT_PEOPLE,%d 人,%d people
+COUNT_ITEMS,%d 个,%d
+STAFF_HIRED_LEADS,已签约 Lead,Signed Leads
+STAFF_BY_ROLE,员工 (按职能),Staff (by role)
+STAFF_FOUNDER_NOTE,"创始人已加入 (万能 lead · 无加成); 招到专精 lead 后可顶替, 创始人腾出做别的。",Founder joined (all-rounder · no bonus); hire a specialist lead to replace them and free the founder up.
+STAFF_NOT_FOUNDER,(你还不是创始研究员 — 去「招聘」tab 选择下场),(You're not a founding researcher yet — pick one in the Hiring tab)
+STAFF_NO_LEADS,"(暂无 lead, 去「招聘」tab 签约)",(No leads — sign one in the Hiring tab)
+STAFF_ROLE_ROW,%s: %d (在忙 %d) · $%s/周,%s: %d (busy %d) · $%s/wk
+STAFF_PLUS_ONE,+1 (+%s/周),+1 (+%s/wk)
+STAFF_CANT_FIRE_BUSY,"在忙员工不能解雇, 等任务完成再试",Busy staff can't be fired — wait for the task to finish
+STAFF_TOTAL_SALARY,本周总工资: %s  (lead %s + staff %s),This week's payroll: %s  (lead %s + staff %s)
+STAFF_ROLE_ML_ENG,ML 工程师,ML Engineer
+STAFF_ROLE_INFRA_ENG,基建工程师,Infra Engineer
+STAFF_ROLE_DATA_ENG,数据工程师,Data Engineer
+STAFF_ROLE_MARKETING,营销,Marketing
+STAFF_ROLE_OPS,运维,Ops
+TASKS_IN_PROGRESS,进行中任务,Tasks in Progress
+TASKS_EMPTY_TITLE,暂无进行中的任务,No tasks in progress
+TASKS_EMPTY_HINT,"去「模型」「数据」「科技」页面启动一项任务, 它会出现在这里",Start a task from the Models / Data / Tech pages — it'll appear here
+TASKS_PROGRESS_VALUE,%d / %d 周,%d / %d wk
+TASK_SUBTYPE_PRETRAIN,预训练,Pretrain
+TASK_SUBTYPE_POSTTRAIN,后训练,Post-train
+TASK_SUBTYPE_EVALUATE,评估,Evaluate
+TASK_SUBTYPE_DATA_COLLECTION,数据采集,Data collection
+TASK_SUBTYPE_TECH_RESEARCH,科技研究,Tech research
+TASK_SUBTYPE_CHARITY,公益捐助,Philanthropy donation
+TASK_SUBTYPE_SIMULATION,宇宙模拟,Universe simulation
+PRODUCT_CREATE_SECTION,创建新产品,Create Product
+PRODUCT_LIVE_SECTION,已上线产品,Live Products
+PRODUCT_CREATE_BTN,+ 创建产品...,+ Create product...
+PRODUCT_CREATE_HINT,(对话框里能看到所有类型的解锁状态),(The dialog shows unlock status for all types)
+PRODUCT_NEED_MODEL,(需要先发布至少一个模型),(Publish at least one model first)
+PRODUCT_COMPUTE_POOL,算力池 (按模型),Compute Pool (by model)
+PRODUCT_POOL_HEADER,%s · 容量 %s | 需求 %s | 占用 %s,%s · cap %s | demand %s | used %s
+PRODUCT_POOL_DETAIL,订阅 %s · API %s,Subscription %s · API %s
+PRODUCT_WARN_NOT_DEPLOYED,注意: 该模型尚未在任何 DC 部署 — 全部需求会丢,Note: this model isn't deployed on any DC — all demand is lost
+PRODUCT_WARN_CAPACITY,注意: 算力不足 — 订阅营收与 API 都按比例截断,Note: insufficient compute — subscription and API throttled proportionally
+PRODUCT_GOTO_INFRA,→ 去基建扩容,→ Scale up in Infrastructure
+MARKETING_CREATE_SECTION,启动新活动,Launch Campaign
+MARKETING_CREATE_BTN,+ 新建活动…,+ New campaign…
+MARKETING_CREATE_SECTION_COUNT,启动新活动  (%d / %d),Launch Campaign  (%d / %d)
+MARKETING_UNKNOWN_PRODUCT,(未知产品),(unknown product)
+MARKETING_BUDGET_VALUE,$%s/周,$%s/wk
+MARKETING_PROGRESS_VALUE,%d%% (%d / %d 周),%d%% (%d / %d wk)
+FIELD_WEEKLY_BUDGET,周预算,Weekly budget
+FIELD_WEEKLY_API_DEMAND,每周 API 需求,Weekly API demand
+FIELD_WEEKLY_NEW_USERS,每周新用户,Weekly new users
+MARKETING_API_DEMAND_VALUE,+%s tokens/周,+%s tokens/wk
+MARKETING_NEW_USERS_VALUE,+%s 人,+%s
+MARKETING_SUBTITLE,$%s/周  ·  %d 周,$%s/wk  ·  %d wk
+MARKETING_TERMINATE,终止,Terminate
+MARKETING_FOUNDER_BONUS,创始人加成 · 新增用户 ×%.2f,Founder perk · new users ×%.2f
+INFRA_SECTION,数据中心,Datacenters
+INFRA_NEW_DC,+ 新建数据中心...,+ New datacenter...
+INFRA_OWN_RENTED,租用,Rented
+INFRA_OWN_OWNED,自建,Owned
+INFRA_SIZE_SMALL,≤72 卡,≤72 GPUs
+INFRA_SIZE_MID,≤8k 卡,≤8k GPUs
+INFRA_SIZE_LARGE,>8k 卡,>8k GPUs
+INFRA_STATUS_IDLE,空闲,Idle
+INFRA_STATUS_TRAINING,训练中,Training
+INFRA_STATUS_SERVING,推理中,Serving
+INFRA_EMPTY,"(还没有机房, 点上方按钮新建)",(No datacenters yet — use the button above)
+INFRA_EMPTY_FILTERED,(没有符合筛选条件的机房),(No datacenters match the filter)
+INFRA_BUILDING,自建中,Building
+INFRA_NO_GPU,无 GPU,No GPU
+INFRA_BUILD_ROW,  %s [%s]  剩余 %d / %d 周,  %s [%s]  %d / %d wk left
+INFRA_BUILD_GPU,预装 GPU,Preinstalled GPU
+INFRA_BUILD_DURATION,工期,Build time
+INFRA_BUILD_DURATION_VALUE,剩余 %d / %d 周,%d / %d wk left
+DATASET_SRC_OPEN,开源,Open-source
+DATASET_SRC_PURCHASED,商业,Commercial
+DATASET_SRC_COLLECTED,自采,Self-collected
+DATASET_KIND_HEADER_PRE,── 预训练数据集市场 ──,── Pretrain Dataset Market ──
+DATASET_KIND_HEADER_POST,── 后训练数据集市场 ──,── Post-train Dataset Market ──
+DATASET_COLLECT_SECTION,自行采集,Self-collect
+DATASET_COLLECT_BTN,开始采集...,Start collection...
+DATASET_COLLECT_PRE,开始采集预训练数据集...,Collect pretrain dataset...
+DATASET_COLLECT_POST,开始采集后训练数据集...,Collect post-train dataset...
+DATASET_OWNED,我的,Mine
+DATASET_OWNED_COUNT,我的 (%s),Mine (%s)
+DATASET_MARKET_EMPTY,(此分类暂无可用模板),(No templates in this category)
+DATASET_MARKET_EMPTY_FILTERED,(无符合筛选的模板),(No templates match the filter)
+DATASET_OWNED_EMPTY,(暂无),(none yet)
+DATASET_OWNED_EMPTY_FILTERED,(无符合筛选的数据集),(No datasets match the filter)
+DATASET_ACQUIRE,获取,Acquire
+DATASET_PURCHASE,购买 $%s,Buy $%s
+DATASET_STATUS_AVAILABLE,可用,Available
+DATASET_STATUS_LOCKED,锁定,Locked
+FIELD_SOURCE,来源,Source
+FIELD_MODALITY,模态,Modality
+FIELD_SIZE,规模,Size
+FIELD_TAGS,标签,Tags
+FIELD_MULTIPLIER,倍率,Multiplier
+FIELD_QUALITY,质量,Quality
+FIELD_PRICE,价格,Price
+FIELD_LOCKED,锁定,Locked
+DATASET_MOD_TEXT,文本,Text
+DATASET_MOD_IMAGE,图像,Image
+DATASET_MOD_MULTIMODAL,多模态,Multimodal
+DATASET_MOD_CODE,代码,Code
+DATASET_TAG_WEB,网页,Web
+DATASET_TAG_BOOKS,书籍,Books
+DATASET_TAG_CODE,代码,Code
+DATASET_TAG_LANGUAGES,语言,Languages
+DATASET_TAG_MATH,数学,Math
+DATASET_TAG_REASONING,推理,Reasoning
+DATASET_TAG_SCIENCE,科学,Science
+DATASET_TAG_IMAGE,图像,Image
+DATASET_TAG_MULTIMODAL,多模态,Multimodal
+DATASET_TAG_ARXIV,论文,Papers
+DATASET_TAG_REVIEWS,评论,Reviews
+DATASET_TAG_TEXTBOOK,教材,Textbook
+DATASET_TAG_EDU,教育,Education
+DATASET_TAG_NEWS,新闻,News
+DATASET_TAG_CHAT,对话,Chat
+DATASET_TAG_AGENT,智能体,Agent
+DATASET_TAG_SAFETY,安全,Safety
+ACTION_SELECT,选择,Select
+FIELD_AMOUNT,金额,Amount
+FIELD_TERM,期数,Term
+COUNT_WEEKS,%d 周,%d wk
+NEWGAME_START,开始游戏,Start Game
+NEWGAME_BACK,返回,Back
+NEWGAME_YOUR_NAME,你的名字,Your name
+NEWGAME_COMPANY_NAME,公司名字,Company name
+NEWGAME_PLAYER_PLACEHOLDER,请输入创始人名称,Enter founder name
+NEWGAME_COMPANY_PLACEHOLDER,请输入公司名称,Enter company name
+NEWGAME_NAMES_REQUIRED,请填写创始人名称和公司名称,Enter founder and company names
+NEWGAME_PREVIEW_PLAYER_PLACEHOLDER,未命名创始人,Unnamed founder
+NEWGAME_PREVIEW_COMPANY_PLACEHOLDER,未命名公司,Unnamed company
+NEWGAME_SECTION_IDENTITY,创始人档案,Founder profile
+NEWGAME_SECTION_BRAND,公司品牌,Company brand
+NEWGAME_CHOOSE_ORIGIN,选择出身,Choose origin
+NEWGAME_CHOOSE_LOGO,选择公司标志,Choose company logo
+NEWGAME_CHOOSE_AVATAR,选择个人头像,Choose your avatar
+NEWGAME_PREVIEW,预览,Preview
+NEWGAME_PLACEHOLDER,%s,%s
+FUNDING_DLG_TITLE,接受融资轮,Accept Funding Round
+FUNDING_CONFIRM,确认接受,Confirm
+FUNDING_RECONSIDER,再想想,Reconsider
+FUNDING_ACCEPT_TITLE,接受 %s,Accept %s
+FUNDING_SUMMARY,轮次: %s\n金额区间: $%s ~ $%s · 稀释区间: %.1f%% ~ %.1f%%\n估值参考: $%s · 当前创始人持股: %.1f%%,Round: %s\nAmount: $%s ~ $%s · Dilution: %.1f%% ~ %.1f%%\nValuation: $%s · Current founder stake: %.1f%%
+FUNDING_VALUATION,估值: $%s,Valuation: $%s
+FUNDING_DILUTION,稀释: %.2f%%,Dilution: %.2f%%
+FUNDING_FOUNDER_AFTER,稀释后创始人: %.1f%% (当前 %.1f%%),Founder after: %.1f%% (now %.1f%%)
+FUNDING_WARN_50,"稀释后创始人 ≤ 50%%, 公司将拒绝此条件",Founder stake after ≤ 50%%; the company will reject these terms
+FUNDING_FAILED,融资失败: %s,Funding failed: %s
+LOAN_DLG_TITLE,申请贷款,Apply for Loan
+LOAN_CONFIRM,确认贷款,Confirm Loan
+LOAN_RATING,信用评级: %s,Credit rating: %s
+LOAN_RATE,周期利率: %.2f%%,Periodic rate: %.2f%%
+LOAN_MAX,最高可贷: $%s,Max loan: $%s
+LOAN_PREVIEW,"到账 $%s · 期数 %d 周 · 周还款 $%s (利息 $%s + 本金 $%s)\n按周利率 %.2f%% 估算, 全程利息合计 $%s","Receive $%s · Term %d wk · Weekly payment $%s (interest $%s + principal $%s)\nAt %.2f%% weekly rate, total interest $%s"
+LOAN_WARN_GT0,金额需大于 0,Amount must be greater than 0
+LOAN_WARN_OVER,金额超出信用上限 $%s,Amount exceeds credit limit $%s
+LOAN_FAILED,贷款失败: %s,Loan failed: %s
+ACTION_CLOSE,关闭,Close
+FIELD_NAME,名称,Name
+FIELD_WEEKS,周数,Weeks
+FIELD_PREVIEW,预览,Preview
+SAVE_TITLE,存档 / 读档,Save / Load
+SAVE_SECTION_CREATE,手动存档,Manual Save
+SAVE_SECTION_SLOTS,存档列表,Save Slots
+SAVE_NEW,新建存档:,New save:
+SAVE_SLOT_PLACEHOLDER,"slot 名 (a-z 0-9 _ -, 留空= manual_<回合>)","slot name (a-z 0-9 _ -, blank = manual_<turn>)"
+SAVE_BTN,保存,Save
+SAVE_EMPTY_TITLE,还没有存档,No saves yet
+SAVE_EMPTY_HINT,输入一个 slot 名并保存，或推进回合生成 autosave。,"Enter a slot name and save, or advance a turn to create autosave."
+SAVE_OK,已存档到 slot: %s (回合 %d),Saved to slot %s (turn %d)
+SAVE_FAILED,存档失败: %s,Save failed: %s
+SAVE_LOADED,已读档: %s (回合 %d),Loaded: %s (turn %d)
+SAVE_NO_DEL_AUTO,不允许手动删除 autosave,Can't manually delete autosave
+SAVE_DELETED,已删除 slot: %s,Deleted slot %s
+SAVE_DEL_FAILED,删除失败: %s,Delete failed: %s
+SAVE_AUTO_TAG,[自动],[auto]
+SAVE_META,回合 %d  ·  %s,Turn %d  ·  %s
+SAVE_LOAD_BTN,读取,Load
+SAVE_OVERWRITE,覆盖,Overwrite
+SAVE_CORRUPT,(损坏),(corrupt)
+PRICE_TITLE,调整 API 单价,Adjust API Price
+PRICE_CONFIRM,确认改价,Confirm
+PRICE_NO_MODEL,模型不存在,Model not found
+PRICE_OPEN_SOURCE,开源,Open-source
+PRICE_CLOSED_SOURCE,闭源,Closed-source
+PRICE_TITLE_LABEL,%s (%s) · 当前 %s,%s (%s) · now %s
+PRICE_COST_GUIDE,推理成本 %s · 指导价 %s,Inference cost %s · Guide price %s
+PRICE_NEW,新单价,New price
+PRICE_PREVIEW_FAILED,预览失败: %s,Preview failed: %s
+PRICE_ZONE_ZERO,"⚠ 需求归零: 单价 ≥ 2.5× 指导价, 当周新增需求清零",⚠ Demand zeroed: price ≥ 2.5× guide; new weekly demand wiped
+PRICE_ZONE_BOOST,增益区: 价格 ≤ 0.6× 指导价,Boost zone: price ≤ 0.6× guide
+PRICE_ZONE_NEUTRAL,中性区: 接近指导价,Neutral zone: near guide price
+PRICE_ZONE_PENALTY,"惩罚区: 高于指导价, 每周需求衰减",Penalty zone: above guide; weekly demand decays
+PRICE_PREVIEW,定价比 %.0f%% · 周需求增长 %s · %s,Price ratio %.0f%% · weekly demand growth %s · %s
+PRICE_ZERO_SHORT,⚠ 需求归零,⚠ Demand zeroed
+PRICE_GROWTH_POS,+%.1f%%/周,+%.1f%%/wk
+PRICE_GROWTH,%.1f%%/周,%.1f%%/wk
+PRICE_FAILED,改价失败: %s,Price change failed: %s
+CAMPAIGN_TITLE,新建营销活动,New Campaign
+CAMPAIGN_START,启动活动,Launch
+CAMPAIGN_NAME_PLACEHOLDER,(可选) Launch wave,(optional) Launch wave
+CAMPAIGN_PER_WEEK,$/周,$/wk
+CAMPAIGN_TARGET_PRODUCT,目标产品,Target product
+CAMPAIGN_UNBOUND,(未绑定),(unbound)
+CAMPAIGN_NO_LEAD,"(无 Lead, 不要加成也能跑)",(No lead — runs without bonus)
+CAMPAIGN_FOUNDER_SUFFIX, (创始人 · 无加成), (founder · no bonus)
+CAMPAIGN_LEAD_ITEM,%s [%s 级 · 能力 %.0f]%s,%s [tier %s · ability %.0f]%s
+CAMPAIGN_TOTAL,总投入: $%s (%d 周),Total: $%s (%d wk)
+CAMPAIGN_FOUNDER_GROWTH,创始人 ×%.2f,founder ×%.2f
+CAMPAIGN_CAC,预计获客成本: $%.2f / 用户%s,Est. CAC: $%.2f / user%s
+CAMPAIGN_ATTRACT_NONE,预计每周拉新: (无产品),Est. weekly new: (no product)
+CAMPAIGN_ATTRACT_API,预计每周新需求单位: %s 单位 ($%.0f/单位),Est. weekly new demand: %s units ($%.0f/unit)
+CAMPAIGN_API_TOKENS,≈ %s tokens/周,≈ %s tokens/wk
+CAMPAIGN_ATTRACT_SUB,预计每周拉新: ≈ %s 人 (订阅产品),Est. weekly new: ≈ %s users (subscription)
+CAMPAIGN_ERR_BUDGET,预算必须为正,Budget must be positive
+CAMPAIGN_ERR_WEEKS,周数必须为正,Weeks must be positive
+CAMPAIGN_ERR_CASH,"现金不足一周预算 (需 $%s, 当前 $%s)","Not enough cash for one week (need $%s, have $%s)"
+CAMPAIGN_ERR_CAP,已达活动并发上限 (%d/%d),Campaign limit reached (%d/%d)
+CAMPAIGN_ERR_NO_PRODUCT,先创建一个产品才能开 campaign,Create a product first to run a campaign
+CAMPAIGN_STAFF_REQ,需占用 %d 名营销员工 (当前空闲 %d),Occupies %d marketing staff (%d idle now)
+CAMPAIGN_ERR_STAFF,"营销员工不足 (需 %d, 空闲 %d)","Not enough marketing staff (need %d, %d idle)"
+CAMPAIGN_START_FAILED,启动失败: %s,Launch failed: %s
+WARN_PREFIX,注意: ,Note:
+ROLE_RESEARCHER,研究员,Researchers
+ROLE_ENGINEER,工程师,Engineers
+DC_TITLE,新建数据中心,New Datacenter
+DC_CONFIRM_CLOUD,确认 (云租用 GPU),Confirm (rent cloud GPUs)
+DC_CONFIRM_BUILD,确认 (自建 + 满配 GPU),Confirm (build + full GPUs)
+DC_MODE,操作,Mode
+DC_MODE_CLOUD,"云租用 (按周计费, 无前期投入)","Cloud rental (weekly billing, no upfront)"
+DC_MODE_BUILD,"开始自建 (一次性建设费, 完工后才能用)","Self-build (one-time cost, usable when finished)"
+DC_POWER,供电,Power
+DC_GPU_MODEL,GPU 型号,GPU model
+DC_GPU_COUNT,GPU 数量,GPU count
+DC_FACILITY_ITEM,%s (%d 卡),%s (%d GPUs)
+DC_FACILITY_UNLOCK,  [需现金 $%s],  [needs $%s cash]
+DC_POWER_ITEM,%s ($%s/卡/周电费),%s ($%s/GPU/wk power)
+DC_POWER_INSTALL,  +$%s/卡 安装,  +$%s/GPU install
+DC_GPU_RENT,$%s/卡/周,$%s/GPU/wk
+DC_GPU_BUY,$%s/卡,$%s/GPU
+DC_GPU_ITEM,%s  %s  训 %s  推 %s,%s  %s  train %s  infer %s
+DC_GPU_ECO,  (训练效率 ×%.2f),  (train eff ×%.2f)
+DC_SELECT_GPU,(请先选择 GPU 型号),(select a GPU model first)
+DC_SELECT_ALL,(请先选择规模、供电和 GPU 型号),"(select size, power and GPU model first)"
+DC_UPFRONT_NONE,一次性费用: 无 (无前期投入),Upfront: none (zero)
+DC_WEEKLY_CLOUD,周费: $%s/卡 × %d 卡 = $%s/周,Weekly: $%s/GPU × %d = $%s/wk
+DC_UPFRONT_BUILD,一次性费用: 建设费 $%s + GPU ×%d $%s,Upfront: build $%s + GPU ×%d $%s
+DC_UPFRONT_GREEN, + 绿色能源安装 $%s, + green-energy install $%s
+DC_UPFRONT_DONE, = $%s (工期 %d 周后完工), = $%s (ready in %d wk)
+DC_WEEKLY_BUILD,周运营费 (满配后): 场地 $%s + (维护 $%s + 电费 $%s) ×%d = $%s/周,Weekly opex (full): facility $%s + (maint $%s + power $%s) ×%d = $%s/wk
+DC_WARN_THRESHOLD,"现金门槛不足 (需 $%s, 当前 $%s)","Cash threshold not met (need $%s, have $%s)"
+DC_WARN_CASH,"现金不足 (需 $%s, 当前 $%s)","Not enough cash (need $%s, have $%s)"
+DC_BUILD_FAILED,注意: 自建失败: %s,Note: build failed: %s
+DC_CLOUD_FAILED,注意: 云租用失败: %s,Note: cloud rental failed: %s
+RESEARCH_START,开始研究,Start Research
+RESEARCH_NODE_TITLE,研究: %s,Research: %s
+RESEARCH_EFFECTS,效果: %s,Effects: %s
+RESEARCH_INFO,前置: %s · 时长 %d 周 · 资源 ≥ %d 研究员 / %d 工程师 / %d 卡集群,Prereq: %s · %d wk · ≥ %d researchers / %d engineers / %d-GPU cluster
+RESEARCH_NO_LEAD,"(无 Lead, 无加速)",(No lead — no speedup)
+RESEARCH_HINT_SHORT,"最少 %d, 可用 %d ⚠ 不足 %d","min %d, avail %d ⚠ short %d"
+RESEARCH_HINT,"最少 %d, 可用 %d","min %d, avail %d"
+RESEARCH_NO_DC,(无可用数据中心),(no datacenter available)
+RESEARCH_DC_ITEM,%s · %d 卡 · idle,%s · %d GPUs · idle
+RESEARCH_UNKNOWN_NODE,未知节点 %s,Unknown node %s
+RESEARCH_NO_SPEEDUP,无加速,no speedup
+RESEARCH_DURATION,"时长: %d 周  (基线 %d, %s)","Duration: %d wk  (base %d, %s)"
+RESEARCH_UNKNOWN,未知节点,Unknown node
+RESEARCH_NEED_RESEARCHERS,研究员不足 (需 %d 人),Not enough researchers (need %d)
+RESEARCH_NEED_ENGINEERS,工程师不足 (需 %d 人),Not enough engineers (need %d)
+RESEARCH_NEED_DC,需要 ≥ %d 卡的 idle 数据中心 — %s,Need an idle datacenter with ≥ %d GPUs — %s
+RESEARCH_NO_IDLE_DC,尚无空闲数据中心,No idle datacenter
+RESEARCH_DC_MAX,当前最大 %d 卡,Current max %d GPUs
+RESEARCH_DC_MAX_OK,当前最大 %d 卡 (已达标但未选中),Current max %d GPUs (meets req but not selected)
+RESEARCH_DC_SHORT,"当前最大 %d 卡, 差 %d 卡","Current max %d GPUs, short %d"
+PRETRAIN_MM_NONE,"(单模态, 不启用)","(single-modal, off)"
+PRETRAIN_MM_CROSS,Cross-Training (cross_train · 多模 ×1.00),Cross-Training (cross_train · multimodal ×1.00)
+PRETRAIN_MM_PIXEL,像素自回归 (pixel_ar · 多模 ×1.15),Pixel AR (pixel_ar · multimodal ×1.15)
+PRETRAIN_MM_DIFFUSION,Diffusion + AR (diffusion_ar · 多模 ×1.20),Diffusion + AR (diffusion_ar · multimodal ×1.20)
+PRETRAIN_MM_NATIVE,原生多模态 AR (native_ar · 多模 ×1.30),Native multimodal AR (native_ar · multimodal ×1.30)
+PRETRAIN_TITLE,启动预训练,Start Pretraining
+PRETRAIN_START,启动训练,Start Training
+PRETRAIN_CONFIG,训练配置,Training Config
+PRETRAIN_PREVIEW,实时预览,Live Preview
+PRETRAIN_NAME,名字,Name
+PRETRAIN_AXIS_ARCH,架构族 (A),Architecture (A)
+PRETRAIN_AXIS_ATTENTION,注意力 (B),Attention (B)
+PRETRAIN_AXIS_CONTEXT,上下文 (D),Context (D)
+PRETRAIN_INPUT_MODALITY,输入模态,Input modality
+PRETRAIN_AXIS_MM,多模方法 (E),Multimodal method (E)
+PRETRAIN_SIZE,大小,Size
+PRETRAIN_SPEED_SECTION,训练加速因素,Training Speed Factors
+PRETRAIN_SCORE_SECTION,性能分数因素,Performance Score Factors
+PRETRAIN_CAP_SECTION,预估能力 (evaluate 后),Est. Capability (after evaluate)
+PRETRAIN_AGENT_BONUS,  · agent +%.2f · 训练 ×%.2f,  · agent +%.2f · train ×%.2f
+PRETRAIN_NO_GPU,无GPU,no GPU
+PRETRAIN_NO_DATASET,(没有空闲数据集),(no idle datasets)
+PRETRAIN_SRC_OPEN,开源数据集,Open-source
+PRETRAIN_SRC_PURCHASED,商业采购,Commercial
+PRETRAIN_DS_TOOLTIP,来源: %s\n质量 quality = %.2f (按 token×quality 加权进 evaluate)\n覆盖标签: %s,Source: %s\nquality = %.2f (weighted into evaluate by token×quality)\nCoverage tags: %s
+PRETRAIN_NO_CS,(无 chief_scientist 可用),(no chief_scientist available)
+PRETRAIN_AVAIL,(可用 %d),(avail %d)
+PRETRAIN_TEMPLATE_MISSING,(模板未加载: %s),(template not loaded: %s)
+PRETRAIN_PREVIEW_FAILED,preview 失败: %s,preview failed: %s
+PRETRAIN_UNNAMED,(未命名),(unnamed)
+PRETRAIN_SPEC,模型规格: %s · %s · %s · %s,Model spec: %s · %s · %s · %s
+PRETRAIN_DURATION,预计时长: %d 周,Est. duration: %d wk
+PRETRAIN_COST_RECUR,预计成本: $%s + $%s/周,Est. cost: $%s + $%s/wk
+PRETRAIN_COST,预计成本: $%s,Est. cost: $%s
+PRETRAIN_ERR_NAME,请为模型命名,Name the model
+PRETRAIN_ERR_NAME_INVALID,"名字非法 (1..40 字符, 仅允许中英文/数字/-_./空格)",Invalid name (1–40 chars: letters/digits/-_./space)
+PRETRAIN_ERR_NAME_TAKEN,名字 %s 已被使用,Name %s already used
+PRETRAIN_ERR_SIZE,模型大小必须为正,Model size must be positive
+PRETRAIN_ERR_DC,需要选数据中心,Select a datacenter
+PRETRAIN_ERR_NO_COMPUTE,数据中心无算力 — 请先在基建面板购买 GPU,Datacenter has no compute — buy GPUs in Infrastructure first
+PRETRAIN_ERR_DATASET,需要至少一个数据集,Select at least one dataset
+PRETRAIN_ERR_CS,请招聘并空出一位 chief_scientist,Hire and free up a chief_scientist
+PRETRAIN_START_FAILED,注意: 启动失败: %s,Note: start failed: %s
+PRETRAIN_PRICING,推理成本 %s · 指导价 开源 %s · 闭源 %s,Inference cost %s · Guide: open %s · closed %s
+PRETRAIN_SPEED_TOTAL,训练加速总计,Training speed total
+PRETRAIN_SCORE_TOTAL,性能分数总计,Performance score total
+PRETRAIN_NO_MOD,  (无修正),  (no modifier)
+PRETRAIN_NO_EST,  (无预估),  (no estimate)
+CAP_GENERAL,通用,General
+CAP_CODE,代码,Code
+CAP_REASONING,推理,Reasoning
+CAP_MULTIMODAL,多模,Multimodal
+CAP_AGENT,Agent,Agent
+VALUE_NONE,无,none
+VALUE_UNEVALUATED,未评估,not evaluated
+POST_TITLE,启动后训练,Start Post-training
+POST_DS_SECTION,数据集 (多选; 同目标轴按 token 加权合并后朝天花板饱和):,Datasets (multi-select; same-axis merged by token weight then saturates):
+POST_LEAD,Lead (可选),Lead (optional)
+POST_MODEL_NOTFOUND,目标模型: (未找到) %s,Target model: (not found) %s
+POST_MODEL,目标模型: %s · %s · %.0f M params,Target model: %s · %s · %.0f M params
+POST_CURRENT_CAP,当前能力: ,Current capability:
+POST_UNEVALUATED,??  (未评估),??  (not evaluated)
+POST_EVAL_STALE,  (评估过期),  (evaluation stale)
+POST_DC_ITEM,%s · %d 卡,%s · %d GPUs
+POST_DS_ITEM,%s [%s] · 目标 %s · %.3fB token · q %.2f,%s [%s] · target %s · %.3fB token · q %.2f
+POST_DS_TOOLTIP,"目标轴: %s · token: %.0fM · 质量 q: %.2f\n同轴多份按 token 加权合并 (q̄ = Σ q·size / Σ size) 后统一结算;\n目标轴朝软天花板饱和; 堆份数/拆碎都不再刷分, 只能靠更大基座抬天花板。\nq 越高净分越稳 (gain∝q̄², forget∝1-q̄); 实际累加见下方预览。","Target axis: %s · token: %.0fM · quality q: %.2f\nSame-axis copies are token-weighted (q̄ = Σ q·size / Σ size) then settled together;\ntarget axis saturates toward a soft cap — splitting/stacking no longer grinds score, only a bigger base raises the cap.\nHigher q means steadier net (gain∝q̄², forget∝1-q̄); see preview below."
+POST_NO_DS,(没有可用的后训练数据集; 去数据 tab 获取或购买),(No post-training datasets — get or buy them in the Data tab)
+POST_LEAD_ITEM,%s (%s 级 · 能力 %.0f)%s,%s (%s · ability %.0f)%s
+POST_NO_LEAD,(无 ml_research_lead 可用),(no ml_research_lead available)
+POST_MODEL_MISSING,目标模型不存在,Target model not found
+POST_DURATION_FULL,时长: %d 周 (档位 %s %d 周 + 数据量 %d 周),Duration: %d wk (tier %s %d wk + data %d wk)
+POST_DURATION,时长: %d 周 (档位 %s),Duration: %d wk (tier %s)
+POST_GPU_REQ,需求 GPU 数: ≥ %d,GPUs required: ≥ %d
+POST_SELECT_DC,请选择数据中心,Select a datacenter
+POST_DC_MISSING,选定的数据中心不存在,Selected datacenter not found
+POST_DC_SHORT,"选定数据中心 %d 卡, 需 ≥ %d 卡 (档位 %s)","Selected datacenter has %d GPUs, need ≥ %d (tier %s)"
+POST_DC_NO_COMPUTE,选定数据中心没有可用算力,Selected datacenter has no compute
+POST_PER_DS,  %s → %s · %.2fB token · 质量 %.2f,  %s → %s · %.2fB token · quality %.2f
+POST_PREVIEW_HINT,  (选择数据集查看预览),  (select datasets to preview)
+POST_DELTA_HINT,累加 delta: (勾选数据集后显示),Cumulative delta: (shown after selecting datasets)
+POST_NET_DASH,净分: —,Net: —
+POST_PRED_HINT,预估完成后: (勾选数据集后显示),Predicted after: (shown after selecting datasets)
+POST_DELTA,累加 delta (clamp 后): ,Cumulative delta (clamped):
+POST_NET_WARN,"净分: %s ⚠ 净分将下降 %.1f, 是否继续?",Net: %s ⚠ net will drop %.1f — continue?
+POST_NET,净分: %s,Net: %s
+POST_PRED,预估完成后: ,Predicted after:
+POST_LEAD_BONUS,科学家后训练加分: 能力上限 +%.0f%%,Scientist post-train bonus: +%.0f%% capability ceiling
+POST_ERR_DS,请选择至少 1 个后训练数据集,Select at least 1 post-training dataset
+POST_ERR_LEAD,请招聘并选择一位 ml_research_lead,Hire and select an ml_research_lead
+FIELD_TYPE,类型,Type
+PRODUCT_DLG_TITLE,新建产品,New Product
+PRODUCT_EDIT_TITLE,编辑产品,Edit Product
+PRODUCT_PUBLISH,上线,Publish
+PRODUCT_BIND_MODEL,绑定模型,Bound model
+PRODUCT_NAME_PLACEHOLDER,(留空使用默认名),(blank = default name)
+PRODUCT_NAME,产品名,Product name
+PRODUCT_ML_ENG,ML 工程师,ML engineers
+PRODUCT_ML_TOOLTIP,"为产品配置的 ML 工程师人数, 每人 +5% 质量",ML engineers assigned to the product; +5% quality each
+PRODUCT_SUB_PRICE,订阅价 ($/周),Subscription price ($/wk)
+PRODUCT_AUTO_TRACK,自动跟随最新模型,Auto-track latest model
+PRODUCT_AUTO_TOOLTIP,"勾选后, 同类型新模型发布时, 此产品自动重绑到最新模型","When checked, this product re-binds to the newest same-type model on release"
+PRODUCT_LOCK_APP_NODE,(应用节点未解锁),(application node not unlocked)
+PRODUCT_LOCK_NO_MODEL,(无满足能力阈值的已发布模型),(no published model meets the capability threshold)
+PRODUCT_LOCK_NO_UNCOVERED,(所有 published 模型已有 API),(all published models already have an API)
+PRODUCT_LOCKED_SHORT,(已锁),(locked)
+PRODUCT_THRESH,%s≥%.0f (当前 %.0f),%s≥%.0f (now %.0f)
+PRODUCT_NEED_RESEARCH,需研究 %s,needs research %s
+PRODUCT_LEAD_ITEM,%s (%s 级 · %.0f)%s,%s (%s · %.0f)%s
+PRODUCT_SELECT_TYPE,(请选择产品类型),(select a product type)
+PRODUCT_NO_MODEL,(无可选模型 — %s),(no eligible model — %s)
+PRODUCT_MODEL_MISSING,(模型不存在),(model not found)
+PRODUCT_TYPE_API,类型: API · 价格沿用 model.per_token_price (用 research.set_api_price 调),Type: API · price follows model.per_token_price (set via research.set_api_price)
+PRODUCT_UNRANKED,未上榜,unranked
+PRODUCT_DEMAND_API,"估算需求: 总榜 %s — 进入前 3 名才有自然引流, 见用户系统设计 §5.5",Est. demand: overall %s — only top 3 gets organic traffic (see User System §5.5)
+PRODUCT_TYPE_SUB,类型: %s · 每用户 %s,Type: %s · per user %s
+PRODUCT_REVENUE_EST,周营收估算: %d 订阅 × $%d = $%s (待用户增长后才有意义),Est. weekly revenue: %d subs × $%d = $%s (meaningful once users grow)
+PRODUCT_QUALITY_EST,预估质量: %.2f / 3.00  (模型能力总和 %.0f · ML 工程师 +%d 人),Est. quality: %.2f / 3.00  (model capability sum %.0f · ML engineers +%d)
+PRODUCT_CREATE_FAILED,注意: 创建失败: %s,Note: create failed: %s
+PRODUCT_GONE,注意: 产品已不存在,Note: product no longer exists
+PRODUCT_UNBIND_FAILED,注意: 解绑旧 lead 失败: %s,Note: unbind old lead failed: %s
+PRODUCT_BIND_FAILED,注意: 绑新 lead 失败: %s,Note: bind new lead failed: %s
+PRODUCT_UPDATE_FAILED,注意: 更新失败: %s,Note: update failed: %s
+COLLECT_MOD_AUDIO,音频,Audio
+COLLECT_MOD_VIDEO,视频,Video
+COLLECT_TAG_WEB,web (通用),web (general)
+COLLECT_TAG_CODE,code (代码),code
+COLLECT_TAG_REASONING,reasoning (推理),reasoning
+COLLECT_TAG_CHAT,"chat (对话, 反映到 reasoning 轴)","chat (dialogue, maps to reasoning)"
+COLLECT_TAG_BOOKS,books (书籍),books
+COLLECT_TAG_AGENT,agent (工具/规划),agent (tools/planning)
+COLLECT_TAG_MULTIMODAL,multimodal (跨模态),multimodal (cross-modal)
+COLLECT_TITLE,自行采集数据集,Collect Dataset
+COLLECT_START,启动采集,Start Collection
+COLLECT_NAME_PLACEHOLDER,(可选) MyData v1,(optional) MyData v1
+COLLECT_KIND_PRE,"预训练 (无标注, 便宜)","Pretrain (unlabeled, cheap)"
+COLLECT_PRE_TOOLTIP,喂海量原始 token; cost 5k + size_B × 5k; quality 0.55 基线;\nv9: 玩家选 1-2 个专精 tag (默认 web); evaluate 时只在所选\n能力轴上沾光; 配合 token×quality 加权公式探索数据配比。,Feeds massive raw tokens; cost 5k + size_B × 5k; quality 0.55 base;\nv9: pick 1-2 specialty tags (default web); only the chosen axes benefit at\nevaluate; combine with the token×quality formula to explore data mixes.
+COLLECT_KIND_POST,"后训练 (标注, 贵)","Post-train (labeled, costly)"
+COLLECT_POST_TOOLTIP,少量高质量 SFT/RLHF; 按质量档定价 (众包→PhD 每条 $1~$800); 质量由档位与 lead 决定;\n必须选 target_capability; 完成后只会显著提升该一个轴; 其他 4 轴\n会被 forget (公式 K × (1-q))。质量低的会拖跨净分。,Small high-quality SFT/RLHF; priced by quality tier (crowd→PhD $1~$800/example); quality set by tier & lead;\nmust pick a target_capability; only that one axis improves on completion; the other 4\nget forgotten (K × (1-q)). Low quality drags down net score.
+COLLECT_MOD_TOOLTIP,数据集模态; pretrain 训练时模型必须支持该模态 (text 总是允许).,Dataset modality; the model must support it during pretraining (text always allowed).
+COLLECT_TAG_HINT,(最多选 2 个; 决定 evaluate 时该集偏向哪个能力轴),(pick up to 2; decides which capability axis this set favors at evaluate)
+COLLECT_TARGET_AXIS,目标轴,Target axis
+COLLECT_QUALITY_TIER,质量档,Quality tier
+COLLECT_TIER_T1,基础 · 众包 (q0.65),Basic · crowd (q0.65)
+COLLECT_TIER_T2,专业 · 领域标注 (q0.80),Pro · domain (q0.80)
+COLLECT_TIER_T3,专家 · 资深 (q0.90),Expert · senior (q0.90)
+COLLECT_TIER_T4,PhD 专家 (q0.95),PhD expert (q0.95)
+COLLECT_TIER_TOOLTIP,质量越高标注人力越贵: 众包→领域→资深→PhD; 每条约 $1/$10/$60/$800; 成本按 (选档 + lead 加成) 的有效质量定档。,Higher quality = pricier labelers: crowd→domain→senior→PhD; ~$1/$10/$60/$800 per example; tier set by effective quality (tier + lead bonus).
+COLLECT_SIZE_HINT_POST,(0.01 – 0.5 B tokens; SFT/RLHF 集典型 0.05B ≈ 50k examples),(0.01 – 0.5 B tokens; SFT/RLHF sets typically 0.05B ≈ 50k examples)
+COLLECT_SIZE_HINT_PRE,"(1 – 100000 B tokens, 即 100T; web 清洗规模, FineWeb ≈ 15T)","(1 – 100000 B tokens = 100T; web-clean scale, FineWeb ≈ 15T)"
+COLLECT_NO_LEAD,(无 data_scientist 可用),(no data_scientist available)
+COLLECT_DURATION,时长: %d 周,Duration: %d wk
+COLLECT_COST_RECUR,成本: $%s 一次性 + $%s/周 (合计 ≈ $%s),Cost: $%s one-time + $%s/wk (total ≈ $%s)
+COLLECT_COST,成本: $%s 一次性,Cost: $%s one-time
+COLLECT_QUALITY,质量: %.2f  (基线 %.2f%s),Quality: %.2f  (base %.2f%s)
+COLLECT_TAGS,标签: %s,Tags: %s
+COLLECT_AUTO_NAME,(自动命名),(auto-named)
+COLLECT_SUMMARY_POST,完成产出: %s · posttrain · %.3f B · q.%.2f · 目标 %s · collected,Output: %s · posttrain · %.3f B · q.%.2f · target %s · collected
+COLLECT_SUMMARY_PRE,完成产出: %s · pretrain · %.0f B · q.%.2f · tags [%s],Output: %s · pretrain · %.0f B · q.%.2f · tags [%s]
+COLLECT_ERR_SIZE,大小必须为正,Size must be positive
+COLLECT_ERR_LEAD,请招聘并空出一位 data_scientist,Hire and free up a data_scientist
+COLLECT_STAFF_REQ,需占用 %d 名数据工程师 (当前空闲 %d),Occupies %d data engineer(s) (%d idle now)
+COLLECT_ERR_STAFF,"数据工程师不足 (需 %d, 空闲 %d)","Not enough data engineers (need %d, %d idle)"
+COLLECT_LEAD_HINT1,", 选 data_scientist lead 可加成",", select a data_scientist lead for a bonus"
+COLLECT_LEAD_HINT2,", 当前 lead 非 data_scientist, 无加成",", current lead isn't a data_scientist — no bonus"
+COLLECT_LEAD_HINT3,", lead 加成已计入",", lead bonus applied"
+SUFFIX_PER_WEEK,/周,/wk
+SUFFIX_RATE_PER_WEEK,%s/周,%s/wk
+FIELD_STATUS,状态,Status
+FIELD_TURN,回合,Turn
+FIELD_DEMAND,需求,Demand
+WEEK_N,第 %d 周,Week %d
+LEAD_SIGNING_FEE,签约费,Signing fee
+LEAD_WEEKLY_SALARY,周薪,Weekly salary
+LEAD_SIGN,签约,Sign
+LEAD_FIRE,解雇,Fire
+LEAD_SUBTITLE,%s · %s 级  能力 %.0f,%s · %s · ability %.0f
+LEAD_BONUS_LABEL,加成:,Bonus:
+LEAD_NO_BONUS,(无加成),(no bonus)
+LEAD_FOUNDER,创始人,Founder
+LEAD_STATUS_BUSY,运营,Working
+DC_OWN_CLOUD,云租用,Cloud
+DC_CAPACITY,容量,Capacity
+DC_TRAIN,训练,Train
+DC_INFER,推理,Infer
+DC_WEEKLY_COST,周成本,Weekly cost
+DC_RENTAL,出租算力,Rental
+DC_OWNERSHIP_RENTED,租用,Rented
+DC_OWNERSHIP_OWNED,自建,Owned
+DC_OWNERSHIP_CLOUD,云算力,Cloud
+DC_RUNNING,在跑,Running
+DC_DEPLOY,部署模型...,Deploy model...
+DC_TERMINATE,关停并变现,Shut down & sell
+DC_UNDEPLOY,撤回部署,Undeploy
+DC_RENT_OUT,出租到算力平台,Rent out to platform
+DC_STOP_RENT_OUT,停止出租,Stop renting
+MODEL_STATUS_PRETRAINED,训练完成,Pretrained
+MODEL_STATUS_POSTTRAINED,后训完成,Post-trained
+MODEL_CAPABILITY,能力,Capability
+MODEL_CONTEXT,上下文,Context
+MODEL_MM_METHOD,多模方法,Multimodal method
+MODEL_INFER_COST,推理成本,Inference cost
+MODEL_GUIDE_PRICE,指导价,Guide price
+MODEL_UNIT_PRICE,单价,Unit price
+MODEL_PRICE_RATIO,定价比,Price ratio
+MODEL_DEMAND_GROWTH,周需求增长,Weekly demand growth
+MODEL_GUIDE_OC,开源 %s · 闭源 %s,Open %s · Closed %s
+MODEL_DEMAND_ZERO,⚠ 需求归零 (单价 ≥ 2.5× 指导价),⚠ Demand zeroed (price ≥ 2.5× guide)
+MODEL_CAP_UNKNOWN,总 ?? · 通 ?? / 码 ?? / 推 ?? / 多 ?? / Agent ??,Total ?? · Gen ?? / Code ?? / Rsn ?? / MM ?? / Agent ??
+MODEL_STALE, (过期), (stale)
+MODEL_CAP_LINE,总 %d · 通 %d / 码 %d / 推 %d / 多 %d / Agent %d%s,Total %d · Gen %d / Code %d / Rsn %d / MM %d / Agent %d%s
+MODEL_EVALUATE,开始评估,Evaluate
+MODEL_PUBLISH_CLOSED,发布 闭源,Publish closed
+MODEL_PUBLISH_OPEN,发布 开源,Publish open
+MODEL_PRICE_EDIT,改价...,Edit price...
+MODEL_UNPUBLISH,下架,Unpublish
+PRODUCT_TYPE_CHATBOT,聊天机器人,Chatbot
+PRODUCT_TYPE_AGENT,智能体,Agent
+PRODUCT_TYPE_MULTIMODAL,多模态助手,Multimodal Assistant
+PRODUCT_TYPE_CODING,编程助手,Coding Assistant
+PRODUCT_TYPE_API_SHORT,API,API
+PRODUCT_SUBTITLE,%s · 绑定 %s,%s · bound %s
+PRODUCT_EDIT,编辑...,Edit...
+PRODUCT_SUB_PRICE_SHORT,订阅价,Sub price
+PRODUCT_LAST_REV,上周营收,Last week revenue
+PRODUCT_REF_SUB,参考订阅价,Suggested sub price
+PRODUCT_SUBS,订阅数,Subscribers
+PRODUCT_TS_USE,t/s 占用,t/s used
+PRODUCT_WEEKLY_RATE,本周率,Weekly rate
+PRODUCT_ORPHAN,孤儿 (模型未发布) -%d/周,orphan (model unpublished) -%d/wk
+PRODUCT_PRICE_CLIFF,价格悬崖 → 清零,price cliff → zeroed
+PRODUCT_RANK_TOTAL,竞品总榜,Overall rank
+PRODUCT_RANK_SUB,竞品子榜,Sub-board rank
+PRODUCT_RANK_GROWTH_LABEL,排名增长,Rank growth
+PRODUCT_RANK_GROWTH,%s (总/子榜取较优),%s (best of overall/sub)
+PRODUCT_PRICE_ELASTIC,价格弹性,Price elasticity
+PRODUCT_CAP_GATE,能力门槛,Capability gate
+PRODUCT_CAP_LOW,%s (模型能力偏低),%s (model capability low)
+PRODUCT_UNIT_API,tokens 需求/周,tokens demand/wk
+PRODUCT_UNIT_SUB,用户/周,users/wk
+PRODUCT_MARKETING_DRAW,营销引流,Marketing inflow
+PRODUCT_BASE_DRAW,基础引流,Base inflow
+PRODUCT_INFLOW,+%s %s,+%s %s
+SPEC_NAME_CHIEF_SCIENTIST,首席科学家,Chief Scientist
+SPEC_NAME_ML_RESEARCH_LEAD,ML 研究主管,ML Research Lead
+SPEC_NAME_EVAL_LEAD,评估主管,Eval Lead
+SPEC_NAME_CHIEF_ENGINEER,首席工程师,Chief Engineer
+SPEC_NAME_DATA_SCIENTIST,数据科学家,Data Scientist
+SPEC_NAME_MARKETING_LEAD,营销主管,Marketing Lead
+SPEC_GROUP_CHIEF_SCIENTIST,预训练 / 研究,Pretrain / Research
+SPEC_GROUP_ML_RESEARCH_LEAD,后训练,Post-train
+SPEC_GROUP_EVAL_LEAD,评估,Evaluate
+SPEC_GROUP_CHIEF_ENGINEER,基建 / 产品,Infra / Product
+SPEC_GROUP_DATA_SCIENTIST,数据采集,Data collection
+SPEC_GROUP_MARKETING_LEAD,营销,Marketing
+SPEC_GROUP_FOUNDER,万能 (无加成),Generalist (no bonus)
+BONUS_PRETRAIN_SPEED,预训练加速,Pretrain speed
+BONUS_PRETRAIN_SCORE,预训练分加成,Pretrain score
+BONUS_POSTTRAIN_SPEED,后训练加速,Post-train speed
+BONUS_POSTTRAIN_SCORE,后训练分加成,Post-train score
+BONUS_EVALUATE_SPEED,评估加速,Eval speed
+BONUS_EVALUATE_SCORE,评估分加成,Eval score
+BONUS_RESEARCH_SPEED,科研加速,Research speed
+BONUS_DATA_COLLECTION_SPEED,采集加速,Collection speed
+BONUS_DATA_QUALITY,数据质量+,Data quality+
+BONUS_CLUSTER_EFF,机房效率+,Cluster eff+
+BONUS_PRODUCT_THROUGHPUT,产品吞吐,Product throughput
+BONUS_CAMPAIGN_EFFICIENCY,营销转化,Campaign conversion
+TECH_TREE_ARCH,模型架构,Architecture
+TECH_TREE_ATTENTION,注意力,Attention
+TECH_TREE_LOSS,Loss 函数,Loss function
+TECH_TREE_ENGINEERING,工程优化,Engineering
+TECH_TREE_APPLICATION,应用场景,Application
+TECH_TREE_CONTEXT,上下文长度,Context length
+OV_INFO,第 %d 周  ·  现金 $%s  ·  付费用户 %s,Week %d  ·  Cash $%s  ·  Paid users %s
+OV_ASSET_TEAM,团队,Team
+OV_ASSET_INFRA,基础设施,Infrastructure
+OV_ASSET_RESEARCH,研发资产,R&D Assets
+OV_ASSET_MARKET,市场资产,Market Assets
+OV_ASSET_FLOW,流程,Flow
+OV_LEADS,负责人: %d 位 (候选池 %d)  ·  员工: %d 在岗 (%d 在忙),Leads: %d (pool %d)  ·  Staff: %d on duty (%d busy)
+OV_DC,数据中心: %d (在建 %d),Datacenters: %d (building %d)
+OV_DS_MODELS,数据集: %d  ·  模型: %d (已发布 %d),Datasets: %d  ·  Models: %d (published %d)
+OV_PROD,产品: %d  ·  营销活动: %d  ·  贷款: %d,Products: %d  ·  Campaigns: %d  ·  Loans: %d
+OV_TASKS_EVENTS,进行中任务: %d  ·  待处理事件: %d,Active tasks: %d  ·  Pending events: %d
+OV_HINT_EVENTS,有 %d 个待处理事件 — 去「事件」处理 (可能影响本周营收),%d pending events — handle them in Events (may affect this week's revenue)
+OV_HINT_COMPUTE,算力不足: 部分产品需求被截断 — 去「基建」扩容,Insufficient compute: some product demand throttled — scale up in Infrastructure
+OV_HINT_NO_PRODUCT,已发布模型尚无产品 — 去「产品」创建 Chatbot / Agent 等,Published models have no product — create a Chatbot / Agent in Products
+OV_HINT_UNPUBLISHED,有未发布模型 — 去「模型」评估并发布以解锁营收,Unpublished models — evaluate & publish them in Models to unlock revenue
+OV_HINT_NO_DC,尚无数据中心 — 去「基建」租用或自建以训练 / serving,No datacenter — rent or build one in Infrastructure to train / serve
+OV_HINT_NO_LEAD,尚无 Lead — 去「招聘」签下首位 chief_scientist 以解锁预训练,No lead — sign your first chief_scientist in Hiring to unlock pretraining
+OV_HINT_SMOOTH,"运营顺畅, 可考虑研究科技 / 扩张产品矩阵 / 推动融资",Running smoothly — consider researching tech / expanding products / raising funding
+OV_HINT_CASH_NEGATIVE,资金为负 — 尽快削减开支 / 推动融资 / 申请贷款扭转赤字,Cash is negative — cut costs / raise funding / take a loan to turn it around
+OV_HINT_BANKRUPTCY_CRITICAL,⚠ 资金已连续为负 %d/%d 周 — 再不扭转本局将结束!,⚠ Cash negative %d/%d weeks — turn it around or the run ends!
+GAMEOVER_TITLE,游戏结束,Game Over
+GAMEOVER_OK,返回主菜单,Return to Menu
+GAMEOVER_BODY,"公司资金链断裂, 宣告破产。\n存活 %d 周 · 最终资金 $%s\n破产原因: %s",Your company ran out of cash and went bankrupt.\nSurvived %d weeks · Final cash $%s\nReason: %s
+GAMEOVER_REASON_NEGATIVE,资金连续为负过久,Cash stayed negative too long
+GAMEOVER_REASON_DEEP,资金缺口过大,Cash deficit too deep
+BANKRUPTCY_WARN_TITLE,破产预警,Bankruptcy Warning
+BANKRUPTCY_WARN_BODY,"资金已连续为负 %d 周。若到第 %d 周仍未扭转, 公司将破产、本局结束!","Cash has been negative for %d weeks. If it isn't turned around by week %d, the company goes bankrupt and the run ends!"
+ECO_CASH,现金: $%s,Cash: $%s
+ECO_DEBT,总负债: $%s  ·  贷款数量: %d,Total debt: $%s  ·  Loans: %d
+ECO_EQUITY,股权: 创始人 %.1f%%  ·  投资人 %.1f%%,Equity: founder %.1f%%  ·  investors %.1f%%
+ECO_BANKRUPTCY_STREAK,连续负现金周数: %d / %d,Negative-cash weeks: %d / %d
+ECO_KPI_DEBT,总负债,Total debt
+ECO_KPI_LOANS,%d 笔贷款,%d loans
+ECO_KPI_FOUNDER_EQUITY,创始人股权,Founder equity
+ECO_KPI_INVESTORS,投资人 %.1f%%,Investors %.1f%%
+ECO_KPI_BANKRUPTCY,破产压力,Bankruptcy pressure
+ECO_TABLE_CATEGORY,类目,Category
+ECO_TABLE_AMOUNT,金额,Amount
+ECO_TABLE_SUBTOTAL,小计,Subtotal
+ECO_FUNDING_LOAD_FAILED,融资数据加载失败,Funding data failed to load
+ECO_FUNDING_DETAIL,$%s ~ $%s · 稀释 %.1f%% ~ %.1f%%\n%s,$%s ~ $%s · dilution %.1f%% ~ %.1f%%\n%s
+ECO_FUNDING_DONE,融资完成: %s,Funding done: %s
+ECO_CREDIT,信用评级: %s  ·  最高可贷: $%s  ·  周期利率: %.2f%%,Credit rating: %s  ·  Max loan: $%s  ·  Periodic rate: %.2f%%
+ECO_NO_LOANS,(暂无在借贷款),(no active loans)
+ECO_LOAN_OK,贷款成功: %s,Loan taken: %s
+ECO_LOAN_ROW,%s · 剩余 $%s · %d 周 · 周息 %.2f%%,%s · remaining $%s · %d wk · weekly interest %.2f%%
+ECO_REPAY,还贷,Repay loan
+ECO_NO_LAST_WEEK,"(尚无上周记录, 推进一周后开始显示)",(no last-week record yet — advance a week to see it)
+ECO_NO_IO,(上周没有收入或支出),(no income or expense last week)
+ECO_INCOME,收入,Income
+ECO_NO_INCOME,  (无收入),  (no income)
+ECO_SUBTOTAL_IN,小计  +$%s,Subtotal  +$%s
+ECO_EXPENSE,支出,Expense
+ECO_NO_EXPENSE,  (无支出),  (no expense)
+ECO_SUBTOTAL_OUT,小计  -$%s,Subtotal  -$%s
+ECO_NET_FLOW,上周净流: %s$%s,Last week net: %s$%s
+ECO_NO_HISTORY,"(尚无历史记录, 下个回合 resolve 后开始累积)",(no history yet — accumulates after next resolve)
+ECO_COL_WEEK,周,Week
+ECO_COL_INCOME,总收入,Income
+ECO_COL_EXPENSE,总支出,Expense
+ECO_COL_NET,净流,Net
+ECO_COL_CASH,期末现金,End cash
+LEAD_FOUNDER_FULL,创始人 (万能 lead),Founder (generalist lead)
+LEAD_LOCKED_BY,锁定 %s,Locked %s
+LEAD_BUSY_ON,运营 %s,Working %s
+LEAD_LABEL_FULL,%s (%s · %s 级 · %.0f),%s (%s · %s · %.0f)
+MARKETING_LEAD_GONE,(已离职),(left the company)
+DRAWER_MY_PUBLISHED,我的已发布模型,My published models
+DRAWER_PUBLIC_OS,公共开源模型,Public open-source models
+DRAWER_NO_OS,(暂无开源模型 — 等开源 NPC 首发),(no open-source models yet — wait for an OS NPC release)
+DRAWER_OWN_MODEL,自有 · %s %s,Own · %s %s
+DRAWER_OS_MODEL,开源 · %s — %s %s,OS · %s — %s %s
+DRAWER_NO_DEPLOYABLE,"(没有可部署的模型, 先训练并发布一个)",(no deployable model — train & publish one first)
+DRAWER_DEPLOY_TITLE,部署模型 → %s,Deploy model → %s
+CALL_FOUNDER_JOIN,创始人下场,Founder joins
+CALL_DEPLOY,部署 %s 到 %s,Deploy %s to %s
+CALL_SERVE,Serving %s 到 %s,Serving %s to %s
+CALL_TERMINATE_DC,关停 dc,Shut down DC
+CALL_ACQUIRE,获取 %s,Acquire %s
+CALL_PURCHASE,购买 %s,Buy %s
+CALL_DELETE_DS,删除 dataset,Delete dataset
+CALL_PUBLISH_CLOSED,发布闭源,Publish closed
+CALL_PUBLISH_OPEN,发布开源,Publish open
+CALL_DELETE_MODEL,删除模型,Delete model
+CALL_CANCEL_TASK,取消任务,Cancel task
+CALL_DELETE_PRODUCT,下架产品,Remove product
+CALL_TERMINATE_CAMPAIGN,终止活动,Terminate campaign
+CALL_PRICE_EDIT_PRODUCT,产品改价,Edit product price
+MARKET_RULE_PREFIX,  规则: ,  Rule:
+MARKET_EMPTY,  (空),  (empty)
+MARKET_YOU_BADGE,你,YOU
+MARKET_RULE_TOTAL,#1: %s/周需求 · #2-3: %s · #4+: %s/周需求  +  时间曲线引流 (#1 ×1.0 · #2 ×0.5 · #3 ×0.25 · #4+ ×0),#1: %s/wk demand · #2-3: %s · #4+: %s/wk demand  +  time-curve inflow (#1 ×1.0 · #2 ×0.5 · #3 ×0.25 · #4+ ×0)
+MARKET_RULE_DISPLAY,"(展示榜, 不直接换算成需求加成 — 看总榜 + 各子榜)",(display board — not converted to demand directly; see overall + sub-boards)
+MARKET_RULE_SUB,#1: %s/周需求 · #2-3: %s · #4+: %s/周需求 (在对应产品类型上),#1: %s/wk demand · #2-3: %s · #4+: %s/wk demand (on the matching product type)
+CAMPAIGN_CAP_REASON,"已达活动并发上限 (%d / %d), 终止一个才能再开",Campaign limit reached (%d / %d) — terminate one to open another
+CAMPAIGN_NO_PRODUCT_REASON,先创建一个产品才能开 campaign,Create a product first to run a campaign
+PRODUCT_LABEL_UNKNOWN,(未知),(unknown)
+PRODUCT_LABEL_DELETED,(产品已被删除),(product deleted)
+PRODUCT_LABEL_FMT,%s  (%s · %s),%s  (%s · %s)
+REV_NOT_SETTLED,(尚未结算),(not settled yet)
+REV_SETTLE_INFO,结算回合 %d  ·  丢失 API 需求 %s,Settled turn %d  ·  lost API demand %s
+REV_CHIP_TOTAL,总营收,Total revenue
+REV_CHIP_API,API 营收,API revenue
+REV_CHIP_SUB,订阅营收,Subscription revenue
+REV_DEMAND_DETAIL,      订阅 %s  ·  API %s,      Subscription %s  ·  API %s
+SECTION_REVENUE_DETAIL,营收明细 (按模型),Revenue (by model)
+REV_SOURCE_LABEL,来源占比,Revenue mix
+REV_SOURCE_VALUE,API %d%%  ·  订阅 %d%%,API %d%%  ·  Subscription %d%%
+REV_KIND_API,API,API
+REV_KIND_SUB,订阅,Subscription
+CALL_OK,%s 成功,%s — done
+CALL_FAILED,%s 失败: %s,%s — failed: %s
+REPORT_STARTED,"%s 已开始 (%s, %d 周)","%s — started (%s, %d wk)"
+CALL_EVENT_CHOICE,事件: %s,Event: %s
+CALL_EVENT_DISMISS,关闭事件,Dismiss event
+CALL_START_CAMPAIGN,启动营销活动,Start campaign
+CALL_POSTTRAIN,后训练 %s,Post-train %s
+CALL_EVALUATE,评估 %s,Evaluate %s
+CALL_CREATE_CHATBOT,创建 chatbot,Create chatbot
+CALL_CREATE_AGENT,创建 agent,Create agent
+TOAST_PRETRAIN_STARTED,"预训练已开始 (%s, %d 周)","Pretraining started (%s, %d wk)"
+TOAST_DC_CREATED,数据中心 %s 已创建,Datacenter %s created
+TOAST_PRODUCT_LIVE,产品 %s 已上线,Product %s is live
+TOAST_RESEARCH_STARTED,研究 %s 已开始 (%d 周),Research %s started (%d wk)
+TOAST_PRODUCT_SAVED,产品 %s 已保存,Product %s saved
+TOAST_EVAL_FAILED_NO_LEAD,评估失败: 请招聘 eval_lead 或先在招聘 tab 创建创始人,Evaluate failed: hire an eval_lead or create a founder in Hiring first
+TOAST_PRICE_FAILED_UNKNOWN,改价失败: unknown_model,Price change failed: unknown_model
+TOAST_PRICE_UPDATED,模型单价已更新为 %s,Model price updated to %s
+TOAST_CREATE_FAILED_TYPE,创建产品失败: unknown_type,Create product failed: unknown_type
+TOAST_CREATE_FAILED_NO_MODEL,创建产品失败: 没有满足门槛的已发布模型,Create product failed: no published model meets the threshold
+TOAST_CREATE_API_OK,创建 API (%s) 成功,API created (%s)
+TOAST_CREATE_API_FAILED,创建 API 失败: %s,API creation failed: %s
+TOAST_CREATE_OK,创建 %s 成功,Created %s
+TOAST_CREATE_FAILED,创建 %s 失败: %s,Create %s failed: %s
+TOAST_PRODUCT_PRICE_FAILED,产品改价失败: unknown_product,Product price change failed: unknown_product
+TOAST_NO_CHIEF_ENGINEER,没有空闲的 chief_engineer,No idle chief_engineer
+TOAST_NO_PUBLISHED_MODEL,没有已发布的模型,No published model
+FMT_FREE,免费,Free
+FMT_UNKNOWN_FLOPS,未知 FLOPs/tok,Unknown FLOPs/tok
+FMT_TPS,%s (%s tok/周),%s (%s tok/wk)
+TECH_NO_EFFECT,(暂无效果摘要),(no effect summary)
+CALL_STAFF_ADD,+ 员工,+ Staff
+CALL_STAFF_REMOVE,- 员工,- Staff
+RATE_BRACKET,[%s/周%s],[%s/wk%s]
+RATE_INFLOW, + 引流 ×%.2f, + inflow ×%.2f
+MODEL_CAP_NA,?? (未评估),?? (not evaluated)
+MODEL_EVAL_STALE_SUFFIX, (评估已过期), (evaluation stale)
+DC_SERVE_OS_PREFIX,开源,OS
+DC_POWER_DETAIL,"%s($%s/卡/周, 效率 %.2f)","%s ($%s/GPU/wk, eff %.2f)"
+_PIPELINE_FALLBACK_SMOKE,回落冒烟,
+DC_TRAIN_BONUS,太空加成,Space bonus
+PRETRAIN_DC_SPACE_BONUS,太空 +%d%%,space +%d%%
+NAV_CHARITY,慈善,Philanthropy
+CHARITY_SECTION,公益捐助,Philanthropy
+CHARITY_TAX_NOTE,捐助当周全额抵税（企业税 25%；利润超 10 亿再 +20% AI 税）。,Donations are fully tax-deductible the week they're made (25% corporate tax; +20% AI tax on profit above 1B).
+CHARITY_FIELD_BONUS,当前加成,Active bonus
+CHARITY_FIELD_DONATED,累计已捐,Total donated
+CHARITY_FIELD_NEXT,下一档,Next tier
+CHARITY_FIELD_IN_PROGRESS,进行中,In progress
+CHARITY_STATUS_NONE,未捐助,Not yet
+CHARITY_NEXT_FMT,需捐 $%s,Donate $%s
+CHARITY_NEXT_CAPPED,已达顶档,Top tier reached
+CHARITY_IN_PROGRESS_FMT,$%s · 还剩 %d/%d 周,$%s · %d/%d weeks left
+CHARITY_IN_PROGRESS_MORE, 等 %d 项, +%d more
+CHARITY_BONUS_S,S 级人才权重 +%.2f,S-tier talent weight +%.2f
+CHARITY_BONUS_VALUATION,估值 +%d%%,Valuation +%d%%
+CHARITY_BONUS_CONVERSION,营销转化率 +%d%%,Marketing conversion +%d%%
+CHARITY_TIER_BTN_FMT,捐助 %s · $%s,Donate %s · $%s
+CHARITY_TIER_DONE_FMT,%s · 已完成,%s · Done
+CHARITY_TIER_LOCKED_FMT,%s · 未解锁,%s · Locked
+CALL_CHARITY_DONATE,发起公益捐助…,Starting donation…
+NAV_OFFICE,办公室,Office
+OFFICE_DESK_SECTION,荣誉桌,Honor Desk
+OFFICE_CABINET_SECTION,收藏柜,Collection Cabinet
+OFFICE_AUCTION_SECTION,拍卖行,Auction House
+OFFICE_TROPHY_EARNED,已获得,Earned
+OFFICE_TROPHY_LOCKED,未获得,Locked
+OFFICE_FIELD_HINT,获取条件,How to earn
+OFFICE_FIELD_BOUGHT,买入价,Bought at
+OFFICE_FIELD_PRICE,当前市价,Market price
+OFFICE_FIELD_PNL,浮动盈亏,Unrealized P&L
+OFFICE_FIELD_SELL_FEE,抽成,Sell fee
+OFFICE_BUY_BTN,买入 $%s,Buy $%s
+OFFICE_SELL_BTN,卖出,Sell
+OFFICE_SELL_BTN_FMT,卖出 $%s,Sell $%s
+OFFICE_CABINET_EMPTY,收藏柜还空着，去拍卖行淘点宝贝。,Cabinet's empty — grab something at auction.
+OFFICE_AUCTION_EMPTY,拍卖行暂无可买。,Nothing left at auction.
+OFFICE_COMPUTER_TOOLTIP,点击查看收藏柜,Click to open your collection
+CAT_AI_HARDWARE,AI 硬件,AI hardware
+CAT_TRADING_CARD,卡牌,Trading card
+CAT_CRYPTO,数字货币,Crypto
+CAT_SUPERCAR,超跑,Supercar
+CAT_PAINTING,名画,Painting
+CALL_COLLECTION_BUY,买入收藏品…,Buying collectible…
+CALL_COLLECTION_SELL,卖出收藏品…,Selling collectible…
+SIM_SECTION,宇宙模拟工程,Universe Simulation
+SIM_STATUS_DONE,已完成,Done
+SIM_STATUS_RUNNING,计算中,Computing
+SIM_STATUS_AVAILABLE,可启动,Ready
+SIM_STATUS_LOCKED,未解锁,Locked
+SIM_FIELD_COMPUTE,算力门槛,Compute req.
+SIM_FIELD_TIME,计算时间,Compute time
+SIM_FIELD_COST,捐助资金,Funding
+SIM_FIELD_REMAINING,剩余,Remaining
+SIM_WEEKS_FMT,%d 周,%d wk
+SIM_GPU_FMT,%s 卡,%s GPUs
+SIM_START_BTN,捐建并启动,Fund & start
+SIM_GATE_COMPUTE,无满足算力门槛的可捐数据中心,No datacenter meets the compute requirement
+SIM_GATE_CASH,现金不足,Not enough cash
+SIM_ANSWER,🌌 终极答案：42,🌌 The Ultimate Answer: 42
+SIM_REVEAL_TITLE,终极答案已送达,The Ultimate Answer Has Arrived
+SIM_REVEAL_BODY,"宇宙模拟计算完成。一个密封盒已经摆在办公室里，打开它查看结果。","The universe simulation is complete. A sealed box has been placed in your office. Open it to see the result."
+SIM_REVEAL_OK,去办公室,Go to Office
+CALL_SIM_START,启动宇宙模拟…,Starting simulation…
+SIM_DONATE_TITLE,捐建数据中心 · %s,Donate a Datacenter · %s
+SIM_DONATE_REQ,算力门槛 %s · 捐助资金 $%s · 计算 %d 周,Compute %s · Funding $%s · %d weeks
+SIM_DONATE_PICK,选择要永久捐出的数据中心：,Choose a datacenter to donate (permanent):
+SIM_DONATE_NONE,没有满足算力门槛的空闲、未出租自有数据中心。先把一座数据中心堆到足够算力并停止出租再来。,"No idle, not-rented-out owned datacenter meets the compute requirement — build one up and stop renting it out first."
+SIM_DONATE_DC_FMT,%s · %s 卡 · %s,%s · %s GPUs · %s
+SIM_DONATE_WARN,注意：选中的数据中心连卡带机房一起永久捐出，无法收回。,Note: the chosen datacenter (GPUs and facility) is donated permanently and cannot be recovered.
+SIM_DONATE_CONFIRM,捐建并启动,Donate & start
+SIM_DONATE_CANCEL,再想想,Reconsider
+NAV_GROUP_OTHER,其他,Other
+NAV_AUCTION,拍卖行,Auction
+TUTORIAL_TITLE,欢迎加入 Scaling Up,Welcome to Scaling Up
+TUTORIAL_PREV,上一步,Back
+TUTORIAL_NEXT,下一步,Next
+TUTORIAL_START,开始游戏,Start
+TUTORIAL_SKIP,不再显示,Don't show again
+TUTORIAL_PAGE_FMT,第 %d / 共 %d 页,Page %d of %d
+TUTORIAL_P1_TITLE,你是一家 AI 公司的创始人,You're the founder of an AI lab
+TUTORIAL_P1_BODY,"你的目标: 把模型做强、做出产品、赚到钱, 再把钱投回研发, 滚起飞轮。\n游戏每周一回合。安排好这一周的事 (招人 / 买算力 / 开训练 / 上产品) 后, 点顶栏的「推进回合」, 这一周就会结算: 任务推进、产生营收、扣掉开销。\n顶栏随时显示你的回合、现金、周净现金流、付费用户和算力。","Your goal: build strong models, ship products, make money, then reinvest it into R&D to spin up the flywheel.\nThe game runs one turn per week. Line up what you want this week (hire / buy compute / start training / launch a product), then hit Advance Turn in the top bar to settle the week: tasks progress, revenue comes in, costs go out.\nThe top bar always shows your turn, cash, weekly net cash flow, paid users and compute."
+TUTORIAL_P2_TITLE,训练一个模型,Training a model
+TUTORIAL_P2_BODY,"做强模型是公司的根基, 大致流程:\n· 招人: 在「招聘」雇 lead 和员工, 他们的专长决定训练加成。\n· 算力: 在「基建」建机房、买 GPU、选供电, 这是训练的硬件底子。\n· 数据: 在「数据」获取数据集 (开源 / 购买 / 采集), 训练时会被占用。\n· 开训练: 在「模型」点训练新模型, 选架构 / 规模 / 数据, 启动一个训练任务。\n· 推进回合: 训练要跑若干周, 完成后得到模型; 还要「评估」才能看到真实能力, 满意就「发布」。","Strong models are the foundation. The rough flow:\n· Hire: in Hiring, recruit leads and staff — their specialties give training bonuses.\n· Compute: in Infra, build datacenters, buy GPUs and pick power — the hardware your training runs on.\n· Data: in Data, get datasets (open-source / purchase / collect); they're locked while training.\n· Start training: in Models, start a new model — choose architecture / size / data to kick off a training task.\n· Advance turns: training takes several weeks; when done you get the model. Evaluate it to reveal its real capabilities, then Publish."
+TUTORIAL_P3_TITLE,创建与影响产品,Building and shaping products
+TUTORIAL_P3_BODY,"模型只有变成产品才会赚钱:\n· 创建产品: 在「产品」用一个已发布的模型创建产品 (聊天助手 / API 等), 模型越强, 产品上限越高。\n· 获取用户: 产品上线后吸引用户; 在「营销」投放可加速增长, 定价影响付费转化。\n· 产生营收: 用户带来周营收, 在「营收」能看到收入构成。\n· 持续影响: 换上更强的模型、研究相关科技、调整定价与营销, 都会改变它的表现。\n· 飞轮: 把营收投回招人 / 算力 / 研究, 做出更强的模型和产品。","Models only make money once they become products:\n· Create a product: in Products, build a product (assistant / API, etc.) on a published model — a stronger model raises the product's ceiling.\n· Get users: a launched product attracts users; Marketing campaigns speed up growth, and pricing affects paid conversion.\n· Earn revenue: users bring weekly revenue — see the breakdown in Revenue.\n· Keep shaping it: swap in a stronger model, research relevant tech, and tune pricing & marketing to change how it performs.\n· Flywheel: reinvest revenue into hiring / compute / research to build even better models and products."
+TUTORIAL_P4_TITLE,随时查看帮助,Help is always there
+TUTORIAL_P4_BODY,"迷路了不用慌。右侧导航最下方的「帮助」里, 有每个系统怎么玩的说明, 随时可以点开看。\n准备好了就点「开始游戏」, 开启你的 Scaling Up 之路。","Lost? No worries. The Help entry at the bottom of the right-hand navigation explains how each system works — open it any time.\nWhen you're ready, hit Start and begin your Scaling Up journey."
+NAV_HELP,帮助,Help
+HELP_REPLAY_TUTORIAL,重新查看新手引导,Replay tutorial
+HELP_TURN_TITLE,回合与时间,Turns & time
+HELP_TURN_BODY,"游戏以「周」为回合。你在一周内做决策 (招人 / 训练 / 产品 / 研究 / 捐助...), 然后点顶栏「推进回合」结算这一周。\n结算时: 进行中的任务推进进度、产品产生营收、扣除工资与运营开销、按规则收税。\n有未处理的事件时无法推进, 先去「事件」处理。","The game advances one week per turn. You make decisions during the week (hiring, training, products, research, donations...), then click Advance Turn in the top bar to settle it.\nOn settlement: in-progress tasks advance, products earn revenue, salaries and operating costs are deducted, and taxes apply on schedule.\nYou can't advance while events are pending — handle them in Events first."
+HELP_TRAINING_TITLE,模型训练,Model training
+HELP_TRAINING_BODY,"在「模型」训练并管理模型。新模型经历四个阶段: 预训练 → (可选) 后训练 → 评估 → 发布。\n训练时选架构族、模型规模、注意力 / Loss / 上下文等轴, 以及要喂的数据集; 规模和数据越大越强, 但更贵、更慢、更吃算力。\n训练完成的模型必须「评估」后才显示真实能力; 满意就「发布」, 之后才能拿去支撑产品。","Train and manage models in Models. A new model goes through four stages: pretrain → (optional) post-train → evaluate → publish.\nWhen training you pick an architecture family, model size, the attention / loss / context axes, and the datasets to feed it; bigger size and more data make a stronger model but cost more, take longer and need more compute.\nA finished model must be Evaluated before its true capabilities show; Publish it when satisfied so it can back a product."
+HELP_PRODUCT_TITLE,产品与营收,Products & revenue
+HELP_PRODUCT_BODY,"在「产品」用已发布模型创建产品。产品类型 (如聊天助手 / API / 行业应用) 有不同的解锁条件与用户/营收特征。\n产品靠模型能力吸引用户, 用户按定价转化为付费, 形成周营收 (在「营收」看构成)。\n想提升产品: 换更强的模型、研究相关科技、调整定价、在「营销」投放拉新。","In Products, create a product on a published model. Product types (assistant / API / vertical app...) have different unlock requirements and user/revenue profiles.\nProducts attract users via model capability; users convert to paying customers based on price, producing weekly revenue (see Revenue for the breakdown).\nTo improve a product: swap in a stronger model, research relevant tech, tune pricing, and run Marketing campaigns to grow."
+HELP_ECONOMY_TITLE,经济与融资,Economy & funding
+HELP_ECONOMY_BODY,"「经济」是钱的中枢。现金可以为负, 但赤字太久会破产 (游戏结束)。\n开销: 工资、运营、税。收入: 产品营收、出租闲置算力等。\n缺钱时可在「经济」借贷 (要还本付息) 或发起融资轮 (出让股权换现金, 创始人持股有下限)。周度财报和上周收支明细也在这里。","Economy is the money hub. Cash can go negative, but staying in deficit too long means bankruptcy (game over).\nCosts: salaries, operations, taxes. Income: product revenue, renting out idle compute, etc.\nWhen short on cash, take a loan in Economy (repaid with interest) or raise a funding round (trade equity for cash; your founder stake has a floor). Weekly financials and last week's ledger live here too."
+HELP_HIRING_TITLE,招聘与员工,Hiring & staff
+HELP_HIRING_BODY,"在「招聘」雇人, 在「员工」管理在册人员。\nLead 是具名骨干, 有不同专长 (预训练 / 后训练 / 研究 / 营销...), 给对应任务加成; 员工是按角色聚合的人力 (如工程师), 任务会占用空闲员工。\n雇人要付签字费, 每周还要发工资 —— 别让薪资压垮现金流。你本人作为创始人也在 leads 里, 免费且不可解雇。","Recruit in Hiring; manage your roster in Staff.\nLeads are named key people with specialties (pretrain / post-train / research / marketing...) that boost matching tasks; staff are role-based headcount (e.g. engineers) that tasks consume when idle.\nHiring costs a signing fee plus weekly salary — don't let payroll crush your cash flow. You, the founder, are also in the leads list: free and can't be fired."
+HELP_INFRA_TITLE,基建与算力,Infrastructure & compute
+HELP_INFRA_BODY,"在「基建」搭建你的算力。两种资产配套: 机房 (决定容量 / 场地档位) + GPU (单独购买, 一个机房只装一种型号)。\n还要选供电方式, 它影响电费、集群效率和声誉。算力 (FLOPs / 每秒 token) 决定你能训多大的模型、跑多快。\n闲置的自有算力可以对外出租赚钱; 公共开源模型也能在这里直接部署做推理服务。","Build your compute in Infra. Two paired assets: datacenters (set capacity / site tier) and GPUs (bought separately; one datacenter holds a single GPU type).\nYou also choose how it's powered, which affects electricity cost, cluster efficiency and reputation. Compute (FLOPs / tokens-per-sec) sets how big a model you can train and how fast.\nIdle owned compute can be rented out for income, and public open models can be served for inference right here."
+HELP_DATASET_TITLE,数据集,Datasets
+HELP_DATASET_BODY,"在「数据」获取训练用的数据。三种来源: 开源 (便宜、质量一般)、购买 (现成、要钱)、采集 (自己开任务攒, 可选模态与质量档)。\n每份数据集有规模 (token 数)、质量和模态 (文本 / 图像 / 音频 / 视频 / 代码)。训练时数据会被该任务锁定。\n预训练吃海量原始 token; 后训练是少量高质量数据, 用来定向拉高某个能力轴。","Get training data in Data. Three sources: open-source (cheap, average quality), purchase (ready-made, costs money), and collection (run a task to gather it yourself, choosing modality and quality tier).\nEach dataset has a size (tokens), quality and modality (text / image / audio / video / code). Data is locked by a task while it trains.\nPretraining eats huge raw token counts; post-training uses small high-quality data to sharpen a specific capability axis."
+HELP_TECH_TITLE,科技树,Tech tree
+HELP_TECH_BODY,"在「科技」研究技术节点, 永久提升你的能力。节点分多棵树 (架构 / 注意力 / Loss / 工程 / 应用 / 上下文), 有前置依赖, 解锁后给训练或推理带来加成 (如更长上下文、更高吞吐)。\n研究本身也是一个任务: 要投入 lead / 研究员 / 工程师和算力, 持续若干周, 期间占用算力, 且不可逆。\n注意有些方向是历史死路 (看似有纵深, 评分却被封顶), 选路要想清楚。","Research tech nodes in Tech for permanent upgrades. Nodes sit in several trees (architecture / attention / loss / engineering / application / context) with prerequisites; unlocking one boosts training or inference (longer context, higher throughput, etc.).\nResearch is itself a task: it needs leads / researchers / engineers and compute, runs for several weeks, ties up that compute, and is irreversible.\nNote some branches are historical dead ends (they look deep but their score is capped) — choose your path carefully."
+ECO_CAT_REVENUE,产品营收,Product Revenue
+ECO_CAT_FUNDING,融资,Funding
+ECO_CAT_GPU_RESALE,GPU 转售,GPU Resale
+ECO_CAT_GPU_RENTAL,GPU 出租,GPU Rental
+ECO_CAT_LOAN_IN,贷款进账,Loan Received
+ECO_CAT_TASK_REFUND,任务退款,Task Refund
+ECO_CAT_RENTAL_FEE,出租平台管理费,Rental Platform Fee
+ECO_CAT_SALARIES,工资,Salaries
+ECO_CAT_HIRE_FEE,招聘签约费,Signing Fee
+ECO_CAT_FACILITY_RENT,机房租金,Facility Rent
+ECO_CAT_FACILITY_BUILD,机房建设,Facility Construction
+ECO_CAT_GPU_RUNTIME,GPU 运行,GPU Runtime
+ECO_CAT_CLOUD_GPU,云 GPU,Cloud GPU
+ECO_CAT_GPU_PURCHASE,GPU 采购,GPU Purchase
+ECO_CAT_LOAN_INTEREST,贷款利息,Loan Interest
+ECO_CAT_LOAN_PRINCIPAL,贷款还本,Loan Principal
+ECO_CAT_LOAN_REPAID,主动还贷,Loan Repayment
+ECO_CAT_TASK_START,任务启动费,Task Startup Fee
+ECO_CAT_TASK_WEEKLY,任务周费,Task Weekly Fee
+ECO_CAT_DATASET_PURCHASE,数据集购买,Dataset Purchase
+ECO_CAT_CHARITY,慈善捐助,Charity Donation
+ECO_CAT_COLLECTIBLE_BUY,收藏品购买,Collectible Purchase
+ECO_CAT_COLLECTIBLE_SELL,收藏品出售,Collectible Sale
+ECO_CAT_SIMULATION,宇宙模拟,Universe Simulation
+ECO_CAT_CORP_TAX,企业所得税,Corporate Tax
+ECO_CAT_AI_UBI_TAX,AI 税(UBI),AI Tax (UBI)
+ECO_CAT_EVENT,事件,Event
+ECO_CAT_CAMPAIGN,营销,Marketing
+ECO_CAT_OTHER_EXPENSE,其他,Other
+TASK_MOD_LEAD_SPEEDUP,Lead 加速,Lead Speedup
+TASK_MOD_DATASET_QUALITY,数据质量,Data Quality
+TASK_MOD_DATA_BREADTH,通用底盘覆盖,General Data Breadth
+TASK_MOD_ARCH_CAPABILITY,架构能力系数,Arch Capability Coef.
+TASK_MOD_LEAD_SCORE_BONUS,科学家训练加分,Scientist Training Bonus
+TASK_MOD_CLUSTER_EFFICIENCY,集群效率,Cluster Efficiency
+TASK_MOD_ARCH_TRAIN,架构训练系数,Arch Training Coef.
+TASK_MOD_ATTENTION_TRAIN,注意力训练系数,Attention Training Coef.
+TASK_MOD_LOSS_TRAIN,Loss 训练系数,Loss Training Coef.
+TASK_MOD_CONTEXT_PENALTY,上下文长度成本,Context Length Cost
+TASK_MOD_LOSS_CAPABILITY,Loss 能力系数,Loss Capability Coef.
+TASK_MOD_STAFF_SPEEDUP,ML 工程师加速,ML Engineer Speedup
+INFRA_CLOUD_DC,云算力 ×%d 卡,Cloud GPUs ×%d
+FOUNDER_NEUTRAL,无出身,No Background
+TURN_LABEL,第 %d 周 · %s,Week %d · %s
+HELP_MARKETING_TITLE,营销,Marketing
+HELP_MARKETING_BODY,"在「营销」为产品投放营销活动, 加速用户增长。\n活动按周扣预算、需要营销员工, 不同细分受众 / 渠道效果不同; 营销做得好能放大产品获客, 但烧钱, 要和现金流平衡。\n营销加成不是永久的 —— 停投后增长会回落到产品自身的吸引力水平。","Run marketing campaigns for your products in Marketing to accelerate user growth.\nCampaigns spend a weekly budget and need marketing staff; different audience segments / channels perform differently. Good marketing amplifies a product's customer acquisition, but it burns cash — balance it against your cash flow.\nMarketing boosts aren't permanent — once you stop, growth falls back to the product's own pull."
+HELP_COMPETITORS_TITLE,竞争对手,Competitors
+HELP_COMPETITORS_BODY,"在「竞争对手」查看你和其他 AI 公司的排名。分两类榜单: 闭源模型榜和开源模型榜, 各按已发布模型的能力排座次。\n对手会随时间推出更强的模型, 把你挤下去; 你的排名影响声誉, 进而影响获客与融资。\n想往上爬, 就持续发布更强的模型、保持领先。","See how you rank against other AI companies in Competitors. There are two boards — closed-source and open-source models — each ranking published models by capability.\nRivals release stronger models over time and can push you down; your rank affects reputation, which in turn affects customer acquisition and funding.\nTo climb, keep publishing stronger models and stay ahead."
+HELP_TASKS_TITLE,任务,Tasks
+HELP_TASKS_BODY,"「任务」集中展示所有进行中任务的进度, 也能取消它们。\n训练、后训练、评估、数据采集、科技研究、捐助都是任务 —— 它们在对应界面 (模型 / 数据 / 科技 / 慈善) 启动, 占用 lead / 员工 / 算力, 每推进一回合走若干进度, 完成时结算产出。\n这里不新建任务, 只看进度和喊停; 算力 / 人力被占满时, 新任务起不来。","Tasks shows the progress of everything currently running, and lets you cancel them.\nTraining, post-training, evaluation, data collection, tech research and donations are all tasks — you start them from their own screens (Models / Data / Tech / Charity); they tie up leads / staff / compute, advance some progress each turn, and settle their output on completion.\nYou don't create tasks here — just watch progress and stop them. When compute or staff are fully booked, new tasks can't start."
+HELP_EVENTS_TITLE,事件,Events
+HELP_EVENTS_BODY,"「事件」是每隔一段时间触发的卡牌, 给你抉择或随机冲击 (机遇 / 危机 / 行业动态)。\n有待处理的事件时, 顶栏「推进回合」会被锁住 —— 必须先在这里做出选择才能继续推进。\n不同选项有不同的代价与收益, 有的还会留下后续影响; 仔细读再决定。","Events are cards that trigger every so often, giving you choices or random shocks (opportunities / crises / industry news).\nWhile an event is pending, the Advance Turn button is locked — you must resolve it here before you can move on.\nDifferent options carry different costs and rewards, and some leave lasting effects; read carefully before deciding."
+HELP_CHARITY_TITLE,慈善,Charity
+HELP_CHARITY_BODY,"「慈善」是后期的现金出口: 向公益方向 (生物科学 / 基础超算 / 失业援助) 阶梯式捐助。\n每次捐助是一个任务: 当周一次性扣钱、可全额抵税, 完成后激活一个小而封顶的长期加成 (如估值乘子 / 营销转化)。每个方向三档, 顺序爬梯、每档只捐一次。\n捐够了还会解锁「宇宙模拟」终极工程。这是钱多了之后的去处, 不是开局重点。","Charity is a late-game cash sink: make tiered donations to causes (bio science / fundamental compute / unemployment relief).\nEach donation is a task — it costs cash that week (fully tax-deductible) and, on completion, activates a small capped long-term bonus (e.g. valuation multiplier / marketing conversion). Each cause has three tiers, climbed in order, once each.\nDonate enough and you unlock the 'universe simulation' capstone project. This is where surplus cash goes — not an early-game focus."
+HELP_COLLECTION_TITLE,收藏与拍卖,Collectibles & auction
+HELP_COLLECTION_BODY,"「拍卖行」按当前市价买入收藏品 (限量艺术品 / 卡牌 / 超跑等), 它们是会增值的资产: 市价随游戏日历沿增值曲线上涨 (有上限)。\n买到的藏品在「办公室」的收藏柜里管理, 可按市价卖出 (扣一点抽成)。\n这是把闲钱变成增值资产的玩法, 也是后期 money sink; 办公室里还会陈列你获得的奖杯。","The Auction house sells collectibles (limited art / cards / supercars, etc.) at the current market price — they're appreciating assets whose price rises along a value curve as the in-game calendar advances (with a cap).\nWhat you buy is managed in the cabinet in your Office, and can be sold at market price (minus a small fee).\nIt's a way to turn idle cash into appreciating assets and a late-game money sink; your Office also displays the trophies you've earned."

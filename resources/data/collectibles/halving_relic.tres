@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CollectibleSpec" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/collectible_spec.gd" id="1_col"]
+
+[resource]
+script = ExtResource("1_col")
+id = &"halving_relic"
+category = &"crypto"
+display_name = "减半之夜·纪念铭牌"
+description = "产量减半那一夜铸下的纪念铭牌。"
+curve_years = Array[int]([2020, 2025, 2035, 2070])
+curve_prices = Array[int]([40000, 12000000, 90000000, 200000000])
+appear_weight = 0.5

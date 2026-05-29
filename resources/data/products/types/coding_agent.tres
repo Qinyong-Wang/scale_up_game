@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="ProductTypeSpec" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/product_type_spec.gd" id="1_pts"]
+
+[resource]
+script = ExtResource("1_pts")
+id = &"coding_agent"
+display_name = "Coding Agent"
+unlock_thresholds = {
+&"code": 70.0,
+}
+required_modalities = Array[StringName]([])
+tokens_per_user_per_month = 1000000000
+tokens_per_user_per_week = 1000000000
+default_subscription_price = 50
+subscription_price_guidance = 50
+capability_penalty_axis = &"code"
+capability_penalty_tiers = [{
+"below": 80.0,
+"rate": -0.025
+}, {
+"below": 90.0,
+"rate": -0.015
+}]
+lead_specialty_bonus = &"chief_engineer"
+application_node_required = &"fox_code_specialist"
+max_subscribers = 200000000

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EventCard" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/event_card.gd" id="1_ec"]
+[resource]
+script = ExtResource("1_ec")
+id = &"history_encoder_pretraining"
+category = &"flavor"
+title = "历史档案: 自监督预训练席卷文本理解"
+body = "2018 年, 研究者发现先用海量文本做自监督预训练, 再针对任务微调, 可以显著提升问答、分类和检索等能力。编码器路线短期很耀眼, 也让数据规模开始变成团队会议里的高频词。"
+min_turn = 70
+weight = 0
+cooldown_months = 9999
+max_triggers = 1

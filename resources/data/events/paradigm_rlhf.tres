@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EventCard" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/event_card.gd" id="1_ec"]
+
+[resource]
+script = ExtResource("1_ec")
+id = &"paradigm_rlhf"
+category = &"flavor"
+title = "OrcaLab 发布 ChatBird — RLHF 范式来临"
+body = "OrcaLab 推出基于人类反馈训练的对话助手 ChatBird, 能理解复杂指令、拒绝有害请求, 多轮对话连贯性惊人. 行业沸腾, 头部实验室连夜调整路线图准备复刻 RLHF 范式. 闭源 top 与开源 top 公司均吸收新范式, 未来步长提速."
+min_turn = 282
+weight = 0
+cooldown_months = 9999

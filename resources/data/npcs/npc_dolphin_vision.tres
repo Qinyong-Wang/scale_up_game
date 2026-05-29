@@ -1,0 +1,177 @@
+[gd_resource type="Resource" script_class="NpcCompany" load_steps=14 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/npc_company.gd" id="1_npc"]
+[ext_resource type="Script" path="res://scripts/resources/npc_model_release.gd" id="2_rel"]
+
+[sub_resource type="Resource" id="release_dolphin_1"]
+script = ExtResource("2_rel")
+id = &"release_dolphin_1"
+display_name = "Dolphin-1"
+release_turn = 260
+capability = {"general": 10.0, "code": 5.0, "reasoning": 12.0, "multimodal": 38.0, "agent": 0.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t1"
+cluster_gpu_count = 3000
+training_weeks = 24
+params_b = 90.0
+active_params_b = 90.0
+dataset_tokens_b = 2500.0
+arch_codename = &"ant_v3"
+
+[sub_resource type="Resource" id="release_dolphin_1_5"]
+script = ExtResource("2_rel")
+id = &"release_dolphin_1_5"
+display_name = "Dolphin-1.5"
+release_turn = 305
+capability = {"general": 14.0, "code": 8.0, "reasoning": 16.0, "multimodal": 52.0, "agent": 0.0}
+release_kind = &"multimodal_posttrain"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_dolphin_2"]
+script = ExtResource("2_rel")
+id = &"release_dolphin_2"
+display_name = "Dolphin-2"
+release_turn = 340
+capability = {"general": 32.0, "code": 22.0, "reasoning": 35.0, "multimodal": 78.0, "agent": 12.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t2"
+cluster_gpu_count = 12000
+training_weeks = 26
+params_b = 600.0
+active_params_b = 90.0
+dataset_tokens_b = 7500.0
+arch_codename = &"octopus_v2"
+
+[sub_resource type="Resource" id="release_dolphin_2_5"]
+script = ExtResource("2_rel")
+id = &"release_dolphin_2_5"
+display_name = "Dolphin-2.5"
+release_turn = 390
+capability = {"general": 40.0, "code": 28.0, "reasoning": 42.0, "multimodal": 92.0, "agent": 22.0}
+release_kind = &"multimodal_posttrain"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_dolphin_3"]
+script = ExtResource("2_rel")
+id = &"release_dolphin_3"
+display_name = "Dolphin-3"
+release_turn = 425
+capability = {"general": 58.0, "code": 42.0, "reasoning": 60.0, "multimodal": 108.0, "agent": 42.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t2"
+cluster_gpu_count = 35000
+training_weeks = 26
+params_b = 1800.0
+active_params_b = 250.0
+dataset_tokens_b = 20000.0
+arch_codename = &"octopus_sparse"
+
+[sub_resource type="Resource" id="release_dolphin_3_5"]
+script = ExtResource("2_rel")
+id = &"release_dolphin_3_5"
+display_name = "Dolphin-3.5"
+release_turn = 490
+capability = {"general": 68.0, "code": 50.0, "reasoning": 70.0, "multimodal": 122.0, "agent": 55.0}
+release_kind = &"multimodal_posttrain"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_dolphin_4"]
+script = ExtResource("2_rel")
+id = &"release_dolphin_4"
+display_name = "Dolphin-4"
+release_turn = 530
+capability = {"general": 82.0, "code": 65.0, "reasoning": 85.0, "multimodal": 138.0, "agent": 72.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 120000
+training_weeks = 28
+params_b = 4500.0
+active_params_b = 620.0
+dataset_tokens_b = 42000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_dolphin_5"]
+script = ExtResource("2_rel")
+id = &"release_dolphin_5"
+display_name = "Dolphin-5"
+release_turn = 700
+capability = {"general": 108.0, "code": 92.0, "reasoning": 115.0, "multimodal": 172.0, "agent": 105.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 400000
+training_weeks = 28
+params_b = 9500.0
+active_params_b = 1300.0
+dataset_tokens_b = 90000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_dolphin_6"]
+script = ExtResource("2_rel")
+id = &"release_dolphin_6"
+display_name = "Dolphin-6"
+release_turn = 870
+capability = {"general": 138.0, "code": 122.0, "reasoning": 145.0, "multimodal": 208.0, "agent": 142.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 1000000
+training_weeks = 28
+params_b = 18000.0
+active_params_b = 2200.0
+dataset_tokens_b = 170000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_dolphin_7"]
+script = ExtResource("2_rel")
+id = &"release_dolphin_7"
+display_name = "Dolphin-7"
+release_turn = 1050
+capability = {"general": 170.0, "code": 155.0, "reasoning": 178.0, "multimodal": 245.0, "agent": 180.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 2200000
+training_weeks = 28
+params_b = 32000.0
+active_params_b = 3700.0
+dataset_tokens_b = 280000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_dolphin_8"]
+script = ExtResource("2_rel")
+id = &"release_dolphin_8"
+display_name = "Dolphin-8"
+release_turn = 1230
+capability = {"general": 202.0, "code": 188.0, "reasoning": 212.0, "multimodal": 282.0, "agent": 218.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 4200000
+training_weeks = 28
+params_b = 52000.0
+active_params_b = 5900.0
+dataset_tokens_b = 420000.0
+arch_codename = &"octopus_super_sparse"
+
+[resource]
+script = ExtResource("1_npc")
+id = &"npc_dolphin_vision"
+display_name = "Dolphin Vision"
+is_open_source = false
+board_membership = [&"sub_multimodal"]
+model_releases = [SubResource("release_dolphin_1"), SubResource("release_dolphin_1_5"), SubResource("release_dolphin_2"), SubResource("release_dolphin_2_5"), SubResource("release_dolphin_3"), SubResource("release_dolphin_3_5"), SubResource("release_dolphin_4"), SubResource("release_dolphin_5"), SubResource("release_dolphin_6"), SubResource("release_dolphin_7"), SubResource("release_dolphin_8")]

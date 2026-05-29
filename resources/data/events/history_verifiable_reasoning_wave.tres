@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EventCard" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/event_card.gd" id="1_ec"]
+[resource]
+script = ExtResource("1_ec")
+id = &"history_verifiable_reasoning_wave"
+category = &"flavor"
+title = "历史档案: 可验证推理成为新焦点"
+body = "2025 年, 越来越多团队把数学、代码和可自动检查任务作为训练信号, 让模型在回答前花更多计算做推理。行业开始重新分配预算: 不只训练更大模型, 也训练更会想的模型。"
+min_turn = 430
+weight = 0
+cooldown_months = 9999
+max_triggers = 1

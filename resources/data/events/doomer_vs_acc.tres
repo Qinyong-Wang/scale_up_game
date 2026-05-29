@@ -1,0 +1,51 @@
+[gd_resource type="Resource" script_class="EventCard" load_steps=10 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/event_card.gd" id="1_ec"]
+[ext_resource type="Script" path="res://scripts/resources/event_option.gd" id="2_eo"]
+[ext_resource type="Script" path="res://scripts/resources/event_effect.gd" id="3_ef"]
+
+[sub_resource type="Resource" id="eff_0"]
+script = ExtResource("3_ef")
+kind = &"product_boost_subscribers"
+params = {"pct": 0.08, "floor": 120, "cap": 80000000}
+
+[sub_resource type="Resource" id="eff_1"]
+script = ExtResource("3_ef")
+kind = &"economy_spend"
+params = {"pct": 0.03, "floor": 10000, "cap": 10000000}
+
+[sub_resource type="Resource" id="opt_accelerate"]
+script = ExtResource("2_eo")
+id = &"accelerate"
+label = "选边加速派, 全力冲产品"
+effects = [SubResource("eff_0"), SubResource("eff_1")]
+
+[sub_resource type="Resource" id="eff_2"]
+script = ExtResource("3_ef")
+kind = &"economy_spend"
+params = {"pct": 0.03, "floor": 10000, "cap": 10000000}
+
+[sub_resource type="Resource" id="eff_3"]
+script = ExtResource("3_ef")
+kind = &"product_boost_subscribers"
+params = {"pct": -0.04, "floor": 60, "cap": 40000000}
+
+[sub_resource type="Resource" id="opt_safety"]
+script = ExtResource("2_eo")
+id = &"safety"
+label = "选边末日派, 放慢脚步搞对齐"
+effects = [SubResource("eff_2"), SubResource("eff_3")]
+
+[resource]
+script = ExtResource("1_ec")
+id = &"doomer_vs_acc"
+category = &"opportunity"
+title = "公司内部『末日派』与『加速派』吵翻了"
+body = "茶水间的争论升级成了全公司战争: 一派坚信再不踩刹车就要『毁灭人类』, 另一派 T 恤上印着『全速前进』。两边都堵在你办公室门口。"
+min_turn = 40
+requires_staff_min = 2
+requires_product = true
+weight = 8
+cooldown_months = 60
+max_triggers = 1
+options = [SubResource("opt_accelerate"), SubResource("opt_safety")]

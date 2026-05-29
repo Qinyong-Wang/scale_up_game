@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ProductTypeSpec" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/product_type_spec.gd" id="1_pts"]
+
+[resource]
+script = ExtResource("1_pts")
+id = &"api"
+display_name = "API"
+unlock_thresholds = {}
+required_modalities = Array[StringName]([])
+tokens_per_user_per_month = 0
+tokens_per_user_per_week = 0
+default_subscription_price = 0
+subscription_price_guidance = 0
+lead_specialty_bonus = &"chief_engineer"
+application_node_required = &""
+max_subscribers = 0
+revenue_cap_per_week = 10000000000

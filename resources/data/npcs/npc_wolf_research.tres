@@ -1,0 +1,252 @@
+[gd_resource type="Resource" script_class="NpcCompany" load_steps=19 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/npc_company.gd" id="1_npc"]
+[ext_resource type="Script" path="res://scripts/resources/npc_model_release.gd" id="2_rel"]
+
+[sub_resource type="Resource" id="release_wolf_1"]
+script = ExtResource("2_rel")
+id = &"release_wolf_1"
+display_name = "Wolf-1"
+release_turn = 215
+capability = {"general": 12.0, "code": 8.0, "reasoning": 8.0, "multimodal": 0.0, "agent": 0.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t1"
+cluster_gpu_count = 2000
+training_weeks = 22
+params_b = 13.0
+active_params_b = 13.0
+dataset_tokens_b = 200.0
+arch_codename = &"ant_v2"
+
+[sub_resource type="Resource" id="release_wolf_1_5"]
+script = ExtResource("2_rel")
+id = &"release_wolf_1_5"
+display_name = "Wolf-1.5"
+release_turn = 250
+capability = {"general": 18.0, "code": 12.0, "reasoning": 14.0, "multimodal": 0.0, "agent": 0.0}
+release_kind = &"rlhf"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_wolf_2"]
+script = ExtResource("2_rel")
+id = &"release_wolf_2"
+display_name = "Wolf-2"
+release_turn = 285
+capability = {"general": 30.0, "code": 18.0, "reasoning": 22.0, "multimodal": 8.0, "agent": 5.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t1"
+cluster_gpu_count = 5000
+training_weeks = 24
+params_b = 70.0
+active_params_b = 70.0
+dataset_tokens_b = 1500.0
+arch_codename = &"ant_v3"
+
+[sub_resource type="Resource" id="release_wolf_2_3"]
+script = ExtResource("2_rel")
+id = &"release_wolf_2_3"
+display_name = "Wolf-2.3"
+release_turn = 310
+capability = {"general": 35.0, "code": 22.0, "reasoning": 28.0, "multimodal": 10.0, "agent": 8.0}
+release_kind = &"rlhf"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_wolf_3"]
+script = ExtResource("2_rel")
+id = &"release_wolf_3"
+display_name = "Wolf-3"
+release_turn = 330
+capability = {"general": 65.0, "code": 52.0, "reasoning": 55.0, "multimodal": 35.0, "agent": 15.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t2"
+cluster_gpu_count = 16000
+training_weeks = 25
+params_b = 405.0
+active_params_b = 405.0
+dataset_tokens_b = 11000.0
+arch_codename = &"ant_v4"
+
+[sub_resource type="Resource" id="release_wolf_3_5"]
+script = ExtResource("2_rel")
+id = &"release_wolf_3_5"
+display_name = "Wolf-3.5"
+release_turn = 380
+capability = {"general": 72.0, "code": 58.0, "reasoning": 62.0, "multimodal": 42.0, "agent": 22.0}
+release_kind = &"rlhf"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_wolf_4"]
+script = ExtResource("2_rel")
+id = &"release_wolf_4"
+display_name = "Wolf-4"
+release_turn = 410
+capability = {"general": 85.0, "code": 72.0, "reasoning": 82.0, "multimodal": 72.0, "agent": 40.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t2"
+cluster_gpu_count = 32000
+training_weeks = 26
+params_b = 1000.0
+active_params_b = 150.0
+dataset_tokens_b = 20000.0
+arch_codename = &"octopus_v2"
+
+[sub_resource type="Resource" id="release_wolf_4_5"]
+script = ExtResource("2_rel")
+id = &"release_wolf_4_5"
+display_name = "Wolf-4.5"
+release_turn = 460
+capability = {"general": 92.0, "code": 78.0, "reasoning": 88.0, "multimodal": 80.0, "agent": 52.0}
+release_kind = &"reasoning_rl"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_wolf_5"]
+script = ExtResource("2_rel")
+id = &"release_wolf_5"
+display_name = "Wolf-5"
+release_turn = 510
+capability = {"general": 105.0, "code": 92.0, "reasoning": 102.0, "multimodal": 95.0, "agent": 72.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 200000
+training_weeks = 28
+params_b = 2000.0
+active_params_b = 280.0
+dataset_tokens_b = 28000.0
+arch_codename = &"octopus_sparse"
+
+[sub_resource type="Resource" id="release_wolf_5_5"]
+script = ExtResource("2_rel")
+id = &"release_wolf_5_5"
+display_name = "Wolf-5.5"
+release_turn = 580
+capability = {"general": 118.0, "code": 105.0, "reasoning": 115.0, "multimodal": 108.0, "agent": 92.0}
+release_kind = &"rlhf"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_wolf_6"]
+script = ExtResource("2_rel")
+id = &"release_wolf_6"
+display_name = "Wolf-6"
+release_turn = 640
+capability = {"general": 128.0, "code": 115.0, "reasoning": 125.0, "multimodal": 118.0, "agent": 108.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 500000
+training_weeks = 28
+params_b = 5000.0
+active_params_b = 680.0
+dataset_tokens_b = 60000.0
+arch_codename = &"octopus_sparse"
+
+[sub_resource type="Resource" id="release_wolf_6_5"]
+script = ExtResource("2_rel")
+id = &"release_wolf_6_5"
+display_name = "Wolf-6.5"
+release_turn = 720
+capability = {"general": 138.0, "code": 128.0, "reasoning": 138.0, "multimodal": 130.0, "agent": 122.0}
+release_kind = &"reasoning_rl"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_wolf_7"]
+script = ExtResource("2_rel")
+id = &"release_wolf_7"
+display_name = "Wolf-7"
+release_turn = 800
+capability = {"general": 150.0, "code": 140.0, "reasoning": 148.0, "multimodal": 142.0, "agent": 138.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 1000000
+training_weeks = 28
+params_b = 10000.0
+active_params_b = 1300.0
+dataset_tokens_b = 110000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_wolf_8"]
+script = ExtResource("2_rel")
+id = &"release_wolf_8"
+display_name = "Wolf-8"
+release_turn = 940
+capability = {"general": 180.0, "code": 172.0, "reasoning": 182.0, "multimodal": 175.0, "agent": 172.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 2000000
+training_weeks = 28
+params_b = 22000.0
+active_params_b = 2700.0
+dataset_tokens_b = 200000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_wolf_9"]
+script = ExtResource("2_rel")
+id = &"release_wolf_9"
+display_name = "Wolf-9"
+release_turn = 1080
+capability = {"general": 215.0, "code": 208.0, "reasoning": 220.0, "multimodal": 210.0, "agent": 208.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 3500000
+training_weeks = 30
+params_b = 38000.0
+active_params_b = 4500.0
+dataset_tokens_b = 320000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_wolf_10"]
+script = ExtResource("2_rel")
+id = &"release_wolf_10"
+display_name = "Wolf-10"
+release_turn = 1220
+capability = {"general": 255.0, "code": 250.0, "reasoning": 262.0, "multimodal": 250.0, "agent": 252.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 5500000
+training_weeks = 30
+params_b = 60000.0
+active_params_b = 6800.0
+dataset_tokens_b = 460000.0
+arch_codename = &"octopus_super_sparse"
+
+[resource]
+script = ExtResource("1_npc")
+id = &"npc_wolf_research"
+display_name = "Wolf Research"
+is_open_source = true
+board_membership = [&"open_source", &"sub_general"]
+model_releases = [SubResource("release_wolf_1"), SubResource("release_wolf_1_5"), SubResource("release_wolf_2"), SubResource("release_wolf_2_3"), SubResource("release_wolf_3"), SubResource("release_wolf_3_5"), SubResource("release_wolf_4"), SubResource("release_wolf_4_5"), SubResource("release_wolf_5"), SubResource("release_wolf_5_5"), SubResource("release_wolf_6"), SubResource("release_wolf_6_5"), SubResource("release_wolf_7"), SubResource("release_wolf_8"), SubResource("release_wolf_9"), SubResource("release_wolf_10")]

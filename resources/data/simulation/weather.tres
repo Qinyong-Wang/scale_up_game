@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SimulationStageSpec" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/simulation_stage_spec.gd" id="1_sim"]
+
+[resource]
+script = ExtResource("1_sim")
+id = &"weather"
+order = 0
+display_name = "气象模拟"
+description = "从全球天气系统开始——把大气环流、云与降水塞进算力，先学会预测一场雨。"
+cost = 1000000000
+weeks = 8
+min_train_tflops = 20000000.0

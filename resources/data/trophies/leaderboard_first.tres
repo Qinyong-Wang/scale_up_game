@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="TrophySpec" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/trophy_spec.gd" id="1_tr"]
+
+[resource]
+script = ExtResource("1_tr")
+id = &"leaderboard_first"
+display_name = "登顶总榜"
+description = "在总排行榜上力压所有对手，登上第一。"
+unlock_hint = "公司在总榜上排名第一"
+form = &"trophy"
+flavor = "深夜的办公室只剩屏幕的微光。榜单刷新的那一刻、所有竞争者的名字都排到了你身后。"

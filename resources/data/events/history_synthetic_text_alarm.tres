@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EventCard" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/event_card.gd" id="1_ec"]
+[resource]
+script = ExtResource("1_ec")
+id = &"history_synthetic_text_alarm"
+category = &"flavor"
+title = "历史档案: 合成文本风险第一次破圈"
+body = "2019 年, 一些团队开始分阶段公开强文本生成系统, 担心它被用于垃圾内容、钓鱼和舆论操纵。技术发布不再只是论文问题, 也变成安全、滥用和责任边界的问题。"
+min_turn = 104
+weight = 0
+cooldown_months = 9999
+max_triggers = 1

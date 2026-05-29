@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="EventCard" load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/event_card.gd" id="1_ec"]
+[ext_resource type="Script" path="res://scripts/resources/event_option.gd" id="2_eo"]
+[ext_resource type="Script" path="res://scripts/resources/event_effect.gd" id="3_ef"]
+
+[sub_resource type="Resource" id="eff_0"]
+script = ExtResource("3_ef")
+kind = &"economy_spend"
+params = {"pct": 0.008, "floor": 2000, "cap": 3000000}
+
+[sub_resource type="Resource" id="eff_1"]
+script = ExtResource("3_ef")
+kind = &"product_boost_subscribers"
+params = {"pct": 0.1, "floor": 100, "cap": 100000000}
+
+[sub_resource type="Resource" id="opt_speak"]
+script = ExtResource("2_eo")
+id = &"speak"
+label = "上台演讲, 自费差旅"
+effects = [SubResource("eff_0"), SubResource("eff_1")]
+
+[sub_resource type="Resource" id="opt_decline"]
+script = ExtResource("2_eo")
+id = &"decline"
+label = "婉拒邀请"
+effects = []
+
+[resource]
+script = ExtResource("1_ec")
+id = &"conference_keynote"
+category = &"opportunity"
+title = "顶级 AI 大会邀请你做主题演讲"
+body = "行业顶会向你发来主题演讲邀请, 差旅自理, 但曝光拉满。"
+min_turn = 4
+requires_published_model = true
+requires_product = true
+weight = 10
+cooldown_months = 24
+options = [SubResource("opt_speak"), SubResource("opt_decline")]

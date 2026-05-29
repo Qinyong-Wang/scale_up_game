@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CollectibleSpec" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/collectible_spec.gd" id="1_col"]
+
+[resource]
+script = ExtResource("1_col")
+id = &"sealed_starter"
+category = &"trading_card"
+display_name = "初版·未拆起始包"
+description = "从未拆封的初版起始套牌。"
+curve_years = Array[int]([2002, 2025, 2045, 2070])
+curve_prices = Array[int]([3000000, 37500000, 97500000, 150000000])
+appear_weight = 0.5

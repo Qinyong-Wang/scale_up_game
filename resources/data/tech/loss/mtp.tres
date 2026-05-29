@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="TechNode" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/tech_node.gd" id="1_tn"]
+
+[resource]
+script = ExtResource("1_tn")
+id = &"mtp"
+tree = &"loss"
+display_name = "Multi-Token Prediction (DeepSeek-V3)"
+description = "DeepSeek-V3 引入的多 token 预测 loss; 训练加速 + 评估能力提升."
+prerequisites = Array[StringName]([&"zloss"])
+research_cost = 0
+research_months = 32
+effects = {
+	&"train_coef": 1.10,
+	&"capability_coef": 1.08,
+}
+effects_summary = "训练 +10% · 评估分数 +8%"
+min_researchers = 3
+min_engineers = 2
+min_gpu_count = 32

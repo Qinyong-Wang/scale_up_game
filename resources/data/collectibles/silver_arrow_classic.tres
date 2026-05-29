@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CollectibleSpec" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/collectible_spec.gd" id="1_col"]
+
+[resource]
+script = ExtResource("1_col")
+id = &"silver_arrow_classic"
+category = &"supercar"
+display_name = "银箭·古典赛车"
+description = "上世纪传奇的银色古典赛车。"
+curve_years = Array[int]([1955, 2040, 2070])
+curve_prices = Array[int]([150000000, 350000000, 500000000])
+appear_weight = 0.2

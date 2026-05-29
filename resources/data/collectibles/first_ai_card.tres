@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CollectibleSpec" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/collectible_spec.gd" id="1_col"]
+
+[resource]
+script = ExtResource("1_col")
+id = &"first_ai_card"
+category = &"ai_hardware"
+display_name = "第一台 AI 训练卡"
+description = "点燃整个智能时代的那块初代训练加速卡。随着 AI 写进历史，它从一块旧硬件变成博物馆级藏品。"
+curve_years = Array[int]([2017, 2035, 2055, 2070])
+curve_prices = Array[int]([5000, 50000000, 2000000000, 8000000000])
+appear_weight = 0.08

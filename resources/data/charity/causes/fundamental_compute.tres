@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CharityCauseSpec" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/charity_cause_spec.gd" id="1_charity"]
+
+[resource]
+script = ExtResource("1_charity")
+id = &"fundamental_compute"
+display_name = "基础物理与超算捐助"
+description = "为探索人类知识边界的公共超算与基础物理项目捐助算力。高调的科学投入让投资人给出估值溢价。"
+effect_kind = &"valuation_mult"
+tier_amounts = Array[int]([10000000, 100000000, 1000000000])
+tier_weeks = Array[int]([4, 12, 26])
+tier_bonuses = Array[float]([0.01, 0.03, 0.05])
+tier_labels = Array[String](["区域级捐助", "国家级捐助", "全球级捐助"])

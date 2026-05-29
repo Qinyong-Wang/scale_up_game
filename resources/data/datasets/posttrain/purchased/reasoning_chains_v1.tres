@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="PosttrainDatasetTemplate" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/posttrain_dataset_template.gd" id="1_pst"]
+
+[resource]
+script = ExtResource("1_pst")
+id = &"reasoning_chains_v1"
+display_name = "Reasoning Chains v1"
+source = &"purchased"
+size = 0.03
+quality = 0.88
+target_capability = &"reasoning"
+coverage_tags = Array[StringName]([&"reasoning", &"math"])
+price = 4500000
+released_at_week = 286

@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="TechNode" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/tech_node.gd" id="1_tn"]
+
+[resource]
+script = ExtResource("1_tn")
+id = &"octopus_sparse"
+tree = &"arch"
+display_name = "Octopus Sparse MoE 1/20 (~DeepSeek-V3)"
+description = "稀疏 MoE: 每 token 只激活 1/20 参数 (≈ DeepSeek-V3). 训练成本骤降, 但数据需求更大. 历史首次量产 2024 年末."
+prerequisites = Array[StringName]([&"octopus_v2"])
+research_cost = 0
+research_months = 48
+effects = {
+	&"train_coef": 1.5,
+	&"inference_coef": 1.0,
+}
+effects_summary = "训练 ×30 · 推理 ×20 (1/20 激活)"
+min_researchers = 5
+min_engineers = 8
+min_gpu_count = 256

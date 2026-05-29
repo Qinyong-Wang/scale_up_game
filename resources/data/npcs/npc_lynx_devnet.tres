@@ -1,0 +1,177 @@
+[gd_resource type="Resource" script_class="NpcCompany" load_steps=14 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/npc_company.gd" id="1_npc"]
+[ext_resource type="Script" path="res://scripts/resources/npc_model_release.gd" id="2_rel"]
+
+[sub_resource type="Resource" id="release_lynx_1"]
+script = ExtResource("2_rel")
+id = &"release_lynx_1"
+display_name = "Lynx-1"
+release_turn = 345
+capability = {"general": 18.0, "code": 45.0, "reasoning": 20.0, "multimodal": 0.0, "agent": 6.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t2"
+cluster_gpu_count = 4000
+training_weeks = 22
+params_b = 90.0
+active_params_b = 90.0
+dataset_tokens_b = 1200.0
+arch_codename = &"ant_v4"
+
+[sub_resource type="Resource" id="release_lynx_1_5"]
+script = ExtResource("2_rel")
+id = &"release_lynx_1_5"
+display_name = "Lynx-1.5"
+release_turn = 390
+capability = {"general": 22.0, "code": 58.0, "reasoning": 28.0, "multimodal": 6.0, "agent": 18.0}
+release_kind = &"tool_use_posttrain"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_lynx_2"]
+script = ExtResource("2_rel")
+id = &"release_lynx_2"
+display_name = "Lynx-2"
+release_turn = 430
+capability = {"general": 45.0, "code": 86.0, "reasoning": 52.0, "multimodal": 18.0, "agent": 30.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t2"
+cluster_gpu_count = 14000
+training_weeks = 24
+params_b = 600.0
+active_params_b = 90.0
+dataset_tokens_b = 9000.0
+arch_codename = &"octopus_v2"
+
+[sub_resource type="Resource" id="release_lynx_2_5"]
+script = ExtResource("2_rel")
+id = &"release_lynx_2_5"
+display_name = "Lynx-2.5"
+release_turn = 500
+capability = {"general": 55.0, "code": 98.0, "reasoning": 65.0, "multimodal": 28.0, "agent": 48.0}
+release_kind = &"reasoning_rl"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_lynx_3"]
+script = ExtResource("2_rel")
+id = &"release_lynx_3"
+display_name = "Lynx-3"
+release_turn = 560
+capability = {"general": 78.0, "code": 118.0, "reasoning": 88.0, "multimodal": 55.0, "agent": 75.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 70000
+training_weeks = 26
+params_b = 2500.0
+active_params_b = 360.0
+dataset_tokens_b = 24000.0
+arch_codename = &"octopus_sparse"
+
+[sub_resource type="Resource" id="release_lynx_3_5"]
+script = ExtResource("2_rel")
+id = &"release_lynx_3_5"
+display_name = "Lynx-3.5"
+release_turn = 640
+capability = {"general": 88.0, "code": 132.0, "reasoning": 98.0, "multimodal": 65.0, "agent": 92.0}
+release_kind = &"tool_use_posttrain"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_lynx_4"]
+script = ExtResource("2_rel")
+id = &"release_lynx_4"
+display_name = "Lynx-4"
+release_turn = 710
+capability = {"general": 105.0, "code": 152.0, "reasoning": 120.0, "multimodal": 88.0, "agent": 120.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 280000
+training_weeks = 28
+params_b = 6000.0
+active_params_b = 850.0
+dataset_tokens_b = 60000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_lynx_5"]
+script = ExtResource("2_rel")
+id = &"release_lynx_5"
+display_name = "Lynx-5"
+release_turn = 870
+capability = {"general": 135.0, "code": 185.0, "reasoning": 150.0, "multimodal": 115.0, "agent": 150.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 850000
+training_weeks = 28
+params_b = 13000.0
+active_params_b = 1700.0
+dataset_tokens_b = 115000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_lynx_6"]
+script = ExtResource("2_rel")
+id = &"release_lynx_6"
+display_name = "Lynx-6"
+release_turn = 1030
+capability = {"general": 165.0, "code": 218.0, "reasoning": 180.0, "multimodal": 145.0, "agent": 185.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 1700000
+training_weeks = 28
+params_b = 26000.0
+active_params_b = 3100.0
+dataset_tokens_b = 215000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_lynx_7"]
+script = ExtResource("2_rel")
+id = &"release_lynx_7"
+display_name = "Lynx-7"
+release_turn = 1190
+capability = {"general": 198.0, "code": 252.0, "reasoning": 215.0, "multimodal": 178.0, "agent": 225.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 3200000
+training_weeks = 28
+params_b = 42000.0
+active_params_b = 4800.0
+dataset_tokens_b = 330000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_lynx_8"]
+script = ExtResource("2_rel")
+id = &"release_lynx_8"
+display_name = "Lynx-8"
+release_turn = 1320
+capability = {"general": 232.0, "code": 290.0, "reasoning": 250.0, "multimodal": 210.0, "agent": 262.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 5200000
+training_weeks = 28
+params_b = 62000.0
+active_params_b = 7000.0
+dataset_tokens_b = 460000.0
+arch_codename = &"octopus_super_sparse"
+
+[resource]
+script = ExtResource("1_npc")
+id = &"npc_lynx_devnet"
+display_name = "Lynx Devnet"
+is_open_source = true
+board_membership = [&"sub_code"]
+model_releases = [SubResource("release_lynx_1"), SubResource("release_lynx_1_5"), SubResource("release_lynx_2"), SubResource("release_lynx_2_5"), SubResource("release_lynx_3"), SubResource("release_lynx_3_5"), SubResource("release_lynx_4"), SubResource("release_lynx_5"), SubResource("release_lynx_6"), SubResource("release_lynx_7"), SubResource("release_lynx_8")]

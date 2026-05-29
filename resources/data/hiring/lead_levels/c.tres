@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="LeadLevelSpec" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/lead_level_spec.gd" id="1_lvl"]
+
+[resource]
+script = ExtResource("1_lvl")
+id = &"C"
+ability = 40.0
+signing_fee = 50000
+weekly_salary = 19230

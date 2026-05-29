@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="EventCard" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/event_card.gd" id="1_ec"]
+[ext_resource type="Script" path="res://scripts/resources/event_option.gd" id="2_eo"]
+[ext_resource type="Script" path="res://scripts/resources/event_effect.gd" id="3_ef"]
+
+[sub_resource type="Resource" id="eff_0"]
+script = ExtResource("3_ef")
+kind = &"economy_spend"
+params = {"pct": 0.06, "floor": 50000, "cap": 50000000}
+
+[sub_resource type="Resource" id="opt_settle"]
+script = ExtResource("2_eo")
+id = &"settle"
+label = "高价庭外和解 + 补签数据授权"
+effects = [SubResource("eff_0")]
+
+[sub_resource type="Resource" id="eff_1"]
+script = ExtResource("3_ef")
+kind = &"dataset_delete"
+params = {}
+
+[sub_resource type="Resource" id="eff_2"]
+script = ExtResource("3_ef")
+kind = &"product_boost_subscribers"
+params = {"pct": -0.04, "floor": 60, "cap": 50000000}
+
+[sub_resource type="Resource" id="opt_court"]
+script = ExtResource("2_eo")
+id = &"court"
+label = "对簿公堂, 赌一个判例"
+effects = [SubResource("eff_1"), SubResource("eff_2")]
+
+[resource]
+script = ExtResource("1_ec")
+id = &"data_lawsuit"
+category = &"crisis"
+title = "出版巨头起诉你违规抓取训练数据"
+body = "一家老牌出版巨头把你告上法庭, 声称你的模型是『逐字背诵』它家几十年的文章训练出来的, 索赔金额后面跟着一长串零。"
+min_turn = 40
+requires_dataset_min = 1
+requires_product = true
+weight = 8
+cooldown_months = 60
+max_triggers = 1
+options = [SubResource("opt_settle"), SubResource("opt_court")]

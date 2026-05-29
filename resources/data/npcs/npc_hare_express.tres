@@ -1,0 +1,192 @@
+[gd_resource type="Resource" script_class="NpcCompany" load_steps=15 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/npc_company.gd" id="1_npc"]
+[ext_resource type="Script" path="res://scripts/resources/npc_model_release.gd" id="2_rel"]
+
+[sub_resource type="Resource" id="release_hare_1"]
+script = ExtResource("2_rel")
+id = &"release_hare_1"
+display_name = "Hare-1"
+release_turn = 270
+capability = {"general": 25.0, "code": 8.0, "reasoning": 10.0, "multimodal": 3.0, "agent": 0.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t1"
+cluster_gpu_count = 1000
+training_weeks = 18
+params_b = 30.0
+active_params_b = 30.0
+dataset_tokens_b = 400.0
+arch_codename = &"ant_v3"
+
+[sub_resource type="Resource" id="release_hare_2"]
+script = ExtResource("2_rel")
+id = &"release_hare_2"
+display_name = "Hare-2"
+release_turn = 340
+capability = {"general": 58.0, "code": 28.0, "reasoning": 32.0, "multimodal": 15.0, "agent": 5.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t2"
+cluster_gpu_count = 4000
+training_weeks = 20
+params_b = 250.0
+active_params_b = 250.0
+dataset_tokens_b = 3500.0
+arch_codename = &"ant_v4"
+
+[sub_resource type="Resource" id="release_hare_2_5"]
+script = ExtResource("2_rel")
+id = &"release_hare_2_5"
+display_name = "Hare-2.5"
+release_turn = 375
+capability = {"general": 62.0, "code": 32.0, "reasoning": 38.0, "multimodal": 18.0, "agent": 8.0}
+release_kind = &"rlhf"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_hare_3"]
+script = ExtResource("2_rel")
+id = &"release_hare_3"
+display_name = "Hare-3"
+release_turn = 410
+capability = {"general": 78.0, "code": 48.0, "reasoning": 55.0, "multimodal": 32.0, "agent": 18.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t2"
+cluster_gpu_count = 12000
+training_weeks = 22
+params_b = 600.0
+active_params_b = 90.0
+dataset_tokens_b = 8000.0
+arch_codename = &"octopus_v2"
+
+[sub_resource type="Resource" id="release_hare_3_5"]
+script = ExtResource("2_rel")
+id = &"release_hare_3_5"
+display_name = "Hare-3.5"
+release_turn = 455
+capability = {"general": 85.0, "code": 55.0, "reasoning": 62.0, "multimodal": 42.0, "agent": 28.0}
+release_kind = &"rlhf"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_hare_4"]
+script = ExtResource("2_rel")
+id = &"release_hare_4"
+display_name = "Hare-4"
+release_turn = 490
+capability = {"general": 95.0, "code": 68.0, "reasoning": 78.0, "multimodal": 58.0, "agent": 42.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 30000
+training_weeks = 22
+params_b = 1500.0
+active_params_b = 220.0
+dataset_tokens_b = 14000.0
+arch_codename = &"octopus_sparse"
+
+[sub_resource type="Resource" id="release_hare_4_5"]
+script = ExtResource("2_rel")
+id = &"release_hare_4_5"
+display_name = "Hare-4.5"
+release_turn = 560
+capability = {"general": 108.0, "code": 82.0, "reasoning": 95.0, "multimodal": 75.0, "agent": 60.0}
+release_kind = &"reasoning_rl"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_hare_5"]
+script = ExtResource("2_rel")
+id = &"release_hare_5"
+display_name = "Hare-5"
+release_turn = 640
+capability = {"general": 125.0, "code": 100.0, "reasoning": 115.0, "multimodal": 92.0, "agent": 82.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 100000
+training_weeks = 26
+params_b = 3200.0
+active_params_b = 450.0
+dataset_tokens_b = 32000.0
+arch_codename = &"octopus_sparse"
+
+[sub_resource type="Resource" id="release_hare_6"]
+script = ExtResource("2_rel")
+id = &"release_hare_6"
+display_name = "Hare-6"
+release_turn = 790
+capability = {"general": 152.0, "code": 130.0, "reasoning": 142.0, "multimodal": 122.0, "agent": 115.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 350000
+training_weeks = 26
+params_b = 7500.0
+active_params_b = 1000.0
+dataset_tokens_b = 65000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_hare_7"]
+script = ExtResource("2_rel")
+id = &"release_hare_7"
+display_name = "Hare-7"
+release_turn = 950
+capability = {"general": 182.0, "code": 162.0, "reasoning": 175.0, "multimodal": 152.0, "agent": 148.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 800000
+training_weeks = 28
+params_b = 15000.0
+active_params_b = 1900.0
+dataset_tokens_b = 120000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_hare_8"]
+script = ExtResource("2_rel")
+id = &"release_hare_8"
+display_name = "Hare-8"
+release_turn = 1120
+capability = {"general": 218.0, "code": 198.0, "reasoning": 212.0, "multimodal": 188.0, "agent": 185.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 1800000
+training_weeks = 28
+params_b = 28000.0
+active_params_b = 3300.0
+dataset_tokens_b = 220000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_hare_9"]
+script = ExtResource("2_rel")
+id = &"release_hare_9"
+display_name = "Hare-9"
+release_turn = 1280
+capability = {"general": 255.0, "code": 235.0, "reasoning": 250.0, "multimodal": 225.0, "agent": 222.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 3500000
+training_weeks = 28
+params_b = 50000.0
+active_params_b = 5800.0
+dataset_tokens_b = 340000.0
+arch_codename = &"octopus_super_sparse"
+
+[resource]
+script = ExtResource("1_npc")
+id = &"npc_hare_express"
+display_name = "Hare Express"
+is_open_source = false
+board_membership = [&"sub_general"]
+model_releases = [SubResource("release_hare_1"), SubResource("release_hare_2"), SubResource("release_hare_2_5"), SubResource("release_hare_3"), SubResource("release_hare_3_5"), SubResource("release_hare_4"), SubResource("release_hare_4_5"), SubResource("release_hare_5"), SubResource("release_hare_6"), SubResource("release_hare_7"), SubResource("release_hare_8"), SubResource("release_hare_9")]

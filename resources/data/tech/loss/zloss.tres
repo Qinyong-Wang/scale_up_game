@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="TechNode" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/tech_node.gd" id="1_tn"]
+
+[resource]
+script = ExtResource("1_tn")
+id = &"zloss"
+tree = &"loss"
+display_name = "Z-Loss (PaLM)"
+description = "PaLM 系列引入的 z-loss 辅助项, 提升数值稳定性与最终能力."
+prerequisites = Array[StringName]([&"ce_baseline"])
+research_cost = 0
+research_months = 24
+effects = {
+	&"train_coef": 1.05,
+	&"capability_coef": 1.05,
+}
+effects_summary = "训练 +5% · 评估分数 +5%"
+min_researchers = 2
+min_engineers = 1
+min_gpu_count = 8

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="TechNode" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/tech_node.gd" id="1_tn"]
+
+[resource]
+script = ExtResource("1_tn")
+id = &"tool_use"
+tree = &"application"
+display_name = "Tool Use (ReAct / Plugins)"
+description = "让模型按 schema 调用外部 API, 解锁 Agent / Coding Agent 类产品."
+prerequisites = Array[StringName]([])
+research_cost = 0
+research_months = 28
+effects = {}
+effects_summary = "解锁 Agent 产品类型"
+min_researchers = 2
+min_engineers = 2
+min_gpu_count = 8

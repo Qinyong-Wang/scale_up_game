@@ -1,0 +1,192 @@
+[gd_resource type="Resource" script_class="NpcCompany" load_steps=15 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/npc_company.gd" id="1_npc"]
+[ext_resource type="Script" path="res://scripts/resources/npc_model_release.gd" id="2_rel"]
+
+[sub_resource type="Resource" id="release_antcode_1"]
+script = ExtResource("2_rel")
+id = &"release_antcode_1"
+display_name = "AntCode-1"
+release_turn = 290
+capability = {"general": 12.0, "code": 32.0, "reasoning": 14.0, "multimodal": 0.0, "agent": 0.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t1"
+cluster_gpu_count = 3000
+training_weeks = 22
+params_b = 50.0
+active_params_b = 50.0
+dataset_tokens_b = 500.0
+arch_codename = &"ant_v3"
+
+[sub_resource type="Resource" id="release_antcode_1_5"]
+script = ExtResource("2_rel")
+id = &"release_antcode_1_5"
+display_name = "AntCode-1.5"
+release_turn = 330
+capability = {"general": 16.0, "code": 42.0, "reasoning": 18.0, "multimodal": 0.0, "agent": 0.0}
+release_kind = &"rlhf"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_antcode_2"]
+script = ExtResource("2_rel")
+id = &"release_antcode_2"
+display_name = "AntCode-2"
+release_turn = 360
+capability = {"general": 42.0, "code": 72.0, "reasoning": 48.0, "multimodal": 12.0, "agent": 8.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t2"
+cluster_gpu_count = 10000
+training_weeks = 24
+params_b = 500.0
+active_params_b = 75.0
+dataset_tokens_b = 8000.0
+arch_codename = &"octopus_v2"
+
+[sub_resource type="Resource" id="release_antcode_2_5"]
+script = ExtResource("2_rel")
+id = &"release_antcode_2_5"
+display_name = "AntCode-2.5"
+release_turn = 405
+capability = {"general": 48.0, "code": 82.0, "reasoning": 55.0, "multimodal": 18.0, "agent": 18.0}
+release_kind = &"tool_use_posttrain"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_antcode_3"]
+script = ExtResource("2_rel")
+id = &"release_antcode_3"
+display_name = "AntCode-3"
+release_turn = 440
+capability = {"general": 62.0, "code": 92.0, "reasoning": 68.0, "multimodal": 32.0, "agent": 32.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t2"
+cluster_gpu_count = 25000
+training_weeks = 24
+params_b = 900.0
+active_params_b = 140.0
+dataset_tokens_b = 13000.0
+arch_codename = &"octopus_sparse"
+
+[sub_resource type="Resource" id="release_antcode_3_5"]
+script = ExtResource("2_rel")
+id = &"release_antcode_3_5"
+display_name = "AntCode-3.5"
+release_turn = 510
+capability = {"general": 72.0, "code": 105.0, "reasoning": 80.0, "multimodal": 42.0, "agent": 48.0}
+release_kind = &"reasoning_rl"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_antcode_4"]
+script = ExtResource("2_rel")
+id = &"release_antcode_4"
+display_name = "AntCode-4"
+release_turn = 540
+capability = {"general": 82.0, "code": 115.0, "reasoning": 92.0, "multimodal": 52.0, "agent": 60.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 80000
+training_weeks = 26
+params_b = 2200.0
+active_params_b = 320.0
+dataset_tokens_b = 22000.0
+arch_codename = &"octopus_sparse"
+
+[sub_resource type="Resource" id="release_antcode_5"]
+script = ExtResource("2_rel")
+id = &"release_antcode_5"
+display_name = "AntCode-5"
+release_turn = 660
+capability = {"general": 100.0, "code": 138.0, "reasoning": 112.0, "multimodal": 75.0, "agent": 82.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 250000
+training_weeks = 28
+params_b = 5500.0
+active_params_b = 750.0
+dataset_tokens_b = 50000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_antcode_6"]
+script = ExtResource("2_rel")
+id = &"release_antcode_6"
+display_name = "AntCode-6"
+release_turn = 820
+capability = {"general": 125.0, "code": 168.0, "reasoning": 138.0, "multimodal": 102.0, "agent": 110.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 700000
+training_weeks = 28
+params_b = 11000.0
+active_params_b = 1400.0
+dataset_tokens_b = 90000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_antcode_7"]
+script = ExtResource("2_rel")
+id = &"release_antcode_7"
+display_name = "AntCode-7"
+release_turn = 980
+capability = {"general": 152.0, "code": 200.0, "reasoning": 165.0, "multimodal": 130.0, "agent": 140.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 1500000
+training_weeks = 28
+params_b = 20000.0
+active_params_b = 2400.0
+dataset_tokens_b = 160000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_antcode_8"]
+script = ExtResource("2_rel")
+id = &"release_antcode_8"
+display_name = "AntCode-8"
+release_turn = 1150
+capability = {"general": 182.0, "code": 232.0, "reasoning": 195.0, "multimodal": 158.0, "agent": 172.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 2800000
+training_weeks = 28
+params_b = 35000.0
+active_params_b = 4000.0
+dataset_tokens_b = 250000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_antcode_9"]
+script = ExtResource("2_rel")
+id = &"release_antcode_9"
+display_name = "AntCode-9"
+release_turn = 1290
+capability = {"general": 215.0, "code": 268.0, "reasoning": 228.0, "multimodal": 188.0, "agent": 205.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 4800000
+training_weeks = 28
+params_b = 58000.0
+active_params_b = 6500.0
+dataset_tokens_b = 400000.0
+arch_codename = &"octopus_super_sparse"
+
+[resource]
+script = ExtResource("1_npc")
+id = &"npc_ant_quickcode"
+display_name = "Ant QuickCode"
+is_open_source = true
+board_membership = [&"sub_code"]
+model_releases = [SubResource("release_antcode_1"), SubResource("release_antcode_1_5"), SubResource("release_antcode_2"), SubResource("release_antcode_2_5"), SubResource("release_antcode_3"), SubResource("release_antcode_3_5"), SubResource("release_antcode_4"), SubResource("release_antcode_5"), SubResource("release_antcode_6"), SubResource("release_antcode_7"), SubResource("release_antcode_8"), SubResource("release_antcode_9")]

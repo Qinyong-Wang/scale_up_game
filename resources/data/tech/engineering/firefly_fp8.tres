@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="TechNode" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/tech_node.gd" id="1_tn"]
+
+[resource]
+script = ExtResource("1_tn")
+id = &"firefly_fp8"
+tree = &"engineering"
+display_name = "FP8 推理 (H100+)"
+description = "H100+ 时代的 FP8 原生支持; 推理 token 算力减半 (与量化节点累乘)."
+prerequisites = Array[StringName]([])
+research_cost = 0
+research_months = 32
+effects = {
+	&"flops_per_token_reduction": 0.5,
+}
+effects_summary = "token 算力 -50% (推理吞吐 ×2)"
+min_researchers = 3
+min_engineers = 4
+min_gpu_count = 64

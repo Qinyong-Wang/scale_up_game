@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SimulationStageSpec" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/simulation_stage_spec.gd" id="1_sim"]
+
+[resource]
+script = ExtResource("1_sim")
+id = &"ocean"
+order = 1
+display_name = "海洋模拟"
+description = "把洋流、温盐环流与海气耦合算进来——气候系统的另一半，吞噬数倍算力。"
+cost = 10000000000
+weeks = 16
+min_train_tflops = 120000000.0

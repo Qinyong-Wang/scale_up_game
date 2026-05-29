@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="TechNode" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/tech_node.gd" id="1_tn"]
+
+[resource]
+script = ExtResource("1_tn")
+id = &"bert_encoder"
+tree = &"arch"
+display_name = "BERT 编码器"
+description = "Encoder-only 架构, 2018 主流方向. 训练快, 但评分硬上限 30 — 再大也上不去, 不可 scale 到 LLM."
+prerequisites = Array[StringName]([&"ant_v1"])
+research_cost = 0
+research_months = 24
+effects = {
+	&"train_coef": 1.3,
+	&"inference_coef": 1.0,
+	&"capability_coef": 1.0,
+}
+effects_summary = "训练 ×1.3 · 评分上限 30"
+min_researchers = 2
+min_engineers = 1
+min_gpu_count = 16
+capability_cap = 30.0

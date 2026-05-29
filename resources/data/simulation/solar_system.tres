@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SimulationStageSpec" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/simulation_stage_spec.gd" id="1_sim"]
+
+[resource]
+script = ExtResource("1_sim")
+id = &"solar_system"
+order = 3
+display_name = "太阳系模拟"
+description = "把地球扩展到整个太阳系——引力共舞、辐射、轨道演化，跨越亿万公里的精密推演。"
+cost = 200000000000
+weeks = 39
+min_train_tflops = 25000000000.0

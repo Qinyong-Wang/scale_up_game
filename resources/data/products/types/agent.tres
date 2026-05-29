@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="ProductTypeSpec" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/product_type_spec.gd" id="1_pts"]
+
+[resource]
+script = ExtResource("1_pts")
+id = &"agent"
+display_name = "Agent"
+unlock_thresholds = {
+&"reasoning": 50.0,
+}
+required_modalities = Array[StringName]([])
+tokens_per_user_per_month = 10000000
+tokens_per_user_per_week = 10000000
+default_subscription_price = 25
+subscription_price_guidance = 25
+capability_penalty_axis = &"reasoning"
+capability_penalty_tiers = [{
+"below": 65.0,
+"rate": -0.025
+}, {
+"below": 80.0,
+"rate": -0.015
+}]
+lead_specialty_bonus = &"chief_engineer"
+application_node_required = &"tool_use"
+max_subscribers = 1000000000

@@ -1,0 +1,51 @@
+[gd_resource type="Resource" script_class="EventCard" load_steps=10 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/event_card.gd" id="1_ec"]
+[ext_resource type="Script" path="res://scripts/resources/event_option.gd" id="2_eo"]
+[ext_resource type="Script" path="res://scripts/resources/event_effect.gd" id="3_ef"]
+
+[sub_resource type="Resource" id="eff_0"]
+script = ExtResource("3_ef")
+kind = &"economy_spend"
+params = {"pct": 0.02, "floor": 6000, "cap": 8000000}
+
+[sub_resource type="Resource" id="eff_1"]
+script = ExtResource("3_ef")
+kind = &"product_boost_subscribers"
+params = {"pct": -0.03, "floor": 50, "cap": 30000000}
+
+[sub_resource type="Resource" id="opt_stop"]
+script = ExtResource("2_eo")
+id = &"stop"
+label = "立刻叫停加班 + 强制带薪休整"
+effects = [SubResource("eff_0"), SubResource("eff_1")]
+
+[sub_resource type="Resource" id="eff_2"]
+script = ExtResource("3_ef")
+kind = &"product_boost_subscribers"
+params = {"pct": 0.05, "floor": 80, "cap": 40000000}
+
+[sub_resource type="Resource" id="eff_3"]
+script = ExtResource("3_ef")
+kind = &"economy_spend"
+params = {"pct": 0.005, "floor": 1000, "cap": 2000000}
+
+[sub_resource type="Resource" id="opt_push"]
+script = ExtResource("2_eo")
+id = &"push"
+label = "口头慰问几句, 发布日期一天不许动"
+effects = [SubResource("eff_2"), SubResource("eff_3")]
+
+[resource]
+script = ExtResource("1_ec")
+id = &"crunch_culture"
+category = &"crisis"
+title = "有人在工位上累倒了"
+body = "为了赶发布, 公司默许了连续数周的『自愿』通宵。直到一位核心工程师在工位上昏倒被抬走, 大家才后知后觉:这事儿早就不对劲了。"
+min_turn = 12
+requires_staff_min = 1
+requires_product = true
+weight = 24
+cooldown_months = 60
+max_triggers = 1
+options = [SubResource("opt_stop"), SubResource("opt_push")]

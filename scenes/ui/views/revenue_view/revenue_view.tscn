@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scenes/ui/views/revenue_view/revenue_view.gd" id="1_rv"]
+
+[node name="RevenueView" type="VBoxContainer"]
+script = ExtResource("1_rv")

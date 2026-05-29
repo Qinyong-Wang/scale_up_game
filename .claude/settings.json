@@ -1,0 +1,35 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls:*)",
+      "Bash(find:*)",
+      "Bash(grep:*)",
+      "Bash(rg:*)",
+      "Bash(tree:*)",
+      "Bash(godot:*)",
+      "Bash(AGI_AUTOPLAY=*)",
+      "Bash(AGI_SCREENSHOT=*)",
+      "Bash(AGI_INITIAL_NAV=*)",
+      "Bash(AGI_OPEN_DRAWER=*)",
+      "Bash(tools/screenshot.sh:*)",
+      "Bash(./tools/screenshot.sh:*)",
+      "Bash(/Users/eddy/projects/AGI.INC/tools/screenshot.sh:*)",
+      "Bash(open:*)",
+      "Bash(git status)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git branch:*)",
+      "Bash(git checkout:*)",
+      "Bash(mkdir:*)",
+      "Bash(mv:*)",
+      "Bash(cp:*)"
+    ],
+    "ask": [
+      "Bash(rm:*)",
+      "Bash(git push:*)",
+      "Bash(git reset:*)"
+    ]
+  }
+}

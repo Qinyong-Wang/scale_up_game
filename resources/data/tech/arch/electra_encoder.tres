@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="TechNode" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/tech_node.gd" id="1_tn"]
+
+[resource]
+script = ExtResource("1_tn")
+id = &"electra_encoder"
+tree = &"arch"
+display_name = "ELECTRA 判别式预训练"
+description = "用替换 token 检测代替掩码重建, 样本效率大涨, 2020 主流. 评分上限抬到 45 — 追平 T5, 但 encoder-only 范式天花板仍在."
+prerequisites = Array[StringName]([&"roberta_encoder"])
+research_cost = 0
+research_months = 30
+effects = {
+	&"train_coef": 1.2,
+	&"inference_coef": 1.0,
+	&"capability_coef": 1.1,
+}
+effects_summary = "训练 ×1.2 · 评分上限 45"
+min_researchers = 3
+min_engineers = 2
+min_gpu_count = 32
+capability_cap = 45.0

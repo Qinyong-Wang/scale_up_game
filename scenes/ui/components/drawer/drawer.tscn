@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scenes/ui/components/drawer/drawer.gd" id="1_drawer"]
+
+[node name="Drawer" type="PanelContainer"]
+custom_minimum_size = Vector2(360, 0)
+visible = false
+script = ExtResource("1_drawer")

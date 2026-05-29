@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EventCard" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/event_card.gd" id="1_ec"]
+[resource]
+script = ExtResource("1_ec")
+id = &"history_foundation_model_frame"
+category = &"flavor"
+title = "历史档案: 一个底座, 多个下游任务"
+body = "2021 年, 行业开始用『基础模型』这类说法描述大规模预训练系统: 先训练一个通用底座, 再通过微调、提示和工具接入迁移到许多产品。投资人终于听懂了为什么预训练这么贵。"
+min_turn = 220
+weight = 0
+cooldown_months = 9999
+max_triggers = 1

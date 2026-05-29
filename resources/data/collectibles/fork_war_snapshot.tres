@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CollectibleSpec" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/collectible_spec.gd" id="1_col"]
+
+[resource]
+script = ExtResource("1_col")
+id = &"fork_war_snapshot"
+category = &"crypto"
+display_name = "分叉之战·共识快照"
+description = "社区大分裂时刻的链上共识快照。"
+curve_years = Array[int]([2021, 2025, 2035, 2070])
+curve_prices = Array[int]([60000, 18000000, 135000000, 300000000])
+appear_weight = 0.5

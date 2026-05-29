@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CollectibleSpec" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/collectible_spec.gd" id="1_col"]
+
+[resource]
+script = ExtResource("1_col")
+id = &"illustrator_award"
+category = &"trading_card"
+display_name = "插画师·特别赏卡"
+description = "颁给插画大赛优胜者的极少量奖卡。"
+curve_years = Array[int]([2000, 2025, 2045, 2070])
+curve_prices = Array[int]([30000000, 375000000, 975000000, 1500000000])
+appear_weight = 0.2

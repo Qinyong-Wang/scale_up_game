@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="PosttrainDatasetTemplate" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/posttrain_dataset_template.gd" id="1_pst"]
+
+[resource]
+script = ExtResource("1_pst")
+id = &"agent_traces_v1"
+display_name = "Agent Traces v1"
+source = &"purchased"
+size = 0.06
+quality = 0.85
+target_capability = &"agent"
+coverage_tags = Array[StringName]([&"agent", &"tool_use"])
+price = 10000000
+released_at_week = 312

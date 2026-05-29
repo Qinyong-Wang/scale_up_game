@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CollectibleSpec" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/collectible_spec.gd" id="1_col"]
+
+[resource]
+script = ExtResource("1_col")
+id = &"miner_signed_board"
+category = &"crypto"
+display_name = "矿工主板·签名版"
+description = "早期矿工亲笔签名的二手矿机主板。"
+curve_years = Array[int]([2017, 2025, 2035, 2070])
+curve_prices = Array[int]([16000, 4800000, 36000000, 80000000])
+appear_weight = 0.5

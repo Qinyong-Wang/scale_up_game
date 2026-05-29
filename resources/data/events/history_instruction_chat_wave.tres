@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EventCard" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/event_card.gd" id="1_ec"]
+[resource]
+script = ExtResource("1_ec")
+id = &"history_instruction_chat_wave"
+category = &"flavor"
+title = "历史档案: 指令对齐把模型推向产品"
+body = "2022 年底, 会听指令、能多轮对话、懂得拒绝危险请求的聊天助手突然走进大众视野。背后是监督微调、偏好数据和人类反馈训练的组合, 也是 AI 产品化的分水岭。"
+min_turn = 286
+weight = 0
+cooldown_months = 9999
+max_triggers = 1

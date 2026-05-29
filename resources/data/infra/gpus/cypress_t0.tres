@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="GPUSpec" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/gpu_spec.gd" id="1_gpu"]
+
+[resource]
+script = ExtResource("1_gpu")
+id = &"cypress_t0"
+display_name = "Cypress T0"
+brand = &"cypress"
+tier = &"t0"
+per_card_tflops = 125.0
+per_card_inference_tflops = 37.5
+purchase_price = 5200
+maintenance_per_week = 4
+ecosystem_score = 1.0
+native_cluster_eff = 0.85
+release_turn = 0
+rent_weekly_cost = 130
+power_factor = 0.66

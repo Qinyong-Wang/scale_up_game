@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="LeadPoolConfig" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/lead_pool_config.gd" id="1_cfg"]
+
+[resource]
+script = ExtResource("1_cfg")
+pool_size = 6
+cash_brackets = [
+{
+"cash_min": 50000000,
+"weights": {&"S": 0.20, &"A": 0.40, &"B": 0.30, &"C": 0.10},
+},
+{
+"cash_min": 10000000,
+"weights": {&"S": 0.05, &"A": 0.25, &"B": 0.45, &"C": 0.25},
+},
+{
+"cash_min": 1000000,
+"weights": {&"S": 0.0, &"A": 0.10, &"B": 0.40, &"C": 0.50},
+},
+{
+"cash_min": 0,
+"weights": {&"S": 0.0, &"A": 0.0, &"B": 0.30, &"C": 0.70},
+},
+]

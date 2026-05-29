@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="TechNode" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/tech_node.gd" id="1_tn"]
+
+[resource]
+script = ExtResource("1_tn")
+id = &"t5_enc_dec"
+tree = &"arch"
+display_name = "T5 编码器-解码器"
+description = "Encoder-Decoder 架构, 2019 主流. 比 BERT 强些 (cap=45), 仍输给 dense decoder 路线."
+prerequisites = Array[StringName]([&"ant_v1"])
+research_cost = 0
+research_months = 28
+effects = {
+	&"train_coef": 1.15,
+	&"inference_coef": 0.95,
+	&"capability_coef": 1.0,
+}
+effects_summary = "训练 ×1.15 · 评分上限 45"
+min_researchers = 2
+min_engineers = 1
+min_gpu_count = 24
+capability_cap = 45.0

@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="EventCard" load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/event_card.gd" id="1_ec"]
+[ext_resource type="Script" path="res://scripts/resources/event_option.gd" id="2_eo"]
+[ext_resource type="Script" path="res://scripts/resources/event_effect.gd" id="3_ef"]
+
+[sub_resource type="Resource" id="eff_0"]
+script = ExtResource("3_ef")
+kind = &"economy_award"
+params = {"pct": 0.07, "floor": 25000, "cap": 20000000}
+
+[sub_resource type="Resource" id="opt_apply"]
+script = ExtResource("2_eo")
+id = &"apply"
+label = "认真填表申请补助"
+effects = [SubResource("eff_0")]
+
+[sub_resource type="Resource" id="opt_skip"]
+script = ExtResource("2_eo")
+id = &"skip"
+label = "嫌流程麻烦, 放弃"
+effects = []
+
+[resource]
+script = ExtResource("1_ec")
+id = &"gov_grant"
+category = &"opportunity"
+title = "政府 AI 研究补助开放申请"
+body = "一项面向 AI 公司的科研补助开放了申请, 据说手续有点繁琐。"
+min_turn = 4
+requires_published_model = true
+weight = 10
+cooldown_months = 24
+options = [SubResource("opt_apply"), SubResource("opt_skip")]

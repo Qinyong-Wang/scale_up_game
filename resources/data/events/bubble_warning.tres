@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="EventCard" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/event_card.gd" id="1_ec"]
+[ext_resource type="Script" path="res://scripts/resources/event_option.gd" id="2_eo"]
+[ext_resource type="Script" path="res://scripts/resources/event_effect.gd" id="3_ef"]
+
+[resource]
+script = ExtResource("1_ec")
+id = &"bubble_warning"
+category = &"flavor"
+title = "媒体开始唱衰『AI 泡沫』"
+body = "各路评论员突然集体转向, 头条全是『AI 泡沫即将破裂』。淡定。"
+min_turn = 60
+weight = 6
+cooldown_months = 9999
+options = []

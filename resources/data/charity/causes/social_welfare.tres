@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CharityCauseSpec" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/charity_cause_spec.gd" id="1_charity"]
+
+[resource]
+script = ExtResource("1_charity")
+id = &"social_welfare"
+display_name = "失业与低收入援助"
+description = "面向被自动化冲击的失业与低收入人群的援助与再培训计划。回馈社会赢得公众好感，营销转化更高。"
+effect_kind = &"conversion_mult"
+tier_amounts = Array[int]([10000000, 100000000, 1000000000])
+tier_weeks = Array[int]([4, 12, 26])
+tier_bonuses = Array[float]([0.02, 0.05, 0.10])
+tier_labels = Array[String](["区域级捐助", "国家级捐助", "全球级捐助"])

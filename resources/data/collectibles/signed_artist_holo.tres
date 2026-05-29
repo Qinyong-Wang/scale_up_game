@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CollectibleSpec" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/collectible_spec.gd" id="1_col"]
+
+[resource]
+script = ExtResource("1_col")
+id = &"signed_artist_holo"
+category = &"trading_card"
+display_name = "画师亲签·闪卡"
+description = "原画师亲笔签名的闪卡。"
+curve_years = Array[int]([2006, 2025, 2045, 2070])
+curve_prices = Array[int]([2400000, 30000000, 78000000, 120000000])
+appear_weight = 0.5

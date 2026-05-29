@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="EventCard" load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/event_card.gd" id="1_ec"]
+[ext_resource type="Script" path="res://scripts/resources/event_option.gd" id="2_eo"]
+[ext_resource type="Script" path="res://scripts/resources/event_effect.gd" id="3_ef"]
+
+[sub_resource type="Resource" id="eff_0"]
+script = ExtResource("3_ef")
+kind = &"product_boost_subscribers"
+params = {"pct": 0.08, "floor": 60, "cap": 100000000}
+
+[sub_resource type="Resource" id="opt_independent"]
+script = ExtResource("2_eo")
+id = &"independent"
+label = "拒绝收购, 坚持独立"
+effects = [SubResource("eff_0")]
+
+[sub_resource type="Resource" id="eff_1"]
+script = ExtResource("3_ef")
+kind = &"economy_award"
+params = {"pct": 0.2, "floor": 1000000, "cap": 200000000}
+
+[sub_resource type="Resource" id="opt_negotiate"]
+script = ExtResource("2_eo")
+id = &"negotiate"
+label = "谈一谈条件, 接受注资"
+effects = [SubResource("eff_1")]
+
+[resource]
+script = ExtResource("1_ec")
+id = &"acquihire_offer"
+category = &"opportunity"
+title = "一家科技巨头想收购你的公司"
+body = "一家巨头开出天价, 想把你的整个公司收入囊中。"
+min_turn = 40
+requires_rank_max = 3
+requires_product = true
+weight = 8
+cooldown_months = 40
+options = [SubResource("opt_independent"), SubResource("opt_negotiate")]

@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="TechNode" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/tech_node.gd" id="1_tn"]
+
+[resource]
+script = ExtResource("1_tn")
+id = &"bert_giant_encoder"
+tree = &"arch"
+display_name = "BERT Giant 编码器"
+description = "encoder-only 路线的终局规模化. 大模型确实继续涨分, 但 generative dense / MoE 主线没有这个评分上限."
+prerequisites = Array[StringName]([&"bert_scale_encoder"])
+research_cost = 0
+research_months = 44
+effects = {
+	&"train_coef": 0.9,
+	&"inference_coef": 0.9,
+	&"capability_coef": 1.05,
+}
+effects_summary = "训练 ×0.9 · 推理 ×0.9 · 评分上限 64"
+min_researchers = 4
+min_engineers = 4
+min_gpu_count = 96
+capability_cap = 64.0

@@ -1,0 +1,177 @@
+[gd_resource type="Resource" script_class="NpcCompany" load_steps=14 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/npc_company.gd" id="1_npc"]
+[ext_resource type="Script" path="res://scripts/resources/npc_model_release.gd" id="2_rel"]
+
+[sub_resource type="Resource" id="release_sparrow_1"]
+script = ExtResource("2_rel")
+id = &"release_sparrow_1"
+display_name = "Sparrow-1"
+release_turn = 230
+capability = {"general": 15.0, "code": 5.0, "reasoning": 6.0, "multimodal": 0.0, "agent": 0.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t1"
+cluster_gpu_count = 2000
+training_weeks = 22
+params_b = 30.0
+active_params_b = 30.0
+dataset_tokens_b = 300.0
+arch_codename = &"ant_v3"
+
+[sub_resource type="Resource" id="release_sparrow_2"]
+script = ExtResource("2_rel")
+id = &"release_sparrow_2"
+display_name = "Sparrow-2"
+release_turn = 305
+capability = {"general": 55.0, "code": 25.0, "reasoning": 28.0, "multimodal": 12.0, "agent": 6.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t2"
+cluster_gpu_count = 8000
+training_weeks = 24
+params_b = 400.0
+active_params_b = 400.0
+dataset_tokens_b = 4000.0
+arch_codename = &"ant_v4"
+
+[sub_resource type="Resource" id="release_sparrow_3"]
+script = ExtResource("2_rel")
+id = &"release_sparrow_3"
+display_name = "Sparrow-3"
+release_turn = 385
+capability = {"general": 78.0, "code": 48.0, "reasoning": 52.0, "multimodal": 28.0, "agent": 18.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t2"
+cluster_gpu_count = 20000
+training_weeks = 24
+params_b = 800.0
+active_params_b = 120.0
+dataset_tokens_b = 10000.0
+arch_codename = &"octopus_v2"
+
+[sub_resource type="Resource" id="release_sparrow_3_5"]
+script = ExtResource("2_rel")
+id = &"release_sparrow_3_5"
+display_name = "Sparrow-3.5"
+release_turn = 425
+capability = {"general": 82.0, "code": 52.0, "reasoning": 58.0, "multimodal": 35.0, "agent": 25.0}
+release_kind = &"rlhf"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_sparrow_4"]
+script = ExtResource("2_rel")
+id = &"release_sparrow_4"
+display_name = "Sparrow-4"
+release_turn = 470
+capability = {"general": 95.0, "code": 65.0, "reasoning": 72.0, "multimodal": 52.0, "agent": 38.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 60000
+training_weeks = 26
+params_b = 1800.0
+active_params_b = 250.0
+dataset_tokens_b = 18000.0
+arch_codename = &"octopus_sparse"
+
+[sub_resource type="Resource" id="release_sparrow_4_5"]
+script = ExtResource("2_rel")
+id = &"release_sparrow_4_5"
+display_name = "Sparrow-4.5"
+release_turn = 540
+capability = {"general": 108.0, "code": 78.0, "reasoning": 88.0, "multimodal": 68.0, "agent": 55.0}
+release_kind = &"reasoning_rl"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_sparrow_5"]
+script = ExtResource("2_rel")
+id = &"release_sparrow_5"
+display_name = "Sparrow-5"
+release_turn = 620
+capability = {"general": 122.0, "code": 95.0, "reasoning": 105.0, "multimodal": 88.0, "agent": 78.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 200000
+training_weeks = 28
+params_b = 4500.0
+active_params_b = 600.0
+dataset_tokens_b = 42000.0
+arch_codename = &"octopus_sparse"
+
+[sub_resource type="Resource" id="release_sparrow_6"]
+script = ExtResource("2_rel")
+id = &"release_sparrow_6"
+display_name = "Sparrow-6"
+release_turn = 760
+capability = {"general": 148.0, "code": 122.0, "reasoning": 132.0, "multimodal": 115.0, "agent": 110.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 600000
+training_weeks = 28
+params_b = 10000.0
+active_params_b = 1300.0
+dataset_tokens_b = 80000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_sparrow_7"]
+script = ExtResource("2_rel")
+id = &"release_sparrow_7"
+display_name = "Sparrow-7"
+release_turn = 900
+capability = {"general": 175.0, "code": 152.0, "reasoning": 162.0, "multimodal": 145.0, "agent": 140.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 1400000
+training_weeks = 28
+params_b = 22000.0
+active_params_b = 2600.0
+dataset_tokens_b = 160000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_sparrow_8"]
+script = ExtResource("2_rel")
+id = &"release_sparrow_8"
+display_name = "Sparrow-8"
+release_turn = 1080
+capability = {"general": 212.0, "code": 188.0, "reasoning": 200.0, "multimodal": 180.0, "agent": 178.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 2800000
+training_weeks = 28
+params_b = 40000.0
+active_params_b = 4500.0
+dataset_tokens_b = 270000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_sparrow_9"]
+script = ExtResource("2_rel")
+id = &"release_sparrow_9"
+display_name = "Sparrow-9"
+release_turn = 1260
+capability = {"general": 248.0, "code": 228.0, "reasoning": 240.0, "multimodal": 218.0, "agent": 218.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 5000000
+training_weeks = 28
+params_b = 70000.0
+active_params_b = 7800.0
+dataset_tokens_b = 440000.0
+arch_codename = &"octopus_super_sparse"
+
+[resource]
+script = ExtResource("1_npc")
+id = &"npc_sparrow_chat"
+display_name = "Sparrow Chat"
+is_open_source = false
+board_membership = [&"sub_general"]
+model_releases = [SubResource("release_sparrow_1"), SubResource("release_sparrow_2"), SubResource("release_sparrow_3"), SubResource("release_sparrow_3_5"), SubResource("release_sparrow_4"), SubResource("release_sparrow_4_5"), SubResource("release_sparrow_5"), SubResource("release_sparrow_6"), SubResource("release_sparrow_7"), SubResource("release_sparrow_8"), SubResource("release_sparrow_9")]

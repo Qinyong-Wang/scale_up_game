@@ -1,0 +1,522 @@
+[gd_resource type="Resource" script_class="NpcCompany" load_steps=37 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/npc_company.gd" id="1_npc"]
+[ext_resource type="Script" path="res://scripts/resources/npc_model_release.gd" id="2_rel"]
+
+[sub_resource type="Resource" id="release_orca_1"]
+script = ExtResource("2_rel")
+id = &"release_orca_1"
+display_name = "Orca-1"
+release_turn = 70
+capability = {"general": 6.0, "code": 2.0, "reasoning": 3.0, "multimodal": 0.0, "agent": 0.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t0"
+cluster_gpu_count = 500
+training_weeks = 16
+params_b = 0.117
+active_params_b = 0.117
+dataset_tokens_b = 8.0
+arch_codename = &"ant_v1"
+
+[sub_resource type="Resource" id="release_orca_1_5"]
+script = ExtResource("2_rel")
+id = &"release_orca_1_5"
+display_name = "Orca-1.5"
+release_turn = 100
+capability = {"general": 8.0, "code": 3.0, "reasoning": 4.0, "multimodal": 0.0, "agent": 0.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t0"
+cluster_gpu_count = 800
+training_weeks = 18
+params_b = 0.35
+active_params_b = 0.35
+dataset_tokens_b = 15.0
+arch_codename = &"ant_v1"
+
+[sub_resource type="Resource" id="release_orca_2"]
+script = ExtResource("2_rel")
+id = &"release_orca_2"
+display_name = "Orca-2"
+release_turn = 130
+capability = {"general": 12.0, "code": 4.0, "reasoning": 6.0, "multimodal": 0.0, "agent": 0.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t0"
+cluster_gpu_count = 2000
+training_weeks = 20
+params_b = 1.5
+active_params_b = 1.5
+dataset_tokens_b = 40.0
+arch_codename = &"ant_v2"
+
+[sub_resource type="Resource" id="release_orca_2_5"]
+script = ExtResource("2_rel")
+id = &"release_orca_2_5"
+display_name = "Orca-2.5"
+release_turn = 155
+capability = {"general": 17.0, "code": 6.0, "reasoning": 9.0, "multimodal": 0.0, "agent": 0.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t0"
+cluster_gpu_count = 2500
+training_weeks = 22
+params_b = 6.0
+active_params_b = 6.0
+dataset_tokens_b = 60.0
+arch_codename = &"ant_v2"
+
+[sub_resource type="Resource" id="release_orca_3"]
+script = ExtResource("2_rel")
+id = &"release_orca_3"
+display_name = "Orca-3"
+release_turn = 175
+capability = {"general": 28.0, "code": 14.0, "reasoning": 18.0, "multimodal": 0.0, "agent": 0.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t1"
+cluster_gpu_count = 6000
+training_weeks = 28
+params_b = 175.0
+active_params_b = 175.0
+dataset_tokens_b = 300.0
+arch_codename = &"ant_v3"
+
+[sub_resource type="Resource" id="release_orca_3_1"]
+script = ExtResource("2_rel")
+id = &"release_orca_3_1"
+display_name = "Orca-3.1"
+release_turn = 210
+capability = {"general": 32.0, "code": 17.0, "reasoning": 22.0, "multimodal": 2.0, "agent": 0.0}
+release_kind = &"rlhf"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_orca_3_5"]
+script = ExtResource("2_rel")
+id = &"release_orca_3_5"
+display_name = "Orca-3.5"
+release_turn = 240
+capability = {"general": 42.0, "code": 26.0, "reasoning": 32.0, "multimodal": 8.0, "agent": 3.0}
+release_kind = &"rlhf"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_orca_3_7"]
+script = ExtResource("2_rel")
+id = &"release_orca_3_7"
+display_name = "Orca-3.7"
+release_turn = 270
+capability = {"general": 46.0, "code": 30.0, "reasoning": 38.0, "multimodal": 12.0, "agent": 8.0}
+release_kind = &"tool_use_posttrain"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_orca_3_9"]
+script = ExtResource("2_rel")
+id = &"release_orca_3_9"
+display_name = "Orca-3.9"
+release_turn = 290
+capability = {"general": 52.0, "code": 38.0, "reasoning": 46.0, "multimodal": 18.0, "agent": 12.0}
+release_kind = &"rlhf"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_orca_4"]
+script = ExtResource("2_rel")
+id = &"release_orca_4"
+display_name = "Orca-4"
+release_turn = 300
+capability = {"general": 78.0, "code": 65.0, "reasoning": 70.0, "multimodal": 30.0, "agent": 15.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t2"
+cluster_gpu_count = 16000
+training_weeks = 25
+params_b = 1500.0
+active_params_b = 220.0
+dataset_tokens_b = 13000.0
+arch_codename = &"octopus_v2"
+
+[sub_resource type="Resource" id="release_orca_4_1"]
+script = ExtResource("2_rel")
+id = &"release_orca_4_1"
+display_name = "Orca-4.1"
+release_turn = 325
+capability = {"general": 80.0, "code": 67.0, "reasoning": 72.0, "multimodal": 32.0, "agent": 18.0}
+release_kind = &"rlhf"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_orca_4_5"]
+script = ExtResource("2_rel")
+id = &"release_orca_4_5"
+display_name = "Orca-4.5"
+release_turn = 348
+capability = {"general": 84.0, "code": 72.0, "reasoning": 76.0, "multimodal": 55.0, "agent": 25.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t2"
+cluster_gpu_count = 24000
+training_weeks = 22
+params_b = 1800.0
+active_params_b = 260.0
+dataset_tokens_b = 18000.0
+arch_codename = &"octopus_v2"
+
+[sub_resource type="Resource" id="release_orca_4o"]
+script = ExtResource("2_rel")
+id = &"release_orca_4o"
+display_name = "Orca-4o"
+release_turn = 365
+capability = {"general": 86.0, "code": 70.0, "reasoning": 74.0, "multimodal": 85.0, "agent": 28.0}
+release_kind = &"multimodal_posttrain"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_orca_o1"]
+script = ExtResource("2_rel")
+id = &"release_orca_o1"
+display_name = "Orca-o1"
+release_turn = 380
+capability = {"general": 83.0, "code": 72.0, "reasoning": 95.0, "multimodal": 72.0, "agent": 40.0}
+release_kind = &"reasoning_rl"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_orca_o1_5"]
+script = ExtResource("2_rel")
+id = &"release_orca_o1_5"
+display_name = "Orca-o1.5"
+release_turn = 395
+capability = {"general": 88.0, "code": 78.0, "reasoning": 108.0, "multimodal": 78.0, "agent": 52.0}
+release_kind = &"reasoning_rl"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_orca_4_7"]
+script = ExtResource("2_rel")
+id = &"release_orca_4_7"
+display_name = "Orca-4.7"
+release_turn = 415
+capability = {"general": 95.0, "code": 86.0, "reasoning": 95.0, "multimodal": 88.0, "agent": 55.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 50000
+training_weeks = 24
+params_b = 2500.0
+active_params_b = 360.0
+dataset_tokens_b = 25000.0
+arch_codename = &"octopus_v2"
+
+[sub_resource type="Resource" id="release_orca_5"]
+script = ExtResource("2_rel")
+id = &"release_orca_5"
+display_name = "Orca-5"
+release_turn = 425
+capability = {"general": 108.0, "code": 92.0, "reasoning": 118.0, "multimodal": 95.0, "agent": 68.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 80000
+training_weeks = 28
+params_b = 3000.0
+active_params_b = 420.0
+dataset_tokens_b = 30000.0
+arch_codename = &"octopus_sparse"
+
+[sub_resource type="Resource" id="release_orca_5_1"]
+script = ExtResource("2_rel")
+id = &"release_orca_5_1"
+display_name = "Orca-5.1"
+release_turn = 445
+capability = {"general": 110.0, "code": 95.0, "reasoning": 122.0, "multimodal": 98.0, "agent": 72.0}
+release_kind = &"rlhf"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_orca_5_5"]
+script = ExtResource("2_rel")
+id = &"release_orca_5_5"
+display_name = "Orca-5.5"
+release_turn = 465
+capability = {"general": 115.0, "code": 100.0, "reasoning": 130.0, "multimodal": 102.0, "agent": 78.0}
+release_kind = &"reasoning_rl"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_orca_6"]
+script = ExtResource("2_rel")
+id = &"release_orca_6"
+display_name = "Orca-6"
+release_turn = 480
+capability = {"general": 125.0, "code": 115.0, "reasoning": 138.0, "multimodal": 115.0, "agent": 92.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 150000
+training_weeks = 26
+params_b = 6000.0
+active_params_b = 800.0
+dataset_tokens_b = 50000.0
+arch_codename = &"octopus_sparse"
+
+[sub_resource type="Resource" id="release_orca_6_5"]
+script = ExtResource("2_rel")
+id = &"release_orca_6_5"
+display_name = "Orca-6.5"
+release_turn = 505
+capability = {"general": 133.0, "code": 123.0, "reasoning": 148.0, "multimodal": 122.0, "agent": 103.0}
+release_kind = &"rlhf"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_orca_7"]
+script = ExtResource("2_rel")
+id = &"release_orca_7"
+display_name = "Orca-7"
+release_turn = 530
+capability = {"general": 148.0, "code": 138.0, "reasoning": 162.0, "multimodal": 132.0, "agent": 118.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 300000
+training_weeks = 28
+params_b = 10000.0
+active_params_b = 1300.0
+dataset_tokens_b = 75000.0
+arch_codename = &"octopus_sparse"
+
+[sub_resource type="Resource" id="release_orca_7_5"]
+script = ExtResource("2_rel")
+id = &"release_orca_7_5"
+display_name = "Orca-7.5"
+release_turn = 555
+capability = {"general": 156.0, "code": 146.0, "reasoning": 172.0, "multimodal": 140.0, "agent": 130.0}
+release_kind = &"rlhf"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_orca_8"]
+script = ExtResource("2_rel")
+id = &"release_orca_8"
+display_name = "Orca-8"
+release_turn = 605
+capability = {"general": 175.0, "code": 166.0, "reasoning": 198.0, "multimodal": 162.0, "agent": 155.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 600000
+training_weeks = 28
+params_b = 15000.0
+active_params_b = 1900.0
+dataset_tokens_b = 100000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_orca_8_5"]
+script = ExtResource("2_rel")
+id = &"release_orca_8_5"
+display_name = "Orca-8.5"
+release_turn = 635
+capability = {"general": 185.0, "code": 178.0, "reasoning": 210.0, "multimodal": 172.0, "agent": 168.0}
+release_kind = &"reasoning_rl"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_orca_9"]
+script = ExtResource("2_rel")
+id = &"release_orca_9"
+display_name = "Orca-9"
+release_turn = 665
+capability = {"general": 200.0, "code": 194.0, "reasoning": 228.0, "multimodal": 188.0, "agent": 188.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 1000000
+training_weeks = 28
+params_b = 22000.0
+active_params_b = 2700.0
+dataset_tokens_b = 140000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_orca_10"]
+script = ExtResource("2_rel")
+id = &"release_orca_10"
+display_name = "Orca-10"
+release_turn = 725
+capability = {"general": 225.0, "code": 222.0, "reasoning": 258.0, "multimodal": 214.0, "agent": 220.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 1700000
+training_weeks = 28
+params_b = 32000.0
+active_params_b = 3800.0
+dataset_tokens_b = 200000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_orca_11"]
+script = ExtResource("2_rel")
+id = &"release_orca_11"
+display_name = "Orca-11"
+release_turn = 790
+capability = {"general": 252.0, "code": 250.0, "reasoning": 288.0, "multimodal": 240.0, "agent": 250.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 2500000
+training_weeks = 28
+params_b = 45000.0
+active_params_b = 5200.0
+dataset_tokens_b = 280000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_orca_12"]
+script = ExtResource("2_rel")
+id = &"release_orca_12"
+display_name = "Orca-12"
+release_turn = 860
+capability = {"general": 280.0, "code": 278.0, "reasoning": 318.0, "multimodal": 268.0, "agent": 280.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 3500000
+training_weeks = 28
+params_b = 60000.0
+active_params_b = 6800.0
+dataset_tokens_b = 360000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_orca_13"]
+script = ExtResource("2_rel")
+id = &"release_orca_13"
+display_name = "Orca-13"
+release_turn = 930
+capability = {"general": 310.0, "code": 308.0, "reasoning": 350.0, "multimodal": 298.0, "agent": 312.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 5000000
+training_weeks = 28
+params_b = 80000.0
+active_params_b = 8800.0
+dataset_tokens_b = 460000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_orca_14"]
+script = ExtResource("2_rel")
+id = &"release_orca_14"
+display_name = "Orca-14"
+release_turn = 1000
+capability = {"general": 340.0, "code": 342.0, "reasoning": 385.0, "multimodal": 328.0, "agent": 345.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 6000000
+training_weeks = 28
+params_b = 100000.0
+active_params_b = 11000.0
+dataset_tokens_b = 580000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_orca_15"]
+script = ExtResource("2_rel")
+id = &"release_orca_15"
+display_name = "Orca-15"
+release_turn = 1080
+capability = {"general": 372.0, "code": 378.0, "reasoning": 420.0, "multimodal": 360.0, "agent": 380.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 7000000
+training_weeks = 28
+params_b = 130000.0
+active_params_b = 14000.0
+dataset_tokens_b = 720000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_orca_16"]
+script = ExtResource("2_rel")
+id = &"release_orca_16"
+display_name = "Orca-16"
+release_turn = 1170
+capability = {"general": 405.0, "code": 415.0, "reasoning": 458.0, "multimodal": 395.0, "agent": 418.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 8000000
+training_weeks = 28
+params_b = 170000.0
+active_params_b = 18000.0
+dataset_tokens_b = 880000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_orca_17"]
+script = ExtResource("2_rel")
+id = &"release_orca_17"
+display_name = "Orca-17"
+release_turn = 1260
+capability = {"general": 440.0, "code": 452.0, "reasoning": 498.0, "multimodal": 432.0, "agent": 458.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 9000000
+training_weeks = 28
+params_b = 220000.0
+active_params_b = 23000.0
+dataset_tokens_b = 1100000.0
+arch_codename = &"octopus_super_sparse"
+
+[resource]
+script = ExtResource("1_npc")
+id = &"npc_orca_lab"
+display_name = "OrcaLab"
+is_open_source = false
+board_membership = [&"closed_source", &"sub_general", &"sub_reasoning", &"sub_agent"]
+model_releases = [SubResource("release_orca_1"), SubResource("release_orca_1_5"), SubResource("release_orca_2"), SubResource("release_orca_2_5"), SubResource("release_orca_3"), SubResource("release_orca_3_1"), SubResource("release_orca_3_5"), SubResource("release_orca_3_7"), SubResource("release_orca_3_9"), SubResource("release_orca_4"), SubResource("release_orca_4_1"), SubResource("release_orca_4_5"), SubResource("release_orca_4o"), SubResource("release_orca_o1"), SubResource("release_orca_o1_5"), SubResource("release_orca_4_7"), SubResource("release_orca_5"), SubResource("release_orca_5_1"), SubResource("release_orca_5_5"), SubResource("release_orca_6"), SubResource("release_orca_6_5"), SubResource("release_orca_7"), SubResource("release_orca_7_5"), SubResource("release_orca_8"), SubResource("release_orca_8_5"), SubResource("release_orca_9"), SubResource("release_orca_10"), SubResource("release_orca_11"), SubResource("release_orca_12"), SubResource("release_orca_13"), SubResource("release_orca_14"), SubResource("release_orca_15"), SubResource("release_orca_16"), SubResource("release_orca_17")]

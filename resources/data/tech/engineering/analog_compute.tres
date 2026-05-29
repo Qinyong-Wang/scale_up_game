@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="TechNode" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/tech_node.gd" id="1_tn"]
+
+[resource]
+script = ExtResource("1_tn")
+id = &"analog_compute"
+tree = &"engineering"
+display_name = "模拟计算 (2032+)"
+description = "模拟计算单元用于推理. 吞吐 ×2.5, 单 token FLOPs 不变."
+prerequisites = Array[StringName]([&"bit2_quant"])
+research_cost = 0
+research_months = 48
+effects = {
+	&"throughput_multiplier": 2.5,
+}
+effects_summary = "推理吞吐 ×2.5 (前沿)"
+min_researchers = 5
+min_engineers = 5
+min_gpu_count = 256
+capability_cap = 0.0

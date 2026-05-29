@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EventCard" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/event_card.gd" id="1_ec"]
+
+[resource]
+script = ExtResource("1_ec")
+id = &"paradigm_reasoning_rl"
+category = &"flavor"
+title = "Reasoning RL 范式 — 会思考的模型"
+body = "OrcaLab 与 BeeLogic 几乎同时公布会思考的模型: 回答前先做隐式多步推理. 数学和代码 benchmark 跳水式提升, 学术界开始严肃讨论 AGI 时间表."
+min_turn = 414
+weight = 0
+cooldown_months = 9999

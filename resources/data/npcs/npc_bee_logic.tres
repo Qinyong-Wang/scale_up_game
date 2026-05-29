@@ -1,0 +1,177 @@
+[gd_resource type="Resource" script_class="NpcCompany" load_steps=14 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/npc_company.gd" id="1_npc"]
+[ext_resource type="Script" path="res://scripts/resources/npc_model_release.gd" id="2_rel"]
+
+[sub_resource type="Resource" id="release_bee_1"]
+script = ExtResource("2_rel")
+id = &"release_bee_1"
+display_name = "Bee-1"
+release_turn = 380
+capability = {"general": 25.0, "code": 18.0, "reasoning": 55.0, "multimodal": 8.0, "agent": 12.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t2"
+cluster_gpu_count = 6000
+training_weeks = 25
+params_b = 200.0
+active_params_b = 200.0
+dataset_tokens_b = 4000.0
+arch_codename = &"ant_v4"
+
+[sub_resource type="Resource" id="release_bee_1_5"]
+script = ExtResource("2_rel")
+id = &"release_bee_1_5"
+display_name = "Bee-1.5"
+release_turn = 420
+capability = {"general": 30.0, "code": 22.0, "reasoning": 68.0, "multimodal": 12.0, "agent": 22.0}
+release_kind = &"reasoning_rl"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_bee_2"]
+script = ExtResource("2_rel")
+id = &"release_bee_2"
+display_name = "Bee-2"
+release_turn = 440
+capability = {"general": 48.0, "code": 38.0, "reasoning": 92.0, "multimodal": 25.0, "agent": 42.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t2"
+cluster_gpu_count = 16000
+training_weeks = 26
+params_b = 800.0
+active_params_b = 120.0
+dataset_tokens_b = 10000.0
+arch_codename = &"octopus_v2"
+
+[sub_resource type="Resource" id="release_bee_2_5"]
+script = ExtResource("2_rel")
+id = &"release_bee_2_5"
+display_name = "Bee-2.5"
+release_turn = 510
+capability = {"general": 58.0, "code": 48.0, "reasoning": 108.0, "multimodal": 35.0, "agent": 58.0}
+release_kind = &"reasoning_rl"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_bee_3"]
+script = ExtResource("2_rel")
+id = &"release_bee_3"
+display_name = "Bee-3"
+release_turn = 530
+capability = {"general": 72.0, "code": 62.0, "reasoning": 122.0, "multimodal": 50.0, "agent": 78.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 50000
+training_weeks = 26
+params_b = 2200.0
+active_params_b = 320.0
+dataset_tokens_b = 22000.0
+arch_codename = &"octopus_sparse"
+
+[sub_resource type="Resource" id="release_bee_3_5"]
+script = ExtResource("2_rel")
+id = &"release_bee_3_5"
+display_name = "Bee-3.5"
+release_turn = 615
+capability = {"general": 85.0, "code": 75.0, "reasoning": 138.0, "multimodal": 65.0, "agent": 95.0}
+release_kind = &"reasoning_rl"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_bee_4"]
+script = ExtResource("2_rel")
+id = &"release_bee_4"
+display_name = "Bee-4"
+release_turn = 650
+capability = {"general": 98.0, "code": 88.0, "reasoning": 152.0, "multimodal": 80.0, "agent": 115.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 200000
+training_weeks = 28
+params_b = 5500.0
+active_params_b = 750.0
+dataset_tokens_b = 50000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_bee_5"]
+script = ExtResource("2_rel")
+id = &"release_bee_5"
+display_name = "Bee-5"
+release_turn = 820
+capability = {"general": 125.0, "code": 115.0, "reasoning": 188.0, "multimodal": 110.0, "agent": 148.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 600000
+training_weeks = 28
+params_b = 11000.0
+active_params_b = 1400.0
+dataset_tokens_b = 95000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_bee_6"]
+script = ExtResource("2_rel")
+id = &"release_bee_6"
+display_name = "Bee-6"
+release_turn = 980
+capability = {"general": 152.0, "code": 142.0, "reasoning": 222.0, "multimodal": 138.0, "agent": 180.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 1400000
+training_weeks = 28
+params_b = 20000.0
+active_params_b = 2400.0
+dataset_tokens_b = 165000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_bee_7"]
+script = ExtResource("2_rel")
+id = &"release_bee_7"
+display_name = "Bee-7"
+release_turn = 1150
+capability = {"general": 182.0, "code": 172.0, "reasoning": 260.0, "multimodal": 170.0, "agent": 215.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 2800000
+training_weeks = 28
+params_b = 36000.0
+active_params_b = 4100.0
+dataset_tokens_b = 260000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_bee_8"]
+script = ExtResource("2_rel")
+id = &"release_bee_8"
+display_name = "Bee-8"
+release_turn = 1290
+capability = {"general": 215.0, "code": 205.0, "reasoning": 298.0, "multimodal": 202.0, "agent": 252.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 4800000
+training_weeks = 28
+params_b = 58000.0
+active_params_b = 6500.0
+dataset_tokens_b = 400000.0
+arch_codename = &"octopus_super_sparse"
+
+[resource]
+script = ExtResource("1_npc")
+id = &"npc_bee_logic"
+display_name = "Bee Logic"
+is_open_source = true
+board_membership = [&"sub_reasoning"]
+model_releases = [SubResource("release_bee_1"), SubResource("release_bee_1_5"), SubResource("release_bee_2"), SubResource("release_bee_2_5"), SubResource("release_bee_3"), SubResource("release_bee_3_5"), SubResource("release_bee_4"), SubResource("release_bee_5"), SubResource("release_bee_6"), SubResource("release_bee_7"), SubResource("release_bee_8")]

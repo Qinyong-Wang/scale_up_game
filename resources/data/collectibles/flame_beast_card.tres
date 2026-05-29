@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CollectibleSpec" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/collectible_spec.gd" id="1_col"]
+
+[resource]
+script = ExtResource("1_col")
+id = &"flame_beast_card"
+category = &"trading_card"
+display_name = "初版·炎兽闪卡"
+description = "一代人童年的怪兽对战卡，初版闪卡存世稀少。怀旧情绪推着它在收藏市场一路走高。"
+curve_years = Array[int]([2017, 2025, 2045, 2070])
+curve_prices = Array[int]([24000000, 300000000, 780000000, 1200000000])
+appear_weight = 0.2

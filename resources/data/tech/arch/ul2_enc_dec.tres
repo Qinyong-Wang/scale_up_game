@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="TechNode" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/tech_node.gd" id="1_tn"]
+
+[resource]
+script = ExtResource("1_tn")
+id = &"ul2_enc_dec"
+tree = &"arch"
+display_name = "UL2 统一去噪目标"
+description = "混合多种去噪目标统一 encoder-decoder 预训练, 2022 主流. 评分上限抬到 58 — encoder-decoder 线的尽头, 仍是历史死胡同."
+prerequisites = Array[StringName]([&"t5_enc_dec"])
+research_cost = 0
+research_months = 32
+effects = {
+	&"train_coef": 1.1,
+	&"inference_coef": 0.95,
+	&"capability_coef": 1.1,
+}
+effects_summary = "训练 ×1.1 · 推理 ×0.95 · 评分上限 58"
+min_researchers = 3
+min_engineers = 2
+min_gpu_count = 40
+capability_cap = 58.0

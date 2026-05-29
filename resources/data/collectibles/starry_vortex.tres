@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CollectibleSpec" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/collectible_spec.gd" id="1_col"]
+
+[resource]
+script = ExtResource("1_col")
+id = &"starry_vortex"
+category = &"painting"
+display_name = "《星夜旋涡》"
+description = "一代大师笔下旋转的星空，蓝筹艺术品的代名词。后期资金溢出时最大的吸金口。"
+curve_years = Array[int]([1889, 2040, 2070])
+curve_prices = Array[int]([750000000, 1200000000, 1500000000])
+appear_weight = 0.2

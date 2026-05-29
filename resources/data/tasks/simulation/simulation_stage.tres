@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="TaskTemplate" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/task_template.gd" id="1_tt"]
+
+[resource]
+script = ExtResource("1_tt")
+id = &"simulation_stage"
+subtype = &"simulation"
+display_name = "Simulation Stage"
+base_cost = 0
+weekly_cost = 0
+duration_func = &"charity_law"
+base_duration = 8
+input_schema = {}
+output_arch = &""

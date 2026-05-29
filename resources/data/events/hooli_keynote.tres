@@ -1,0 +1,50 @@
+[gd_resource type="Resource" script_class="EventCard" load_steps=10 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/event_card.gd" id="1_ec"]
+[ext_resource type="Script" path="res://scripts/resources/event_option.gd" id="2_eo"]
+[ext_resource type="Script" path="res://scripts/resources/event_effect.gd" id="3_ef"]
+
+[sub_resource type="Resource" id="eff_0"]
+script = ExtResource("3_ef")
+kind = &"economy_spend"
+params = {"pct": 0.06, "floor": 40000, "cap": 30000000}
+
+[sub_resource type="Resource" id="eff_1"]
+script = ExtResource("3_ef")
+kind = &"product_boost_subscribers"
+params = {"pct": 0.08, "floor": 120, "cap": 80000000}
+
+[sub_resource type="Resource" id="opt_fight"]
+script = ExtResource("2_eo")
+id = &"fight"
+label = "正面硬刚, 烧钱打广告战"
+effects = [SubResource("eff_0"), SubResource("eff_1")]
+
+[sub_resource type="Resource" id="eff_2"]
+script = ExtResource("3_ef")
+kind = &"economy_award"
+params = {"pct": 0.02, "floor": 6000, "cap": 6000000}
+
+[sub_resource type="Resource" id="eff_3"]
+script = ExtResource("3_ef")
+kind = &"product_boost_subscribers"
+params = {"pct": -0.05, "floor": 100, "cap": 50000000}
+
+[sub_resource type="Resource" id="opt_differentiate"]
+script = ExtResource("2_eo")
+id = &"differentiate"
+label = "差异化求生, 专注小众死忠"
+effects = [SubResource("eff_2"), SubResource("eff_3")]
+
+[resource]
+script = ExtResource("1_ec")
+id = &"hooli_keynote"
+category = &"crisis"
+title = "搜索巨头在发布会上抄了你的产品"
+body = "一家家大业大的搜索巨头在万众瞩目的发布会上, 端出了一个和你几乎一模一样的产品, CEO 还深情地说要『让世界变得更美好一点点』。他们的市场预算够买下你一百次。"
+min_turn = 40
+requires_product = true
+weight = 8
+cooldown_months = 80
+max_triggers = 2
+options = [SubResource("opt_fight"), SubResource("opt_differentiate")]

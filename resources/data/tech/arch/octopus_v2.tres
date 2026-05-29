@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="TechNode" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/tech_node.gd" id="1_tn"]
+
+[resource]
+script = ExtResource("1_tn")
+id = &"octopus_v2"
+tree = &"arch"
+display_name = "Octopus v2 MoE Routing (~Mixtral)"
+description = "MoE 路由优化, 训练吞吐显著提高, 推理回到基线 (1/8 激活)."
+prerequisites = Array[StringName]([&"octopus_v1"])
+research_cost = 0
+research_months = 44
+effects = {
+	&"train_coef": 1.7,
+	&"inference_coef": 1.0,
+}
+effects_summary = "训练 ×13.6 · 推理 ×8 (1/8 激活)"
+min_researchers = 4
+min_engineers = 5
+min_gpu_count = 128

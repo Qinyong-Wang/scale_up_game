@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="FounderOriginSpec" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/founder_origin_spec.gd" id="1_founder"]
+
+[resource]
+script = ExtResource("1_founder")
+id = &"influencer"
+display_name = "知名网红"
+description = "你有几百万粉丝，发条动态就能上热搜。"
+perk_summary = "自带流量 — 发布的产品用户增长速度提升 30%。"
+drawback_summary = "投资人质疑「流量泡沫」 — 估值与融资额打 75 折。"
+s_tier_weight_bonus = 0.0
+funding_multiplier = 0.75
+user_growth_multiplier = 1.3
+seed_round_unlocked = false

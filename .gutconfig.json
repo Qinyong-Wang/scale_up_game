@@ -1,0 +1,11 @@
+{
+    "dirs": ["res://tests/unit/", "res://tests/integration/"],
+    "include_subdirs": true,
+    "prefix": "",
+    "suffix": "_test.gd",
+    "pre_run_script": "res://tests/support/gut_cjk_font_hook.gd",
+    "log_level": 1,
+    "should_exit": true,
+    "should_exit_on_success": true,
+    "ignore_pause": true
+}

@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="EventCard" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/event_card.gd" id="1_ec"]
+[ext_resource type="Script" path="res://scripts/resources/event_option.gd" id="2_eo"]
+[ext_resource type="Script" path="res://scripts/resources/event_effect.gd" id="3_ef"]
+
+[sub_resource type="Resource" id="eff_0"]
+script = ExtResource("3_ef")
+kind = &"economy_spend"
+params = {"pct": 0.05, "floor": 20000, "cap": 40000000}
+
+[sub_resource type="Resource" id="eff_1"]
+script = ExtResource("3_ef")
+kind = &"product_boost_subscribers"
+params = {"pct": 0.05, "floor": 40, "cap": 30000000}
+
+[sub_resource type="Resource" id="opt_hire"]
+script = ExtResource("2_eo")
+id = &"hire"
+label = "签高薪顾问约, 团队声誉大涨"
+effects = [SubResource("eff_0"), SubResource("eff_1")]
+
+[sub_resource type="Resource" id="eff_2"]
+script = ExtResource("3_ef")
+kind = &"product_boost_subscribers"
+params = {"pct": -0.03, "floor": 40, "cap": 30000000}
+
+[sub_resource type="Resource" id="opt_pass"]
+script = ExtResource("2_eo")
+id = &"pass"
+label = "暂时请不起, 热度被对手带走"
+effects = [SubResource("eff_2")]
+
+[resource]
+script = ExtResource("1_ec")
+id = &"star_researcher"
+category = &"opportunity"
+title = "一位明星研究员愿意做顾问"
+body = "圈内顶尖研究员主动联系你, 说愿意短期帮你评审路线图、给团队站台, 但咨询费不菲。"
+min_turn = 8
+requires_product = true
+weight = 10
+cooldown_months = 24
+options = [SubResource("opt_hire"), SubResource("opt_pass")]

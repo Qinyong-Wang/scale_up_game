@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scenes/ui/components/icon_button/icon_button.gd" id="1_iconbtn"]
+
+[node name="IconButton" type="Control"]
+custom_minimum_size = Vector2(0, 32)
+script = ExtResource("1_iconbtn")

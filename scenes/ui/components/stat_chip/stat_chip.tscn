@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scenes/ui/components/stat_chip/stat_chip.gd" id="1_chip"]
+
+[node name="StatChip" type="PanelContainer"]
+custom_minimum_size = Vector2(104, 36)
+script = ExtResource("1_chip")

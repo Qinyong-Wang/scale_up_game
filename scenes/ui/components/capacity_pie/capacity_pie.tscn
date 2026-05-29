@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scenes/ui/components/capacity_pie/capacity_pie.gd" id="1_pie"]
+
+[node name="CapacityPie" type="Control"]
+custom_minimum_size = Vector2(56, 56)
+script = ExtResource("1_pie")

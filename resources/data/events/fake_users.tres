@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="EventCard" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/event_card.gd" id="1_ec"]
+[ext_resource type="Script" path="res://scripts/resources/event_option.gd" id="2_eo"]
+[ext_resource type="Script" path="res://scripts/resources/event_effect.gd" id="3_ef"]
+
+[sub_resource type="Resource" id="eff_0"]
+script = ExtResource("3_ef")
+kind = &"product_boost_subscribers"
+params = {"pct": 0.1, "floor": 150, "cap": 80000000}
+
+[sub_resource type="Resource" id="eff_1"]
+script = ExtResource("3_ef")
+kind = &"economy_spend"
+params = {"pct": 0.015, "floor": 5000, "cap": 5000000}
+
+[sub_resource type="Resource" id="opt_juice"]
+script = ExtResource("2_eo")
+id = &"juice"
+label = "睁只眼闭只眼, 让数据先好看着"
+effects = [SubResource("eff_0"), SubResource("eff_1")]
+
+[sub_resource type="Resource" id="eff_2"]
+script = ExtResource("3_ef")
+kind = &"product_boost_subscribers"
+params = {"pct": -0.06, "floor": 100, "cap": 60000000}
+
+[sub_resource type="Resource" id="opt_purge"]
+script = ExtResource("2_eo")
+id = &"purge"
+label = "连夜清理僵尸号, 如实披露"
+effects = [SubResource("eff_2")]
+
+[resource]
+script = ExtResource("1_ec")
+id = &"fake_users"
+category = &"crisis"
+title = "增长团队偷偷买了一仓库手机刷量"
+body = "融资在即, 你撞见增长团队的角落里堆着一墙的旧手机, 正在自动注册、自动点赞。账面用户数确实好看得不像话……但你心里清楚那是什么。"
+min_turn = 20
+requires_product = true
+weight = 8
+cooldown_months = 60
+max_triggers = 1
+options = [SubResource("opt_juice"), SubResource("opt_purge")]

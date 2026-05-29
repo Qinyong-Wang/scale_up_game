@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EventCard" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/event_card.gd" id="1_ec"]
+[resource]
+script = ExtResource("1_ec")
+id = &"history_sparse_expert_routing"
+category = &"flavor"
+title = "历史档案: 专家路由让容量和计算分开"
+body = "2020-2021 年, 稀疏专家模型重新升温。每个 token 只激活少量专家, 让模型总容量变大, 单次推理计算却不必等比例膨胀。工程团队开始把路由、负载均衡和通信开销写进白板。"
+min_turn = 185
+weight = 0
+cooldown_months = 9999
+max_triggers = 1

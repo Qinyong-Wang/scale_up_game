@@ -1,0 +1,252 @@
+[gd_resource type="Resource" script_class="NpcCompany" load_steps=19 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/npc_company.gd" id="1_npc"]
+[ext_resource type="Script" path="res://scripts/resources/npc_model_release.gd" id="2_rel"]
+
+[sub_resource type="Resource" id="release_falcon_1"]
+script = ExtResource("2_rel")
+id = &"release_falcon_1"
+display_name = "Falcon-1"
+release_turn = 230
+capability = {"general": 15.0, "code": 22.0, "reasoning": 14.0, "multimodal": 0.0, "agent": 0.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t1"
+cluster_gpu_count = 5000
+training_weeks = 24
+params_b = 70.0
+active_params_b = 70.0
+dataset_tokens_b = 500.0
+arch_codename = &"ant_v3"
+
+[sub_resource type="Resource" id="release_falcon_1_5"]
+script = ExtResource("2_rel")
+id = &"release_falcon_1_5"
+display_name = "Falcon-1.5"
+release_turn = 275
+capability = {"general": 22.0, "code": 35.0, "reasoning": 20.0, "multimodal": 3.0, "agent": 2.0}
+release_kind = &"rlhf"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_falcon_2"]
+script = ExtResource("2_rel")
+id = &"release_falcon_2"
+display_name = "Falcon-2"
+release_turn = 310
+capability = {"general": 62.0, "code": 82.0, "reasoning": 55.0, "multimodal": 18.0, "agent": 15.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t2"
+cluster_gpu_count = 14000
+training_weeks = 24
+params_b = 800.0
+active_params_b = 120.0
+dataset_tokens_b = 8000.0
+arch_codename = &"octopus_v2"
+
+[sub_resource type="Resource" id="release_falcon_2_5"]
+script = ExtResource("2_rel")
+id = &"release_falcon_2_5"
+display_name = "Falcon-2.5"
+release_turn = 355
+capability = {"general": 72.0, "code": 92.0, "reasoning": 65.0, "multimodal": 28.0, "agent": 28.0}
+release_kind = &"tool_use_posttrain"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_falcon_3"]
+script = ExtResource("2_rel")
+id = &"release_falcon_3"
+display_name = "Falcon-3"
+release_turn = 385
+capability = {"general": 88.0, "code": 108.0, "reasoning": 82.0, "multimodal": 52.0, "agent": 40.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t2"
+cluster_gpu_count = 100000
+training_weeks = 28
+params_b = 2500.0
+active_params_b = 350.0
+dataset_tokens_b = 25000.0
+arch_codename = &"octopus_sparse"
+
+[sub_resource type="Resource" id="release_falcon_3_5"]
+script = ExtResource("2_rel")
+id = &"release_falcon_3_5"
+display_name = "Falcon-3.5"
+release_turn = 430
+capability = {"general": 95.0, "code": 118.0, "reasoning": 92.0, "multimodal": 62.0, "agent": 55.0}
+release_kind = &"reasoning_rl"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_falcon_4"]
+script = ExtResource("2_rel")
+id = &"release_falcon_4"
+display_name = "Falcon-4"
+release_turn = 470
+capability = {"general": 102.0, "code": 128.0, "reasoning": 95.0, "multimodal": 72.0, "agent": 72.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 250000
+training_weeks = 28
+params_b = 5000.0
+active_params_b = 680.0
+dataset_tokens_b = 42000.0
+arch_codename = &"octopus_sparse"
+
+[sub_resource type="Resource" id="release_falcon_4_5"]
+script = ExtResource("2_rel")
+id = &"release_falcon_4_5"
+display_name = "Falcon-4.5"
+release_turn = 525
+capability = {"general": 112.0, "code": 142.0, "reasoning": 108.0, "multimodal": 85.0, "agent": 92.0}
+release_kind = &"tool_use_posttrain"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_falcon_5"]
+script = ExtResource("2_rel")
+id = &"release_falcon_5"
+display_name = "Falcon-5"
+release_turn = 590
+capability = {"general": 122.0, "code": 152.0, "reasoning": 115.0, "multimodal": 95.0, "agent": 108.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 500000
+training_weeks = 26
+params_b = 10000.0
+active_params_b = 1300.0
+dataset_tokens_b = 72000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_falcon_5_5"]
+script = ExtResource("2_rel")
+id = &"release_falcon_5_5"
+display_name = "Falcon-5.5"
+release_turn = 655
+capability = {"general": 132.0, "code": 165.0, "reasoning": 125.0, "multimodal": 108.0, "agent": 122.0}
+release_kind = &"reasoning_rl"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_falcon_6"]
+script = ExtResource("2_rel")
+id = &"release_falcon_6"
+display_name = "Falcon-6"
+release_turn = 730
+capability = {"general": 142.0, "code": 178.0, "reasoning": 138.0, "multimodal": 118.0, "agent": 138.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 1200000
+training_weeks = 28
+params_b = 20000.0
+active_params_b = 2500.0
+dataset_tokens_b = 140000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_falcon_6_5"]
+script = ExtResource("2_rel")
+id = &"release_falcon_6_5"
+display_name = "Falcon-6.5"
+release_turn = 800
+capability = {"general": 155.0, "code": 192.0, "reasoning": 152.0, "multimodal": 130.0, "agent": 152.0}
+release_kind = &"tool_use_posttrain"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_falcon_7"]
+script = ExtResource("2_rel")
+id = &"release_falcon_7"
+display_name = "Falcon-7"
+release_turn = 870
+capability = {"general": 168.0, "code": 208.0, "reasoning": 165.0, "multimodal": 142.0, "agent": 168.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 2000000
+training_weeks = 28
+params_b = 32000.0
+active_params_b = 3700.0
+dataset_tokens_b = 200000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_falcon_8"]
+script = ExtResource("2_rel")
+id = &"release_falcon_8"
+display_name = "Falcon-8"
+release_turn = 990
+capability = {"general": 195.0, "code": 240.0, "reasoning": 192.0, "multimodal": 168.0, "agent": 198.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 3500000
+training_weeks = 30
+params_b = 50000.0
+active_params_b = 5600.0
+dataset_tokens_b = 310000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_falcon_9"]
+script = ExtResource("2_rel")
+id = &"release_falcon_9"
+display_name = "Falcon-9"
+release_turn = 1110
+capability = {"general": 225.0, "code": 275.0, "reasoning": 222.0, "multimodal": 198.0, "agent": 232.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 5500000
+training_weeks = 30
+params_b = 75000.0
+active_params_b = 8200.0
+dataset_tokens_b = 460000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_falcon_10"]
+script = ExtResource("2_rel")
+id = &"release_falcon_10"
+display_name = "Falcon-10"
+release_turn = 1230
+capability = {"general": 258.0, "code": 312.0, "reasoning": 254.0, "multimodal": 230.0, "agent": 268.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 8000000
+training_weeks = 30
+params_b = 110000.0
+active_params_b = 12000.0
+dataset_tokens_b = 660000.0
+arch_codename = &"octopus_super_sparse"
+
+[resource]
+script = ExtResource("1_npc")
+id = &"npc_falcon_inc"
+display_name = "Falcon Inc"
+is_open_source = false
+board_membership = [&"closed_source", &"sub_code", &"sub_agent"]
+model_releases = [SubResource("release_falcon_1"), SubResource("release_falcon_1_5"), SubResource("release_falcon_2"), SubResource("release_falcon_2_5"), SubResource("release_falcon_3"), SubResource("release_falcon_3_5"), SubResource("release_falcon_4"), SubResource("release_falcon_4_5"), SubResource("release_falcon_5"), SubResource("release_falcon_5_5"), SubResource("release_falcon_6"), SubResource("release_falcon_6_5"), SubResource("release_falcon_7"), SubResource("release_falcon_8"), SubResource("release_falcon_9"), SubResource("release_falcon_10")]

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="FacilitySpec" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/facility_spec.gd" id="1_fs"]
+
+[resource]
+script = ExtResource("1_fs")
+id = &"facility_rack_32"
+display_name = "32 卡机架"
+tier_index = 4
+max_gpu_count = 32
+build_weeks = 1
+land_weekly_cost = 0
+land_build_cost = 16000
+rent_weekly_cost = 4500
+unlock_cash_required = 0
+icon_path = "res://assets/sprites/ui/infra/facility-rack-32.png"

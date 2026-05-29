@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EventCard" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/event_card.gd" id="1_ec"]
+[resource]
+script = ExtResource("1_ec")
+id = &"history_open_weight_wave"
+category = &"flavor"
+title = "历史档案: 开放权重生态改变竞争格局"
+body = "2023 年, 开放权重模型和社区微调迅速扩散。小团队可以在公开底座上做行业适配, 大公司也发现护城河不只在参数本身, 还在数据、服务、分发和迭代速度。"
+min_turn = 310
+weight = 0
+cooldown_months = 9999
+max_triggers = 1

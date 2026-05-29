@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="TechNode" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/tech_node.gd" id="1_tn"]
+
+[resource]
+script = ExtResource("1_tn")
+id = &"bit2_quant"
+tree = &"engineering"
+display_name = "2-bit 量化 (2030+)"
+description = "更激进的低比特量化. 推理 FLOPs/token 再降 50%."
+prerequisites = Array[StringName]([&"squirrel_int4", &"glowworm_fp4"])
+research_cost = 0
+research_months = 40
+effects = {
+	&"flops_per_token_reduction": 0.5,
+}
+effects_summary = "推理 FLOPs/token ÷2 (前沿)"
+min_researchers = 4
+min_engineers = 3
+min_gpu_count = 128
+capability_cap = 0.0

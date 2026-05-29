@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CollectibleSpec" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/collectible_spec.gd" id="1_col"]
+
+[resource]
+script = ExtResource("1_col")
+id = &"le_mans_winner"
+category = &"supercar"
+display_name = "勒芒级·夺冠原型"
+description = "夺得耐力赛冠军的原厂原型车。"
+curve_years = Array[int]([1970, 2040, 2070])
+curve_prices = Array[int]([180000000, 420000000, 600000000])
+appear_weight = 0.2

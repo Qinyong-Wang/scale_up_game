@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="TechNode" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/tech_node.gd" id="1_tn"]
+
+[resource]
+script = ExtResource("1_tn")
+id = &"ctx_1m"
+tree = &"context"
+display_name = "上下文 1M"
+description = "百万 token 上下文. 训练成本 +60%, agent 评估 +10."
+prerequisites = Array[StringName]([&"ctx_200k"])
+research_cost = 0
+research_months = 40
+effects = {
+	&"max_tokens": 1000000,
+	&"train_penalty": 1.60,
+	&"agent_bonus": 10.0,
+	&"serving_penalty": 6.0,
+}
+effects_summary = "1M · 训练 ×1.60 · agent +10"
+min_researchers = 4
+min_engineers = 3
+min_gpu_count = 128
+capability_cap = 0.0

@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="TechNode" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/tech_node.gd" id="1_tn"]
+
+[resource]
+script = ExtResource("1_tn")
+id = &"native_multimodal"
+tree = &"arch"
+display_name = "原生多模态自回归"
+description = "图音视一体 token 自回归. 解锁 multimodal_method=native_ar (multi 维度 ×1.30, train_penalty ×1.30)."
+prerequisites = Array[StringName]([&"dit_v1", &"pixel_ar"])
+research_cost = 0
+research_months = 42
+effects = {
+	&"train_coef": 0.85,
+	&"inference_coef": 1.0,
+	&"capability_coef": 1.05,
+	&"multimodal_method_unlock": &"native_ar",
+}
+effects_summary = "解锁 multimodal_method=native_ar · 多模态 ×1.30"
+min_researchers = 4
+min_engineers = 3
+min_gpu_count = 128
+capability_cap = 0.0

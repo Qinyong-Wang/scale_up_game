@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="LeadBonusSpec" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/lead_bonus_spec.gd" id="1_bonus"]
+
+[resource]
+script = ExtResource("1_bonus")
+specialty = &"chief_scientist"
+bonuses = {
+&"pretrain_speed": 0.22,
+&"pretrain_score_bonus": 0.06,
+&"posttrain_speed": 0.11,
+&"research_speed": 0.55,
+}

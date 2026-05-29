@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="TechNode" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/tech_node.gd" id="1_tn"]
+
+[resource]
+script = ExtResource("1_tn")
+id = &"swarm_batch"
+tree = &"engineering"
+display_name = "Continuous Batching (vLLM)"
+description = "动态合批, 让 GPU 时刻满载."
+prerequisites = Array[StringName]([&"owl_cache"])
+research_cost = 0
+research_months = 24
+effects = {
+	&"throughput_multiplier": 1.5,
+}
+effects_summary = "推理吞吐 +50%"
+min_researchers = 2
+min_engineers = 3
+min_gpu_count = 8

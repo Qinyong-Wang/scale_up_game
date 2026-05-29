@@ -1,0 +1,312 @@
+[gd_resource type="Resource" script_class="NpcCompany" load_steps=23 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/npc_company.gd" id="1_npc"]
+[ext_resource type="Script" path="res://scripts/resources/npc_model_release.gd" id="2_rel"]
+
+[sub_resource type="Resource" id="release_raven_1"]
+script = ExtResource("2_rel")
+id = &"release_raven_1"
+display_name = "Raven-1"
+release_turn = 195
+capability = {"general": 18.0, "code": 12.0, "reasoning": 22.0, "multimodal": 0.0, "agent": 0.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t1"
+cluster_gpu_count = 4000
+training_weeks = 24
+params_b = 50.0
+active_params_b = 50.0
+dataset_tokens_b = 400.0
+arch_codename = &"ant_v3"
+
+[sub_resource type="Resource" id="release_raven_1_5"]
+script = ExtResource("2_rel")
+id = &"release_raven_1_5"
+display_name = "Raven-1.5"
+release_turn = 235
+capability = {"general": 25.0, "code": 16.0, "reasoning": 30.0, "multimodal": 0.0, "agent": 0.0}
+release_kind = &"rlhf"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_raven_2"]
+script = ExtResource("2_rel")
+id = &"release_raven_2"
+display_name = "Raven-2"
+release_turn = 280
+capability = {"general": 45.0, "code": 30.0, "reasoning": 52.0, "multimodal": 12.0, "agent": 8.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t1"
+cluster_gpu_count = 6000
+training_weeks = 26
+params_b = 175.0
+active_params_b = 175.0
+dataset_tokens_b = 1500.0
+arch_codename = &"ant_v4"
+
+[sub_resource type="Resource" id="release_raven_2_5"]
+script = ExtResource("2_rel")
+id = &"release_raven_2_5"
+display_name = "Raven-2.5"
+release_turn = 305
+capability = {"general": 55.0, "code": 38.0, "reasoning": 68.0, "multimodal": 22.0, "agent": 12.0}
+release_kind = &"rlhf"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_raven_3"]
+script = ExtResource("2_rel")
+id = &"release_raven_3"
+display_name = "Raven-3"
+release_turn = 320
+capability = {"general": 72.0, "code": 55.0, "reasoning": 82.0, "multimodal": 38.0, "agent": 18.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t2"
+cluster_gpu_count = 12000
+training_weeks = 26
+params_b = 1000.0
+active_params_b = 150.0
+dataset_tokens_b = 10000.0
+arch_codename = &"octopus_v2"
+
+[sub_resource type="Resource" id="release_raven_3_3"]
+script = ExtResource("2_rel")
+id = &"release_raven_3_3"
+display_name = "Raven-3.3"
+release_turn = 355
+capability = {"general": 76.0, "code": 59.0, "reasoning": 86.0, "multimodal": 40.0, "agent": 25.0}
+release_kind = &"rlhf"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_raven_3_5"]
+script = ExtResource("2_rel")
+id = &"release_raven_3_5"
+display_name = "Raven-3.5"
+release_turn = 380
+capability = {"general": 80.0, "code": 62.0, "reasoning": 90.0, "multimodal": 42.0, "agent": 30.0}
+release_kind = &"reasoning_rl"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_raven_4"]
+script = ExtResource("2_rel")
+id = &"release_raven_4"
+display_name = "Raven-4"
+release_turn = 430
+capability = {"general": 98.0, "code": 82.0, "reasoning": 118.0, "multimodal": 72.0, "agent": 55.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 50000
+training_weeks = 28
+params_b = 2000.0
+active_params_b = 280.0
+dataset_tokens_b = 22000.0
+arch_codename = &"octopus_sparse"
+
+[sub_resource type="Resource" id="release_raven_4_5"]
+script = ExtResource("2_rel")
+id = &"release_raven_4_5"
+display_name = "Raven-4.5"
+release_turn = 465
+capability = {"general": 104.0, "code": 88.0, "reasoning": 128.0, "multimodal": 80.0, "agent": 65.0}
+release_kind = &"reasoning_rl"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_raven_5"]
+script = ExtResource("2_rel")
+id = &"release_raven_5"
+display_name = "Raven-5"
+release_turn = 500
+capability = {"general": 112.0, "code": 100.0, "reasoning": 142.0, "multimodal": 95.0, "agent": 85.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 120000
+training_weeks = 28
+params_b = 4000.0
+active_params_b = 520.0
+dataset_tokens_b = 38000.0
+arch_codename = &"octopus_sparse"
+
+[sub_resource type="Resource" id="release_raven_5_5"]
+script = ExtResource("2_rel")
+id = &"release_raven_5_5"
+display_name = "Raven-5.5"
+release_turn = 545
+capability = {"general": 122.0, "code": 110.0, "reasoning": 152.0, "multimodal": 105.0, "agent": 100.0}
+release_kind = &"reasoning_rl"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_raven_6"]
+script = ExtResource("2_rel")
+id = &"release_raven_6"
+display_name = "Raven-6"
+release_turn = 620
+capability = {"general": 132.0, "code": 120.0, "reasoning": 162.0, "multimodal": 120.0, "agent": 115.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 350000
+training_weeks = 28
+params_b = 9000.0
+active_params_b = 1100.0
+dataset_tokens_b = 70000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_raven_6_5"]
+script = ExtResource("2_rel")
+id = &"release_raven_6_5"
+display_name = "Raven-6.5"
+release_turn = 670
+capability = {"general": 142.0, "code": 130.0, "reasoning": 175.0, "multimodal": 130.0, "agent": 128.0}
+release_kind = &"reasoning_rl"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_raven_7"]
+script = ExtResource("2_rel")
+id = &"release_raven_7"
+display_name = "Raven-7"
+release_turn = 760
+capability = {"general": 155.0, "code": 142.0, "reasoning": 188.0, "multimodal": 142.0, "agent": 142.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 900000
+training_weeks = 30
+params_b = 18000.0
+active_params_b = 2200.0
+dataset_tokens_b = 120000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_raven_7_5"]
+script = ExtResource("2_rel")
+id = &"release_raven_7_5"
+display_name = "Raven-7.5"
+release_turn = 820
+capability = {"general": 168.0, "code": 156.0, "reasoning": 205.0, "multimodal": 156.0, "agent": 158.0}
+release_kind = &"reasoning_rl"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_raven_8"]
+script = ExtResource("2_rel")
+id = &"release_raven_8"
+display_name = "Raven-8"
+release_turn = 900
+capability = {"general": 185.0, "code": 175.0, "reasoning": 225.0, "multimodal": 175.0, "agent": 178.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 1800000
+training_weeks = 30
+params_b = 30000.0
+active_params_b = 3400.0
+dataset_tokens_b = 200000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_raven_9"]
+script = ExtResource("2_rel")
+id = &"release_raven_9"
+display_name = "Raven-9"
+release_turn = 1010
+capability = {"general": 210.0, "code": 202.0, "reasoning": 252.0, "multimodal": 200.0, "agent": 205.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 3000000
+training_weeks = 30
+params_b = 48000.0
+active_params_b = 5400.0
+dataset_tokens_b = 320000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_raven_10"]
+script = ExtResource("2_rel")
+id = &"release_raven_10"
+display_name = "Raven-10"
+release_turn = 1110
+capability = {"general": 240.0, "code": 235.0, "reasoning": 285.0, "multimodal": 230.0, "agent": 238.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 4500000
+training_weeks = 30
+params_b = 70000.0
+active_params_b = 7800.0
+dataset_tokens_b = 450000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_raven_11"]
+script = ExtResource("2_rel")
+id = &"release_raven_11"
+display_name = "Raven-11"
+release_turn = 1210
+capability = {"general": 275.0, "code": 272.0, "reasoning": 322.0, "multimodal": 265.0, "agent": 275.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 6500000
+training_weeks = 30
+params_b = 100000.0
+active_params_b = 11000.0
+dataset_tokens_b = 620000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_raven_12"]
+script = ExtResource("2_rel")
+id = &"release_raven_12"
+display_name = "Raven-12"
+release_turn = 1290
+capability = {"general": 310.0, "code": 310.0, "reasoning": 365.0, "multimodal": 300.0, "agent": 312.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 8500000
+training_weeks = 30
+params_b = 140000.0
+active_params_b = 15000.0
+dataset_tokens_b = 820000.0
+arch_codename = &"octopus_super_sparse"
+
+[resource]
+script = ExtResource("1_npc")
+id = &"npc_raven_ai"
+display_name = "RavenAI"
+is_open_source = false
+board_membership = [&"closed_source", &"sub_reasoning"]
+model_releases = [SubResource("release_raven_1"), SubResource("release_raven_1_5"), SubResource("release_raven_2"), SubResource("release_raven_2_5"), SubResource("release_raven_3"), SubResource("release_raven_3_3"), SubResource("release_raven_3_5"), SubResource("release_raven_4"), SubResource("release_raven_4_5"), SubResource("release_raven_5"), SubResource("release_raven_5_5"), SubResource("release_raven_6"), SubResource("release_raven_6_5"), SubResource("release_raven_7"), SubResource("release_raven_7_5"), SubResource("release_raven_8"), SubResource("release_raven_9"), SubResource("release_raven_10"), SubResource("release_raven_11"), SubResource("release_raven_12")]

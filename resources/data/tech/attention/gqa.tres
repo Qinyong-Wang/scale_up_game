@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="TechNode" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/tech_node.gd" id="1_tn"]
+
+[resource]
+script = ExtResource("1_tn")
+id = &"gqa"
+tree = &"attention"
+display_name = "Grouped-Query Attention"
+description = "Grouped-Query Attention: 减少 KV head 数, 训练略加速, 推理大幅省 fpt."
+prerequisites = Array[StringName]([&"mha_baseline"])
+research_cost = 0
+research_months = 24
+effects = {
+	&"train_coef": 1.05,
+	&"inference_coef": 1.30,
+}
+effects_summary = "训练 +5% · 推理 fpt ÷1.30"
+min_researchers = 2
+min_engineers = 1
+min_gpu_count = 8

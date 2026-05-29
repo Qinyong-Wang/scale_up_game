@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EventCard" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/event_card.gd" id="1_ec"]
+[resource]
+script = ExtResource("1_ec")
+id = &"history_large_decoder_wave"
+category = &"flavor"
+title = "历史档案: 大解码器展示规模化语言能力"
+body = "2019 年, 自回归解码器模型开始在续写、摘要和少样本任务上展现惊人的泛化能力。它们还不稳定, 也经常胡说八道, 但行业第一次认真讨论: 只要继续放大, 会不会涌现出新能力?"
+min_turn = 90
+weight = 0
+cooldown_months = 9999
+max_triggers = 1

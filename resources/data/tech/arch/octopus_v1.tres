@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="TechNode" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/tech_node.gd" id="1_tn"]
+
+[resource]
+script = ExtResource("1_tn")
+id = &"octopus_v1"
+tree = &"arch"
+display_name = "Octopus v1 MoE 引入 (~Switch/GShard)"
+description = "Mixture of Experts 入门: 把 FFN 拆成多个专家网络, 每 token 激活 top-k (1/4 激活)."
+prerequisites = Array[StringName]([&"bee_v1"])
+research_cost = 0
+research_months = 40
+effects = {
+	&"train_coef": 1.5,
+	&"inference_coef": 0.9,
+}
+effects_summary = "训练 ×6 · 推理 ×3.6 (1/4 激活, 路由 -10%)"
+min_researchers = 3
+min_engineers = 4
+min_gpu_count = 64

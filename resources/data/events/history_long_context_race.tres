@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EventCard" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/event_card.gd" id="1_ec"]
+[resource]
+script = ExtResource("1_ec")
+id = &"history_long_context_race"
+category = &"flavor"
+title = "历史档案: 长上下文变成企业卖点"
+body = "2024 年, 上下文窗口从论文指标变成销售话术: 一次塞进整本手册、整仓代码、整份合同。真正困难的不只是放进去, 还包括检索到、推理对、服务得起。"
+min_turn = 375
+weight = 0
+cooldown_months = 9999
+max_triggers = 1

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="PosttrainDatasetTemplate" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/posttrain_dataset_template.gd" id="1_pst"]
+
+[resource]
+script = ExtResource("1_pst")
+id = &"task_specific_sft_v1"
+display_name = "Task-Specific SFT v1"
+source = &"open_source"
+size = 0.005
+quality = 0.55
+target_capability = &"general"
+coverage_tags = Array[StringName]([&"sft", &"task"])
+price = 0
+released_at_week = 130

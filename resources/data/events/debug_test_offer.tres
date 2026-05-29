@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="EventCard" load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/event_card.gd" id="1_ec"]
+[ext_resource type="Script" path="res://scripts/resources/event_option.gd" id="2_eo"]
+[ext_resource type="Script" path="res://scripts/resources/event_effect.gd" id="3_ef"]
+
+[sub_resource type="Resource" id="effect_award"]
+script = ExtResource("3_ef")
+kind = &"economy_award"
+params = {"amount": 1000000}
+
+[sub_resource type="Resource" id="effect_fame"]
+script = ExtResource("3_ef")
+kind = &"fame_add"
+params = {"amount": 5.0}
+
+[sub_resource type="Resource" id="opt_accept"]
+script = ExtResource("2_eo")
+id = &"accept"
+label = "[TEST] accept ($1,000,000)"
+effects = [SubResource("effect_award"), SubResource("effect_fame")]
+
+[sub_resource type="Resource" id="opt_refuse"]
+script = ExtResource("2_eo")
+id = &"refuse"
+label = "[TEST] refuse"
+effects = []
+
+[resource]
+script = ExtResource("1_ec")
+id = &"debug_test_offer"
+category = &"debug"
+title = "[TEST] Offer Fixture"
+body = "Test/debug fixture (replaces the removed funding_offer). weight=0 keeps it out of the live random pool; tests bump weight when they need a draw."
+min_turn = 1
+weight = 0
+cooldown_months = 24
+options = [SubResource("opt_accept"), SubResource("opt_refuse")]

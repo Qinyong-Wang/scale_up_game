@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="TechNode" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/tech_node.gd" id="1_tn"]
+
+[resource]
+script = ExtResource("1_tn")
+id = &"spider_v1"
+tree = &"arch"
+display_name = "Spider v1 长上下文线性注意力"
+description = "通过线性化注意力把上下文扩到百万 token; 推理友好但训练略贵."
+prerequisites = Array[StringName]([&"ant_v2"])
+research_cost = 0
+research_months = 36
+effects = {
+	&"train_coef": 1.4,
+	&"inference_coef": 1.4,
+}
+effects_summary = "训练 +40% · 推理 +40%"
+min_researchers = 3
+min_engineers = 3
+min_gpu_count = 32

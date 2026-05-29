@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CollectibleSpec" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/collectible_spec.gd" id="1_col"]
+
+[resource]
+script = ExtResource("1_col")
+id = &"abstract_red_field"
+category = &"painting"
+display_name = "《赤色场域》"
+description = "一整块红色震撼拍场的抽象巨作。"
+curve_years = Array[int]([1961, 2040, 2070])
+curve_prices = Array[int]([250000000, 400000000, 500000000])
+appear_weight = 0.2

@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="TechNode" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/tech_node.gd" id="1_tn"]
+
+[resource]
+script = ExtResource("1_tn")
+id = &"mqa"
+tree = &"attention"
+display_name = "Multi-Query Attention"
+description = "Multi-Query: 所有 head 共享 1 个 KV; 推理极致省内存. 训练上更便宜."
+prerequisites = Array[StringName]([&"gqa"])
+research_cost = 0
+research_months = 28
+effects = {
+	&"train_coef": 1.10,
+	&"inference_coef": 1.50,
+}
+effects_summary = "训练 +10% · 推理 fpt ÷1.50"
+min_researchers = 2
+min_engineers = 2
+min_gpu_count = 8

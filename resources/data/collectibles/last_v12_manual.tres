@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CollectibleSpec" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/collectible_spec.gd" id="1_col"]
+
+[resource]
+script = ExtResource("1_col")
+id = &"last_v12_manual"
+category = &"supercar"
+display_name = "末代·V12 手动超跑"
+description = "内燃机时代末代 V12 手动挡超跑。"
+curve_years = Array[int]([2019, 2040, 2070])
+curve_prices = Array[int]([90000000, 210000000, 300000000])
+appear_weight = 0.5

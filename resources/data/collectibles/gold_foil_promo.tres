@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CollectibleSpec" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/collectible_spec.gd" id="1_col"]
+
+[resource]
+script = ExtResource("1_col")
+id = &"gold_foil_promo"
+category = &"trading_card"
+display_name = "黄金箔·活动促销卡"
+description = "限定活动发放的黄金箔促销卡。"
+curve_years = Array[int]([2008, 2025, 2045, 2070])
+curve_prices = Array[int]([1600000, 20000000, 52000000, 80000000])
+appear_weight = 0.5

@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="TechNode" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/tech_node.gd" id="1_tn"]
+
+[resource]
+script = ExtResource("1_tn")
+id = &"infinite_attn"
+tree = &"attention"
+display_name = "无限注意力 (2030+)"
+description = "概念性无限上下文机制. 与 context.ctx_10m 配套."
+prerequisites = Array[StringName]([&"hybrid_attention"])
+research_cost = 0
+research_months = 48
+effects = {
+	&"train_coef": 0.95,
+	&"inference_coef": 1.8,
+}
+effects_summary = "训练 ×0.95 · 推理 ×1.8 (前沿)"
+min_researchers = 5
+min_engineers = 4
+min_gpu_count = 256
+capability_cap = 0.0

@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="EventCard" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/event_card.gd" id="1_ec"]
+[ext_resource type="Script" path="res://scripts/resources/event_option.gd" id="2_eo"]
+[ext_resource type="Script" path="res://scripts/resources/event_effect.gd" id="3_ef"]
+
+[sub_resource type="Resource" id="eff_0"]
+script = ExtResource("3_ef")
+kind = &"economy_spend"
+params = {"pct": 0.03, "floor": 12000, "cap": 12000000}
+
+[sub_resource type="Resource" id="eff_1"]
+script = ExtResource("3_ef")
+kind = &"product_boost_subscribers"
+params = {"pct": 0.09, "floor": 120, "cap": 70000000}
+
+[sub_resource type="Resource" id="opt_rebrand"]
+script = ExtResource("2_eo")
+id = &"rebrand"
+label = "豪掷预算, 彻底改头换面"
+effects = [SubResource("eff_0"), SubResource("eff_1")]
+
+[sub_resource type="Resource" id="eff_3"]
+script = ExtResource("3_ef")
+kind = &"product_boost_subscribers"
+params = {"pct": -0.02, "floor": 40, "cap": 20000000}
+
+[sub_resource type="Resource" id="opt_keep_identity"]
+script = ExtResource("2_eo")
+id = &"keep_identity"
+label = "保持极客本色, 把钱省下来"
+effects = [SubResource("eff_3")]
+
+[resource]
+script = ExtResource("1_ec")
+id = &"rebrand_consultant"
+category = &"opportunity"
+title = "网红品牌顾问要给你『性感重塑』"
+body = "市场总监请来一位戴贝雷帽的网红品牌顾问, 他扫了一眼你们的 logo 就皱眉:『太极客了。我们要的是性感、是态度。』然后报了个让 CFO 倒吸一口冷气的预算。"
+min_turn = 16
+requires_product = true
+weight = 8
+cooldown_months = 60
+max_triggers = 1
+options = [SubResource("opt_rebrand"), SubResource("opt_keep_identity")]

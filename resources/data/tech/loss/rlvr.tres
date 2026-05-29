@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="TechNode" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/tech_node.gd" id="1_tn"]
+
+[resource]
+script = ExtResource("1_tn")
+id = &"rlvr"
+tree = &"loss"
+display_name = "RLVR 可验证奖励 RL"
+description = "Reinforcement Learning w/ Verifiable Rewards (DeepSeek-R1 风格). 数学/代码 reasoning 拉满."
+prerequisites = Array[StringName]([&"dpo"])
+research_cost = 0
+research_months = 32
+effects = {
+	&"train_coef": 0.85,
+	&"capability_coef": 1.12,
+}
+effects_summary = "训练 ×0.85 · capability ×1.12"
+min_researchers = 4
+min_engineers = 2
+min_gpu_count = 64
+capability_cap = 0.0

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CollectibleSpec" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/collectible_spec.gd" id="1_col"]
+
+[resource]
+script = ExtResource("1_col")
+id = &"mascot_card_zero"
+category = &"trading_card"
+display_name = "吉祥物·零号卡"
+description = "系列吉祥物的编号 0 测试卡。"
+curve_years = Array[int]([2007, 2025, 2045, 2070])
+curve_prices = Array[int]([11000000, 137500000, 357500000, 550000000])
+appear_weight = 0.2

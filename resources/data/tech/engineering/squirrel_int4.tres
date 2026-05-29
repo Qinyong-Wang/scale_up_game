@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="TechNode" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/tech_node.gd" id="1_tn"]
+
+[resource]
+script = ExtResource("1_tn")
+id = &"squirrel_int4"
+tree = &"engineering"
+display_name = "Int4 量化"
+description = "进一步压到 int4; 单 token 算力降到 40%. v4 (PR-B): 量化不再有降质惩罚."
+prerequisites = Array[StringName]([&"squirrel_int8"])
+research_cost = 0
+research_months = 32
+effects = {
+	&"flops_per_token_reduction": 0.4,
+}
+effects_summary = "token 算力 -60% (推理吞吐 ×2.5)"
+min_researchers = 3
+min_engineers = 4
+min_gpu_count = 32

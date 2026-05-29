@@ -1,0 +1,162 @@
+[gd_resource type="Resource" script_class="NpcCompany" load_steps=13 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/npc_company.gd" id="1_npc"]
+[ext_resource type="Script" path="res://scripts/resources/npc_model_release.gd" id="2_rel"]
+
+[sub_resource type="Resource" id="release_crow_1"]
+script = ExtResource("2_rel")
+id = &"release_crow_1"
+display_name = "Crow-1"
+release_turn = 430
+capability = {"general": 18.0, "code": 18.0, "reasoning": 25.0, "multimodal": 5.0, "agent": 22.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t2"
+cluster_gpu_count = 8000
+training_weeks = 24
+params_b = 300.0
+active_params_b = 45.0
+dataset_tokens_b = 5000.0
+arch_codename = &"octopus_v2"
+
+[sub_resource type="Resource" id="release_crow_1_5"]
+script = ExtResource("2_rel")
+id = &"release_crow_1_5"
+display_name = "Crow-1.5"
+release_turn = 485
+capability = {"general": 22.0, "code": 22.0, "reasoning": 32.0, "multimodal": 8.0, "agent": 35.0}
+release_kind = &"tool_use_posttrain"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_crow_2"]
+script = ExtResource("2_rel")
+id = &"release_crow_2"
+display_name = "Crow-2"
+release_turn = 510
+capability = {"general": 42.0, "code": 42.0, "reasoning": 52.0, "multimodal": 22.0, "agent": 65.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 30000
+training_weeks = 26
+params_b = 1200.0
+active_params_b = 180.0
+dataset_tokens_b = 13500.0
+arch_codename = &"octopus_sparse"
+
+[sub_resource type="Resource" id="release_crow_2_5"]
+script = ExtResource("2_rel")
+id = &"release_crow_2_5"
+display_name = "Crow-2.5"
+release_turn = 575
+capability = {"general": 50.0, "code": 52.0, "reasoning": 62.0, "multimodal": 28.0, "agent": 82.0}
+release_kind = &"reasoning_rl"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_crow_3"]
+script = ExtResource("2_rel")
+id = &"release_crow_3"
+display_name = "Crow-3"
+release_turn = 600
+capability = {"general": 62.0, "code": 65.0, "reasoning": 78.0, "multimodal": 42.0, "agent": 102.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 120000
+training_weeks = 28
+params_b = 3500.0
+active_params_b = 480.0
+dataset_tokens_b = 32000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_crow_3_5"]
+script = ExtResource("2_rel")
+id = &"release_crow_3_5"
+display_name = "Crow-3.5"
+release_turn = 690
+capability = {"general": 72.0, "code": 78.0, "reasoning": 92.0, "multimodal": 52.0, "agent": 122.0}
+release_kind = &"tool_use_posttrain"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_crow_4"]
+script = ExtResource("2_rel")
+id = &"release_crow_4"
+display_name = "Crow-4"
+release_turn = 730
+capability = {"general": 85.0, "code": 92.0, "reasoning": 108.0, "multimodal": 65.0, "agent": 138.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 400000
+training_weeks = 28
+params_b = 8000.0
+active_params_b = 1050.0
+dataset_tokens_b = 72000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_crow_5"]
+script = ExtResource("2_rel")
+id = &"release_crow_5"
+display_name = "Crow-5"
+release_turn = 900
+capability = {"general": 110.0, "code": 122.0, "reasoning": 138.0, "multimodal": 92.0, "agent": 170.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 950000
+training_weeks = 28
+params_b = 15000.0
+active_params_b = 1900.0
+dataset_tokens_b = 130000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_crow_6"]
+script = ExtResource("2_rel")
+id = &"release_crow_6"
+display_name = "Crow-6"
+release_turn = 1080
+capability = {"general": 138.0, "code": 152.0, "reasoning": 168.0, "multimodal": 122.0, "agent": 205.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 1900000
+training_weeks = 28
+params_b = 25000.0
+active_params_b = 3000.0
+dataset_tokens_b = 200000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_crow_7"]
+script = ExtResource("2_rel")
+id = &"release_crow_7"
+display_name = "Crow-7"
+release_turn = 1260
+capability = {"general": 168.0, "code": 182.0, "reasoning": 198.0, "multimodal": 152.0, "agent": 240.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 3500000
+training_weeks = 28
+params_b = 42000.0
+active_params_b = 4800.0
+dataset_tokens_b = 320000.0
+arch_codename = &"octopus_super_sparse"
+
+[resource]
+script = ExtResource("1_npc")
+id = &"npc_crow_labs"
+display_name = "Crow Labs"
+is_open_source = true
+board_membership = [&"sub_agent"]
+model_releases = [SubResource("release_crow_1"), SubResource("release_crow_1_5"), SubResource("release_crow_2"), SubResource("release_crow_2_5"), SubResource("release_crow_3"), SubResource("release_crow_3_5"), SubResource("release_crow_4"), SubResource("release_crow_5"), SubResource("release_crow_6"), SubResource("release_crow_7")]

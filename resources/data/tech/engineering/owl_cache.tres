@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="TechNode" load_steps=2 format=3 uid="uid://dgkmtufac8we5"]
+
+[ext_resource type="Script" path="res://scripts/resources/tech_node.gd" id="1_tn"]
+
+[resource]
+script = ExtResource("1_tn")
+id = &"owl_cache"
+tree = &"engineering"
+display_name = "KV Cache 优化"
+description = "缓存历史 K/V 张量, 推理时跳过重复计算; 显存换吞吐."
+prerequisites = Array[StringName]([])
+research_cost = 0
+research_months = 24
+effects = {
+"throughput_multiplier": 1.3
+}
+effects_summary = "推理吞吐 +30%"
+min_researchers = 2
+min_engineers = 2
+min_gpu_count = 8

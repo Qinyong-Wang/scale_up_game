@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="TaskTemplate" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/task_template.gd" id="1_tt"]
+
+[resource]
+script = ExtResource("1_tt")
+id = &"data_collection_default"
+subtype = &"data_collection"
+display_name = "Collect Data"
+base_cost = 30000
+weekly_cost = 5000
+duration_func = &"fixed"
+base_duration = 4
+output_arch = &""

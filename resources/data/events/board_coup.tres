@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="EventCard" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/event_card.gd" id="1_ec"]
+[ext_resource type="Script" path="res://scripts/resources/event_option.gd" id="2_eo"]
+[ext_resource type="Script" path="res://scripts/resources/event_effect.gd" id="3_ef"]
+
+[sub_resource type="Resource" id="eff_0"]
+script = ExtResource("3_ef")
+kind = &"economy_spend"
+params = {"pct": 0.06, "floor": 50000, "cap": 30000000}
+
+[sub_resource type="Resource" id="eff_1"]
+script = ExtResource("3_ef")
+kind = &"product_boost_subscribers"
+params = {"pct": 0.1, "floor": 200, "cap": 100000000}
+
+[sub_resource type="Resource" id="opt_fight"]
+script = ExtResource("2_eo")
+id = &"fight"
+label = "硬刚到底, 让员工逼宫复职"
+effects = [SubResource("eff_0"), SubResource("eff_1")]
+
+[sub_resource type="Resource" id="eff_2"]
+script = ExtResource("3_ef")
+kind = &"product_boost_subscribers"
+params = {"pct": -0.08, "floor": 150, "cap": 80000000}
+
+[sub_resource type="Resource" id="opt_compromise"]
+script = ExtResource("2_eo")
+id = &"compromise"
+label = "体面妥协, 接受董事会改组"
+effects = [SubResource("eff_2")]
+
+[resource]
+script = ExtResource("1_ec")
+id = &"board_coup"
+category = &"crisis"
+title = "董事会要罢免你"
+body = "一个周五傍晚, 董事会毫无征兆地发了份措辞含糊的声明, 把你这位创始人『请』出了公司。第二天一早, 大半个团队在内部群里炸了锅, 扬言要集体辞职跟你走。"
+min_turn = 80
+requires_staff_min = 2
+requires_product = true
+weight = 8
+cooldown_months = 60
+max_triggers = 1
+options = [SubResource("opt_fight"), SubResource("opt_compromise")]

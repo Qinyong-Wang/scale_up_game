@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CollectibleSpec" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/collectible_spec.gd" id="1_col"]
+
+[resource]
+script = ExtResource("1_col")
+id = &"tournament_champion"
+category = &"trading_card"
+display_name = "世界赛·冠军限定卡"
+description = "只发给世界冠军的限定奖励卡。"
+curve_years = Array[int]([2005, 2025, 2045, 2070])
+curve_prices = Array[int]([18000000, 225000000, 585000000, 900000000])
+appear_weight = 0.2

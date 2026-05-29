@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="EconomyTuning" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/economy_tuning.gd" id="1_econ"]
+
+[resource]
+script = ExtResource("1_econ")
+starting_cash = 80000
+bankruptcy_streak_limit = 12
+bankruptcy_warn_streak = 8
+bankruptcy_depth_floor = -1000000
+bankruptcy_depth_k = 3.0
+bankruptcy_depth_l = 0.5
+base_interest_rate = 0.002
+max_loan_beta = 2.0
+max_loan_gamma = 3.0
+max_loan_absolute_cap = 20000000000
+max_loan_term_weeks = 156
+loan_id_start_year = 2026
+valuation_base = 500000
+valuation_multiplier = 2.0
+valuation_cash_coef = 0.3
+rank_premium_rank_1 = 0.50
+rank_premium_rank_top3 = 0.25
+rank_premium_rank_top10 = 0.10
+portfolio_bonus_per_model = 0.05
+founder_min_stake = 0.5
+burn_window_weeks = 3
+revenue_window_weeks = 12
+corp_tax_rate = 0.25
+corp_tax_exemption = 1000000
+ai_tax_rate = 0.2
+ai_tax_threshold = 1000000000

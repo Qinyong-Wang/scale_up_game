@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="EventCard" load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/event_card.gd" id="1_ec"]
+[ext_resource type="Script" path="res://scripts/resources/event_option.gd" id="2_eo"]
+[ext_resource type="Script" path="res://scripts/resources/event_effect.gd" id="3_ef"]
+
+[sub_resource type="Resource" id="eff_0"]
+script = ExtResource("3_ef")
+kind = &"economy_spend"
+params = {"pct": 0.025, "floor": 8000, "cap": 15000000}
+
+[sub_resource type="Resource" id="opt_move"]
+script = ExtResource("2_eo")
+id = &"move"
+label = "搬到更大的办公室"
+effects = [SubResource("eff_0")]
+
+[sub_resource type="Resource" id="opt_squeeze"]
+script = ExtResource("2_eo")
+id = &"squeeze"
+label = "再挤挤, 主打一个温暖"
+effects = []
+
+[resource]
+script = ExtResource("1_ec")
+id = &"routine_office_move"
+category = &"routine"
+title = "要不要换个大办公室?"
+body = "工位已经挤到要叠罗汉了, 房东又发来了涨租通知。"
+min_turn = 20
+requires_staff_min = 1
+weight = 10
+cooldown_months = 10
+max_triggers = 2
+options = [SubResource("opt_move"), SubResource("opt_squeeze")]

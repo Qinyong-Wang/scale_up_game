@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CollectibleSpec" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/collectible_spec.gd" id="1_col"]
+
+[resource]
+script = ExtResource("1_col")
+id = &"zero_block_relic"
+category = &"crypto"
+display_name = "零号区块·铭牌"
+description = "链上第一个区块铸成的实体铭牌，万链之始。"
+curve_years = Array[int]([2017, 2025, 2035, 2070])
+curve_prices = Array[int]([2400000, 720000000, 5400000000, 12000000000])
+appear_weight = 0.08

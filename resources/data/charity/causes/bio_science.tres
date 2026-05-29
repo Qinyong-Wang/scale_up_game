@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CharityCauseSpec" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/charity_cause_spec.gd" id="1_charity"]
+
+[resource]
+script = ExtResource("1_charity")
+id = &"bio_science"
+display_name = "生物与前沿科学基金"
+description = "资助生命科学、基础研究的公益基金。顶尖研究者会更愿意加入一家慷慨支持科学的公司。"
+effect_kind = &"s_tier_weight"
+tier_amounts = Array[int]([10000000, 100000000, 1000000000])
+tier_weeks = Array[int]([4, 12, 26])
+tier_bonuses = Array[float]([0.02, 0.05, 0.08])
+tier_labels = Array[String](["区域级捐助", "国家级捐助", "全球级捐助"])

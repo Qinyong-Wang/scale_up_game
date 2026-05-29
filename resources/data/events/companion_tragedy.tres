@@ -1,0 +1,50 @@
+[gd_resource type="Resource" script_class="EventCard" load_steps=10 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/event_card.gd" id="1_ec"]
+[ext_resource type="Script" path="res://scripts/resources/event_option.gd" id="2_eo"]
+[ext_resource type="Script" path="res://scripts/resources/event_effect.gd" id="3_ef"]
+
+[sub_resource type="Resource" id="eff_0"]
+script = ExtResource("3_ef")
+kind = &"economy_spend"
+params = {"pct": 0.03, "floor": 10000, "cap": 12000000}
+
+[sub_resource type="Resource" id="eff_1"]
+script = ExtResource("3_ef")
+kind = &"product_boost_subscribers"
+params = {"pct": -0.05, "floor": 80, "cap": 50000000}
+
+[sub_resource type="Resource" id="opt_guardrails"]
+script = ExtResource("2_eo")
+id = &"guardrails"
+label = "连夜加装安全护栏与危机干预, 哪怕掉日活"
+effects = [SubResource("eff_0"), SubResource("eff_1")]
+
+[sub_resource type="Resource" id="eff_2"]
+script = ExtResource("3_ef")
+kind = &"product_boost_subscribers"
+params = {"pct": 0.04, "floor": 60, "cap": 40000000}
+
+[sub_resource type="Resource" id="eff_3"]
+script = ExtResource("3_ef")
+kind = &"economy_spend"
+params = {"pct": 0.01, "floor": 3000, "cap": 3000000}
+
+[sub_resource type="Resource" id="opt_deflect"]
+script = ExtResource("2_eo")
+id = &"deflect"
+label = "公关切割, 维持现有的高粘性设计"
+effects = [SubResource("eff_2"), SubResource("eff_3")]
+
+[resource]
+script = ExtResource("1_ec")
+id = &"companion_tragedy"
+category = &"crisis"
+title = "一桩与你陪伴型 AI 有关的悲剧上了头条"
+body = "一桩悲剧上了头条:一位长期把你们的陪伴型 AI 当作唯一倾诉对象的用户出了事。舆论质问——你们的产品是不是为了『留存』, 把人越拉越深?"
+min_turn = 80
+requires_product = true
+weight = 8
+cooldown_months = 60
+max_triggers = 1
+options = [SubResource("opt_guardrails"), SubResource("opt_deflect")]

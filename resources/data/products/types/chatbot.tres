@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="ProductTypeSpec" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/product_type_spec.gd" id="1_pts"]
+
+[resource]
+script = ExtResource("1_pts")
+id = &"chatbot"
+display_name = "Chatbot"
+unlock_thresholds = {
+&"general": 30.0,
+}
+required_modalities = Array[StringName]([])
+tokens_per_user_per_month = 250000
+tokens_per_user_per_week = 250000
+default_subscription_price = 5
+subscription_price_guidance = 5
+capability_penalty_axis = &"general"
+capability_penalty_tiers = [{
+"below": 50.0,
+"rate": -0.025
+}, {
+"below": 70.0,
+"rate": -0.015
+}]
+lead_specialty_bonus = &"chief_engineer"
+application_node_required = &""
+max_subscribers = 2000000000

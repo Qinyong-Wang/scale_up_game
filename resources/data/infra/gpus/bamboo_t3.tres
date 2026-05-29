@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="GPUSpec" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/gpu_spec.gd" id="1_gpu"]
+
+[resource]
+script = ExtResource("1_gpu")
+id = &"bamboo_t3"
+display_name = "Bamboo T3"
+brand = &"bamboo"
+tier = &"t3"
+per_card_tflops = 560.0
+per_card_inference_tflops = 168.0
+purchase_price = 11700
+maintenance_per_week = 9
+ecosystem_score = 0.6
+native_cluster_eff = 0.9
+release_turn = 339
+rent_weekly_cost = 293
+power_factor = 1.3

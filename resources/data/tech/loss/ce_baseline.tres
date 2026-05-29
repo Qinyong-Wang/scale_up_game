@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="TechNode" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/tech_node.gd" id="1_tn"]
+
+[resource]
+script = ExtResource("1_tn")
+id = &"ce_baseline"
+tree = &"loss"
+display_name = "Cross-Entropy Loss"
+description = "标准 cross-entropy loss. 默认解锁, 作为 C 轴基线."
+prerequisites = Array[StringName]([])
+research_cost = 0
+research_months = 0
+effects = {
+	&"train_coef": 1.0,
+	&"capability_coef": 1.0,
+}
+effects_summary = "(基线)"
+min_researchers = 0
+min_engineers = 0
+min_gpu_count = 0

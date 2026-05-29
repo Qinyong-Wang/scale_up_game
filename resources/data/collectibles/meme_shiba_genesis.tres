@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CollectibleSpec" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/collectible_spec.gd" id="1_col"]
+
+[resource]
+script = ExtResource("1_col")
+id = &"meme_shiba_genesis"
+category = &"crypto"
+display_name = "柴犬梗币·创世空投"
+description = "一场玩笑造出的梗币，创世空投钱包。"
+curve_years = Array[int]([2020, 2025, 2035, 2070])
+curve_prices = Array[int]([100000, 30000000, 225000000, 500000000])
+appear_weight = 0.2

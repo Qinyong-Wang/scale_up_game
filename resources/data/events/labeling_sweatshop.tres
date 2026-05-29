@@ -1,0 +1,51 @@
+[gd_resource type="Resource" script_class="EventCard" load_steps=10 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/event_card.gd" id="1_ec"]
+[ext_resource type="Script" path="res://scripts/resources/event_option.gd" id="2_eo"]
+[ext_resource type="Script" path="res://scripts/resources/event_effect.gd" id="3_ef"]
+
+[sub_resource type="Resource" id="eff_0"]
+script = ExtResource("3_ef")
+kind = &"economy_award"
+params = {"pct": 0.04, "floor": 15000, "cap": 15000000}
+
+[sub_resource type="Resource" id="eff_1"]
+script = ExtResource("3_ef")
+kind = &"product_boost_subscribers"
+params = {"pct": -0.03, "floor": 50, "cap": 30000000}
+
+[sub_resource type="Resource" id="opt_exploit"]
+script = ExtResource("2_eo")
+id = &"exploit"
+label = "睁只眼, 继续用廉价外包压成本"
+effects = [SubResource("eff_0"), SubResource("eff_1")]
+
+[sub_resource type="Resource" id="eff_2"]
+script = ExtResource("3_ef")
+kind = &"economy_spend"
+params = {"pct": 0.04, "floor": 15000, "cap": 15000000}
+
+[sub_resource type="Resource" id="eff_3"]
+script = ExtResource("3_ef")
+kind = &"product_boost_subscribers"
+params = {"pct": 0.03, "floor": 50, "cap": 30000000}
+
+[sub_resource type="Resource" id="opt_fair_wage"]
+script = ExtResource("2_eo")
+id = &"fair_wage"
+label = "改用合规供应商, 付得起体面工资"
+effects = [SubResource("eff_2"), SubResource("eff_3")]
+
+[resource]
+script = ExtResource("1_ec")
+id = &"labeling_sweatshop"
+category = &"crisis"
+title = "廉价数据标注外包的真相"
+body = "一家海外外包报出低到离谱的标注价, 你后来才知道:那边的标注工每天盯着最不堪入目的内容十几个小时, 时薪不到一杯奶茶钱, 不少人已经精神出了问题。"
+min_turn = 16
+requires_dataset_min = 1
+requires_product = true
+weight = 24
+cooldown_months = 60
+max_triggers = 1
+options = [SubResource("opt_exploit"), SubResource("opt_fair_wage")]

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CollectibleSpec" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/collectible_spec.gd" id="1_col"]
+
+[resource]
+script = ExtResource("1_col")
+id = &"solar_concept"
+category = &"supercar"
+display_name = "太阳能·概念跑车"
+description = "车顶铺满太阳能板的概念跑车。"
+curve_years = Array[int]([2021, 2040, 2070])
+curve_prices = Array[int]([42000000, 98000000, 140000000])
+appear_weight = 0.5

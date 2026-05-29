@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="EventCard" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/event_card.gd" id="1_ec"]
+[ext_resource type="Script" path="res://scripts/resources/event_option.gd" id="2_eo"]
+[ext_resource type="Script" path="res://scripts/resources/event_effect.gd" id="3_ef"]
+
+[sub_resource type="Resource" id="eff_0"]
+script = ExtResource("3_ef")
+kind = &"economy_spend"
+params = {"pct": 0.04, "floor": 15000, "cap": 12000000}
+
+[sub_resource type="Resource" id="eff_1"]
+script = ExtResource("3_ef")
+kind = &"product_boost_subscribers"
+params = {"pct": 0.1, "floor": 150, "cap": 80000000}
+
+[sub_resource type="Resource" id="opt_all_in"]
+script = ExtResource("2_eo")
+id = &"all_in"
+label = "all-in 押注, 给他一个团队和预算"
+effects = [SubResource("eff_0"), SubResource("eff_1")]
+
+[sub_resource type="Resource" id="eff_2"]
+script = ExtResource("3_ef")
+kind = &"product_boost_subscribers"
+params = {"pct": 0.02, "floor": 40, "cap": 15000000}
+
+[sub_resource type="Resource" id="opt_demo_first"]
+script = ExtResource("2_eo")
+id = &"demo_first"
+label = "让他先做个 demo 再说"
+effects = [SubResource("eff_2")]
+
+[resource]
+script = ExtResource("1_ec")
+id = &"middle_out"
+category = &"opportunity"
+title = "工程师说他想出了能把成本砍到地板的压缩黑科技"
+body = "一个平时不起眼的工程师在白板上画满了曲线, 信誓旦旦说他琢磨出一种『对折再对折』的压缩思路, 能把推理成本压到脚踝以下。问他灵感哪来的, 他神秘一笑:『梦里有人教我的。』"
+min_turn = 12
+requires_staff_min = 1
+requires_product = true
+weight = 8
+cooldown_months = 60
+max_triggers = 1
+options = [SubResource("opt_all_in"), SubResource("opt_demo_first")]

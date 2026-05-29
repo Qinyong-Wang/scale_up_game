@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="TaskTemplate" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/task_template.gd" id="1_tt"]
+
+[resource]
+script = ExtResource("1_tt")
+id = &"train_sparrow_s"
+subtype = &"pretrain"
+display_name = "Train Sparrow-S"
+base_cost = 0
+weekly_cost = 0
+duration_func = &"scaling_law"
+base_duration = 3
+output_arch = &"ant_v1"
+output_size_params = 100.0
+output_flops_per_token = 200000000.0
+output_input_modalities = Array[StringName]([&"text"])
+output_output_modalities = Array[StringName]([&"text"])
+error_rate_per_week = 0.0

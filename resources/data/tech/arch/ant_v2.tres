@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="TechNode" load_steps=2 format=3 uid="uid://c4d876uadmi0r"]
+
+[ext_resource type="Script" path="res://scripts/resources/tech_node.gd" id="1_tn"]
+
+[resource]
+script = ExtResource("1_tn")
+id = &"ant_v2"
+tree = &"arch"
+display_name = "Ant v2 Dense 精炼 (~GPT-2 era)"
+description = "对基线注意力做精调, 减少冗余 FLOPs; 也是 dense scaling 起点."
+prerequisites = Array[StringName]([&"ant_v1"])
+research_cost = 0
+research_months = 32
+effects = {
+"inference_coef": 1.1,
+"train_coef": 1.2
+}
+effects_summary = "训练 +20% · 推理 +10%"
+min_researchers = 2
+min_engineers = 2
+min_gpu_count = 32

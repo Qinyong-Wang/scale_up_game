@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EventCard" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/event_card.gd" id="1_ec"]
+
+[resource]
+script = ExtResource("1_ec")
+id = &"paradigm_moe"
+category = &"flavor"
+title = "OrcaPrime 4 发布 — 大规模 MoE 范式"
+body = "OrcaLab 公布 OrcaPrime 4, 推测为大规模混合专家架构, 在多项基准测试上断崖式超越上一代. 推理深度、代码能力、多模态理解全线跃迁. 全行业承认: 范式变了."
+min_turn = 297
+weight = 0
+cooldown_months = 9999

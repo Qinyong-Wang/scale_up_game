@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="TaskTemplate" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/task_template.gd" id="1_tt"]
+
+[resource]
+script = ExtResource("1_tt")
+id = &"posttrain_model"
+subtype = &"posttrain"
+display_name = "Post-training (player-driven)"
+base_cost = 0
+weekly_cost = 0
+duration_func = &"posttrain_fixed_tier"
+base_duration = 1
+input_schema = {
+	&"needs_lead": true,
+	&"needs_lead_specialty": &"ml_research_lead",
+	&"needs_dc": true,
+	&"needs_dataset": true,
+	&"needs_base_model": true,
+}
+error_rate_per_week = 0.02

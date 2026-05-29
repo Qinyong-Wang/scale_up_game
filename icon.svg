@@ -1,0 +1,21 @@
+<svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 炭黑竖向渐变 (grey 800 → 900), 给扁平方块一点纵深 -->
+    <linearGradient id="bg" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0" stop-color="#3c4043"/>
+      <stop offset="1" stop-color="#202124"/>
+    </linearGradient>
+    <!-- 左上柔光高光, 增加"精致"质感 -->
+    <radialGradient id="glow" cx="0.30" cy="0.16" r="0.95">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.12"/>
+      <stop offset="0.55" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="128" height="128" rx="28" fill="url(#bg)"/>
+  <rect width="128" height="128" rx="28" fill="url(#glow)"/>
+  <!-- Ascent A: 白色山峰双腿 = 上升, 灰色横杠 = 增长 / 数据曲线 -->
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M28 104 L64 24 L100 104" stroke="#ffffff" stroke-width="13"/>
+    <path d="M44 74 L80 58" stroke="#9aa0a6" stroke-width="11"/>
+  </g>
+</svg>

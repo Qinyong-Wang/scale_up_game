@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scenes/ui/views/help_view/help_view.gd" id="1_hv"]
+
+[node name="HelpView" type="VBoxContainer"]
+script = ExtResource("1_hv")

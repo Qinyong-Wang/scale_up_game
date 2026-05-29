@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="TechNode" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/tech_node.gd" id="1_tn"]
+
+[resource]
+script = ExtResource("1_tn")
+id = &"roberta_encoder"
+tree = &"arch"
+display_name = "RoBERTa 鲁棒编码器"
+description = "去掉 NSP, 更大批量 + 更多数据 + 动态掩码, 2019 主流改良. 训练更稳, 评分上限抬到 38 — 仍是 encoder-only 死胡同, 不可 scale 到 LLM."
+prerequisites = Array[StringName]([&"bert_encoder"])
+research_cost = 0
+research_months = 26
+effects = {
+	&"train_coef": 1.25,
+	&"inference_coef": 1.0,
+	&"capability_coef": 1.05,
+}
+effects_summary = "训练 ×1.25 · 评分上限 38"
+min_researchers = 2
+min_engineers = 2
+min_gpu_count = 24
+capability_cap = 38.0

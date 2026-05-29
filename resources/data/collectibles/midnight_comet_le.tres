@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CollectibleSpec" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/collectible_spec.gd" id="1_col"]
+
+[resource]
+script = ExtResource("1_col")
+id = &"midnight_comet_le"
+category = &"supercar"
+display_name = "午夜彗星·限量版"
+description = "全球仅造数台的午夜彗星限量超跑。"
+curve_years = Array[int]([2014, 2040, 2070])
+curve_prices = Array[int]([120000000, 280000000, 400000000])
+appear_weight = 0.5

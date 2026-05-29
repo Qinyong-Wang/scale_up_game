@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="EventCard" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/event_card.gd" id="1_ec"]
+[ext_resource type="Script" path="res://scripts/resources/event_option.gd" id="2_eo"]
+[ext_resource type="Script" path="res://scripts/resources/event_effect.gd" id="3_ef"]
+
+[sub_resource type="Resource" id="eff_0"]
+script = ExtResource("3_ef")
+kind = &"economy_spend"
+params = {"pct": 0.015, "floor": 5000, "cap": 10000000}
+
+[sub_resource type="Resource" id="eff_1"]
+script = ExtResource("3_ef")
+kind = &"product_boost_subscribers"
+params = {"pct": 0.15, "floor": 150, "cap": 200000000}
+
+[sub_resource type="Resource" id="opt_party"]
+script = ExtResource("2_eo")
+id = &"party"
+label = "开盛大庆功派对"
+effects = [SubResource("eff_0"), SubResource("eff_1")]
+
+[sub_resource type="Resource" id="eff_2"]
+script = ExtResource("3_ef")
+kind = &"product_boost_subscribers"
+params = {"pct": 0.05, "floor": 50, "cap": 50000000}
+
+[sub_resource type="Resource" id="opt_focus"]
+script = ExtResource("2_eo")
+id = &"focus"
+label = "低调庆祝, 继续干活"
+effects = [SubResource("eff_2")]
+
+[resource]
+script = ExtResource("1_ec")
+id = &"rank_one_party"
+category = &"opportunity"
+title = "你的模型登顶排行榜了!"
+body = "总榜第一名出现了你的模型, 全公司都在欢呼。"
+min_turn = 4
+requires_rank_max = 1
+requires_product = true
+weight = 12
+cooldown_months = 30
+options = [SubResource("opt_party"), SubResource("opt_focus")]

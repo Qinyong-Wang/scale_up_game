@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="PretrainDatasetTemplate" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/pretrain_dataset_template.gd" id="1_pdt"]
+
+[resource]
+script = ExtResource("1_pdt")
+id = &"fineweb_15t_v1"
+display_name = "FineWeb 15T v1"
+source = &"open_source"
+size = 15000.0
+quality = 0.78
+coverage_tags = Array[StringName]([&"web", &"dedup"])
+price = 0
+released_at_week = 364

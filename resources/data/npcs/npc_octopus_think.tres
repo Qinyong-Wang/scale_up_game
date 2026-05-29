@@ -1,0 +1,177 @@
+[gd_resource type="Resource" script_class="NpcCompany" load_steps=14 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/npc_company.gd" id="1_npc"]
+[ext_resource type="Script" path="res://scripts/resources/npc_model_release.gd" id="2_rel"]
+
+[sub_resource type="Resource" id="release_octopus_1"]
+script = ExtResource("2_rel")
+id = &"release_octopus_1"
+display_name = "Octopus-1"
+release_turn = 340
+capability = {"general": 22.0, "code": 18.0, "reasoning": 62.0, "multimodal": 5.0, "agent": 15.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t2"
+cluster_gpu_count = 8000
+training_weeks = 26
+params_b = 320.0
+active_params_b = 48.0
+dataset_tokens_b = 6000.0
+arch_codename = &"octopus_v2"
+
+[sub_resource type="Resource" id="release_octopus_1_5"]
+script = ExtResource("2_rel")
+id = &"release_octopus_1_5"
+display_name = "Octopus-1.5"
+release_turn = 395
+capability = {"general": 32.0, "code": 28.0, "reasoning": 78.0, "multimodal": 12.0, "agent": 28.0}
+release_kind = &"reasoning_rl"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_octopus_2"]
+script = ExtResource("2_rel")
+id = &"release_octopus_2"
+display_name = "Octopus-2"
+release_turn = 415
+capability = {"general": 55.0, "code": 48.0, "reasoning": 95.0, "multimodal": 28.0, "agent": 48.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t2"
+cluster_gpu_count = 22000
+training_weeks = 26
+params_b = 1100.0
+active_params_b = 165.0
+dataset_tokens_b = 12000.0
+arch_codename = &"octopus_sparse"
+
+[sub_resource type="Resource" id="release_octopus_2_5"]
+script = ExtResource("2_rel")
+id = &"release_octopus_2_5"
+display_name = "Octopus-2.5"
+release_turn = 480
+capability = {"general": 68.0, "code": 60.0, "reasoning": 115.0, "multimodal": 40.0, "agent": 65.0}
+release_kind = &"reasoning_rl"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_octopus_3"]
+script = ExtResource("2_rel")
+id = &"release_octopus_3"
+display_name = "Octopus-3"
+release_turn = 495
+capability = {"general": 78.0, "code": 72.0, "reasoning": 128.0, "multimodal": 52.0, "agent": 82.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 70000
+training_weeks = 28
+params_b = 3000.0
+active_params_b = 420.0
+dataset_tokens_b = 28000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_octopus_3_5"]
+script = ExtResource("2_rel")
+id = &"release_octopus_3_5"
+display_name = "Octopus-3.5"
+release_turn = 570
+capability = {"general": 90.0, "code": 85.0, "reasoning": 142.0, "multimodal": 65.0, "agent": 100.0}
+release_kind = &"reasoning_rl"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_octopus_4"]
+script = ExtResource("2_rel")
+id = &"release_octopus_4"
+display_name = "Octopus-4"
+release_turn = 615
+capability = {"general": 105.0, "code": 100.0, "reasoning": 158.0, "multimodal": 82.0, "agent": 122.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 250000
+training_weeks = 28
+params_b = 6500.0
+active_params_b = 880.0
+dataset_tokens_b = 58000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_octopus_5"]
+script = ExtResource("2_rel")
+id = &"release_octopus_5"
+display_name = "Octopus-5"
+release_turn = 780
+capability = {"general": 132.0, "code": 128.0, "reasoning": 192.0, "multimodal": 112.0, "agent": 158.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 700000
+training_weeks = 28
+params_b = 12500.0
+active_params_b = 1500.0
+dataset_tokens_b = 105000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_octopus_6"]
+script = ExtResource("2_rel")
+id = &"release_octopus_6"
+display_name = "Octopus-6"
+release_turn = 940
+capability = {"general": 160.0, "code": 158.0, "reasoning": 225.0, "multimodal": 142.0, "agent": 192.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 1500000
+training_weeks = 28
+params_b = 22000.0
+active_params_b = 2600.0
+dataset_tokens_b = 185000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_octopus_7"]
+script = ExtResource("2_rel")
+id = &"release_octopus_7"
+display_name = "Octopus-7"
+release_turn = 1100
+capability = {"general": 190.0, "code": 188.0, "reasoning": 258.0, "multimodal": 172.0, "agent": 225.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 3000000
+training_weeks = 28
+params_b = 38000.0
+active_params_b = 4400.0
+dataset_tokens_b = 290000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_octopus_8"]
+script = ExtResource("2_rel")
+id = &"release_octopus_8"
+display_name = "Octopus-8"
+release_turn = 1270
+capability = {"general": 225.0, "code": 222.0, "reasoning": 295.0, "multimodal": 205.0, "agent": 260.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 5500000
+training_weeks = 28
+params_b = 65000.0
+active_params_b = 7300.0
+dataset_tokens_b = 450000.0
+arch_codename = &"octopus_super_sparse"
+
+[resource]
+script = ExtResource("1_npc")
+id = &"npc_octopus_think"
+display_name = "Octopus Think"
+is_open_source = false
+board_membership = [&"sub_reasoning"]
+model_releases = [SubResource("release_octopus_1"), SubResource("release_octopus_1_5"), SubResource("release_octopus_2"), SubResource("release_octopus_2_5"), SubResource("release_octopus_3"), SubResource("release_octopus_3_5"), SubResource("release_octopus_4"), SubResource("release_octopus_5"), SubResource("release_octopus_6"), SubResource("release_octopus_7"), SubResource("release_octopus_8")]

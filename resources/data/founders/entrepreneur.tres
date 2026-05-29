@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="FounderOriginSpec" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/founder_origin_spec.gd" id="1_founder"]
+
+[resource]
+script = ExtResource("1_founder")
+id = &"entrepreneur"
+display_name = "连续创业者"
+description = "你做过一家被收购的公司，和投资人关系铁。"
+perk_summary = "投资人关系好 — 开局即解锁 seed 轮，每次融资额与估值翻倍。"
+drawback_summary = "顶尖研究者对「商人」兴趣低 — 人才池 S 级出现率下降。"
+s_tier_weight_bonus = -0.15
+funding_multiplier = 2.0
+user_growth_multiplier = 1.0
+seed_round_unlocked = true

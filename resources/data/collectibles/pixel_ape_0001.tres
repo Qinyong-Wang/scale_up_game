@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CollectibleSpec" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/collectible_spec.gd" id="1_col"]
+
+[resource]
+script = ExtResource("1_col")
+id = &"pixel_ape_0001"
+category = &"crypto"
+display_name = "像素猿 #0001"
+description = "头像 NFT 浪潮的开山之作，编号 0001。"
+curve_years = Array[int]([2021, 2025, 2035, 2070])
+curve_prices = Array[int]([180000, 54000000, 405000000, 900000000])
+appear_weight = 0.2

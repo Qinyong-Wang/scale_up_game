@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CollectibleSpec" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/collectible_spec.gd" id="1_col"]
+
+[resource]
+script = ExtResource("1_col")
+id = &"retired_mining_card"
+category = &"ai_hardware"
+display_name = "退役·矿卡"
+description = "矿潮退去后流落的二手矿卡。"
+curve_years = Array[int]([2017, 2035, 2055, 2070])
+curve_prices = Array[int]([640, 40000, 280000, 800000])
+appear_weight = 1.0

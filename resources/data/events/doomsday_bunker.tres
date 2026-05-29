@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="EventCard" load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/event_card.gd" id="1_ec"]
+[ext_resource type="Script" path="res://scripts/resources/event_option.gd" id="2_eo"]
+[ext_resource type="Script" path="res://scripts/resources/event_effect.gd" id="3_ef"]
+
+[sub_resource type="Resource" id="eff_0"]
+script = ExtResource("3_ef")
+kind = &"economy_spend"
+params = {"pct": 0.02, "floor": 8000, "cap": 8000000}
+
+[sub_resource type="Resource" id="opt_build"]
+script = ExtResource("2_eo")
+id = &"build"
+label = "陪他挖, 顺便当成团队建设项目"
+effects = [SubResource("eff_0")]
+
+[sub_resource type="Resource" id="eff_1"]
+script = ExtResource("3_ef")
+kind = &"economy_spend"
+params = {"pct": 0.001, "floor": 500, "cap": 100000}
+
+[sub_resource type="Resource" id="opt_humor_him"]
+script = ExtResource("2_eo")
+id = &"humor_him"
+label = "送他一箱罐头和一本科幻小说打发了事"
+effects = [SubResource("eff_1")]
+
+[resource]
+script = ExtResource("1_ec")
+id = &"doomsday_bunker"
+category = &"opportunity"
+title = "投资人坚持要你先修一个『末日地堡』"
+body = "一位科幻小说读太多的大投资人放话:钱可以打, 但你得先在公司底下挖个能扛过『AGI 觉醒』的末日地堡, 配齐十年罐头和发电机。看他的眼神, 他是认真的。"
+min_turn = 24
+requires_published_model = true
+weight = 8
+cooldown_months = 60
+max_triggers = 1
+options = [SubResource("opt_build"), SubResource("opt_humor_him")]

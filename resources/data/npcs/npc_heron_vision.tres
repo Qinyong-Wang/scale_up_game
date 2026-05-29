@@ -1,0 +1,177 @@
+[gd_resource type="Resource" script_class="NpcCompany" load_steps=14 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/npc_company.gd" id="1_npc"]
+[ext_resource type="Script" path="res://scripts/resources/npc_model_release.gd" id="2_rel"]
+
+[sub_resource type="Resource" id="release_heron_1"]
+script = ExtResource("2_rel")
+id = &"release_heron_1"
+display_name = "Heron-1"
+release_turn = 365
+capability = {"general": 14.0, "code": 8.0, "reasoning": 14.0, "multimodal": 48.0, "agent": 2.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t2"
+cluster_gpu_count = 4000
+training_weeks = 24
+params_b = 100.0
+active_params_b = 100.0
+dataset_tokens_b = 2500.0
+arch_codename = &"ant_v4"
+
+[sub_resource type="Resource" id="release_heron_1_5"]
+script = ExtResource("2_rel")
+id = &"release_heron_1_5"
+display_name = "Heron-1.5"
+release_turn = 420
+capability = {"general": 18.0, "code": 12.0, "reasoning": 20.0, "multimodal": 60.0, "agent": 10.0}
+release_kind = &"multimodal_posttrain"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_heron_2"]
+script = ExtResource("2_rel")
+id = &"release_heron_2"
+display_name = "Heron-2"
+release_turn = 455
+capability = {"general": 38.0, "code": 25.0, "reasoning": 40.0, "multimodal": 86.0, "agent": 20.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t2"
+cluster_gpu_count = 15000
+training_weeks = 26
+params_b = 700.0
+active_params_b = 105.0
+dataset_tokens_b = 9000.0
+arch_codename = &"octopus_v2"
+
+[sub_resource type="Resource" id="release_heron_2_5"]
+script = ExtResource("2_rel")
+id = &"release_heron_2_5"
+display_name = "Heron-2.5"
+release_turn = 515
+capability = {"general": 48.0, "code": 35.0, "reasoning": 52.0, "multimodal": 105.0, "agent": 36.0}
+release_kind = &"multimodal_posttrain"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_heron_3"]
+script = ExtResource("2_rel")
+id = &"release_heron_3"
+display_name = "Heron-3"
+release_turn = 585
+capability = {"general": 65.0, "code": 50.0, "reasoning": 72.0, "multimodal": 125.0, "agent": 60.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 60000
+training_weeks = 26
+params_b = 2200.0
+active_params_b = 320.0
+dataset_tokens_b = 24000.0
+arch_codename = &"octopus_sparse"
+
+[sub_resource type="Resource" id="release_heron_3_5"]
+script = ExtResource("2_rel")
+id = &"release_heron_3_5"
+display_name = "Heron-3.5"
+release_turn = 665
+capability = {"general": 75.0, "code": 62.0, "reasoning": 85.0, "multimodal": 142.0, "agent": 76.0}
+release_kind = &"multimodal_posttrain"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_heron_4"]
+script = ExtResource("2_rel")
+id = &"release_heron_4"
+display_name = "Heron-4"
+release_turn = 740
+capability = {"general": 92.0, "code": 80.0, "reasoning": 105.0, "multimodal": 160.0, "agent": 100.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 250000
+training_weeks = 28
+params_b = 6000.0
+active_params_b = 850.0
+dataset_tokens_b = 60000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_heron_5"]
+script = ExtResource("2_rel")
+id = &"release_heron_5"
+display_name = "Heron-5"
+release_turn = 900
+capability = {"general": 122.0, "code": 110.0, "reasoning": 138.0, "multimodal": 195.0, "agent": 135.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 780000
+training_weeks = 28
+params_b = 13000.0
+active_params_b = 1700.0
+dataset_tokens_b = 115000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_heron_6"]
+script = ExtResource("2_rel")
+id = &"release_heron_6"
+display_name = "Heron-6"
+release_turn = 1060
+capability = {"general": 152.0, "code": 140.0, "reasoning": 170.0, "multimodal": 230.0, "agent": 170.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 1600000
+training_weeks = 28
+params_b = 25000.0
+active_params_b = 3000.0
+dataset_tokens_b = 210000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_heron_7"]
+script = ExtResource("2_rel")
+id = &"release_heron_7"
+display_name = "Heron-7"
+release_turn = 1220
+capability = {"general": 185.0, "code": 175.0, "reasoning": 205.0, "multimodal": 265.0, "agent": 205.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 3100000
+training_weeks = 28
+params_b = 42000.0
+active_params_b = 4800.0
+dataset_tokens_b = 330000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_heron_8"]
+script = ExtResource("2_rel")
+id = &"release_heron_8"
+display_name = "Heron-8"
+release_turn = 1350
+capability = {"general": 220.0, "code": 212.0, "reasoning": 240.0, "multimodal": 305.0, "agent": 245.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 5000000
+training_weeks = 28
+params_b = 62000.0
+active_params_b = 7000.0
+dataset_tokens_b = 460000.0
+arch_codename = &"octopus_super_sparse"
+
+[resource]
+script = ExtResource("1_npc")
+id = &"npc_heron_vision"
+display_name = "Heron Vision"
+is_open_source = true
+board_membership = [&"sub_multimodal"]
+model_releases = [SubResource("release_heron_1"), SubResource("release_heron_1_5"), SubResource("release_heron_2"), SubResource("release_heron_2_5"), SubResource("release_heron_3"), SubResource("release_heron_3_5"), SubResource("release_heron_4"), SubResource("release_heron_5"), SubResource("release_heron_6"), SubResource("release_heron_7"), SubResource("release_heron_8")]

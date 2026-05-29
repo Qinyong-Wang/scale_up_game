@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CollectibleSpec" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/collectible_spec.gd" id="1_col"]
+
+[resource]
+script = ExtResource("1_col")
+id = &"genesis_coin_7"
+category = &"crypto"
+display_name = "创世矿工·第 7 枚金币"
+description = "去中心化货币最早挖出的几枚之一，编号 7。早期近乎一文不值，后来涨成天文数字。"
+curve_years = Array[int]([2017, 2025, 2035, 2070])
+curve_prices = Array[int]([1000, 500000, 3000000, 8000000])
+appear_weight = 0.08

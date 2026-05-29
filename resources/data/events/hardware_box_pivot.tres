@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="EventCard" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/event_card.gd" id="1_ec"]
+[ext_resource type="Script" path="res://scripts/resources/event_option.gd" id="2_eo"]
+[ext_resource type="Script" path="res://scripts/resources/event_effect.gd" id="3_ef"]
+
+[sub_resource type="Resource" id="eff_0"]
+script = ExtResource("3_ef")
+kind = &"economy_award"
+params = {"pct": 0.12, "floor": 200000, "cap": 60000000}
+
+[sub_resource type="Resource" id="eff_1"]
+script = ExtResource("3_ef")
+kind = &"product_boost_subscribers"
+params = {"pct": -0.06, "floor": 100, "cap": 60000000}
+
+[sub_resource type="Resource" id="opt_sell_box"]
+script = ExtResource("2_eo")
+id = &"sell_box"
+label = "听他的, 转型卖私有化一体机"
+effects = [SubResource("eff_0"), SubResource("eff_1")]
+
+[sub_resource type="Resource" id="eff_2"]
+script = ExtResource("3_ef")
+kind = &"product_boost_subscribers"
+params = {"pct": 0.05, "floor": 80, "cap": 40000000}
+
+[sub_resource type="Resource" id="opt_stay_cloud"]
+script = ExtResource("2_eo")
+id = &"stay_cloud"
+label = "婉拒, 坚持云服务路线"
+effects = [SubResource("eff_2")]
+
+[resource]
+script = ExtResource("1_ec")
+id = &"hardware_box_pivot"
+category = &"opportunity"
+title = "空降的职业经理人:别做云服务, 改卖『盒子』"
+body = "董事会塞来一位西装笔挺的职业经理人, 他把白板敲得啪啪响:『云 API 没有壁垒, 真正赚钱的是卖私有化一体机——一个能直接搬进客户机房的盒子。』"
+min_turn = 40
+requires_product = true
+weight = 8
+cooldown_months = 60
+max_triggers = 1
+options = [SubResource("opt_sell_box"), SubResource("opt_stay_cloud")]

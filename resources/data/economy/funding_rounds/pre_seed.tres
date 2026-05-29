@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="FundingRoundSpec" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/funding_round_spec.gd" id="1_fr"]
+
+[resource]
+script = ExtResource("1_fr")
+id = &"pre_seed"
+amount_min = 500000
+amount_max = 2000000
+dilution_min = 0.05
+dilution_max = 0.09
+display_name = "前种子轮"
+unlock_summary = "开局即可接, 适合最早期 idea 阶段"

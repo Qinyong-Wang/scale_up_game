@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CollectibleSpec" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/collectible_spec.gd" id="1_col"]
+
+[resource]
+script = ExtResource("1_col")
+id = &"water_garden"
+category = &"painting"
+display_name = "《水园睡莲》"
+description = "大师晚年光影斑斓的睡莲组画之一。"
+curve_years = Array[int]([1916, 2040, 2070])
+curve_prices = Array[int]([200000000, 320000000, 400000000])
+appear_weight = 0.5

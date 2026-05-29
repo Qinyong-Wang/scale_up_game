@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CollectibleSpec" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/collectible_spec.gd" id="1_col"]
+
+[resource]
+script = ExtResource("1_col")
+id = &"turbine_concept"
+category = &"supercar"
+display_name = "概念·燃气轮机车"
+description = "用燃气轮机驱动的传奇概念车。"
+curve_years = Array[int]([1963, 2040, 2070])
+curve_prices = Array[int]([75000000, 175000000, 250000000])
+appear_weight = 0.5

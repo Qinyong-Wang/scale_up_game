@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="TechNode" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/tech_node.gd" id="1_tn"]
+
+[resource]
+script = ExtResource("1_tn")
+id = &"ctx_32k"
+tree = &"context"
+display_name = "上下文 32k 长会话"
+description = "把上下文从 4k 拉到 32k. 训练成本 +10%, agent 评估 +2."
+prerequisites = Array[StringName]([&"ctx_4k"])
+research_cost = 0
+research_months = 24
+effects = {
+	&"max_tokens": 32768,
+	&"train_penalty": 1.10,
+	&"agent_bonus": 2.0,
+	&"serving_penalty": 1.5,
+}
+effects_summary = "32k · 训练 ×1.10 · agent +2"
+min_researchers = 2
+min_engineers = 1
+min_gpu_count = 32
+capability_cap = 0.0

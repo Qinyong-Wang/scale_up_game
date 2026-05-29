@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="TrophySpec" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/trophy_spec.gd" id="1_tr"]
+
+[resource]
+script = ExtResource("1_tr")
+id = &"charity_global"
+display_name = "全球慈善家"
+description = "把公益做到全球级规模，回馈整个世界。"
+unlock_hint = "任一公益方向累计捐助达到「全球级」档"
+form = &"medal"
+flavor = "钱本身不会发光。可当它流向最需要的角落、整个世界都因此亮了一点。"

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="PosttrainDatasetTemplate" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/posttrain_dataset_template.gd" id="1_pst"]
+
+[resource]
+script = ExtResource("1_pst")
+id = &"alpaca_52k_v1"
+display_name = "Alpaca 52K v1"
+source = &"open_source"
+size = 0.05
+quality = 0.72
+target_capability = &"general"
+coverage_tags = Array[StringName]([&"instruction", &"chat"])
+price = 0
+released_at_week = 286

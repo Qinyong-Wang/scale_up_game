@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="FundingRoundSpec" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/funding_round_spec.gd" id="1_fr"]
+
+[resource]
+script = ExtResource("1_fr")
+id = &"d"
+amount_min = 3000000000
+amount_max = 8000000000
+dilution_min = 0.18
+dilution_max = 0.25
+display_name = "D 轮"
+unlock_summary = "任一总榜 Top3 + 周营收 > ¥200M"

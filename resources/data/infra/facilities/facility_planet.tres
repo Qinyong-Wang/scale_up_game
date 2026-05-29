@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="FacilitySpec" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/facility_spec.gd" id="1_fs"]
+
+[resource]
+script = ExtResource("1_fs")
+id = &"facility_planet"
+display_name = "100M 卡微型星球"
+tier_index = 19
+max_gpu_count = 100000000
+build_weeks = 300
+land_weekly_cost = 1500000000
+land_build_cost = 1600000000000
+rent_weekly_cost = 7500000000
+unlock_cash_required = 175000000000
+train_speed_bonus = 0.2
+icon_path = "res://assets/sprites/ui/infra/facility-planet.png"

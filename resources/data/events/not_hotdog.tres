@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="EventCard" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/event_card.gd" id="1_ec"]
+[ext_resource type="Script" path="res://scripts/resources/event_option.gd" id="2_eo"]
+[ext_resource type="Script" path="res://scripts/resources/event_effect.gd" id="3_ef"]
+
+[sub_resource type="Resource" id="eff_0"]
+script = ExtResource("3_ef")
+kind = &"product_boost_subscribers"
+params = {"pct": 0.08, "floor": 120, "cap": 60000000}
+
+[sub_resource type="Resource" id="eff_1"]
+script = ExtResource("3_ef")
+kind = &"economy_spend"
+params = {"pct": 0.015, "floor": 4000, "cap": 4000000}
+
+[sub_resource type="Resource" id="opt_ride"]
+script = ExtResource("2_eo")
+id = &"ride"
+label = "蹭热度, 把它包装成你们的『消费级 AI』"
+effects = [SubResource("eff_0"), SubResource("eff_1")]
+
+[sub_resource type="Resource" id="eff_2"]
+script = ExtResource("3_ef")
+kind = &"product_boost_subscribers"
+params = {"pct": 0.01, "floor": 30, "cap": 10000000}
+
+[sub_resource type="Resource" id="opt_for_fun"]
+script = ExtResource("2_eo")
+id = &"for_fun"
+label = "当个乐子, 不当真"
+effects = [SubResource("eff_2")]
+
+[resource]
+script = ExtResource("1_ec")
+id = &"not_hotdog"
+category = &"opportunity"
+title = "实习生做的『这是不是煎饼果子』App 意外爆火"
+body = "一个实习生用你的模型周末糊了个 App, 功能单一到离谱:拍张照, 它只告诉你『这是不是煎饼果子』, 除此之外啥也不会。结果它莫名其妙冲上了应用榜首。"
+min_turn = 12
+requires_published_model = true
+requires_product = true
+weight = 8
+cooldown_months = 60
+max_triggers = 1
+options = [SubResource("opt_ride"), SubResource("opt_for_fun")]

@@ -1,0 +1,36 @@
+# Godot 4+
+.godot/
+.import/
+export.cfg
+export_presets.cfg
+*.translation
+
+# Test framework (each dev clones locally; see docs/开发环境配置.md)
+addons/gut/
+
+# Builds
+build/
+exports/
+*.exe
+*.pck
+*.zip
+*.dmg
+
+# Art harness generated runs
+tools/art/runs/*
+!tools/art/runs/.gdignore
+# Art harness local venv + Replicate token (never commit secrets)
+tools/art/.venv/
+tools/art/.env
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Claude Code local overrides
+.claude/settings.local.json

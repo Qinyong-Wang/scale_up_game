@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="TechNode" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/tech_node.gd" id="1_tn"]
+
+[resource]
+script = ExtResource("1_tn")
+id = &"hybrid_attention"
+tree = &"attention"
+display_name = "Hybrid Attention (Mamba / Striped)"
+description = "本地 + 全局混合注意力 (Striped / Mamba-hybrid 系). 长上下文衰减弱."
+prerequisites = Array[StringName]([&"mla"])
+research_cost = 0
+research_months = 40
+effects = {
+	&"train_coef": 1.10,
+	&"inference_coef": 1.40,
+}
+effects_summary = "训练 +10% · 推理 fpt ÷1.40 · 长上下文友好"
+min_researchers = 4
+min_engineers = 5
+min_gpu_count = 128

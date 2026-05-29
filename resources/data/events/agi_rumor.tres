@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="EventCard" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/event_card.gd" id="1_ec"]
+[ext_resource type="Script" path="res://scripts/resources/event_option.gd" id="2_eo"]
+[ext_resource type="Script" path="res://scripts/resources/event_effect.gd" id="3_ef"]
+
+[resource]
+script = ExtResource("1_ec")
+id = &"agi_rumor"
+category = &"flavor"
+title = "网络盛传你即将实现 AGI"
+body = "不知从哪传出的小道消息说你的公司『下个月就要发布 AGI』。你自己都被吓到了。"
+min_turn = 100
+requires_published_model = true
+weight = 6
+cooldown_months = 9999
+options = []

@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="TechNode" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/tech_node.gd" id="1_tn"]
+
+[resource]
+script = ExtResource("1_tn")
+id = &"dpo"
+tree = &"loss"
+display_name = "DPO 直接偏好优化"
+description = "Direct Preference Optimization, 2023 主流偏好对齐."
+prerequisites = Array[StringName]([&"mtp"])
+research_cost = 0
+research_months = 24
+effects = {
+	&"train_coef": 0.95,
+	&"capability_coef": 1.05,
+}
+effects_summary = "训练 ×0.95 · capability ×1.05"
+min_researchers = 3
+min_engineers = 1
+min_gpu_count = 32
+capability_cap = 0.0

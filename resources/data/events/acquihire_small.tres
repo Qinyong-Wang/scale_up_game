@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="EventCard" load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/event_card.gd" id="1_ec"]
+[ext_resource type="Script" path="res://scripts/resources/event_option.gd" id="2_eo"]
+[ext_resource type="Script" path="res://scripts/resources/event_effect.gd" id="3_ef"]
+
+[sub_resource type="Resource" id="eff_0"]
+script = ExtResource("3_ef")
+kind = &"economy_spend"
+params = {"pct": 0.04, "floor": 30000, "cap": 40000000}
+
+[sub_resource type="Resource" id="eff_1"]
+script = ExtResource("3_ef")
+kind = &"product_boost_subscribers"
+params = {"pct": 0.06, "floor": 50, "cap": 30000000}
+
+[sub_resource type="Resource" id="opt_acquire"]
+script = ExtResource("2_eo")
+id = &"acquire"
+label = "收购项目资产, 接过客户线索"
+effects = [SubResource("eff_0"), SubResource("eff_1")]
+
+[sub_resource type="Resource" id="opt_wish"]
+script = ExtResource("2_eo")
+id = &"wish"
+label = "祝他们好运, 暂不接盘"
+effects = []
+
+[resource]
+script = ExtResource("1_ec")
+id = &"acquihire_small"
+category = &"opportunity"
+title = "一家小作坊想出售项目和客户线索"
+body = "一家快撑不下去的 AI 小作坊找上门, 愿意把原型、客户线索和品牌页面打包卖给你。"
+min_turn = 12
+requires_cash_min = 200000
+requires_product = true
+weight = 10
+cooldown_months = 24
+options = [SubResource("opt_acquire"), SubResource("opt_wish")]

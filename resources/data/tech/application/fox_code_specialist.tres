@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="TechNode" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/tech_node.gd" id="1_tn"]
+
+[resource]
+script = ExtResource("1_tn")
+id = &"fox_code_specialist"
+tree = &"application"
+display_name = "代码专项 (Coding Agent)"
+description = "代码任务专项微调与工具脚手架, 解锁 Coding Agent 产品类型."
+prerequisites = Array[StringName]([&"tool_use"])
+research_cost = 0
+research_months = 28
+effects = {}
+effects_summary = "解锁 Coding Agent 产品类型"
+min_researchers = 3
+min_engineers = 3
+min_gpu_count = 32

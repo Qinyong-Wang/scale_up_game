@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="TechNode" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/tech_node.gd" id="1_tn"]
+
+[resource]
+script = ExtResource("1_tn")
+id = &"deberta_encoder"
+tree = &"arch"
+display_name = "DeBERTa 解耦注意力编码器"
+description = "解耦内容与位置注意力 + 增强掩码解码, 2021 encoder-only 巅峰. 评分上限抬到 52 — 看似一路在涨, 但永远追不上无上限的 dense decoder 线."
+prerequisites = Array[StringName]([&"electra_encoder"])
+research_cost = 0
+research_months = 34
+effects = {
+	&"train_coef": 1.05,
+	&"inference_coef": 0.95,
+	&"capability_coef": 1.15,
+}
+effects_summary = "训练 ×1.05 · 推理 ×0.95 · 评分上限 52"
+min_researchers = 3
+min_engineers = 3
+min_gpu_count = 48
+capability_cap = 52.0

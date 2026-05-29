@@ -1,0 +1,162 @@
+[gd_resource type="Resource" script_class="NpcCompany" load_steps=13 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/npc_company.gd" id="1_npc"]
+[ext_resource type="Script" path="res://scripts/resources/npc_model_release.gd" id="2_rel"]
+
+[sub_resource type="Resource" id="release_termite_1"]
+script = ExtResource("2_rel")
+id = &"release_termite_1"
+display_name = "Termite-1"
+release_turn = 310
+capability = {"general": 12.0, "code": 38.0, "reasoning": 14.0, "multimodal": 2.0, "agent": 12.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t2"
+cluster_gpu_count = 4000
+training_weeks = 24
+params_b = 80.0
+active_params_b = 80.0
+dataset_tokens_b = 1500.0
+arch_codename = &"ant_v4"
+
+[sub_resource type="Resource" id="release_termite_2"]
+script = ExtResource("2_rel")
+id = &"release_termite_2"
+display_name = "Termite-2"
+release_turn = 390
+capability = {"general": 42.0, "code": 78.0, "reasoning": 48.0, "multimodal": 18.0, "agent": 38.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t2"
+cluster_gpu_count = 12000
+training_weeks = 24
+params_b = 600.0
+active_params_b = 90.0
+dataset_tokens_b = 8500.0
+arch_codename = &"octopus_v2"
+
+[sub_resource type="Resource" id="release_termite_2_5"]
+script = ExtResource("2_rel")
+id = &"release_termite_2_5"
+display_name = "Termite-2.5"
+release_turn = 440
+capability = {"general": 50.0, "code": 88.0, "reasoning": 55.0, "multimodal": 25.0, "agent": 50.0}
+release_kind = &"tool_use_posttrain"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_termite_3"]
+script = ExtResource("2_rel")
+id = &"release_termite_3"
+display_name = "Termite-3"
+release_turn = 470
+capability = {"general": 62.0, "code": 102.0, "reasoning": 68.0, "multimodal": 38.0, "agent": 72.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 40000
+training_weeks = 26
+params_b = 1800.0
+active_params_b = 250.0
+dataset_tokens_b = 18000.0
+arch_codename = &"octopus_sparse"
+
+[sub_resource type="Resource" id="release_termite_3_5"]
+script = ExtResource("2_rel")
+id = &"release_termite_3_5"
+display_name = "Termite-3.5"
+release_turn = 540
+capability = {"general": 72.0, "code": 115.0, "reasoning": 82.0, "multimodal": 50.0, "agent": 92.0}
+release_kind = &"tool_use_posttrain"
+cluster_gpu_id = &""
+cluster_gpu_count = 0
+training_weeks = 0
+params_b = 0.0
+active_params_b = 0.0
+dataset_tokens_b = 0.0
+arch_codename = &""
+
+[sub_resource type="Resource" id="release_termite_4"]
+script = ExtResource("2_rel")
+id = &"release_termite_4"
+display_name = "Termite-4"
+release_turn = 580
+capability = {"general": 85.0, "code": 128.0, "reasoning": 95.0, "multimodal": 62.0, "agent": 105.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 150000
+training_weeks = 28
+params_b = 4200.0
+active_params_b = 580.0
+dataset_tokens_b = 36000.0
+arch_codename = &"octopus_sparse"
+
+[sub_resource type="Resource" id="release_termite_5"]
+script = ExtResource("2_rel")
+id = &"release_termite_5"
+display_name = "Termite-5"
+release_turn = 720
+capability = {"general": 108.0, "code": 158.0, "reasoning": 122.0, "multimodal": 88.0, "agent": 132.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 500000
+training_weeks = 28
+params_b = 8500.0
+active_params_b = 1100.0
+dataset_tokens_b = 70000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_termite_6"]
+script = ExtResource("2_rel")
+id = &"release_termite_6"
+display_name = "Termite-6"
+release_turn = 870
+capability = {"general": 132.0, "code": 188.0, "reasoning": 148.0, "multimodal": 115.0, "agent": 162.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 1200000
+training_weeks = 28
+params_b = 16000.0
+active_params_b = 2000.0
+dataset_tokens_b = 130000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_termite_7"]
+script = ExtResource("2_rel")
+id = &"release_termite_7"
+display_name = "Termite-7"
+release_turn = 1030
+capability = {"general": 160.0, "code": 220.0, "reasoning": 178.0, "multimodal": 145.0, "agent": 192.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 2500000
+training_weeks = 28
+params_b = 28000.0
+active_params_b = 3300.0
+dataset_tokens_b = 220000.0
+arch_codename = &"octopus_super_sparse"
+
+[sub_resource type="Resource" id="release_termite_8"]
+script = ExtResource("2_rel")
+id = &"release_termite_8"
+display_name = "Termite-8"
+release_turn = 1200
+capability = {"general": 195.0, "code": 258.0, "reasoning": 215.0, "multimodal": 178.0, "agent": 228.0}
+release_kind = &"pretrain"
+cluster_gpu_id = &"cypress_t3"
+cluster_gpu_count = 4500000
+training_weeks = 28
+params_b = 48000.0
+active_params_b = 5500.0
+dataset_tokens_b = 350000.0
+arch_codename = &"octopus_super_sparse"
+
+[resource]
+script = ExtResource("1_npc")
+id = &"npc_termite_devkit"
+display_name = "Termite Devkit"
+is_open_source = false
+board_membership = [&"sub_code"]
+model_releases = [SubResource("release_termite_1"), SubResource("release_termite_2"), SubResource("release_termite_2_5"), SubResource("release_termite_3"), SubResource("release_termite_3_5"), SubResource("release_termite_4"), SubResource("release_termite_5"), SubResource("release_termite_6"), SubResource("release_termite_7"), SubResource("release_termite_8")]

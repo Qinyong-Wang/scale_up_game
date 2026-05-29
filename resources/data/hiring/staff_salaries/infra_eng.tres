@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="StaffRoleSpec" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/staff_role_spec.gd" id="1_role"]
+
+[resource]
+script = ExtResource("1_role")
+id = &"infra_eng"
+display_name = "基建工程师"
+weekly_salary = 5770

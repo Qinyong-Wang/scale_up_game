@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="TechNode" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/tech_node.gd" id="1_tn"]
+
+[resource]
+script = ExtResource("1_tn")
+id = &"glowworm_fp4"
+tree = &"engineering"
+display_name = "FP4 推理 (Blackwell)"
+description = "B200+ 时代的 FP4 原生支持; 单 token 算力降到 25%, 推理吞吐 4× (与 fp8/int8 累乘)."
+prerequisites = Array[StringName]([&"firefly_fp8"])
+research_cost = 0
+research_months = 40
+effects = {
+	&"flops_per_token_reduction": 0.25,
+}
+effects_summary = "token 算力 -75% (推理吞吐 ×4)"
+min_researchers = 4
+min_engineers = 6
+min_gpu_count = 128

@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="TechNode" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/tech_node.gd" id="1_tn"]
+
+[resource]
+script = ExtResource("1_tn")
+id = &"world_model_v1"
+tree = &"arch"
+display_name = "世界模型 v1 (2030+)"
+description = "学习物理与因果的世界模型 backbone. 多模态与 agent 维度大幅加成."
+prerequisites = Array[StringName]([&"native_multimodal"])
+research_cost = 0
+research_months = 48
+effects = {
+	&"train_coef": 0.7,
+	&"inference_coef": 0.95,
+	&"capability_coef": 1.10,
+}
+effects_summary = "训练 ×0.7 · capability ×1.10 (多模态/agent 强)"
+min_researchers = 5
+min_engineers = 4
+min_gpu_count = 256
+capability_cap = 0.0

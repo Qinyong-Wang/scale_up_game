@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="EventCard" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/event_card.gd" id="1_ec"]
+[ext_resource type="Script" path="res://scripts/resources/event_option.gd" id="2_eo"]
+[ext_resource type="Script" path="res://scripts/resources/event_effect.gd" id="3_ef"]
+
+[sub_resource type="Resource" id="eff_0"]
+script = ExtResource("3_ef")
+kind = &"economy_award"
+params = {"pct": 0.15, "floor": 500000, "cap": 50000000}
+
+[sub_resource type="Resource" id="eff_1"]
+script = ExtResource("3_ef")
+kind = &"product_boost_subscribers"
+params = {"pct": -0.05, "floor": 100, "cap": 50000000}
+
+[sub_resource type="Resource" id="opt_take"]
+script = ExtResource("2_eo")
+id = &"take"
+label = "收下这笔钱, 忍受他乱指挥"
+effects = [SubResource("eff_0"), SubResource("eff_1")]
+
+[sub_resource type="Resource" id="eff_2"]
+script = ExtResource("3_ef")
+kind = &"product_boost_subscribers"
+params = {"pct": 0.03, "floor": 50, "cap": 20000000}
+
+[sub_resource type="Resource" id="opt_decline"]
+script = ExtResource("2_eo")
+id = &"decline"
+label = "礼貌地把他和他的跑车请出去"
+effects = [SubResource("eff_2")]
+
+[resource]
+script = ExtResource("1_ec")
+id = &"three_commas_investor"
+category = &"opportunity"
+title = "一位炫富的亿万富翁投资人想砸钱进来"
+body = "一位开着亮黄色跑车、嚼着口香糖的暴发户堵在门口, 说要给你一大笔钱, 唯一要求是把模型改造成『会在直播里实时吐槽观众的虚拟主播』。他拍着引擎盖反复强调:『钱从来不是问题, 数字后面那一长串零才是浪漫。』"
+min_turn = 20
+requires_product = true
+weight = 8
+cooldown_months = 60
+max_triggers = 1
+options = [SubResource("opt_take"), SubResource("opt_decline")]

@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="EventCard" load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/event_card.gd" id="1_ec"]
+[ext_resource type="Script" path="res://scripts/resources/event_option.gd" id="2_eo"]
+[ext_resource type="Script" path="res://scripts/resources/event_effect.gd" id="3_ef"]
+
+[sub_resource type="Resource" id="eff_0"]
+script = ExtResource("3_ef")
+kind = &"economy_spend"
+params = {"pct": 0.006, "floor": 1200, "cap": 100000}
+
+[sub_resource type="Resource" id="opt_buy_fancy"]
+script = ExtResource("2_eo")
+id = &"buy_fancy"
+label = "换一台高级意式咖啡机"
+effects = [SubResource("eff_0")]
+
+[sub_resource type="Resource" id="opt_instant"]
+script = ExtResource("2_eo")
+id = &"instant"
+label = "改喝速溶, 主打一个朴素"
+effects = []
+
+[resource]
+script = ExtResource("1_ec")
+id = &"routine_coffee_machine"
+category = &"routine"
+title = "咖啡机彻底罢工了"
+body = "唯一的咖啡机冒了一阵青烟后再也不响了, 工程师们眼神涣散。"
+min_turn = 4
+requires_staff_min = 1
+weight = 10
+cooldown_months = 10
+max_triggers = 2
+options = [SubResource("opt_buy_fancy"), SubResource("opt_instant")]

@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="EventCard" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/event_card.gd" id="1_ec"]
+[ext_resource type="Script" path="res://scripts/resources/event_option.gd" id="2_eo"]
+[ext_resource type="Script" path="res://scripts/resources/event_effect.gd" id="3_ef"]
+
+[sub_resource type="Resource" id="eff_1"]
+script = ExtResource("3_ef")
+kind = &"product_boost_subscribers"
+params = {"pct": -0.05, "floor": 80, "cap": 50000000}
+
+[sub_resource type="Resource" id="opt_sign"]
+script = ExtResource("2_eo")
+id = &"sign"
+label = "高调签署, 占领道德高地并暂停"
+effects = [SubResource("eff_1")]
+
+[sub_resource type="Resource" id="eff_2"]
+script = ExtResource("3_ef")
+kind = &"product_boost_subscribers"
+params = {"pct": 0.1, "floor": 150, "cap": 100000000}
+
+[sub_resource type="Resource" id="eff_3"]
+script = ExtResource("3_ef")
+kind = &"economy_spend"
+params = {"pct": 0.05, "floor": 30000, "cap": 20000000}
+
+[sub_resource type="Resource" id="opt_refuse_race"]
+script = ExtResource("2_eo")
+id = &"refuse_race"
+label = "公开拒绝, 全速冲刺下一代"
+effects = [SubResource("eff_2"), SubResource("eff_3")]
+
+[resource]
+script = ExtResource("1_ec")
+id = &"pause_letter"
+category = &"opportunity"
+title = "上千名人联名要你暂停训练六个月"
+body = "一封由上千位学者、名人和你的几个老对手联名的公开信刷屏了, 恳切地『请求所有实验室立即暂停训练更强的模型六个月』。耐人寻味的是, 签名的人里好几个自己的模型正落后于你。"
+min_turn = 120
+requires_published_model = true
+requires_product = true
+weight = 8
+cooldown_months = 60
+max_triggers = 1
+options = [SubResource("opt_sign"), SubResource("opt_refuse_race")]

@@ -1,0 +1,73 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Scaling Up"
+config/description="A weekly-turn 2D simulation about scaling an AI model company."
+config/version="0.1.1-alpha"
+run/main_scene="res://scenes/start_screen/start_screen.tscn"
+config/features=PackedStringArray("4.4", "GL Compatibility")
+config/icon="res://icon.svg"
+
+[autoload]
+
+GameState="*res://scripts/autoload/game_state.gd"
+EventBus="*res://scripts/autoload/event_bus.gd"
+Log="*res://scripts/autoload/log.gd"
+Preferences="*res://scripts/autoload/preferences.gd"
+MusicPlayer="*res://scripts/autoload/music_player.gd"
+SfxPlayer="*res://scripts/autoload/sfx_player.gd"
+UITheme="*res://scripts/autoload/ui_theme.gd"
+CommandBus="*res://scripts/autoload/command_bus.gd"
+Save="*res://scripts/autoload/save.gd"
+TurnManager="*res://scripts/autoload/turn_manager.gd"
+FounderSystem="*res://scripts/systems/founder_system.gd"
+EconomySystem="*res://scripts/systems/economy_system.gd"
+HiringSystem="*res://scripts/systems/hiring_system.gd"
+InfraSystem="*res://scripts/systems/infra_system.gd"
+DatasetSystem="*res://scripts/systems/dataset_system.gd"
+TechTreeSystem="*res://scripts/systems/tech_tree_system.gd"
+ResearchSystem="*res://scripts/systems/research_system.gd"
+TaskSystem="*res://scripts/systems/task_system.gd"
+ProductSystem="*res://scripts/systems/product_system.gd"
+MarketSystem="*res://scripts/systems/market_system.gd"
+UserSystem="*res://scripts/systems/user_system.gd"
+MonetizationSystem="*res://scripts/systems/monetization_system.gd"
+MarketingSystem="*res://scripts/systems/marketing_system.gd"
+EventSystem="*res://scripts/systems/event_system.gd"
+CharitySystem="*res://scripts/systems/charity_system.gd"
+CollectionSystem="*res://scripts/systems/collection_system.gd"
+SimulationSystem="*res://scripts/systems/simulation_system.gd"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+window/size/min_width=1280
+window/size/min_height=720
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/gut/plugin.cfg")
+
+[internationalization]
+
+locale/translations=PackedStringArray("res://resources/i18n/strings.zh.translation", "res://resources/i18n/strings.en.translation", "res://resources/i18n/content.en.translation")
+locale/fallback="zh_CN"
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
+environment/defaults/default_clear_color=Color(0.964706, 0.972549, 0.980392, 1)

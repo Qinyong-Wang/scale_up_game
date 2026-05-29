@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CollectibleSpec" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/collectible_spec.gd" id="1_col"]
+
+[resource]
+script = ExtResource("1_col")
+id = &"coachbuilt_one_off"
+category = &"supercar"
+display_name = "定制车身·孤品"
+description = "富豪定制、全球唯一车身的孤品。"
+curve_years = Array[int]([2008, 2040, 2070])
+curve_prices = Array[int]([135000000, 315000000, 450000000])
+appear_weight = 0.5

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CollectibleSpec" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/collectible_spec.gd" id="1_col"]
+
+[resource]
+script = ExtResource("1_col")
+id = &"beta_resource_card"
+category = &"trading_card"
+display_name = "内测·基础资源卡"
+description = "集换卡鼻祖游戏的内测基础卡。"
+curve_years = Array[int]([1993, 2025, 2045, 2070])
+curve_prices = Array[int]([10000000, 125000000, 325000000, 500000000])
+appear_weight = 0.2

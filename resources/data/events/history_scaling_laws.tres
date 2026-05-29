@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EventCard" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/event_card.gd" id="1_ec"]
+[resource]
+script = ExtResource("1_ec")
+id = &"history_scaling_laws"
+category = &"flavor"
+title = "历史档案: 规模定律让预算表变成路线图"
+body = "2020 年前后, 参数量、数据量和训练算力之间的幂律关系被系统化。它没有告诉你怎么发明智能, 但告诉你下一次实验大概该花多少钱、喂多少 token、准备多少 TFLOPs。"
+min_turn = 150
+weight = 0
+cooldown_months = 9999
+max_triggers = 1

@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="TechNode" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/tech_node.gd" id="1_tn"]
+
+[resource]
+script = ExtResource("1_tn")
+id = &"otter_paged_attn"
+tree = &"engineering"
+display_name = "Paged Attention (vLLM)"
+description = "把 KV cache 分页管理, 减少碎片, 推理吞吐稳步提升."
+prerequisites = Array[StringName]([&"swarm_batch"])
+research_cost = 0
+research_months = 24
+effects = {
+	&"throughput_multiplier": 1.2,
+}
+effects_summary = "推理吞吐 +20%"
+min_researchers = 2
+min_engineers = 3
+min_gpu_count = 8

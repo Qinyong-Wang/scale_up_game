@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CollectibleSpec" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/collectible_spec.gd" id="1_col"]
+
+[resource]
+script = ExtResource("1_col")
+id = &"defi_genesis_lp"
+category = &"crypto"
+display_name = "DeFi 创世流动性凭证"
+description = "自动做市商时代的第一张流动性凭证。"
+curve_years = Array[int]([2020, 2025, 2035, 2070])
+curve_prices = Array[int]([50000, 15000000, 112500000, 250000000])
+appear_weight = 0.5

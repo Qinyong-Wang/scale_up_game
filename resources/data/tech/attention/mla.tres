@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="TechNode" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/tech_node.gd" id="1_tn"]
+
+[resource]
+script = ExtResource("1_tn")
+id = &"mla"
+tree = &"attention"
+display_name = "Multi-head Latent Attention"
+description = "Multi-head Latent Attention (DeepSeek 系): 把 KV 压缩到低秩潜空间, 推理与 MQA 持平但训练更稳."
+prerequisites = Array[StringName]([&"mqa"])
+research_cost = 0
+research_months = 32
+effects = {
+	&"train_coef": 1.15,
+	&"inference_coef": 1.50,
+}
+effects_summary = "训练 +15% · 推理 fpt ÷1.50"
+min_researchers = 3
+min_engineers = 3
+min_gpu_count = 32

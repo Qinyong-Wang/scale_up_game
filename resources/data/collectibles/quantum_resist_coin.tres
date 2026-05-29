@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CollectibleSpec" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/collectible_spec.gd" id="1_col"]
+
+[resource]
+script = ExtResource("1_col")
+id = &"quantum_resist_coin"
+category = &"crypto"
+display_name = "抗量子链·创世币"
+description = "第一条声称能抗量子破解的链的创世币。"
+curve_years = Array[int]([2024, 2025, 2035, 2070])
+curve_prices = Array[int]([120000, 36000000, 270000000, 600000000])
+appear_weight = 0.2

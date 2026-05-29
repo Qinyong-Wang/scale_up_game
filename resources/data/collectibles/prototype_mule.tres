@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CollectibleSpec" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/collectible_spec.gd" id="1_col"]
+
+[resource]
+script = ExtResource("1_col")
+id = &"prototype_mule"
+category = &"supercar"
+display_name = "工程·试验骡车"
+description = "量产前唯一存世的工程试验车。"
+curve_years = Array[int]([2011, 2040, 2070])
+curve_prices = Array[int]([36000000, 84000000, 120000000])
+appear_weight = 0.5

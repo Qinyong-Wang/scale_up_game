@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CollectibleSpec" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/collectible_spec.gd" id="1_col"]
+
+[resource]
+script = ExtResource("1_col")
+id = &"holy_dragon_gem"
+category = &"trading_card"
+display_name = "圣龙·满分鉴定卡"
+description = "鉴定满分的圣龙稀有卡，藏家终极目标。"
+curve_years = Array[int]([1999, 2025, 2045, 2070])
+curve_prices = Array[int]([40000000, 500000000, 1300000000, 2000000000])
+appear_weight = 0.08

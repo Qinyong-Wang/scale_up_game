@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CollectibleSpec" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/collectible_spec.gd" id="1_col"]
+
+[resource]
+script = ExtResource("1_col")
+id = &"dripping_chaos"
+category = &"painting"
+display_name = "《滴流混沌》"
+description = "颜料滴洒而成的抽象表现巨幅。"
+curve_years = Array[int]([1950, 2040, 2070])
+curve_prices = Array[int]([225000000, 360000000, 450000000])
+appear_weight = 0.5
