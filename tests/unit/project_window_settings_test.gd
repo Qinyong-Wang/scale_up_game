@@ -17,3 +17,14 @@ func test_window_minimum_size_matches_formal_support_target() -> void:
 func test_stretch_mode_is_disabled_to_avoid_fullscreen_menu_clipping() -> void:
 	assert_eq(String(ProjectSettings.get_setting("display/window/stretch/mode", "")),
 			"disabled")
+
+func test_project_and_macos_app_icons_exist() -> void:
+	var project_icon := String(ProjectSettings.get_setting("application/config/icon", ""))
+	assert_eq(project_icon, "res://icon.svg")
+	assert_true(FileAccess.file_exists(project_icon), "工程 SVG 图标必须存在")
+	assert_true(FileAccess.file_exists("res://icon.icns"),
+			"macOS 导出必须有原生 icon.icns, 避免发布包图标为空")
+	var f := FileAccess.open("res://icon.icns", FileAccess.READ)
+	assert_not_null(f, "icon.icns 应可读取")
+	if f != null:
+		assert_gt(f.get_length(), 100_000, "icon.icns 应包含完整多尺寸图层")
