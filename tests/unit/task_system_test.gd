@@ -202,7 +202,8 @@ func test_preview_returns_template_metadata_for_dialog() -> void:
 	assert_true(r.ok)
 	assert_eq(int(r.total_weeks), 3)
 	assert_eq(int(r.total_cost), 0, "pretrain templates carry base_cost = 0")
-	assert_eq(int(r.monthly_cost), 0)
+	assert_true(r.has(&"weekly_cost"), "preview must return weekly_cost for dialogs")
+	assert_eq(int(r.weekly_cost), 0)
 	assert_almost_eq(float(r.size_params), 100.0, 0.001)
 	assert_eq(r.arch, &"ant_v1")
 	assert_eq(String(r.display_name), "Train Sparrow-S")
@@ -211,12 +212,13 @@ func test_preview_returns_template_metadata_for_dialog() -> void:
 	assert_eq((r.input_modalities as Array).size(), 1)
 	assert_eq((r.output_modalities as Array).size(), 1)
 
-func test_preview_returns_monthly_cost_for_scaling_template() -> void:
+func test_preview_returns_weekly_cost_for_scaling_template() -> void:
 	# All pretrain templates carry weekly_cost = 0 per design §1 (cost = locks).
 	# Preview must still return the field so the dialog can render the row.
 	var r: Dictionary = CommandBus.send(&"task.preview", {template_id = &"train_otter_m"})
 	assert_true(r.ok)
-	assert_eq(int(r.monthly_cost), 0)
+	assert_true(r.has(&"weekly_cost"), "preview must return weekly_cost")
+	assert_eq(int(r.weekly_cost), 0)
 
 func test_preview_returns_flops_per_token_for_pretrain() -> void:
 	# Per design/研究系统设计.md §4.8 + design/任务系统设计.md §4.1: preview

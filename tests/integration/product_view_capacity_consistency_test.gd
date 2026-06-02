@@ -101,5 +101,5 @@ func test_pool_util_pct_reaches_100_when_demand_saturates_capacity() -> void:
 	var dem: int = int(rows[0]["demand"])
 	var util: float = float(rows[0]["util_pct"])
 	assert_gt(util, 100.0,
-			"demand 是 capacity 的 5× 时 util_pct 应 > 100% (实际 util=%f, cap=%d, dem=%d)"
+			"demand 是 capacity 的 5× 时 util_pct 应 > 100%% (实际 util=%f, cap=%d, dem=%d)"
 			% [util, cap, dem])
