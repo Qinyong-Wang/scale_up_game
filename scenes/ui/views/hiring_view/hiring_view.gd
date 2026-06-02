@@ -3,19 +3,16 @@ extends VBoxContainer
 ## HiringView — 招聘 tab 视图 (招聘界面拆分后的「招新」一半)。
 ##
 ## 布局:
-##   [Section "创始人 (你自己)"]   ← 创始人已下场后整区隐藏
-##     ↳ CTA "+ 成为创始研究员"
 ##   [Section "候选 Lead 池 (本周, 月底刷新)"]
 ##     ↳ 按 specialty 分组的 subsection 标签 + HFlow of pool cards
 ##
 ## 信号:
-##   become_founder_pressed
 ##   lead_action(lead_id: StringName, action_id: StringName)   # hire
 ##
 ## refresh(data: Dictionary) 接 main.gd 组装好的完整 data dict (与 StaffView 同一份),
-## view 内部不访问 GameState。「在册」一半 (已签约 lead / staff / 工资合计) 在 StaffView。
+## view 内部不访问 GameState。「在册」一半 (创始人 / 已签约 lead / staff / 工资合计)
+## 在 StaffView。
 
-signal become_founder_pressed
 signal lead_action(lead_id: StringName, action_id: StringName)
 
 const SectionHeaderScene := preload("res://scenes/ui/components/section_header/section_header.tscn")
@@ -25,8 +22,7 @@ const LeadCard := preload("res://scenes/ui/views/hiring_view/lead_card.gd")
 # 招聘 tab 不需要 FilterBar; 分组少 (6 specialty), 卡片数量在控制范围内。
 
 var _founder_section: Control
-var _founder_body: VBoxContainer   # 装 CTA 按钮, refresh 时重建
-var _founder_cta_btn: Button       # 当前活的按钮 (founder 未加入时); 否则 null
+var _founder_body: VBoxContainer
 
 var _pool_section: Control
 var _pool_grid_root: VBoxContainer
@@ -62,23 +58,10 @@ func refresh(data: Dictionary) -> void:
 	_refresh_founder(bool(data.get("has_founder", false)))
 	_refresh_pool(data)
 
-func _refresh_founder(has_founder: bool) -> void:
-	# 每次刷新重建; 老集成测试用 _all_button_texts 不过滤 visible, 必须真正把
-	# 按钮从树里摘掉, 文案才不被搜集到。
+func _refresh_founder(_has_founder: bool) -> void:
 	_clear_children(_founder_body)
-	_founder_cta_btn = null
-	# 创始人已下场后, 招聘 tab 不再展示创始人区 — 在册状态去「员工」tab 看。
-	var show_section: bool = not has_founder
-	_founder_section.visible = show_section
-	_founder_body.visible = show_section
-	if not has_founder:
-		var btn := Button.new()
-		btn.text = tr("HIRING_BECOME_FOUNDER_RESEARCHER")
-		# 收紧到内容宽并左对齐, 不占满整屏 (见 design §9)。
-		btn.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
-		btn.pressed.connect(_on_founder_cta_pressed)
-		_founder_body.add_child(btn)
-		_founder_cta_btn = btn
+	_founder_section.visible = false
+	_founder_body.visible = false
 
 func _refresh_pool(data: Dictionary) -> void:
 	_clear_children(_pool_grid_root)
@@ -139,9 +122,6 @@ func _make_dim_label(text: String) -> Label:
 
 # ─── 信号 ──────────────────────────────────────────────────
 
-func _on_founder_cta_pressed() -> void:
-	become_founder_pressed.emit()
-
 func _on_card_action(action_id: StringName, lead_id: StringName) -> void:
 	lead_action.emit(lead_id, action_id)
 
@@ -167,10 +147,6 @@ func click_card_action_for_test(lead_id: StringName, action_id: StringName) -> v
 	var c: Control = _cards_by_id.get(lead_id, null)
 	if c != null and c.has_method(&"click_action_for_test"):
 		c.click_action_for_test(action_id)
-
-func click_become_founder_for_test() -> void:
-	if _founder_cta_btn != null and _founder_cta_btn.visible:
-		_founder_cta_btn.pressed.emit()
 
 func all_button_texts_for_test() -> PackedStringArray:
 	var out := PackedStringArray()

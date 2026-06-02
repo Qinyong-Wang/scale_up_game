@@ -288,7 +288,7 @@
 | `1100–1399px` | 侧栏展开 220px, 抽屉打开时主区压缩, 卡片每行 3 |
 | `< 1100px` | 暂不作为正式支持窗口; 可以显示调试画面, 但不保证信息密度与点击目标 |
 
-默认窗口 `1920×1080` (project.godot `viewport_width/height`); 最小正式支持窗口 `1280×720` (`min_width/min_height`)。UI 修复优先保证 1280 下信息可读、操作目标靠近对应对象、主流程不用横向滚动; 更小窗口作为后续响应式专项处理。`stretch/mode=canvas_items` 让控件在窗口缩放时按目标分辨率重排, 文字保持清晰。
+默认窗口 `1920×1080` (project.godot `viewport_width/height`); 最小正式支持窗口 `1280×720` (`min_width/min_height`)。UI 修复优先保证 1280 下信息可读、操作目标靠近对应对象、主流程不用横向滚动; 更小窗口作为后续响应式专项处理。**2026-06 macOS 导出修复**: ProjectSettings 关闭 Godot 自动 stretch (`display/window/stretch/mode="disabled"`), 不再让全屏时按基准画布自动缩放裁切菜单; 大屏 / 全屏只由 `UITheme.apply_display_scale()` 的 `Window.content_scale_factor` 控制字号与控件缩放。
 
 **列表 / 行宽收口 + 按钮对齐 (2026-05)**: tab 内容挂在 `ScrollContainer → VBox(EXPAND_FILL)` 上, 默认会把竖排列表行、看板行、动作按钮全拉成整屏宽 —— 列表内容铺太宽、行内 label 与右侧按钮被推到屏幕两端、按钮宽到一整屏。规则:
 - 竖排列表型视图 (排行榜、经济看板行) 宽度收口到 `LIST_MAX_W`(720) 并左对齐, 不随窗口铺满。
@@ -297,11 +297,11 @@
 
 ### 9bis. 高 DPI 缩放 (2K / 4K 字号自适应)
 
-设计基准是 1080p。`stretch/aspect=expand` 让窗口变大时**铺更多内容而非放大**, 因此在 2K / 4K 显示器上控件按设备像素 1:1 渲染会显得很小 (字号 13px 在 4K 上只有物理几毫米)。修法: 运行时按显示器高度驱动 `Window.content_scale_factor`, 整体 UI 等比放大且因 `canvas_items` 重排保持清晰, 同时仍保留 `expand` 的"大屏多内容"特性 (不加黑边)。
+设计基准是 1080p。由于 project stretch 已关闭, 大屏 / 高 DPI 缩放只走运行时 `Window.content_scale_factor`。它按显示器高度驱动整体 UI 等比放大, 但不启用 Godot 的画布 stretch, 避免 macOS 导出全屏时菜单按虚拟画布缩放后显示不全。
 
 - **自动档**: `UITheme.compute_ui_scale(window_h)` = `clampf(window_h / 1080, 1.0, MAX_UI_SCALE)`。即 1080p→1.0、1440p→≈1.33、2160p→2.0; 低于 1080 不缩小 (clamp 下限 1.0), 超大屏封顶 `MAX_UI_SCALE`(2.5)。纯函数, 单测覆盖。
 - **手动档**: `Preferences.ui_scale` (float, `0.0`=自动) 让玩家在设置里覆盖自动值, 选 `100% / 125% / 150% / 175% / 200%`。`UITheme.effective_ui_scale()` = `ui_scale>0 ? ui_scale : compute_ui_scale(window_h)`。
-- **应用**: `UITheme.apply_display_scale()` 写 `get_window().content_scale_factor`; 启动时与 `window.size_changed` (含全屏切换) 时各应用一次, 自动档随分辨率变。
+- **应用**: `UITheme.apply_display_scale()` 写 `get_window().content_scale_factor`; 启动时与 `window.size_changed` (含全屏切换) 时各应用一次, 自动档随分辨率变。Project stretch 保持 disabled, 不和 `content_scale_factor` 叠加。
 - **全屏**: `Preferences.fullscreen` (bool) 经 `UITheme.apply_window_mode()` → `DisplayServer.window_set_mode(WINDOW_MODE_FULLSCREEN / WINDOWED)` (borderless 全屏)。设置里一个 `CheckButton` 切换 + 持久化。
 - **测试 hermetic**: 缩放 / 窗口模式只在非测试运行下真正应用 (镜像 `Preferences._is_test_run`), 避免动 headless 测试窗口; `compute_ui_scale` 是纯函数照常测。
 

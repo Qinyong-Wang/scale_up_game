@@ -215,6 +215,7 @@ func _ready() -> void:
 	if OS.has_environment("AGI_LOCALE"):
 		TranslationServer.set_locale(OS.get_environment("AGI_LOCALE"))
 	_apply_theme()
+	_ensure_player_scientist_joined()
 	_build_ui()
 	_subscribe_events()
 	_refresh()
@@ -1022,6 +1023,8 @@ func _apply_top_bar_button_style(b: Button, kind: StringName) -> void:
 		b.add_theme_stylebox_override(&"normal", _make_button_style(transparent, transparent, 0))
 		b.add_theme_stylebox_override(&"hover", _make_button_style(g_hover, transparent, 0))
 		b.add_theme_stylebox_override(&"pressed", _make_button_style(g_pressed, transparent, 0))
+		b.add_theme_stylebox_override(&"hover_pressed", _make_button_style(g_pressed, transparent, 0))
+		b.add_theme_stylebox_override(&"focus", _make_button_style(g_hover, transparent, 0))
 		b.add_theme_stylebox_override(&"disabled", _make_button_style(transparent, transparent, 0))
 		b.add_theme_color_override(&"font_color", UITheme.TEXT_ON_DARK_SECONDARY)
 		b.add_theme_color_override(&"font_hover_color", UITheme.TEXT_ON_DARK)
@@ -1040,6 +1043,10 @@ func _apply_top_bar_button_style(b: Button, kind: StringName) -> void:
 		_make_button_style(p_hover, p_hover))
 	b.add_theme_stylebox_override(&"pressed",
 		_make_button_style(p_pressed, p_pressed))
+	b.add_theme_stylebox_override(&"hover_pressed",
+		_make_button_style(p_pressed, p_pressed))
+	b.add_theme_stylebox_override(&"focus",
+		_make_button_style(p_hover, UITheme.BG_SURFACE))
 	b.add_theme_stylebox_override(&"disabled",
 		_make_button_style(Color(1, 1, 1, 0.12), transparent, 0))
 	b.add_theme_color_override(&"font_color", UITheme.TEXT_PRIMARY)
@@ -1292,6 +1299,21 @@ func _refresh() -> void:
 	_render_office_tab()
 	_render_auction_tab()
 	_render_help_tab()
+
+func _ensure_player_scientist_joined() -> void:
+	for l in GameState.leads:
+		if l.is_player_scientist:
+			return
+	var display_name: String = GameState.player_name.strip_edges()
+	if display_name == "":
+		display_name = "创始人"
+	var payload: Dictionary = {display_name = display_name}
+	if GameState.founder_avatar != &"":
+		payload.avatar_id = GameState.founder_avatar
+	var r: Dictionary = CommandBus.send(&"hiring.create_player_scientist", payload)
+	if not bool(r.get(&"ok", false)):
+		Log.warn(&"hiring", "auto_player_scientist_failed",
+				{error = r.get(&"error", &"unknown")})
 
 # ---- top bar refresh ----------------------------------------------------
 
@@ -1886,13 +1908,12 @@ func _format_lead_bonuses(lead) -> String:
 	return ", ".join(parts)
 
 func _render_hiring_tab() -> void:
-	# 招聘 tab — HiringView 只管「招新」: 候选 Lead 池 + 成为创始研究员入口。
+	# 招聘 tab — HiringView 只管「招新」: 候选 Lead 池。
 	# view 单实例, 第一次进来时 instantiate; 之后只调 refresh()。
 	if _hiring_view == null:
 		_clear(_tab_hiring)
 		_hiring_view = HiringViewScene.instantiate()
 		_tab_hiring.add_child(_hiring_view)
-		_hiring_view.become_founder_pressed.connect(_on_hiring_become_founder)
 		_hiring_view.lead_action.connect(_on_hiring_lead_action)
 	_hiring_view.refresh(_build_hiring_view_data())
 
@@ -1973,9 +1994,6 @@ func _hired_lead_status_text(l) -> String:
 	return "idle"
 
 # ---- HiringView 信号 dispatch ----
-
-func _on_hiring_become_founder() -> void:
-	_call(&"hiring.create_player_scientist", {}, tr("CALL_FOUNDER_JOIN"))
 
 func _on_hiring_lead_action(lead_id: StringName, action_id: StringName) -> void:
 	match action_id:
@@ -3060,6 +3078,15 @@ func _build_event_view_data() -> Dictionary:
 	for inst in GameState.pending_events:
 		var card = _load_card(inst.template_id)
 		if card == null:
+			pending.append({
+				"id": inst.id,
+				"template_id": inst.template_id,
+				"category": &"flavor",
+				"title": "EVENT_MISSING_TITLE",
+				"body": tr("EVENT_MISSING_BODY") % String(inst.template_id),
+				"options": [],
+				"dismiss_consequence": "",
+			})
 			continue
 		var options: Array = []
 		for opt in card.options:
@@ -4018,7 +4045,4 @@ func _sn_join(arr: Array) -> String:
 	return ",".join(parts)
 
 func _load_card(template_id: StringName):
-	var path: String = "res://resources/data/events/%s.tres" % String(template_id)
-	if FileAccess.file_exists(path):
-		return load(path)
-	return null
+	return EventSystem._load_card(template_id)

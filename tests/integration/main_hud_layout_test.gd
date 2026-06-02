@@ -632,21 +632,24 @@ func test_staff_tab_shows_total_weekly_salary_line() -> void:
 	assert_true(_has_text_containing(labels, "本周总工资"),
 		"staff tab should expose a 本周总工资 summary line")
 
-# ---- 创始人入口 (设计 §2 / §5.1 v2026-05) -------------------------------
+# ---- 创始人自动加入 (设计 §2 / §5.1 v2026-06) ----------------------------
 
-func test_hiring_tab_shows_create_founder_button_when_no_player_scientist() -> void:
-	# Per 招聘系统设计 §2 (2026-05 rev): 创始人未创建时, 招聘 tab 顶部应展示
-	# 成为创始研究员 按钮, 给前期没有招到对应 specialty 的玩家兜底。
+func test_main_auto_creates_player_scientist_on_ready() -> void:
+	var has_founder := false
+	for l in GameState.leads:
+		if l.is_player_scientist:
+			has_founder = true
+			break
+	assert_true(has_founder, "进入主 HUD 时创始人应自动加入团队")
+
+func test_hiring_tab_does_not_show_create_founder_button() -> void:
 	_hud._refresh()
 	var btns := _all_button_texts(_hud._tab_hiring)
-	assert_true(_has_text_containing(btns, "成为创始研究员"),
-		"招聘 tab 未创建 founder 时应有 成为创始研究员 按钮")
+	assert_false(_has_text_containing(btns, "成为创始研究员"),
+		"开局自动加入 founder 后, 招聘 tab 不应再有手动创建按钮")
 
-func test_hiring_tab_hides_create_founder_button_after_creation() -> void:
-	# 创建后, 招聘 tab 的按钮消失; 「员工」tab 显示 创始人已加入 提示行。
-	CommandBus.send(&"hiring.create_player_scientist", {})
+func test_staff_tab_shows_auto_joined_founder() -> void:
 	_hud._refresh()
-	# 等一帧让 _clear() 的 queue_free 真正生效, 否则上一次 render 的按钮还挂在树上。
 	await get_tree().process_frame
 	var btns := _all_button_texts(_hud._tab_hiring)
 	assert_false(_has_text_containing(btns, "成为创始研究员"),
@@ -666,33 +669,6 @@ func test_staff_tab_puts_staff_management_above_hired_leads() -> void:
 	assert_true(order.find("STAFF_HIRED_LEADS") != -1, "员工 tab 应包含已签约 Lead 区")
 	assert_lt(order.find("STAFF_BY_ROLE"), order.find("STAFF_HIRED_LEADS"),
 		"普通员工区应排在已签约 Lead 区上方, 实际: %s" % str(order))
-
-func test_hiring_tab_create_founder_button_actually_creates_founder() -> void:
-	# 点击按钮应通过 CommandBus 创建 player_scientist。
-	_hud._refresh()
-	var btn := _first_button_containing(_hud._tab_hiring, "成为创始研究员")
-	assert_not_null(btn, "expected 成为创始研究员 button before click")
-	btn.emit_signal("pressed")
-	# 创建命令是同步的, 紧接着就该看到 player_scientist。
-	var has_founder: bool = false
-	for l in GameState.leads:
-		if l.is_player_scientist:
-			has_founder = true
-			break
-	assert_true(has_founder, "点击按钮后应有一位 player_scientist 加入 GameState.leads")
-
-func test_hiring_tab_founder_button_hides_immediately_after_click() -> void:
-	# 回归: 点击创建创始人后, 必须由 player_scientist_created 信号驱动一次刷新把按钮
-	# 摘掉。否则玩家看不到反应、重复点击, 第二次返回 already_created 报"失败", 而其实
-	# 第一次已成功。见 bug: 第一轮"成为创世研究员"显示失败但最后成功。
-	_hud._refresh()
-	var btn := _first_button_containing(_hud._tab_hiring, "成为创始研究员")
-	assert_not_null(btn, "expected 成为创始研究员 button before click")
-	btn.emit_signal("pressed")
-	# 故意不手动调用 _hud._refresh(): 刷新必须由信号触发。
-	var btns := _all_button_texts(_hud._tab_hiring)
-	assert_false(_has_text_containing(btns, "成为创始研究员"),
-		"点击后按钮应立即消失 (信号驱动刷新), 否则玩家会重复点击触发 already_created 失败")
 
 func test_evaluate_flow_uses_founder_when_no_eval_lead() -> void:
 	# Per main.gd._first_idle_lead_matching: 没有专精 eval_lead 时退到 founder.

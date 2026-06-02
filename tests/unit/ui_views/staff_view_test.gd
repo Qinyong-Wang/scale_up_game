@@ -3,7 +3,7 @@ extends GutTest
 ## StaffView 单测 — 招聘界面拆分后的「在册」一半。
 ##
 ## 覆盖: 创始人状态行 + 已签约 Lead 卡片 + 普通员工 staff 增减 + 周工资合计。
-## 「招新」一半 (候选池 / 成为创始研究员) 见 hiring_view_test.gd。
+## 「招新」一半 (候选池) 见 hiring_view_test.gd。
 ## View 只接 data dict (pre-computed bonus_text / status_text 已在调用方算好),
 ## 不访问 GameState / HiringSystem; 信号反向通知调用方动业务命令。
 
@@ -94,11 +94,15 @@ func test_founder_section_shows_hint_when_no_founder() -> void:
 	v.refresh(_default_data())
 	await get_tree().process_frame
 	var labels: PackedStringArray = v.all_label_texts_for_test()
-	var found := false
+	var has_auto_hint := false
+	var has_old_founder_cta_hint := false
 	for t in labels:
-		if String(t).find("还不是创始研究员") != -1:
-			found = true
-	assert_true(found, "未下场时员工 tab 应提示去招聘 tab")
+		if String(t).find("开局会自动加入团队") != -1:
+			has_auto_hint = true
+		if String(t).find("还不是创始研究员") != -1 or String(t).find("选择下场") != -1:
+			has_old_founder_cta_hint = true
+	assert_true(has_auto_hint, "缺 founder 的旧档/测试数据应说明会自动加入团队")
+	assert_false(has_old_founder_cta_hint, "不应再提示玩家去招聘页手动下场")
 
 # ─── 已签约卡片 ─────────────────────────────────────────────
 

@@ -197,7 +197,16 @@ func _on_dismiss_flavor(p: Dictionary) -> Dictionary:
 	if inst == null:
 		return {ok = false, error = &"unknown_event"}
 	var card := _load_card(inst.template_id)
-	if card == null or card.category != &"flavor":
+	if card == null:
+		Log.warn(&"event", "missing_template_dismissed",
+				{event_id = inst.id, template_id = inst.template_id})
+		inst.resolved_at_turn = GameState.turn
+		inst.chosen_option_id = &"missing_template"
+		GameState.pending_events.erase(inst)
+		GameState.event_history.append(inst)
+		EventBus.event_resolved.emit(inst.id, &"missing_template", [])
+		return {ok = true, applied_effects = []}
+	if card.category != &"flavor":
 		return {ok = false, error = &"not_flavor"}
 	var applied: Array = []
 	for effect in card.passive_effects:

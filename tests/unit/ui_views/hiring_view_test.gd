@@ -1,8 +1,8 @@
 extends GutTest
 
-## HiringView 单测 — 招聘界面拆分后的「招新」一半 (候选 Lead 池 + 创始人入口)。
+## HiringView 单测 — 招聘界面拆分后的「招新」一半 (候选 Lead 池)。
 ##
-## 「在册」一半 (已签约 lead / staff / 工资合计) 见 staff_view_test.gd。
+## 「在册」一半 (创始人 / 已签约 lead / staff / 工资合计) 见 staff_view_test.gd。
 ## View 只接 data dict (pre-computed bonus_text 已在调用方算好), 不访问
 ## GameState / HiringSystem; 信号反向通知调用方动业务命令。
 
@@ -46,31 +46,21 @@ func _default_data() -> Dictionary:
 		"bonus_text": {},   # lead_id → "预训练加速 +30%"
 	}
 
-# ─── 创始人入口 ───────────────────────────────────────────────
+# ─── 创始人入口已移除 ─────────────────────────────────────────
 
-func test_founder_section_shows_cta_when_no_founder() -> void:
+func test_founder_section_stays_hidden_when_no_founder() -> void:
 	var v := _make()
 	var data := _default_data()
 	v.refresh(data)
 	await get_tree().process_frame
-	# 测试期望 "成为创始研究员" 按钮存在 (集成测试也要)。
 	var btns: PackedStringArray = v.all_button_texts_for_test()
-	var found := false
 	for t in btns:
-		if String(t).find("成为创始研究员") != -1:
-			found = true
-	assert_true(found, "未创建 founder 时应有按钮, 实际按钮: %s" % str(btns))
+		assert_true(String(t).find("成为创始研究员") == -1,
+			"开局自动加入 founder 后, 招聘页不应再出现手动 CTA")
+	assert_false(v._founder_section.visible,
+		"招聘页不再承载 founder CTA, founder section 应隐藏")
 
-func test_founder_cta_is_shrink_not_full_width() -> void:
-	# 成为创始研究员按钮应收紧, 不占满整屏 (design §9)。
-	var v := _make()
-	v.refresh(_default_data())  # has_founder = false
-	await get_tree().process_frame
-	assert_eq(v._founder_cta_btn.size_flags_horizontal, Control.SIZE_SHRINK_BEGIN,
-		"创始研究员 CTA 不应 SIZE_FILL 铺满整屏")
-
-func test_founder_cta_hidden_when_has_founder() -> void:
-	# 创始人下场后, 招聘 tab 不再展示创始人区 (在册状态去「员工」tab 看)。
+func test_founder_section_stays_hidden_when_has_founder() -> void:
 	var v := _make()
 	var data := _default_data()
 	data["has_founder"] = true
@@ -80,14 +70,8 @@ func test_founder_cta_hidden_when_has_founder() -> void:
 	for t in btns:
 		assert_true(String(t).find("成为创始研究员") == -1,
 			"已有 founder 时招聘 tab 不应再有创建按钮")
-
-func test_founder_cta_click_emits_become_founder_pressed() -> void:
-	var v := _make()
-	v.refresh(_default_data())
-	await get_tree().process_frame
-	watch_signals(v)
-	v.click_become_founder_for_test()
-	assert_signal_emitted(v, "become_founder_pressed")
+	assert_false(v._founder_section.visible,
+		"已有 founder 时 founder section 也应隐藏")
 
 # ─── 候选池卡片 ──────────────────────────────────────────────
 

@@ -109,6 +109,24 @@ func test_top_bar_buttons_define_all_interaction_font_colors() -> void:
 			assert_false(color.is_equal_approx(UITheme.BG_SURFACE),
 				"顶栏按钮 %s 的 %s 不能掉成白字" % [(btn as Button).text, String(color_name)])
 
+func test_top_bar_ghost_buttons_override_focus_and_hover_pressed_styles() -> void:
+	# 回归: 设置 / 存档按钮点击后进入 focus 或 hover_pressed 时不能掉回默认白底,
+	# 否则浅色 on-dark 文字会看不清。
+	for btn in [_hud._settings_btn, _hud._save_btn]:
+		assert_true((btn as Button).has_theme_stylebox_override(&"focus"),
+			"%s 必须覆盖 focus stylebox" % (btn as Button).text)
+		assert_true((btn as Button).has_theme_stylebox_override(&"hover_pressed"),
+			"%s 必须覆盖 hover_pressed stylebox" % (btn as Button).text)
+		for style_name in [&"focus", &"hover_pressed"]:
+			var sb: StyleBox = (btn as Button).get_theme_stylebox(style_name)
+			assert_true(sb is StyleBoxFlat,
+				"%s/%s 应为 StyleBoxFlat" % [(btn as Button).text, String(style_name)])
+			if sb is StyleBoxFlat:
+				var flat := sb as StyleBoxFlat
+				assert_lt(flat.bg_color.a, 0.25,
+					"%s/%s 只能是低透明玻璃底, 实际 %s" % [
+						(btn as Button).text, String(style_name), flat.bg_color])
+
 func test_top_bar_turn_chip_shows_week() -> void:
 	# 旧契约保留: _turn_label.text 含 "周"。timeline_e2e_test 依赖。
 	assert_true(String(_hud._turn_label.text).find("周") != -1,
@@ -229,6 +247,24 @@ func test_blocked_advance_switches_to_events_tab_for_existing_pending() -> void:
 	assert_eq(GameState.turn, 0, "已有 pending 事件时不应推进回合")
 	assert_eq(_hud._tabs.get_tab_title(_hud._tabs.current_tab), "事件",
 			"已有 pending 事件时点击推进处理函数应切到事件 tab 提示玩家处理")
+
+func test_event_tab_shows_placeholder_when_pending_template_is_missing() -> void:
+	var inst := EventInstance.new()
+	inst.id = &"event_missing_template"
+	inst.template_id = &"missing_template_for_test"
+	GameState.pending_events.append(inst)
+	_hud._refresh()
+	await get_tree().process_frame
+	var labels: PackedStringArray = _hud._event_view.all_label_texts_for_test()
+	var has_placeholder := false
+	for text in labels:
+		if String(text).find("事件模板缺失") != -1:
+			has_placeholder = true
+	assert_true(has_placeholder,
+		"pending event 缺模板时事件页也必须显示占位卡, 实际 labels: %s" % str(labels))
+	_hud._event_view.click_dismiss_for_test(&"event_missing_template")
+	assert_eq(GameState.pending_events.size(), 0,
+		"缺模板占位事件也应能点「知道了」清掉, 避免永久卡住推进")
 
 func test_hud_rerenders_on_locale_changed() -> void:
 	# 切语言 → 重渲染全部 tab, 让 tr(...) 在新 locale 下重新求值 (国际化设计 §11.2)。

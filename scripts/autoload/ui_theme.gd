@@ -552,7 +552,8 @@ func effective_ui_scale() -> float:
 	var h: float = float(w.size.y) if w != null else BASE_VIEWPORT_H
 	return compute_ui_scale(h)
 
-## 把生效缩放写到根窗口的 content_scale_factor (整体 UI 等比放大, canvas_items 重排保持清晰)。
+## 把生效缩放写到根窗口的 content_scale_factor。Project stretch 保持 disabled,
+## 避免 macOS 全屏时与画布自动缩放叠加导致菜单裁切。
 func apply_display_scale() -> void:
 	if _is_test_run():
 		return

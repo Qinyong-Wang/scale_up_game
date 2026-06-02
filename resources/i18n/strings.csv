@@ -86,6 +86,8 @@ EVENT_HISTORY_RECENT,历史 (最近 %d),History (last %d)
 MSG_NONE,(无),(none)
 EVENT_DISMISS,知道了,Got it
 EVENT_FIELD_BODY,说明,Details
+EVENT_MISSING_TITLE,事件模板缺失,Missing event template
+EVENT_MISSING_BODY,这个待处理事件的模板 %s 已不存在。点「知道了」可移除它并继续推进。,The template %s for this pending event no longer exists. Click Got it to remove it and continue.
 EVENT_CAT_OPPORTUNITY,机会,Opportunity
 EVENT_CAT_CRISIS,危机,Crisis
 EVENT_CAT_ROUTINE,日常,Routine
@@ -141,7 +143,7 @@ COUNT_ITEMS,%d 个,%d
 STAFF_HIRED_LEADS,已签约 Lead,Signed Leads
 STAFF_BY_ROLE,员工 (按职能),Staff (by role)
 STAFF_FOUNDER_NOTE,"创始人已加入 (万能 lead · 无加成); 招到专精 lead 后可顶替, 创始人腾出做别的。",Founder joined (all-rounder · no bonus); hire a specialist lead to replace them and free the founder up.
-STAFF_NOT_FOUNDER,(你还不是创始研究员 — 去「招聘」tab 选择下场),(You're not a founding researcher yet — pick one in the Hiring tab)
+STAFF_NOT_FOUNDER,(创始人开局会自动加入团队),(The founder joins the team automatically at game start)
 STAFF_NO_LEADS,"(暂无 lead, 去「招聘」tab 签约)",(No leads — sign one in the Hiring tab)
 STAFF_ROLE_ROW,%s: %d (在忙 %d) · $%s/周,%s: %d (busy %d) · $%s/wk
 STAFF_PLUS_ONE,+1 (+%s/周),+1 (+%s/wk)

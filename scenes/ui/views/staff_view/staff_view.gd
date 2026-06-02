@@ -16,7 +16,7 @@ extends VBoxContainer
 ##   staff_adjust(role: StringName, delta: int)
 ##
 ## refresh(data: Dictionary) 接 main.gd 组装好的完整 data dict (与 HiringView 同一份),
-## view 内部不访问 GameState。「招新」一半 (候选池 / 成为创始研究员) 在 HiringView。
+## view 内部不访问 GameState。「招新」一半 (候选池) 在 HiringView。
 
 signal lead_action(lead_id: StringName, action_id: StringName)
 signal staff_adjust(role: StringName, delta: int)
