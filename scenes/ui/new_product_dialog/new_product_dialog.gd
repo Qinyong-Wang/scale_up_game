@@ -369,9 +369,9 @@ func _refresh_preview() -> void:
 		var rank_label: String = "#%d" % rank if rank > 0 else tr("PRODUCT_UNRANKED")
 		preview_lines.append(tr("PRODUCT_DEMAND_API") % rank_label)
 	else:
-		var per_user_month: int = int(spec.tokens_per_user_per_month) if spec != null else 0
+		var per_user_week: int = spec.tokens_per_week() if spec != null else 0
 		preview_lines.append(tr("PRODUCT_TYPE_SUB") % [
-			tr(spec.display_name), _format_tps(per_user_month)])
+			tr(spec.display_name), _format_tps(per_user_week)])
 		var price: int = int(_price_spinbox.value)
 		preview_lines.append(tr("PRODUCT_REVENUE_EST") % [
 			0, price, _money(0)])

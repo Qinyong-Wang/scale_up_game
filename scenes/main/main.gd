@@ -3755,6 +3755,10 @@ func _tokens_per_user_for_type(type_id: StringName) -> int:
 	var path := "res://resources/data/products/types/%s.tres" % String(type_id)
 	if ResourceLoader.exists(path):
 		var res := load(path)
+		if res is ProductTypeSpec:
+			return (res as ProductTypeSpec).tokens_per_week()
+		if res != null and "tokens_per_user_per_week" in res:
+			return int(res.tokens_per_user_per_week)
 		if res != null and "tokens_per_user_per_month" in res:
 			return int(res.tokens_per_user_per_month)
 	return 0

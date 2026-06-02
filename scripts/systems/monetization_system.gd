@@ -15,7 +15,7 @@ extends Node
 ##                               × arch_inference_coef
 ##                               × product_throughput_multiplier
 ##                               × SECONDS_PER_WEEK
-##   subscription_demand = Σ subscribers × tokens_per_user_per_month  # 隐式周价
+##   subscription_demand = Σ subscribers × tokens_per_user_per_week
 ##   api_demand          = api_token_demand[m]                        # UserSystem 写入
 ##
 ## Engineering tree multipliers are already baked into dc.serving_tokens_per_sec
@@ -117,7 +117,7 @@ func _settle_api(breakdown: Dictionary) -> void:
 		breakdown.api_total = int(breakdown.api_total) + model_api_rev_total
 
 # §6.2: monetization 需要复用 UserSystem 的 tokens-per-user 表来算订阅 demand;
-# 直接载入 ProductTypeSpec.tres 取 `tokens_per_user_per_month`. Cached per type.
+# 直接载入 ProductTypeSpec.tres 取每周 token 用量. Cached per type.
 var _tokens_per_user_cache: Dictionary = {}
 const _TOKENS_PER_USER_FALLBACK: Dictionary = {
 	&"chatbot": 250_000,
@@ -132,7 +132,11 @@ func _tokens_per_user_for(product_type: StringName) -> int:
 	var path := "res://resources/data/products/types/%s.tres" % String(product_type)
 	if ResourceLoader.exists(path):
 		var res := load(path)
-		if res != null and "tokens_per_user_per_month" in res:
+		if res is ProductTypeSpec:
+			value = (res as ProductTypeSpec).tokens_per_week()
+		elif res != null and "tokens_per_user_per_week" in res:
+			value = int(res.tokens_per_user_per_week)
+		elif res != null and "tokens_per_user_per_month" in res:
 			value = int(res.tokens_per_user_per_month)
 	if value <= 0 and _TOKENS_PER_USER_FALLBACK.has(product_type):
 		value = int(_TOKENS_PER_USER_FALLBACK[product_type])

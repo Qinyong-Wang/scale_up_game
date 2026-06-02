@@ -16,12 +16,21 @@ const Main := preload("res://scenes/main/main.gd")
 const SECONDS_PER_WEEK: int = 604_800
 
 var _hud
+var _coding_spec: ProductTypeSpec = null
+var _coding_week_before: int = 0
+var _coding_month_before: int = 0
 
 func before_each() -> void:
 	GameState.reset()
 	_hud = Main.new()
 	add_child_autofree(_hud)
 	await get_tree().process_frame
+
+func after_each() -> void:
+	if _coding_spec != null:
+		_coding_spec.tokens_per_user_per_week = _coding_week_before
+		_coding_spec.tokens_per_user_per_month = _coding_month_before
+		_coding_spec = null
 
 func _make_published_model(id: StringName) -> Model:
 	var m := Model.new()
@@ -58,6 +67,16 @@ func _make_subscription_product(id: StringName, model_id: StringName, subs: int)
 	p.bound_model_id = model_id
 	GameState.products.append(p)
 	return p
+
+func _force_coding_agent_token_alias_mismatch() -> void:
+	_coding_spec = load("res://resources/data/products/types/coding_agent.tres")
+	assert_not_null(_coding_spec, "coding_agent ProductTypeSpec 应可加载")
+	if _coding_spec == null:
+		return
+	_coding_week_before = int(_coding_spec.tokens_per_user_per_week)
+	_coding_month_before = int(_coding_spec.tokens_per_user_per_month)
+	_coding_spec.tokens_per_user_per_week = 1_000_000_000
+	_coding_spec.tokens_per_user_per_month = 250_000_000
 
 func _make_api_product(model_id: StringName) -> Product:
 	var p := Product.new()
@@ -103,3 +122,18 @@ func test_pool_util_pct_reaches_100_when_demand_saturates_capacity() -> void:
 	assert_gt(util, 100.0,
 			"demand 是 capacity 的 5× 时 util_pct 应 > 100%% (实际 util=%f, cap=%d, dem=%d)"
 			% [util, cap, dem])
+
+func test_product_card_token_use_prefers_week_field_over_legacy_alias() -> void:
+	# 回归: coding_agent 新字段是 1B/用户/周, 旧别名若滞后在 250M, 产品卡片
+	# 会显示 2.3G t/s 而算力池/营收页显示 9.3G t/s。
+	_force_coding_agent_token_alias_mismatch()
+	var m: Model = _make_published_model(&"m_code")
+	var p: Product = _make_subscription_product(&"p_code", m.id, 2)
+	p.type = &"coding_agent"
+	GameState.token_demand[m.id] = 2_000_000_000
+	GameState.api_token_demand[m.id] = 0
+
+	var data: Dictionary = _hud._build_product_view_data()
+	var per_product: Dictionary = data.get("sub_tps_per_product", {})
+	assert_eq(int(per_product.get(p.id, 0)), 2_000_000_000,
+			"产品卡片 t/s 占用必须按 tokens_per_user_per_week, 旧别名只作 fallback")

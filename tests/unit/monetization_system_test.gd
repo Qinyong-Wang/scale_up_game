@@ -27,11 +27,15 @@ const SECONDS_PER_WEEK: int = 604_800
 const BASELINE_FLOPS_PER_TOKEN: float = 1.4e10
 
 var _saved_engineering_coefs_handler: Variant = null
+var _coding_spec: ProductTypeSpec = null
+var _coding_week_before: int = 0
+var _coding_month_before: int = 0
 
 func before_each() -> void:
 	GameState.reset()
 	# Snapshot the real TechTreeSystem handler so per-test stubs can restore it.
 	_saved_engineering_coefs_handler = CommandBus._handlers.get(&"tech.get_engineering_coefs")
+	MonetizationSystem._tokens_per_user_cache.erase(&"coding_agent")
 
 func after_each() -> void:
 	# Restore the snapshotted handler (or remove if there wasn't one originally).
@@ -39,6 +43,11 @@ func after_each() -> void:
 		CommandBus._handlers[&"tech.get_engineering_coefs"] = _saved_engineering_coefs_handler
 	elif CommandBus._handlers.has(&"tech.get_engineering_coefs"):
 		CommandBus._handlers.erase(&"tech.get_engineering_coefs")
+	if _coding_spec != null:
+		_coding_spec.tokens_per_user_per_week = _coding_week_before
+		_coding_spec.tokens_per_user_per_month = _coding_month_before
+		_coding_spec = null
+		MonetizationSystem._tokens_per_user_cache.erase(&"coding_agent")
 
 # ---- fixtures -----------------------------------------------------------
 
@@ -107,6 +116,17 @@ func _make_api_product(model_id: StringName) -> Product:
 func _stub_engineering_coefs(throughput_multiplier: float) -> void:
 	CommandBus.register(&"tech.get_engineering_coefs", func(_p: Dictionary) -> Dictionary:
 		return {ok = true, throughput_multiplier = throughput_multiplier}, true)
+
+func _force_coding_agent_token_alias_mismatch() -> void:
+	_coding_spec = load("res://resources/data/products/types/coding_agent.tres")
+	assert_not_null(_coding_spec, "coding_agent ProductTypeSpec 应可加载")
+	if _coding_spec == null:
+		return
+	_coding_week_before = int(_coding_spec.tokens_per_user_per_week)
+	_coding_month_before = int(_coding_spec.tokens_per_user_per_month)
+	_coding_spec.tokens_per_user_per_week = 1_000_000_000
+	_coding_spec.tokens_per_user_per_month = 250_000_000
+	MonetizationSystem._tokens_per_user_cache.erase(&"coding_agent")
 
 # ---- §6.1 主入口: 触发与签名 -------------------------------------------
 
@@ -433,6 +453,18 @@ func test_subscription_revenue_capped_by_capacity() -> void:
 	assert_eq(int(br.subscription_per_product[&"p1"]), 24_750,
 			"算力 50% → 订阅营收应砍半")
 	assert_eq(int(br.subscription_total), 24_750)
+
+func test_subscription_capacity_ratio_prefers_week_field_over_legacy_alias() -> void:
+	# 回归: 若旧 `_per_month` 别名滞后, 订阅结算仍必须按 `_per_week`
+	# 算 capacity ratio, 与 UserSystem.token_demand / 产品页算力池同源。
+	_force_coding_agent_token_alias_mismatch()
+	var m: Model = _make_published_model(&"m_code", 0.01)
+	_make_serving_dc(&"dc_code", m.id, 500_000_000.0)
+	_make_product(&"p_code", &"coding_agent", 100, 1, m.id)
+	EventBus.users_resolved.emit(1, 0)
+	var br: Dictionary = GameState.last_revenue_breakdown
+	assert_eq(int(br.subscription_per_product[&"p_code"]), 50,
+			"capacity 是 1B 周需求的一半时, 订阅营收应按 50%% 截断")
 
 func test_subscription_revenue_zero_when_no_capacity() -> void:
 	# §5.2 (v9): 没 dc 部署 → 订阅营收清零 (而不是全收).
