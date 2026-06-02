@@ -20,6 +20,45 @@ func test_collectible_specs_load() -> void:
 	assert_not_null(CollectionSystem.spec_for(&"starry_vortex"))
 	assert_null(CollectionSystem.spec_for(&"nonsense"))
 
+func test_collectible_paths_table_matches_disk() -> void:
+	# 导出包不能可靠枚举 res://，收藏品加载必须走显式路径表；该测试防止新增
+	# .tres 后忘记同步路径表，造成编译后拍卖行空库存。
+	var on_disk: Array = _collect_collectible_tres_paths()
+	var listed: Array = CollectionSystem.COLLECTIBLE_PATHS.values()
+	on_disk.sort()
+	listed.sort()
+	for path in on_disk:
+		assert_true(listed.has(path),
+				"collectible on disk not listed in CollectionSystem table: %s" % path)
+	for path in listed:
+		assert_true(on_disk.has(path),
+				"collectible listed in table but missing on disk: %s" % path)
+
+func test_every_listed_collectible_path_loads_as_spec() -> void:
+	for cid in CollectionSystem.COLLECTIBLE_PATHS:
+		var res := load(CollectionSystem.COLLECTIBLE_PATHS[cid])
+		assert_true(res is CollectibleSpec,
+				"COLLECTIBLE_PATHS[%s] must load as CollectibleSpec" % cid)
+		assert_eq(StringName(res.id), cid,
+				"collectible id field must match table key for %s" % cid)
+
+func _collect_collectible_tres_paths() -> Array:
+	var out: Array = []
+	var dir := DirAccess.open(CollectionSystem.COLLECTIBLE_DIR)
+	assert_not_null(dir, "collectibles root must exist in editor")
+	if dir == null:
+		return out
+	dir.list_dir_begin()
+	var fname: String = dir.get_next()
+	while fname != "":
+		if not dir.current_is_dir() \
+				and fname.ends_with(".tres") \
+				and fname != "auction_tuning.tres":
+			out.append(CollectionSystem.COLLECTIBLE_DIR + fname)
+		fname = dir.get_next()
+	dir.list_dir_end()
+	return out
+
 func test_each_category_has_15_to_25_items() -> void:
 	var counts: Dictionary = {}
 	for spec in CollectionSystem.all_specs():

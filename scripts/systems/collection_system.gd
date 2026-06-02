@@ -12,9 +12,90 @@ extends Node
 ## tax-neutral (their economy reasons are in NON_TAXABLE_REASONS), so the sink is
 ## the tied-up cash + the SELL_FEE skim, not a tax write-off.
 
-# 收藏品 .tres 由 tools/build_collectibles.py 生成 (每类 15-25 件), 数量多, 运行时
-# 扫目录加载 (同 MarketSystem 扫 npcs 目录的范式), 不再硬编码路径。
+# 收藏品 .tres 由 tools/build_collectibles.py 生成 (每类 15-25 件), 数量多。
+# 发布包里 res:// 目录枚举不可靠, 且导出资源可能显示为 .tres.remap, 所以这里
+# 用显式路径表作为加载权威来源 (同 DatasetSystem 的导出兼容范式)。
 const COLLECTIBLE_DIR: String = "res://resources/data/collectibles/"
+const COLLECTIBLE_PATHS: Dictionary = {
+	&"abstract_red_field": "res://resources/data/collectibles/abstract_red_field.tres",
+	&"analog_compute_die": "res://resources/data/collectibles/analog_compute_die.tres",
+	&"banned_first_print": "res://resources/data/collectibles/banned_first_print.tres",
+	&"beta_resource_card": "res://resources/data/collectibles/beta_resource_card.tres",
+	&"blue_period_boy": "res://resources/data/collectibles/blue_period_boy.tres",
+	&"cluster_node_zero": "res://resources/data/collectibles/cluster_node_zero.tres",
+	&"coachbuilt_one_off": "res://resources/data/collectibles/coachbuilt_one_off.tres",
+	&"cold_titanium_plate": "res://resources/data/collectibles/cold_titanium_plate.tres",
+	&"crystal_phoenix": "res://resources/data/collectibles/crystal_phoenix.tres",
+	&"cubist_figure": "res://resources/data/collectibles/cubist_figure.tres",
+	&"cypherpunk_mail": "res://resources/data/collectibles/cypherpunk_mail.tres",
+	&"dao_constitution_nft": "res://resources/data/collectibles/dao_constitution_nft.tres",
+	&"dark_market_ghost": "res://resources/data/collectibles/dark_market_ghost.tres",
+	&"data_center_busbar": "res://resources/data/collectibles/data_center_busbar.tres",
+	&"defi_genesis_lp": "res://resources/data/collectibles/defi_genesis_lp.tres",
+	&"dripping_chaos": "res://resources/data/collectibles/dripping_chaos.tres",
+	&"echo_scream": "res://resources/data/collectibles/echo_scream.tres",
+	&"edge_chip_first": "res://resources/data/collectibles/edge_chip_first.tres",
+	&"electric_record_car": "res://resources/data/collectibles/electric_record_car.tres",
+	&"error_inverted_holo": "res://resources/data/collectibles/error_inverted_holo.tres",
+	&"first_ai_card": "res://resources/data/collectibles/first_ai_card.tres",
+	&"first_smart_contract": "res://resources/data/collectibles/first_smart_contract.tres",
+	&"first_tensor_board": "res://resources/data/collectibles/first_tensor_board.tres",
+	&"flame_beast_card": "res://resources/data/collectibles/flame_beast_card.tres",
+	&"fork_war_snapshot": "res://resources/data/collectibles/fork_war_snapshot.tres",
+	&"founder_hyper_one": "res://resources/data/collectibles/founder_hyper_one.tres",
+	&"founder_signed_gpu": "res://resources/data/collectibles/founder_signed_gpu.tres",
+	&"full_art_secret": "res://resources/data/collectibles/full_art_secret.tres",
+	&"genesis_coin_7": "res://resources/data/collectibles/genesis_coin_7.tres",
+	&"gilded_kiss": "res://resources/data/collectibles/gilded_kiss.tres",
+	&"gold_foil_promo": "res://resources/data/collectibles/gold_foil_promo.tres",
+	&"grandmaster_deck": "res://resources/data/collectibles/grandmaster_deck.tres",
+	&"gullwing_classic": "res://resources/data/collectibles/gullwing_classic.tres",
+	&"halving_relic": "res://resources/data/collectibles/halving_relic.tres",
+	&"holy_dragon_gem": "res://resources/data/collectibles/holy_dragon_gem.tres",
+	&"illustrator_award": "res://resources/data/collectibles/illustrator_award.tres",
+	&"inference_asic_v1": "res://resources/data/collectibles/inference_asic_v1.tres",
+	&"ink_mountains": "res://resources/data/collectibles/ink_mountains.tres",
+	&"lab_prototype_accel": "res://resources/data/collectibles/lab_prototype_accel.tres",
+	&"last_v12_manual": "res://resources/data/collectibles/last_v12_manual.tres",
+	&"le_mans_winner": "res://resources/data/collectibles/le_mans_winner.tres",
+	&"liquid_cooled_proto": "res://resources/data/collectibles/liquid_cooled_proto.tres",
+	&"lost_wallet_fragment": "res://resources/data/collectibles/lost_wallet_fragment.tres",
+	&"mascot_card_zero": "res://resources/data/collectibles/mascot_card_zero.tres",
+	&"master_self_portrait": "res://resources/data/collectibles/master_self_portrait.tres",
+	&"melting_clocks": "res://resources/data/collectibles/melting_clocks.tres",
+	&"meme_shiba_genesis": "res://resources/data/collectibles/meme_shiba_genesis.tres",
+	&"midnight_comet_le": "res://resources/data/collectibles/midnight_comet_le.tres",
+	&"miner_signed_board": "res://resources/data/collectibles/miner_signed_board.tres",
+	&"neuromorphic_chip": "res://resources/data/collectibles/neuromorphic_chip.tres",
+	&"night_cafe": "res://resources/data/collectibles/night_cafe.tres",
+	&"overclock_record_card": "res://resources/data/collectibles/overclock_record_card.tres",
+	&"phantom_gt": "res://resources/data/collectibles/phantom_gt.tres",
+	&"photonic_accel_proto": "res://resources/data/collectibles/photonic_accel_proto.tres",
+	&"pixel_ape_0001": "res://resources/data/collectibles/pixel_ape_0001.tres",
+	&"pop_can_grid": "res://resources/data/collectibles/pop_can_grid.tres",
+	&"prototype_mule": "res://resources/data/collectibles/prototype_mule.tres",
+	&"quantum_resist_coin": "res://resources/data/collectibles/quantum_resist_coin.tres",
+	&"rally_legend": "res://resources/data/collectibles/rally_legend.tres",
+	&"retired_mining_card": "res://resources/data/collectibles/retired_mining_card.tres",
+	&"retro_gamer_gpu": "res://resources/data/collectibles/retro_gamer_gpu.tres",
+	&"royal_limousine": "res://resources/data/collectibles/royal_limousine.tres",
+	&"salvator_cosmos": "res://resources/data/collectibles/salvator_cosmos.tres",
+	&"schoolyard_champ": "res://resources/data/collectibles/schoolyard_champ.tres",
+	&"sealed_starter": "res://resources/data/collectibles/sealed_starter.tres",
+	&"shadow_knight_alpha": "res://resources/data/collectibles/shadow_knight_alpha.tres",
+	&"signed_artist_holo": "res://resources/data/collectibles/signed_artist_holo.tres",
+	&"silver_arrow_classic": "res://resources/data/collectibles/silver_arrow_classic.tres",
+	&"solar_concept": "res://resources/data/collectibles/solar_concept.tres",
+	&"stablecoin_proto": "res://resources/data/collectibles/stablecoin_proto.tres",
+	&"starry_vortex": "res://resources/data/collectibles/starry_vortex.tres",
+	&"tournament_champion": "res://resources/data/collectibles/tournament_champion.tres",
+	&"track_only_extreme": "res://resources/data/collectibles/track_only_extreme.tres",
+	&"turbine_concept": "res://resources/data/collectibles/turbine_concept.tres",
+	&"wafer_scale_relic": "res://resources/data/collectibles/wafer_scale_relic.tres",
+	&"water_garden": "res://resources/data/collectibles/water_garden.tres",
+	&"weeping_lady": "res://resources/data/collectibles/weeping_lady.tres",
+	&"zero_block_relic": "res://resources/data/collectibles/zero_block_relic.tres",
+}
 ## 类别展示顺序 (auction / cabinet 分组), 内部再按 2070 封顶价 cheap → expensive。
 const CATEGORY_ORDER: Array[StringName] = [
 	&"crypto", &"trading_card", &"ai_hardware", &"supercar", &"painting",
@@ -68,20 +149,19 @@ func _on_phase(phase: StringName, _turn: int) -> void:
 
 func _load_tables() -> void:
 	_specs.clear()
-	# 扫 collectibles 目录加载全部 CollectibleSpec (同 MarketSystem._load_npc_tres_dir)。
-	var dir := DirAccess.open(COLLECTIBLE_DIR)
-	if dir != null:
-		dir.list_dir_begin()
-		var fname: String = dir.get_next()
-		while fname != "":
-			# auction_tuning.tres 同目录但不是收藏品 spec, 跳过 (is 检查也会挡, 这里显式跳)。
-			if not dir.current_is_dir() and fname.ends_with(".tres") \
-					and fname != "auction_tuning.tres":
-				var spec = load(COLLECTIBLE_DIR + fname)
-				if spec is CollectibleSpec:
-					_specs[spec.id] = spec
-			fname = dir.get_next()
-		dir.list_dir_end()
+	for id in COLLECTIBLE_PATHS.keys():
+		var spec = load(COLLECTIBLE_PATHS[id])
+		if spec is CollectibleSpec:
+			if spec.id != id:
+				Log.warn(&"collection", "collectible_id_mismatch", {
+					expected = id, actual = spec.id,
+				})
+			_specs[spec.id] = spec
+		else:
+			Log.warn(&"collection", "collectible_spec_missing", {
+				id = id, path = COLLECTIBLE_PATHS[id],
+			})
+	Log.info(&"collection", "collectible specs loaded", {count = _specs.size()})
 	_trophies.clear()
 	for id in TROPHY_PATHS.keys():
 		var t := load(TROPHY_PATHS[id])
