@@ -161,6 +161,7 @@ func test_card_action_click_emits_dc_action_signal() -> void:
 	await get_tree().process_frame
 	watch_signals(v)
 	v.click_card_action_for_test(&"dc1", &"deploy")
+	await get_tree().process_frame
 	assert_signal_emitted_with_parameters(v, "dc_action", [&"dc1", &"deploy"])
 
 # ─── 自建队列 ────────────────────────────────────────────────

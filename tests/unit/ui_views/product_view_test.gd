@@ -318,6 +318,7 @@ func test_card_action_emits_product_action_signal() -> void:
 	await get_tree().process_frame
 	watch_signals(v)
 	v.click_card_action_for_test(&"p1", &"delete")
+	await get_tree().process_frame
 	assert_signal_emitted_with_parameters(v, "product_action", [&"p1", &"delete"])
 
 func test_empty_products_shows_hint() -> void:

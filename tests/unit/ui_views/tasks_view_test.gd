@@ -105,6 +105,7 @@ func test_cancel_action_emits_signal() -> void:
 	await get_tree().process_frame
 	watch_signals(v)
 	v.click_card_action_for_test(&"t1", &"cancel")
+	await get_tree().process_frame
 	assert_signal_emitted_with_parameters(v, "task_action", [&"t1", &"cancel"])
 
 func test_progress_shown() -> void:

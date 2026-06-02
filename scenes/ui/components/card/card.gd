@@ -293,6 +293,11 @@ func _action_kind(spec: Dictionary, id: StringName, primary_already_used: bool) 
 	return &"secondary" if primary_already_used else &"primary"
 
 func _on_action_pressed(action_id: StringName) -> void:
+	call_deferred(&"_emit_action_pressed_deferred", action_id)
+
+func _emit_action_pressed_deferred(action_id: StringName) -> void:
+	if not _action_buttons.has(action_id):
+		return
 	action_pressed.emit(action_id)
 
 func _on_card_gui_input(ev: InputEvent) -> void:

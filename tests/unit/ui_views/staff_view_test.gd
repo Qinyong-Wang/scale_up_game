@@ -158,6 +158,7 @@ func test_hired_card_click_fire_emits_lead_action() -> void:
 	await get_tree().process_frame
 	watch_signals(v)
 	v.click_card_action_for_test(&"a", &"fire")
+	await get_tree().process_frame
 	assert_signal_emitted_with_parameters(v, "lead_action", [&"a", &"fire"])
 
 func test_hired_specialty_subsection_labels_render() -> void:

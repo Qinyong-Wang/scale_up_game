@@ -176,6 +176,8 @@
 
 `SectionHeader.action_pressed` 必须延迟到下一帧发出。它经常用来打开 Dialog / Drawer 或触发主区重建, 如果在 Button 的 `pressed` 输入回调内同步改动节点树, Viewport 可能在 `_push_unhandled_input_internal` 阶段遇到已经离树的节点并报错。
 
+`Card.action_pressed` 也必须延迟到下一帧发出。Card footer 的按钮常用于选择事件选项、发布模型、删除资产等会触发 `EventBus` 刷新的动作; 若在 `BaseButton.pressed` 回调栈内同步发出业务信号, 主 HUD 可能立即 `_refresh()` 并重建当前卡片, 导致导出包在按钮输入处理尚未结束时访问已释放/半释放的 UI 节点。组件测试必须钉住: 点击 action 后同帧不 emit, 下一帧才 emit。
+
 **i18n 约定** (详见 [国际化设计.md](国际化设计.md)): 组件本身不调 `tr()`, 字符串由调用方传入已翻译值; 调用方应当在组装数据时用 `tr("KEY")` 取译文。`Avatar.fallback_text` 也属于"调用方传入", glyph 与 seed_id 不参与翻译。
 
 ### 7.1 按钮手感与常用变体

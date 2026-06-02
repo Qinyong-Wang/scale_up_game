@@ -263,8 +263,29 @@ func test_event_tab_shows_placeholder_when_pending_template_is_missing() -> void
 	assert_true(has_placeholder,
 		"pending event 缺模板时事件页也必须显示占位卡, 实际 labels: %s" % str(labels))
 	_hud._event_view.click_dismiss_for_test(&"event_missing_template")
+	await get_tree().process_frame
 	assert_eq(GameState.pending_events.size(), 0,
 		"缺模板占位事件也应能点「知道了」清掉, 避免永久卡住推进")
+
+func test_event_card_choice_defers_resolution_until_next_frame() -> void:
+	var r: Dictionary = CommandBus.send(&"event.trigger_card", {template_id = &"routine_all_hands"})
+	assert_true(r.ok, "测试应能预置 routine_all_hands 事件")
+	_hud.click_sidebar_for_test(&"events")
+	_hud._refresh()
+	await get_tree().process_frame
+
+	_hud.reset_refresh_count_for_test()
+	_hud._event_view.click_option_for_test(StringName(r.event_id), &"adjourn")
+
+	assert_eq(GameState.pending_events.size(), 1,
+		"事件卡 action 不应在按钮 pressed 同帧内结算并触发 HUD 重建")
+	assert_eq(_hud.get_refresh_count_for_test(), 0,
+		"事件卡 action 同帧不应因 event_resolved 刷新并释放当前卡片")
+	await get_tree().process_frame
+	assert_eq(GameState.pending_events.size(), 0,
+		"下一帧应正常处理事件选项")
+	assert_gt(_hud.get_refresh_count_for_test(), 0,
+		"下一帧 event_resolved 后 HUD 应刷新")
 
 func test_hud_rerenders_on_locale_changed() -> void:
 	# 切语言 → 重渲染全部 tab, 让 tr(...) 在新 locale 下重新求值 (国际化设计 §11.2)。

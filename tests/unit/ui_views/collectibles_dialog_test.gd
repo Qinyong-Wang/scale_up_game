@@ -31,6 +31,7 @@ func test_click_sell_emits_signal() -> void:
 	_dlg.refresh(_data([_owned("p1", 100, 200)]))
 	watch_signals(_dlg)
 	_dlg.click_sell_for_test(&"p1")
+	await get_tree().process_frame
 	assert_signal_emitted_with_parameters(_dlg, "sell_pressed", [&"p1"])
 
 # 价格 / 盈亏一律用 $ (顶栏现金一致), 不用人民币 ¥。见设计 §8。

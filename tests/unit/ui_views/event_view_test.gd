@@ -107,6 +107,9 @@ func test_option_click_emits_option_selected() -> void:
 	await get_tree().process_frame
 	watch_signals(v)
 	v.click_option_for_test(&"e2", &"accept")
+	assert_signal_emit_count(v, "option_selected", 0,
+		"事件选项来自 Card action, 必须下一帧发出以避开按钮回调栈内刷新")
+	await get_tree().process_frame
 	assert_signal_emitted_with_parameters(v, "option_selected", [&"e2", &"accept"])
 
 func test_flavor_dismiss_emits_dismiss() -> void:
@@ -116,6 +119,9 @@ func test_flavor_dismiss_emits_dismiss() -> void:
 	await get_tree().process_frame
 	watch_signals(v)
 	v.click_dismiss_for_test(&"e1")
+	assert_signal_emit_count(v, "flavor_dismissed", 0,
+		"flavor dismiss 也来自 Card action, 不应同步发出")
+	await get_tree().process_frame
 	assert_signal_emitted_with_parameters(v, "flavor_dismissed", [&"e1"])
 
 func test_no_debug_trigger_buttons() -> void:

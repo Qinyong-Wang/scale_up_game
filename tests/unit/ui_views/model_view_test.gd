@@ -155,6 +155,7 @@ func test_action_button_emits_model_action_with_ids() -> void:
 	await get_tree().process_frame
 	watch_signals(v)
 	v.click_card_action_for_test(&"sparrow_7b", &"evaluate")
+	await get_tree().process_frame
 	assert_signal_emitted_with_parameters(v, "model_action",
 		[&"sparrow_7b", &"evaluate"])
 

@@ -266,7 +266,7 @@ func test_destructive_action_defaults_to_secondary_monochrome() -> void:
 	assert_true(c.get_action_normal_bg_for_test(&"delete").is_equal_approx(UITheme.BG_SURFACE),
 		"delete/fire/terminate/cancel 等默认应是 secondary 单色描边, 不在卡片墙里铺红色")
 
-func test_action_click_emits_signal_with_id() -> void:
+func test_action_click_emits_signal_with_id_on_next_frame() -> void:
 	var c := _make()
 	c.set_data({
 		"title": "x",
@@ -277,6 +277,9 @@ func test_action_click_emits_signal_with_id() -> void:
 	await get_tree().process_frame
 	watch_signals(c)
 	c.click_action_for_test(&"publish")
+	assert_signal_emit_count(c, "action_pressed", 0,
+		"Card action 必须延迟发出, 避免 pressed 回调栈内刷新并释放当前卡片")
+	await get_tree().process_frame
 	assert_signal_emitted_with_parameters(c, "action_pressed", [&"publish"])
 
 # ─── 重置语义 ─────────────────────────────────────────────────
@@ -301,5 +304,6 @@ func test_set_data_twice_replaces_actions_and_fields() -> void:
 	# 旧 action 的 id 不能残留 — 点 a1 应当无效果。
 	watch_signals(c)
 	c.click_action_for_test(&"a1")
+	await get_tree().process_frame
 	assert_signal_emit_count(c, "action_pressed", 0,
 		"重置后旧 action_id 已被丢弃, 不应能触发")

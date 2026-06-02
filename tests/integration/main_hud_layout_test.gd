@@ -193,6 +193,7 @@ func test_model_tab_exposes_evaluate_for_unpublished_models() -> void:
 	var btn := _first_button_containing(_hud._tab_research, "开始评估")
 	assert_not_null(btn, "pretrained/posttrained model cards expose evaluate")
 	btn.emit_signal("pressed")
+	await get_tree().process_frame
 	assert_eq(GameState.active_tasks.size(), 1)
 	assert_eq(GameState.active_tasks[0].template_id, &"evaluate_general")
 
@@ -686,6 +687,7 @@ func test_evaluate_flow_uses_founder_when_no_eval_lead() -> void:
 	var btn := _first_button_containing(_hud._tab_research, "开始评估")
 	assert_not_null(btn, "未发布模型卡片应展示开始评估按钮")
 	btn.emit_signal("pressed")
+	await get_tree().process_frame
 	# task.start 应已成功 (founder universal); 否则会因 missing_lead toast 而无 active_task。
 	assert_eq(GameState.active_tasks.size(), 1,
 			"founder 在场时 evaluate 应能用创始人启动")

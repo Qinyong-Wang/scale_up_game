@@ -63,6 +63,7 @@ func test_click_donate_emits_signal_with_cause_and_tier() -> void:
 	_view.refresh(_data([_cause("bio_science", "s_tier_weight", 0, 10_000_000)]))
 	watch_signals(_view)
 	_view.click_donate_for_test(&"bio_science", 1)
+	await get_tree().process_frame
 	assert_signal_emitted_with_parameters(_view, "donate_pressed",
 			[&"bio_science", 1])
 
@@ -128,6 +129,7 @@ func test_sim_available_start_emits_signal() -> void:
 	_view.refresh({cash = 0, causes = [], simulation = sim})
 	watch_signals(_view)
 	_view.click_sim_start_for_test(&"weather")
+	await get_tree().process_frame
 	assert_signal_emitted(_view, "sim_start_pressed")
 
 func test_sim_answer_revealed_when_all_done() -> void:

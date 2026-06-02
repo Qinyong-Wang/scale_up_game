@@ -135,6 +135,7 @@ func test_acquire_click_emits_signal() -> void:
 	await get_tree().process_frame
 	watch_signals(v)
 	v.click_template_action_for_test(&"ds_x", &"acquire")
+	await get_tree().process_frame
 	assert_signal_emitted_with_parameters(v, "template_action", [&"ds_x", &"acquire"])
 
 func test_collect_button_renders() -> void:

@@ -133,6 +133,7 @@ func test_terminate_action_emits_signal() -> void:
 	_view.refresh(_data([_campaign_row("c_kill", "MyBot (chatbot · m1)", false, 100)]))
 	watch_signals(_view)
 	_view.click_terminate_for_test(&"c_kill")
+	await get_tree().process_frame
 	assert_signal_emitted_with_parameters(
 			_view, "terminate_campaign_pressed", [&"c_kill"])
 

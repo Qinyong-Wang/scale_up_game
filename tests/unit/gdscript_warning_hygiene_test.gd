@@ -9,6 +9,10 @@ const RUNTIME_UI_FILES: Array[String] = [
 	"res://scenes/main/main.gd",
 	"res://scenes/ui/new_datacenter_dialog/new_datacenter_dialog.gd",
 ]
+const DIRACCESS_OPEN_RUNTIME_WHITELIST: Array[String] = [
+	# Save lists player-created slots under user://saves, not packed res:// data.
+	"res://scripts/autoload/save.gd",
+]
 const KNOWN_INTEGER_DIVISION_SNIPPETS: Dictionary = {
 	"res://scenes/ui/views/model_view/model_card.gd": [
 		"tokens / 1000000",
@@ -65,6 +69,21 @@ func test_retired_fame_runtime_hooks_are_not_reintroduced() -> void:
 			if text.contains(needle):
 				offenders.append("%s still references `%s`" % [path, needle])
 	assert_eq(offenders, [], "v7 PR-F 已删除 fame 字段和信号, HUD / 基建弹窗不能再读旧接口。")
+
+func test_runtime_code_does_not_enumerate_packed_resources() -> void:
+	var offenders: Array[String] = []
+	for path in _gd_files(["res://scripts", "res://scenes"]):
+		if DIRACCESS_OPEN_RUNTIME_WHITELIST.has(path):
+			continue
+		var text: String = FileAccess.get_file_as_string(path)
+		var line_no: int = 0
+		for line in text.split("\n"):
+			line_no += 1
+			if _strip_inline_comment(String(line)).contains("DirAccess.open("):
+				offenders.append("%s:%d `%s`" % [path, line_no, String(line).strip_edges()])
+	assert_eq(offenders, [],
+			"运行时代码不要用 DirAccess.open 枚举资源。导出包里 res:// 目录不稳定;" \
+			+ " 静态 .tres 用显式 {id: path} 表 + 路径表一致性测试。")
 
 func test_known_integer_divisions_are_explicit() -> void:
 	var offenders: Array[String] = []

@@ -145,5 +145,6 @@ func test_pool_card_click_hire_emits_lead_action() -> void:
 	await get_tree().process_frame
 	watch_signals(v)
 	v.click_card_action_for_test(&"alice_lead", &"hire")
+	await get_tree().process_frame
 	assert_signal_emitted_with_parameters(v, "lead_action",
 		[&"alice_lead", &"hire"])

@@ -31,6 +31,7 @@ func test_click_buy_emits_signal() -> void:
 	_view.refresh(_data([_lot("c1", 1000, true)]))
 	watch_signals(_view)
 	_view.click_buy_for_test(&"c1")
+	await get_tree().process_frame
 	assert_signal_emitted_with_parameters(_view, "buy_pressed", [&"c1"])
 
 func test_unaffordable_lot_buy_disabled() -> void:
