@@ -54,6 +54,31 @@ const SUB_BOARD_FOR_PRODUCT_TYPE: Dictionary = {
 }
 
 const NPC_TRES_DIR: String = "res://resources/data/npcs/"
+const NPC_TRES_PATHS: Dictionary = {
+	&"npc_ant_quickcode": "res://resources/data/npcs/npc_ant_quickcode.tres",
+	&"npc_ant_swarm": "res://resources/data/npcs/npc_ant_swarm.tres",
+	&"npc_bamboo_compiler": "res://resources/data/npcs/npc_bamboo_compiler.tres",
+	&"npc_beaver_network": "res://resources/data/npcs/npc_beaver_network.tres",
+	&"npc_bee_logic": "res://resources/data/npcs/npc_bee_logic.tres",
+	&"npc_crow_labs": "res://resources/data/npcs/npc_crow_labs.tres",
+	&"npc_dolphin_vision": "res://resources/data/npcs/npc_dolphin_vision.tres",
+	&"npc_falcon_inc": "res://resources/data/npcs/npc_falcon_inc.tres",
+	&"npc_finch_open": "res://resources/data/npcs/npc_finch_open.tres",
+	&"npc_hare_express": "res://resources/data/npcs/npc_hare_express.tres",
+	&"npc_heron_vision": "res://resources/data/npcs/npc_heron_vision.tres",
+	&"npc_lynx_devnet": "res://resources/data/npcs/npc_lynx_devnet.tres",
+	&"npc_octopus_think": "res://resources/data/npcs/npc_octopus_think.tres",
+	&"npc_orca_lab": "res://resources/data/npcs/npc_orca_lab.tres",
+	&"npc_otter_tools": "res://resources/data/npcs/npc_otter_tools.tres",
+	&"npc_owl_open": "res://resources/data/npcs/npc_owl_open.tres",
+	&"npc_raccoon_ops": "res://resources/data/npcs/npc_raccoon_ops.tres",
+	&"npc_raven_ai": "res://resources/data/npcs/npc_raven_ai.tres",
+	&"npc_sparrow_chat": "res://resources/data/npcs/npc_sparrow_chat.tres",
+	&"npc_termite_devkit": "res://resources/data/npcs/npc_termite_devkit.tres",
+	&"npc_tiger_studio": "res://resources/data/npcs/npc_tiger_studio.tres",
+	&"npc_whale_audio": "res://resources/data/npcs/npc_whale_audio.tres",
+	&"npc_wolf_research": "res://resources/data/npcs/npc_wolf_research.tres",
+}
 
 # Cached previous-rank per board so we can emit player_rank_changed on change.
 var _prev_player_rank: Dictionary = {}  # board_id → int
@@ -374,7 +399,7 @@ func _find_model(model_id: StringName):
 
 func _install_default_npcs() -> void:
 	GameState.npc_companies.clear()
-	var loaded: Array = _load_npc_tres_dir()
+	var loaded: Array = _load_npc_tres_paths()
 	if loaded.is_empty():
 		loaded = _build_default_roster()
 	for npc in loaded:
@@ -389,20 +414,21 @@ func _install_default_npcs() -> void:
 		npc.model_releases = typed
 		GameState.npc_companies.append(npc)
 
-func _load_npc_tres_dir() -> Array:
+func _load_npc_tres_paths() -> Array:
 	var out: Array = []
-	var dir := DirAccess.open(NPC_TRES_DIR)
-	if dir == null:
-		return out
-	dir.list_dir_begin()
-	var fname: String = dir.get_next()
-	while fname != "":
-		if not dir.current_is_dir() and fname.ends_with(".tres"):
-			var res = load(NPC_TRES_DIR + fname)
-			if res is NpcCompanyT:
-				out.append(res.duplicate(true))
-		fname = dir.get_next()
-	dir.list_dir_end()
+	for npc_id in NPC_TRES_PATHS.keys():
+		var path: String = String(NPC_TRES_PATHS[npc_id])
+		var res = load(path)
+		if res is NpcCompanyT:
+			if res.id != npc_id:
+				Log.warn(&"market", "npc_id_mismatch", {
+					expected = npc_id, actual = res.id, path = path,
+				})
+			out.append(res.duplicate(true))
+		else:
+			Log.warn(&"market", "npc_spec_missing", {
+				id = npc_id, path = path,
+			})
 	return out
 
 # Hardcoded fallback roster for test fixtures / fresh checkouts. Each entry is

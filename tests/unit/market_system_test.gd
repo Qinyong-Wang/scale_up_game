@@ -177,6 +177,44 @@ func test_new_open_source_competitors_are_seeded() -> void:
 	for npc_id in expected.keys():
 		assert_true(found.has(npc_id), "默认 NPC 应包含 %s" % npc_id)
 
+func test_npc_paths_table_matches_disk() -> void:
+	# Exported PCK builds cannot reliably enumerate res:// directories. NPC
+	# timeline loading must use an explicit path table, otherwise builds fall
+	# back to seed-only competitors and the leaderboard stops evolving.
+	var on_disk: Array = _collect_npc_tres_paths()
+	var listed: Array = MarketSystem.NPC_TRES_PATHS.values()
+	on_disk.sort()
+	listed.sort()
+	for path in on_disk:
+		assert_true(listed.has(path),
+				"NPC on disk not listed in MarketSystem table: %s" % path)
+	for path in listed:
+		assert_true(on_disk.has(path),
+				"NPC listed in MarketSystem table but missing on disk: %s" % path)
+
+func test_every_listed_npc_path_loads_as_company() -> void:
+	for npc_id in MarketSystem.NPC_TRES_PATHS:
+		var res := load(MarketSystem.NPC_TRES_PATHS[npc_id])
+		assert_true(res is NpcCompany,
+				"NPC_TRES_PATHS[%s] must load as NpcCompany" % npc_id)
+		assert_eq(StringName(res.id), npc_id,
+				"NPC id field must match table key for %s" % npc_id)
+
+func _collect_npc_tres_paths() -> Array:
+	var out: Array = []
+	var dir := DirAccess.open(MarketSystem.NPC_TRES_DIR)
+	assert_not_null(dir, "NPC root must exist in editor")
+	if dir == null:
+		return out
+	dir.list_dir_begin()
+	var fname: String = dir.get_next()
+	while fname != "":
+		if not dir.current_is_dir() and fname.ends_with(".tres"):
+			out.append(MarketSystem.NPC_TRES_DIR + fname)
+		fname = dir.get_next()
+	dir.list_dir_end()
+	return out
+
 func test_npc_capability_is_5d_dict() -> void:
 	var npc: NpcCompany = GameState.npc_companies[0]
 	assert_true(npc.model_capability is Dictionary)
