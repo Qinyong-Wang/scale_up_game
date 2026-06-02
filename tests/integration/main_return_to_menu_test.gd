@@ -75,3 +75,34 @@ func test_return_to_menu_writes_autosave() -> void:
 	dlg.return_to_menu_requested.emit()
 	assert_true(FileAccess.file_exists(_autosave_path()),
 		"确认返回主菜单后应把当前进度写入 autosave")
+
+func test_window_close_autosave_keeps_construction_queue() -> void:
+	GameState.cash = 10_000_000
+	var r: Dictionary = CommandBus.send(&"infra.build_facility", {
+		facility_spec_id = &"facility_pod",
+		power_supply_id = &"grid",
+		gpu_id = &"cypress_t0",
+	})
+	assert_true(r.ok)
+	assert_eq(GameState.construction_queue.size(), 1,
+		"facility_pod 应先进入在建队列, 便于覆盖关闭应用前的未推进周状态")
+	assert_false(FileAccess.file_exists(_autosave_path()),
+		"前置: autosave 应不存在")
+
+	_hud.notification(NOTIFICATION_WM_CLOSE_REQUEST)
+
+	assert_true(FileAccess.file_exists(_autosave_path()),
+		"窗口关闭请求也应写 autosave, 防止本周内建设进度丢失")
+	var f := FileAccess.open(_autosave_path(), FileAccess.READ)
+	assert_not_null(f)
+	if f == null:
+		return
+	var json := JSON.new()
+	assert_eq(json.parse(f.get_as_text()), OK)
+	f.close()
+	var data: Dictionary = json.data
+	var state: Dictionary = data.get("state", {})
+	var queue: Array = state.get("construction_queue", [])
+	assert_eq(queue.size(), 1)
+	assert_eq(String(queue[0].get("facility_spec_id", "")), "facility_pod")
+	assert_eq(int(queue[0].get("weeks_remaining", -1)), 1)

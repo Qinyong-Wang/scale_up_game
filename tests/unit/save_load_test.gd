@@ -132,6 +132,31 @@ func test_round_trip_restores_active_task_and_locks() -> void:
 	assert_eq(t.locked_datacenter_id, rdc.dc_id)
 	assert_true(t.locked_lead_ids.has(lead.id))
 
+func test_round_trip_restores_construction_queue() -> void:
+	GameState.cash = 10_000_000
+	var r: Dictionary = CommandBus.send(&"infra.build_facility", {
+		facility_spec_id = &"facility_pod",
+		power_supply_id = &"grid",
+		gpu_id = &"cypress_t0",
+	})
+	assert_true(r.ok)
+	assert_eq(GameState.construction_queue.size(), 1)
+	var construction_id: StringName = GameState.construction_queue[0].id
+	Save.write(TEST_SLOT)
+
+	GameState.reset()
+	Save.read(TEST_SLOT)
+
+	assert_eq(GameState.construction_queue.size(), 1)
+	var c = GameState.construction_queue[0]
+	assert_eq(c.get_script(), preload("res://scripts/resources/datacenter_construction.gd"))
+	assert_eq(c.id, construction_id)
+	assert_eq(c.facility_spec_id, &"facility_pod")
+	assert_eq(c.power_supply, &"grid")
+	assert_eq(c.gpu_id, &"cypress_t0")
+	assert_eq(c.weeks_remaining, 1)
+	assert_eq(c.total_weeks, 1)
+
 func test_read_missing_slot_returns_not_found() -> void:
 	var r: Dictionary = Save.read(&"definitely_does_not_exist")
 	assert_false(r.ok)

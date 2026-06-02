@@ -210,6 +210,10 @@ var _bankruptcy_warned: bool = false
 # 宇宙模拟终局提示只弹一次; 结果本身由办公室里的 answer_box 打开。
 var _universe_answer_prompt_shown: bool = false
 
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		_autosave_current_game(&"window_close")
+
 func _ready() -> void:
 	# 截图 / 调试用: AGI_LOCALE=en 强制界面语言 (不写盘, 不碰玩家持久化偏好)。
 	if OS.has_environment("AGI_LOCALE"):
@@ -3393,11 +3397,20 @@ func _on_open_settings_dialog() -> void:
 ## 玩家在设置弹窗确认「返回主菜单」: 先把当前进度写入 autosave (可从「继续游戏」
 ## 恢复, 不误丢进度), 再切回起始页。测试运行下跳过真正切场景 (出身系统设计 §1)。
 func _on_return_to_main_menu() -> void:
-	Save.write(Save.AUTOSAVE_SLOT)
+	_autosave_current_game(&"return_to_menu")
 	Log.info(&"main", "return_to_main_menu", {turn = GameState.turn})
 	if _is_test_run():
 		return
 	get_tree().change_scene_to_file(START_SCENE)
+
+func _autosave_current_game(reason: StringName) -> void:
+	var r: Dictionary = Save.write(Save.AUTOSAVE_SLOT)
+	if bool(r.get("ok", false)):
+		Log.info(&"main", "autosave_current_game",
+			{reason = reason, turn = GameState.turn})
+	else:
+		Log.warn(&"main", "autosave_current_game_failed",
+			{reason = reason, turn = GameState.turn, error = r.get("error", &"unknown")})
 
 # ---- 破产预警 / Game Over (经济系统设计 §4.2) ---------------------------
 
