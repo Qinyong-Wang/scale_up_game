@@ -196,7 +196,7 @@ func test_no_base_attraction_at_turn_zero_even_for_rank_1() -> void:
 	assert_lte(ap.subscribers, 5)
 
 func test_base_attraction_grows_late_game_for_top_models() -> void:
-	# Around turn 280 (ChatGPT knot), base curve = 10K/week for #1 model.
+	# Around turn 280 (mainstream chat wave knot), base curve = 10K/week for #1 model.
 	var m := Model.new()
 	m.id = &"m_top_late"
 	m.arch = &"ant_v1"

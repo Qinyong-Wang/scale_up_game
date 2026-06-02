@@ -22,7 +22,7 @@ func test_full_pretrain_lifecycle_yields_one_model() -> void:
 	assert_eq(GameState.resources[&"money"], initial_money,
 			"pretrain base_cost is 0, cash unchanged")
 
-	# 2. Advance turns equal to the template's total_months. After the last
+	# 2. Advance turns equal to the template's total_weeks. After the last
 	#    action phase the task should complete and produce a Model.
 	for _i in range(r.total_weeks):
 		TurnManager.advance()

@@ -4,7 +4,7 @@
 > **读者**: 想加 NPC、调整时间线、或在 .tres 里改具体数值的人。
 > **状态**: 🟢 与 `MarketSystem._install_default_npcs` (.tres 加载路径) 同步。
 > **v8 PR-H (2026-05)**: NPC 改为"产品时间线驱动" — 每家公司在 .tres 里写整条 release 时间线 (2018-2042+), 删除原 step jump / perturbation / distillation 机制。详见 `竞争对手系统设计.md`。
-> **v9 PR-I (2026-05)**: 删除独立的 OS 模板表 (`OpenSourceModelTemplate` + `resources/data/models/os/*.tres`), **OS 模型集合 ≡ 7 家 `is_open_source = true` NPC 的 `release_kind = pretrain` releases**。`research.download_open_source` 与 `infra.deploy_open_source_model` 参数从 `template_id` 改为 `release_id`, 走 `MarketSystem.find_release` 反查。详见 §2.6。
+> **v9 PR-I (2026-05)**: 删除独立的 OS 模板表 (`OpenSourceModelTemplate` + `resources/data/models/os/*.tres`), **OS 模型集合 ≡ 10 家 `is_open_source = true` NPC 的 `release_kind = pretrain` releases**。`research.download_open_source` 与 `infra.deploy_open_source_model` 参数从 `template_id` 改为 `release_id`, 走 `MarketSystem.find_release` 反查。详见 §2.6。
 
 NPC 是 MarketSystem 唯一的"对手", 在排行榜里和玩家模型同台。
 玩家不直接与 NPC 互动, 只通过名次差距、新闻提示 (`npc_released` 信号) 感受到压力。

@@ -5,7 +5,7 @@ extends Node
 ##
 ## Two-layer talent: named `Lead` (tri-state mutex idle/locked/assigned) +
 ## aggregate `staff_pool` (with parallel `staff_busy` for current locks).
-## Monthly upkeep pays salaries; action phase refreshes the candidate pool.
+## Weekly upkeep pays salaries; action phase refreshes the candidate pool.
 
 
 const OWNED_SLICES: Array[StringName] = [
@@ -74,7 +74,7 @@ const _TASK_SUBTYPE_TO_SPEED_KEY: Dictionary = {
 	&"tech_research": &"research_speed",
 }
 
-## Lead pool refreshes every 4 weeks (~monthly cadence). Per design/招聘系统设计.md §4.1.
+## Lead pool refreshes every 4 weeks. Per design/招聘系统设计.md §4.1.
 ## Offset gate `(turn - 1) % N == 0` so the very first action phase (turn=1)
 ## seeds the pool — players get candidates from week 1 instead of waiting.
 const LEAD_POOL_REFRESH_INTERVAL_WEEKS: int = 4
@@ -294,7 +294,7 @@ func _on_phase(phase: StringName, turn: int) -> void:
 			# 老存档 / 老会话里 display_name 形如 "Lead 0001" 的 lead 重命名成真名 (按肖像族裔/性别)。
 			# 幂等且 O(N): 推回合时跑一次, 旧 lead 在 1 周内拿到名字, 不需要 save+load。
 			_migrate_legacy_lead_names()
-			# Refresh only on monthly cadence (every 4 weeks), with offset so
+			# Refresh every 4 weeks, with offset so
 			# turn=1 (the very first action phase) seeds the pool.
 			if turn >= 1 and (turn - 1) % LEAD_POOL_REFRESH_INTERVAL_WEEKS == 0:
 				_refresh_lead_pool()
@@ -396,7 +396,7 @@ func _pick_level(weights: Dictionary, roll: float) -> StringName:
 ##   speedup = 1.0 + (lead.ability / 100.0) * coef
 ## If the lead's specialty lacks a matching `*_speed` bonus, returns 1.0.
 ## Returns 1.0 for null lead or unknown subtype. Callers treat this as a
-## divisor on remaining-work months (higher = faster). Per design/平衡参数.md
+## divisor on remaining-work weeks (higher = faster). Per design/平衡参数.md
 ## §HiringSystem and 任务系统设计 §6.6.4.
 ##
 ## Per 招聘系统设计 §2 (2026-05 rev): player_scientist 是"万能 lead", 任意 specialty

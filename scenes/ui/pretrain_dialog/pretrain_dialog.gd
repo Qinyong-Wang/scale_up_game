@@ -695,10 +695,10 @@ func _refresh_preview() -> void:
 	_spec_label.text = tr("PRETRAIN_SPEC") % [
 		name_for_preview, _format_size(float(r.size_params)), String(r.arch), modalities]
 	_duration_label.text = tr("PRETRAIN_DURATION") % int(r.total_weeks)
-	var monthly: int = int(r.weekly_cost)
-	if monthly > 0:
+	var weekly: int = int(r.weekly_cost)
+	if weekly > 0:
 		_cost_label.text = tr("PRETRAIN_COST_RECUR") % [
-			_money(int(r.total_cost)), _money(monthly)]
+			_money(int(r.total_cost)), _money(weekly)]
 	else:
 		_cost_label.text = tr("PRETRAIN_COST") % _money(int(r.total_cost))
 	_update_pricing_preview(float(r.get(&"flops_per_token", 0.0)))

@@ -148,7 +148,7 @@ func test_started_pretrain_uses_player_name_as_model_id_on_completion() -> void:
 	CommandBus.send(&"infra.debug_instant_owned_dc", {facility_spec_id = &"facility_room", gpu_id = &"cypress_t0"})
 	var dlg = _make_dialog()
 	dlg.refresh()
-	dlg._name_input.text = "GPT-Mine"
+	dlg._name_input.text = "Sparrow-Mine"
 	dlg._size_spin.value = 100
 	dlg._size_unit_dropdown.select(0) # M
 	if dlg._dataset_checkboxes.size() > 0:
@@ -168,9 +168,9 @@ func test_started_pretrain_uses_player_name_as_model_id_on_completion() -> void:
 	assert_eq(GameState.active_tasks.size(), 0,
 		"pretrain task should have completed")
 	assert_eq(GameState.models.size(), 1)
-	assert_eq(String(GameState.models[0].id), "GPT-Mine",
+	assert_eq(String(GameState.models[0].id), "Sparrow-Mine",
 		"model.id should equal the player-entered name")
-	assert_eq(GameState.models[0].display_name, "GPT-Mine")
+	assert_eq(GameState.models[0].display_name, "Sparrow-Mine")
 
 func test_refresh_fills_dc_dropdown_with_idle_dcs_only() -> void:
 	# Rent two small DCs, lock one to a task → only the idle one should appear.

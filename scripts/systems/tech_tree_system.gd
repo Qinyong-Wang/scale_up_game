@@ -127,7 +127,7 @@ func _ready() -> void:
 	_ensure_baseline_unlocks()
 
 func _ensure_baseline_unlocks() -> void:
-	# These are the "0-cost / 0-month default" baselines for the B and C axes.
+	# These are the "0-cost / 0-week default" baselines for the B and C axes.
 	# Without them, PretrainDialog's attention / loss dropdowns would be empty
 	# at game start.
 	var attn: Dictionary = GameState.unlocks.get(&"attention", {})

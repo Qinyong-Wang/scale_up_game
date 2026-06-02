@@ -522,8 +522,8 @@ func test_task_instance_completion_payload_string_keys_after_roundtrip() -> void
 	assert_eq(p["arch"], "ant_v1", "StringName 值应字符串化")
 	assert_true((p["capability"] as Dictionary).has("general"))
 
-func test_task_instance_default_total_months_is_one() -> void:
-	# default_value 在 from_dict 缺键时应给出, 防止 0 月任务无限循环.
+func test_task_instance_default_total_weeks_is_one() -> void:
+	# default_value 在 from_dict 缺键时应给出, 防止 0 周任务无限循环.
 	var dst: TaskInstance = TaskInstance.from_dict({})
 	assert_eq(dst.total_weeks, 1)
 	assert_eq(dst.elapsed_weeks, 0)

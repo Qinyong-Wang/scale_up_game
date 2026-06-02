@@ -71,7 +71,7 @@ func test_room_build_cost_implies_gpu_60_percent_share() -> void:
 
 func test_create_cloud_dc_zero_upfront() -> void:
 	var before: int = GameState.cash
-	# cypress_t0 (V100-era) is the only GPU available at turn 0 after PR-A.
+	# cypress_t0 is the only GPU available at turn 0 after PR-A.
 	var r: Dictionary = CommandBus.send(&"infra.create_cloud_dc",
 		{gpu_id = &"cypress_t0", count = 8})
 	assert_true(r.ok)

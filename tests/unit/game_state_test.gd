@@ -21,9 +21,9 @@ func test_turn_to_date_advances_seven_days_per_turn() -> void:
 	assert_eq(GameState.turn_to_date(52), "2018-06-11")  # 52 周后
 
 func test_turn_to_date_handles_year_boundaries() -> void:
-	# 152 weeks from 2017-06-12 = 2020-05-11 (NVIDIA A100 era)
+	# 152 weeks from 2017-06-12 = 2020-05-11
 	assert_eq(GameState.turn_to_date(152), "2020-05-11")
-	# 353 weeks = 2024-03-18 (NVIDIA B200 announce)
+	# 353 weeks = 2024-03-18
 	assert_eq(GameState.turn_to_date(353), "2024-03-18")
 
 func test_date_to_turn_inverts_turn_to_date() -> void:

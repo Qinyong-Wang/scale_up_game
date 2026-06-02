@@ -3,7 +3,7 @@ extends VBoxContainer
 ## HiringView — 招聘 tab 视图 (招聘界面拆分后的「招新」一半)。
 ##
 ## 布局:
-##   [Section "候选 Lead 池 (本周, 月底刷新)"]
+##   [Section "候选 Lead 池 (本周, 每 4 周刷新)"]
 ##     ↳ 按 specialty 分组的 subsection 标签 + HFlow of pool cards
 ##
 ## 信号:

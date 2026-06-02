@@ -111,7 +111,7 @@ func test_start_emits_task_started_and_resources_locked() -> void:
 	assert_signal_emitted(EventBus, "task_started")
 	assert_signal_emitted(EventBus, "task_resources_locked")
 
-func test_start_returns_total_months_and_cost() -> void:
+func test_start_returns_total_weeks_and_cost() -> void:
 	var ids := _seed_resources()
 	var r: Dictionary = CommandBus.send(&"task.start", {
 		template_id = &"train_sparrow_s",
@@ -234,10 +234,10 @@ func test_cancel_late_in_task_returns_smaller_refund() -> void:
 		lead_ids = [],
 		staff = {},
 	})
-	var total_months: int = int(rt.total_weeks)
-	if total_months <= 1:
+	var total_weeks: int = int(rt.total_weeks)
+	if total_weeks <= 1:
 		return
-	for i in range(maxi(1, total_months / 2)):
+	for i in range(maxi(1, total_weeks / 2)):
 		EventBus.phase_started.emit(&"action", i + 1)
 	if GameState.active_tasks.size() == 0:
 		return
@@ -246,11 +246,11 @@ func test_cancel_late_in_task_returns_smaller_refund() -> void:
 	# refund 严格小于 base_cost × 0.5 (只有 base_cost > 0 时才有意义).
 	assert_lt(int(rc.refund), int(round(int(rt.total_cost) * 0.5)))
 
-# ---- upkeep monthly cost -----------------------------------------------
+# ---- upkeep weekly cost -------------------------------------------------
 
 func test_upkeep_emits_task_weekly_for_each_active_task() -> void:
 	# upkeep 期间 TaskSystem 应为每个 active_task 发 reason=task_weekly 的 spend.
-	# 用 data_collection_default (monthly_cost=5000) 而不是 gpt_small (=0).
+	# 用 data_collection_default (weekly_cost=5000) 而不是零周费训练模板.
 	# data_collection task 不需要 dc / staff / dataset, 只是个时长任务.
 	var rt: Dictionary = CommandBus.send(&"task.start", {
 		template_id = &"data_collection_default",
@@ -262,16 +262,16 @@ func test_upkeep_emits_task_weekly_for_each_active_task() -> void:
 	assert_true(rt.ok, "data_collection_default 应可无资源启动")
 	watch_signals(EventBus)
 	EventBus.phase_started.emit(&"upkeep", 1)
-	var found_monthly: bool = false
+	var found_weekly: bool = false
 	for i in range(get_signal_emit_count(EventBus, "resources_changed")):
 		var p: Array = get_signal_parameters(EventBus, "resources_changed", i)
 		if p[1] == &"task_weekly":
 			var d: Dictionary = p[0]
 			assert_eq(int(d.get(&"cash", 0)), -5000,
-					"task_weekly 的 cash delta 应等于 -monthly_cost")
-			found_monthly = true
+					"task_weekly 的 cash delta 应等于 -weekly_cost")
+			found_weekly = true
 			break
-	assert_true(found_monthly, "应有 reason=task_weekly 的 resources_changed")
+	assert_true(found_weekly, "应有 reason=task_weekly 的 resources_changed")
 
 # ---- progress + completion ---------------------------------------------
 

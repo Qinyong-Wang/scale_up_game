@@ -95,7 +95,7 @@ func test_build_facility_returns_facility_unlock_required_when_low_fame() -> voi
 	assert_eq(r.error, &"facility_unlock_required")
 
 func test_buy_gpus_rejects_unreleased_gpu() -> void:
-	# cypress_t1 has release_turn=152 (A100, 2020-05); can't buy at turn 0.
+	# cypress_t1 has release_turn=152; can't buy at turn 0.
 	GameState.cash = 100_000_000
 	var rdc: Dictionary = CommandBus.send(&"infra.rent_facility",
 			{facility_spec_id = &"facility_pod", power_supply_id = &"grid"})

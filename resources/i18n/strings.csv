@@ -117,7 +117,7 @@ TECH_SUMMARY_LOCKED,锁定 %d,Locked %d
 TECH_PREREQ_LABEL,需要: %s,Needs: %s
 STATUS_LOCKED,未解锁,Locked
 HIRING_FOUNDER,创始人 (你自己),Founder (you)
-HIRING_POOL,"候选 Lead 池 (本周, 月底刷新)","Candidate Leads (this week, monthly refresh)"
+HIRING_POOL,"候选 Lead 池 (本周, 每 4 周刷新)","Candidate Leads (this week, refreshes every 4 weeks)"
 HIRING_BECOME_FOUNDER_RESEARCHER,+ 成为创始研究员,+ Become founding researcher
 HIRING_POOL_EMPTY,"(本周还未刷新, 推进一回合查看)",(Not refreshed yet — advance a turn)
 FILTER_ALL,全部,All

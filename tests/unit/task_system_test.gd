@@ -1,6 +1,6 @@
 extends GutTest
 
-## TaskSystem v0 — task.start, monthly progress on phase_started(action),
+## TaskSystem v0 — task.start, weekly progress on phase_started(action),
 ## fan-out to research.add_model on completion. v0 covers only `pretrain`.
 
 const TEMPLATE_SPARROW_S := &"train_sparrow_s"
@@ -26,7 +26,7 @@ func test_start_creates_active_task_with_template_metadata() -> void:
 	assert_eq(inst.template_id, TEMPLATE_SPARROW_S)
 	assert_eq(inst.subtype, &"pretrain")
 	assert_eq(inst.elapsed_weeks, 0)
-	assert_eq(inst.total_weeks, 3)  # gpt_small.tres base_duration
+	assert_eq(inst.total_weeks, 3)  # train_sparrow_s base_duration
 
 func test_start_charges_base_cost_via_economy() -> void:
 	# Per 平衡参数.md §TaskSystem and 任务系统设计.md §1: pretrain templates
@@ -45,7 +45,7 @@ func test_start_emits_task_started() -> void:
 	assert_eq(params[0], r.task_id)
 	assert_eq(params[1], &"pretrain")
 
-func test_start_returns_total_months_and_total_cost() -> void:
+func test_start_returns_total_weeks_and_total_cost() -> void:
 	# total_cost == template.base_cost (= 0 for pretrain templates).
 	var r: Dictionary = _start_pretrain()
 	assert_eq(r.total_weeks, 3)
@@ -74,7 +74,7 @@ func test_other_phases_do_not_advance() -> void:
 
 # ---- completion ----------------------------------------------------------
 
-func test_task_completes_after_total_months_action_phases() -> void:
+func test_task_completes_after_total_weeks_action_phases() -> void:
 	_start_pretrain()
 	for i in range(3):
 		EventBus.phase_started.emit(&"action", i + 1)
@@ -268,7 +268,7 @@ func test_preview_flops_per_token_zero_for_non_pretrain() -> void:
 	assert_true(r.ok)
 	assert_almost_eq(float(r.flops_per_token), 0.0, 0.001)
 
-func test_preview_total_months_matches_start_for_same_inputs() -> void:
+func test_preview_total_weeks_matches_start_for_same_inputs() -> void:
 	# When given the same inputs, preview and start must agree on duration.
 	# This is the contract the dialog relies on for trustworthy estimates.
 	CommandBus.send(&"dataset.acquire_open", {template_id = &"web_corpus_v1"})

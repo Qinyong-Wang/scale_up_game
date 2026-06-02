@@ -352,7 +352,7 @@ func test_custom_pretrain_derives_flops_per_token_from_player_size() -> void:
 # ---- error rate delay ---------------------------------------------------
 
 func test_zero_error_rate_no_delay() -> void:
-	# gpt_small uses error_rate_per_month=0.0. Total months never grow past 3.
+	# train_sparrow_s uses error_rate_per_week=0.0. Total weeks never grow past 3.
 	var lid := _seed_chief_scientist()
 	var r: Dictionary = CommandBus.send(&"task.start", {
 		template_id = &"train_sparrow_s", lead_ids = [], staff = {},

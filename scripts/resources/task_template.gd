@@ -4,15 +4,16 @@ extends Resource
 ## Static template that defines a class of long-running task. Stored as
 ## .tres under resources/data/tasks/<subtype>/. Per design/任务系统设计.md §1.
 ##
-## Supported subtypes: pretrain / posttrain / data_collection / tech_research.
+## Supported subtypes: pretrain / posttrain / evaluate / data_collection /
+## tech_research / charity / simulation.
 ## Duration is computed by `duration_func`:
 ##   - &"fixed":        base_duration (turns)
-##   - &"node_defined": TechNode.research_months (for tech_research)
+##   - &"node_defined": TechNode.research_months (historical key; weeks)
 ##   - &"scaling_law":  6 × C × size_params × dataset_tokens /
-##                      (dc.train_throughput × arch_train_coef × dataset_quality)
+##                      (dc.train_tflops × arch_train_coef × dataset_quality)
 
 @export var id: StringName
-@export var subtype: StringName                  # &"pretrain" | &"posttrain" | &"evaluate" | &"data_collection" | &"tech_research"
+@export var subtype: StringName                  # &"pretrain" | &"posttrain" | &"evaluate" | &"data_collection" | &"tech_research" | &"charity" | &"simulation"
 @export var display_name: String = ""
 
 # Costs (per-week — 1 turn = 1 week)

@@ -5,6 +5,7 @@ extends VBoxContainer
 ## 接 dict {trees: Array of {tree, display, nodes}}, 每个 node 是 dict:
 ##   id / display_name / effects_summary / prerequisites: Array[StringName] /
 ##   state (unlocked|researching|available|locked) / research_months
+##   (historical key, value displayed as weeks)
 ##
 ## 布局: 每棵树一段 = section_header + TreeCanvas。节点按"同树前置链最长深度"
 ## 分列, 列内纵向堆叠; 画布 _draw 在节点间画前置连线。四态着色见 design/科技树系统设计.md §3bis。

@@ -416,7 +416,7 @@ func test_rent_facility_emits_dc_compute_recomputed_at_zero() -> void:
 	assert_signal_emitted(EventBus, "dc_compute_recomputed")
 
 func test_buy_gpus_ecosystem_score_is_persisted_via_spec() -> void:
-	# bamboo_t1 has release_turn=99 (TPU v3, 2019-05).
+	# bamboo_t1 has release_turn=99.
 	GameState.cash = 10_000_000
 	GameState.turn = 99
 	var id := _rent_solo()

@@ -416,9 +416,9 @@ func test_complete_posttrain_produces_dataset_with_target_capability() -> void:
 	assert_true(tag_set.has(&"code"))
 	assert_true(tag_set.has(&"instruction"))
 
-# ---- monthly cost uses override (not template default 0) -----------------
+# ---- weekly cost uses override (not template default 0) -------------------
 
-func test_monthly_cost_uses_dynamic_override_during_upkeep() -> void:
+func test_weekly_cost_uses_dynamic_override_during_upkeep() -> void:
 	GameState.cash = 1_000_000
 	var rt: Dictionary = CommandBus.send(&"task.start", {
 		template_id = &"data_collection_dynamic",
@@ -430,17 +430,17 @@ func test_monthly_cost_uses_dynamic_override_during_upkeep() -> void:
 	assert_true(rt.ok)
 	watch_signals(EventBus)
 	EventBus.phase_started.emit(&"upkeep", 1)
-	var found_monthly: bool = false
+	var found_weekly: bool = false
 	for i in range(get_signal_emit_count(EventBus, "resources_changed")):
 		var p: Array = get_signal_parameters(EventBus, "resources_changed", i)
 		if p[1] == &"task_weekly":
 			var d: Dictionary = p[0]
-			# Posttrain monthly = 8000 per design §5.1ter.
+			# Posttrain weekly = 8000 per design §5.1ter.
 			assert_eq(int(d.get(&"cash", 0)), -8000,
-					"posttrain monthly should be 8000 (override, not template's 0)")
-			found_monthly = true
+					"posttrain weekly should be 8000 (override, not template's 0)")
+			found_weekly = true
 			break
-	assert_true(found_monthly, "task_weekly must fire with override amount")
+	assert_true(found_weekly, "task_weekly must fire with override amount")
 
 # ---- lead bonus still applies --------------------------------------------
 

@@ -340,8 +340,8 @@ func _subscribe_events() -> void:
 func _autoplay() -> void:
 	await get_tree().process_frame
 	# Scripted "rational player" demo. Walks the full v1 loop end-to-end so the
-	# resulting screenshot shows a populated game state (cash growing, fame
-	# accruing, leaderboard ranked, product live, funding event resolved).
+		# resulting screenshot shows a populated game state (cash growing,
+		# leaderboard ranked, product live, funding event resolved).
 
 	# 1. Hire a balanced founding team. Seed fixed leads (signing fee 0) so the
 	#    autoplay is deterministic regardless of lead_pool RNG.

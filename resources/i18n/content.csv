@@ -42,6 +42,7 @@ AGI 时间表正在压缩,The AGI timeline is compressing
 Ant v1 基线注意力,Ant v1 baseline attention
 Ant v2 Dense 精炼 (早期稠密时代),Ant v2 dense refinement (early dense era)
 B 轮,Series B
+Bee v1 Dense Scaling (大规模稠密时代),Bee v1 dense scaling (large-scale dense era)
 "前沿加速卡时代的 FP4 原生支持; 单 token 算力降到 25%, 推理吞吐 4× (与 fp8/int8 累乘).","Native FP4 for the frontier accelerator era; per-token compute down to 25%, inference throughput 4× (stacks with fp8/int8)."
 BERT Giant 编码器,BERT Giant encoder
 BERT 编码器,BERT encoder
@@ -167,7 +168,7 @@ token 算力 -75% (推理吞吐 ×4),per-token compute -75% (inference throughpu
 为王室定制的一台礼宾车。,A ceremonial limousine custom-built for royalty.
 买密码管理器省心,Buy a password manager and stop worrying
 产量减半那一夜铸下的纪念铭牌。,A relic minted on the night the block reward halved.
-人脉广 — 人才池每月刷新时，S 级科学家出现率大幅提升。,"Well-connected — when the talent pool refreshes monthly, S-tier scientists appear far more often."
+人脉广 — 人才池每 4 周刷新时，S 级科学家出现率大幅提升。,"Well-connected — when the talent pool refreshes every 4 weeks, S-tier scientists appear far more often."
 从全球天气系统开始——把大气环流、云与降水塞进算力，先学会预测一场雨。,"Start with the global weather system — pack atmospheric circulation, clouds and precipitation into compute, and first learn to predict a single rainstorm."
 从未拆封的初版起始套牌。,A never-opened first-print starter deck.
 代码专项 (Coding Agent),Code specialization (Coding Agent)

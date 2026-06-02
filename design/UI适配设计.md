@@ -73,6 +73,6 @@
 ## 4. 未决问题 / TODO
 
 - posttrain / evaluate / data_collection / tech_research 仍需要专门对话框; posttrain/evaluate 也要显示 preview buff/debuff。
-- 基建的完整租/建机房弹窗要允许选择 13 档机房与 5 种供电方式。
+- 基建的完整租/建机房弹窗要允许选择 19 档机房与 2 种供电方式 (`grid` / `green`)。
 - 产品创建/编辑需要正式表单, 支持选择模型、lead、staff、价格与名称。
 - 主 HUD 未来应拆分为多个 UI 子场景, 但当前纵切阶段先保持一个文件便于快速调试。

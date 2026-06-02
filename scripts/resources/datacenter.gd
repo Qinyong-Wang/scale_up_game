@@ -51,7 +51,7 @@ const GPUBatchClass := preload("res://scripts/resources/gpu_batch.gd")
 # === Derived from currently-deployed model (cached at deploy time) ===
 # v3: t/s capacity for whatever model is currently bound on this dc; 0 when idle.
 # = inference_tflops × 1e12 / max(model.flops_per_token, 1).
-# MonetizationSystem reads this directly to compute monthly capacity_M.
+# MonetizationSystem reads this directly to compute weekly capacity.
 @export var serving_tokens_per_sec: float = 0.0
 
 # === State machine ===

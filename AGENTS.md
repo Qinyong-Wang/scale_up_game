@@ -21,29 +21,29 @@ scripts/
   autoload/            全局单例：GameState / EventBus / TurnManager / CommandBus / Log / UITheme
   systems/             业务系统：economy / hiring / infra / dataset / research /
                         tech_tree / task / market / user / product / monetization /
-                        marketing / event
+                        marketing / event / founder / charity / collection / simulation
+                        辅助：icon_registry / name_romanizer / person_name
   resources/           自定义 Resource 类型脚本：model / lead / datacenter /
                         facility_construction / facility_spec / gpu_spec / gpu_batch /
                         power_supply_spec / dataset / dataset_template /
-                        open_source_model_template / product / product_type_spec /
+                        product / product_type_spec /
                         campaign / loan / npc_company / leaderboard_entry /
                         event_card / event_option / event_effect / event_instance /
-                        tech_node / task_template / task_instance
+                        tech_node / task_template / task_instance / collectible_spec /
+                        charity_cause_spec / simulation_stage_spec
 resources/             静态数据 .tres
   data/
-    tasks/             任务模板 (pretrain/posttrain/evaluate/data_collection/tech_research)
+    tasks/             任务模板 (pretrain/posttrain/evaluate/data_collection/tech_research/charity/simulation)
     infra/
-      facilities/      机房规模档位 13 档 (solo / pod / rack / room / hall / floor / building_*/ campus_*/ metropolis)
-      gpus/            GPU 型号 (cypress_t1/t2/t3, maple_t1/t2, bamboo_t1/t2)
-      power/           供电方式 (grid/solar/nuclear/wind/coal)
+      facilities/      机房规模档位 19 档 (solo / pod / rack_* / room / hall / floor / building_*/ campus_* / metropolis / space_* / planet)
+      gpus/            GPU 型号 (cypress_t0-t3, maple_t1-t3, bamboo_t1-t4)
+      power/           供电方式 (grid/green; 旧 solar/wind/nuclear/coal 读档迁移)
     datasets/          数据集模板 (开源 / 商业)
-    models/
-      os/              开源模型模板 (wolf_os_*, raven_os_*, ...)
-    products/types/    产品类型模板 (chatbot/agent/multimodal_assistant/coding_agent)
-    tech/              科技树节点 (arch / engineering / application; 旧 inference/agent 别名兼容期保留)
+    products/types/    产品类型模板 (api/chatbot/agent/multimodal_assistant/coding_agent)
+    tech/              科技树节点 (arch / attention / loss / engineering / application / context; 旧 inference/agent 别名兼容期保留)
     codenames/         化名词库 (animals.txt / plants.txt)
-    events/            事件卡牌 (含 funding_round_angel/a/b/c)
-    npcs/              NPC 公司预设 (14 家, 取代旧的 _install_default_npcs 硬编码)
+    events/            事件卡牌 (routine / crisis / opportunity / flavor)
+    npcs/              NPC 公司预设 (23 家, 取代旧的 _install_default_npcs 硬编码)
 assets/
   sprites/  fonts/  audio/
 addons/

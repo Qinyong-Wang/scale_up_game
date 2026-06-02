@@ -462,12 +462,12 @@ func _refresh_preview() -> void:
 	var size_b: float = float(payload.get(&"target_size", 0.0))
 	var weeks: int = int(r.get(&"total_weeks", 0))
 	var base_cost: int = int(r.get(&"total_cost", 0))
-	var monthly: int = int(r.get(&"weekly_cost", 0))
+	var weekly: int = int(r.get(&"weekly_cost", 0))
 	_duration_label.text = tr("COLLECT_DURATION") % weeks
-	if monthly > 0:
+	if weekly > 0:
 		_cost_label.text = tr("COLLECT_COST_RECUR") % [
-				_money(base_cost), _money(monthly),
-				_money(base_cost + monthly * weeks)]
+				_money(base_cost), _money(weekly),
+				_money(base_cost + weekly * weeks)]
 	else:
 		_cost_label.text = tr("COLLECT_COST") % _money(base_cost)
 

@@ -749,7 +749,7 @@ func test_cloud_dc_can_deploy_and_serve_model() -> void:
 
 func test_cloud_dc_pre_release_gpu_rejected() -> void:
 	GameState.turn = 0
-	# cypress_t1 release_turn = 152 (A100, 2020-05); at turn 0 should be rejected.
+	# cypress_t1 release_turn = 152; at turn 0 should be rejected.
 	var r: Dictionary = CommandBus.send(&"infra.create_cloud_dc",
 		{gpu_id = &"cypress_t1", count = 1})
 	assert_false(r.ok)

@@ -46,10 +46,8 @@ const TEMPLATES: Dictionary = {
 const REFUND_COEF: float = 0.5
 
 # Scaling-law constants. Per 平衡参数.md §TaskSystem and 任务系统设计.md §6.6.1:
-# Chinchilla compute = 6 × params × tokens (FLOPs). The current implementation
-# still uses an abstract-unit formula calibrated against dc.train_throughput
-# (legacy alias for dc.train_tflops); the divisor now also multiplies by
-# `dc.cluster_efficiency` so high-efficiency clusters train faster.
+# Chinchilla compute = 6 × params × tokens (FLOPs). The duration divisor uses
+# canonical `dc.train_tflops` plus model/lead/staff multipliers.
 const SCALING_LAW_FLOPS_C: float = 6.0
 const SCALING_LAW_QUALITY_FLOOR: float = 0.05
 
@@ -365,12 +363,12 @@ func _charge_weekly() -> void:
 			continue
 		# v2.1: weekly_cost_override (set at start for dynamic-cost templates)
 		# wins over the template's static weekly_cost. 0 = no override.
-		var monthly: int = (inst.weekly_cost_override
-				if inst.weekly_cost_override > 0
-				else int(template.weekly_cost))
-		if monthly > 0:
+		var weekly: int = (inst.weekly_cost_override
+			if inst.weekly_cost_override > 0
+			else int(template.weekly_cost))
+		if weekly > 0:
 			CommandBus.send(&"economy.spend", {
-				cost = {&"cash": monthly},
+				cost = {&"cash": weekly},
 				reason = &"task_weekly",
 			})
 
@@ -569,8 +567,9 @@ func _resolve_duration(template: TaskTemplate, p: Dictionary) -> int:
 		&"fixed":
 			return template.base_duration
 		&"node_defined":
-			# tech_research duration is the node's research_months, divided by
-			# the lead's research_speed bonus (chief_scientist provides 0.55).
+			# tech_research duration is the node's historical research_months
+			# field, interpreted as weeks, divided by the lead's research_speed
+			# bonus (chief_scientist provides 0.55).
 			# Per design/招聘系统设计.md §1.1 (Research quadrant).
 			var node_id: StringName = p.get(&"target_node_id", &"")
 			var node: TechNode = _load_tech_node(node_id)
@@ -758,12 +757,12 @@ func _scaling_law(template: TaskTemplate, p: Dictionary) -> int:
 
 	# Datacenter side. dc.train_tflops already includes cluster_efficiency
 	# (基础设施系统设计 §4.1), so we read it directly — no second multiply.
-	var dc_throughput: float = 50_000.0
+	var dc_train_tflops: float = 50_000.0
 	var dc_id: StringName = p.get(&"datacenter_id", &"")
 	if dc_id != &"":
 		var dc = _find_dc(dc_id)
 		if dc != null and dc.train_tflops > 0.0:
-			dc_throughput = dc.train_tflops
+			dc_train_tflops = dc.train_tflops
 
 	var arch_id: StringName = _template_arch(template, p)
 	var arch_coef: float = _arch_train_coef(arch_id)
@@ -792,7 +791,7 @@ func _scaling_law(template: TaskTemplate, p: Dictionary) -> int:
 	var staff_mult: float = _resolve_staff_multiplier(p)
 
 	var compute: float = SCALING_LAW_FLOPS_C * size_params * active_ratio * dataset_tokens * ctx_penalty * mm_penalty
-	var divisor: float = dc_throughput * arch_coef \
+	var divisor: float = dc_train_tflops * arch_coef \
 			* attention_train_coef * loss_train_coef \
 			* lead_speedup * staff_mult
 	if divisor <= 0.0:
@@ -1508,7 +1507,7 @@ func _resolve_base_cost(template: TaskTemplate, p: Dictionary) -> int:
 		return maxi(0, int(p.get(&"amount", 0)))
 	return int(template.base_cost)
 
-# Mirrors _resolve_base_cost for the per-month upkeep cost.
+# Mirrors _resolve_base_cost for the per-week upkeep cost.
 func _resolve_weekly_cost(template: TaskTemplate, p: Dictionary) -> int:
 	if template.duration_func == &"data_collection_law":
 		return int(_data_collection_pricing(p).weekly_cost)

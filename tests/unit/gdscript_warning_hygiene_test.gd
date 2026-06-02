@@ -103,20 +103,16 @@ func test_known_unused_parameters_are_prefixed() -> void:
 				offenders.append("%s still has `%s`" % [path, snippet])
 	assert_eq(offenders, [], "未使用参数加 `_` 前缀, 避免 UNUSED_PARAMETER warning。")
 
-# 化名规范 (CLAUDE.md): 真实品牌 (GPT/Llama/Claude/Gemini/NVIDIA/AMD/...) 不出现
+# 化名规范 (AGENTS.md): 真实品牌不出现
 # 在 UI 代码 / .tres 的玩家可见字段中。仅 design/ 与代码注释里的 "≈ X" 对照允许。
-# 本测试扫 scenes/ui/ 下所有 .gd 文件的字符串字面量, 防 Bug 3 (MyGPT-1) 回归 +
+# 本测试扫 scenes/ui/ 下所有 .gd 文件的字符串字面量, 防旧品牌 placeholder 回归 +
 # 后续新 UI 也不漏。
 const FORBIDDEN_BRAND_TOKENS: Array[String] = [
 	"GPT", "Llama", "LLaMA", "Gemini", "OpenAI", "ChatGPT", "Anthropic",
 	"NVIDIA", "Nvidia", "AMD", "Mistral", "DeepSeek",
 ]
 # 已知的"≈ X" 对照注释 — 这些是设计文档式注释, 不暴露给玩家。
-const BRAND_COMMENT_WHITELIST: Dictionary = {
-	"res://scenes/ui/price_edit_dialog/price_edit_dialog.gd": [
-		"GPT/Claude 定价单位",
-	],
-}
+const BRAND_COMMENT_WHITELIST: Dictionary = {}
 
 func test_ui_dialogs_do_not_leak_real_brand_names() -> void:
 	var offenders: Array[String] = []
@@ -141,12 +137,12 @@ func test_ui_dialogs_do_not_leak_real_brand_names() -> void:
 				offenders.append("%s: 含品牌 `%s` → `%s`" % [path, brand, stripped])
 	assert_eq(offenders, [],
 			"UI .gd 文件不得包含真实品牌名 (玩家可见字段 / placeholder / 按钮文案);" \
-			+ " 例外仅限注释 + BRAND_COMMENT_WHITELIST。CLAUDE.md §化名规范。")
+				+ " 例外仅限注释 + BRAND_COMMENT_WHITELIST。AGENTS.md §化名规范。")
 
 # 去掉行尾 `# ...` 注释段, 仅保留代码 + 字符串字面量, 避免误判 ≈X 对照说明。
 func _strip_inline_comment(line: String) -> String:
 	# 简化扫描: 找第一个 `#`, 如果它前面的字符串里"#" 数量为偶数 (在引号外),
-	# 把后面截掉。对 placeholder_text = "MyGPT-1" 这种简单单引号情况已足够;
+		# 把后面截掉。对简单 placeholder_text 情况已足够;
 	# 复杂多引号 / triple-quote 不做精确处理 (我们关心的 UI .gd 文件都是简单的)。
 	var in_str: bool = false
 	var str_char: String = ""

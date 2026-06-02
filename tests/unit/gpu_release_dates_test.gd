@@ -4,8 +4,8 @@ extends GutTest
 ## date via GameState.turn_to_date(), anchored to 2017-06-12 (Transformer paper).
 ## Per design/游戏基础架构设计.md §3.4.1 + design/平衡参数.md GPUSpec table v4.
 ##
-## v4 (PR-A, 2026-05): release_turn is anchored to real GPU launch dates
-## (V100 / A100 / H100 / B200 / MI100 / MI250X / MI300X / TPU v3-v6).
+## v4 (PR-A, 2026-05): release_turn is anchored to the canonical GPU
+## launch timeline described in design/平衡参数.md.
 
 
 const GPU_PATHS := [
@@ -22,19 +22,19 @@ const GPU_PATHS := [
 	"res://resources/data/infra/gpus/bamboo_t4.tres",
 ]
 
-# Real-world anchor turns from 平衡参数.md v4 GPUSpec table.
+# Canonical anchor turns from 平衡参数.md v4 GPUSpec table.
 const EXPECTED_RELEASE_TURNS: Dictionary = {
-	&"cypress_t0": 0,    # 2017-06 V100
-	&"cypress_t1": 152,  # 2020-05 A100
-	&"cypress_t2": 249,  # 2022-03 H100
-	&"cypress_t3": 353,  # 2024-03 B200
-	&"maple_t1":   178,  # 2020-11 MI100
-	&"maple_t2":   230,  # 2021-11 MI250X
-	&"maple_t3":   339,  # 2023-12 MI300X
-	&"bamboo_t1":   99,  # 2019-05 TPU v3
-	&"bamboo_t2":  205,  # 2021-05 TPU v4
-	&"bamboo_t3":  339,  # 2023-12 TPU v5p
-	&"bamboo_t4":  391,  # 2024-12 TPU v6 / Trillium
+	&"cypress_t0": 0,    # 2017-06
+	&"cypress_t1": 152,  # 2020-05
+	&"cypress_t2": 249,  # 2022-03
+	&"cypress_t3": 353,  # 2024-03
+	&"maple_t1":   178,  # 2020-11
+	&"maple_t2":   230,  # 2021-11
+	&"maple_t3":   339,  # 2023-12
+	&"bamboo_t1":   99,  # 2019-05
+	&"bamboo_t2":  205,  # 2021-05
+	&"bamboo_t3":  339,  # 2023-12
+	&"bamboo_t4":  391,  # 2024-12
 }
 
 func test_every_gpu_release_turn_resolves_to_a_calendar_date() -> void:
@@ -55,7 +55,7 @@ func test_every_gpu_release_turn_resolves_to_a_calendar_date() -> void:
 func test_starting_era_gpus_unlock_at_or_near_2017_06_12() -> void:
 	# Per design/平衡参数.md: at game start (turn=0 = 2017-06-12) the player
 	# must have at least one GPU buyable so the game can actually begin.
-	# In v4 that GPU is cypress_t0 (V100-era).
+	# In v4 that GPU is cypress_t0.
 	var any_at_start := false
 	for path in GPU_PATHS:
 		var spec = load(path)
@@ -67,7 +67,7 @@ func test_starting_era_gpus_unlock_at_or_near_2017_06_12() -> void:
 		"at least one GPU must have release_turn=0 (available at game start)")
 
 func test_release_turns_match_real_world_anchors_v4() -> void:
-	# PR-A v4: each GPU's release_turn must match the canonical real-world
+	# PR-A v4: each GPU's release_turn must match the canonical
 	# launch anchor in 平衡参数.md. Catches drift if a .tres is edited without
 	# updating the design doc (or vice versa).
 	for path in GPU_PATHS:
@@ -81,22 +81,22 @@ func test_release_turns_match_real_world_anchors_v4() -> void:
 				[path, spec.release_turn, expected])
 
 func test_cypress_t0_is_the_unique_game_start_starter() -> void:
-	# In v4 cypress_t0 (V100-era) is the only cypress at turn 0; cypress_t1
-	# (A100) moves to turn 152 so the early game has time pressure to upgrade.
+	# In v4 cypress_t0 is the only cypress at turn 0; cypress_t1 moves to turn
+	# 152 so the early game has time pressure to upgrade.
 	var t0 = load("res://resources/data/infra/gpus/cypress_t0.tres")
 	var t1 = load("res://resources/data/infra/gpus/cypress_t1.tres")
 	assert_eq(t0.release_turn, 0)
 	assert_gt(t1.release_turn, 0, "cypress_t1 must no longer be a turn-0 starter")
 
 func test_generation_gap_is_about_two_years_for_cypress() -> void:
-	# Real GPU cadence: every ~100 weeks (≈2 years) a new generation.
+	# GPU cadence: every ~100 weeks (≈2 years) a new generation.
 	# Game's design intent (平衡参数.md) is to mirror this so the player
 	# experiences a real "hardware refresh cycle".
 	var t0 = load("res://resources/data/infra/gpus/cypress_t0.tres").release_turn
 	var t1 = load("res://resources/data/infra/gpus/cypress_t1.tres").release_turn
 	var t2 = load("res://resources/data/infra/gpus/cypress_t2.tres").release_turn
 	var t3 = load("res://resources/data/infra/gpus/cypress_t3.tres").release_turn
-	# t0 → t1 = 152 weeks (≈2.9 yr, larger because V100→A100 was slow)
+	# t0 → t1 = 152 weeks (≈2.9 yr)
 	# t1 → t2 = 97 weeks (≈1.87 yr)
 	# t2 → t3 = 104 weeks (≈2.00 yr)
 	assert_almost_eq(float(t1 - t0), 152.0, 1.0)

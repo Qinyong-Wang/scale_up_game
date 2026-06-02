@@ -52,7 +52,7 @@ func test_phase_signal_turn_resolves_to_same_date_as_game_state() -> void:
 # ---- Save / load preserves the timeline ----------------------------------
 
 func test_save_then_load_preserves_in_game_date() -> void:
-	# Advance to a known date in 2020 (152 weeks ≈ NVIDIA A100 era), save,
+	# Advance to a known date in 2020 (152 weeks), save,
 	# reset, restore — date should be exactly the same.
 	for _i in range(152):
 		TurnManager.advance()
@@ -93,7 +93,7 @@ func _rent_solo_facility() -> StringName:
 	return r.dc_id
 
 func test_gpu_with_future_release_turn_is_unbuyable_at_game_start() -> void:
-	# cypress_t1 has release_turn=152 (A100, 2020-05). At turn 0 (2017-06-12)
+	# cypress_t1 has release_turn=152. At turn 0 (2017-06-12)
 	# it must be rejected by infra.buy_gpus.
 	var dc_id := _rent_solo_facility()
 	var buy_early: Dictionary = CommandBus.send(&"infra.buy_gpus", {
@@ -103,10 +103,10 @@ func test_gpu_with_future_release_turn_is_unbuyable_at_game_start() -> void:
 
 func test_gpu_becomes_buyable_after_advancing_to_its_release_turn() -> void:
 	# Pre-fund so a successful buy can spend; the rent itself only spends a
-	# small first-month land cost.
+		# small first-week land cost.
 	GameState.cash = 10_000_000
 	var dc_id := _rent_solo_facility()
-	# Jump to bamboo_t1.release_turn (=99, TPU v3 / 2019-05). Iterating 99 turns
+	# Jump to bamboo_t1.release_turn (=99). Iterating 99 turns
 	# via TurnManager.advance() would multiply the test runtime; the assertion
 	# is purely about the release_turn gate, so a direct set is fine.
 	GameState.turn = 99
@@ -117,7 +117,7 @@ func test_gpu_becomes_buyable_after_advancing_to_its_release_turn() -> void:
 		"bamboo_t1 should be buyable at its release_turn (got %s)" % str(buy_late))
 
 func test_starter_gpu_buyable_on_the_anchor_date() -> void:
-	# cypress_t0 has release_turn=0 → buyable on 2017-06-12 (game start, V100-era).
+	# cypress_t0 has release_turn=0 → buyable on 2017-06-12 (game start).
 	GameState.cash = 10_000_000
 	assert_eq(GameState.current_date(), "2017-06-12")
 	var dc_id := _rent_solo_facility()
