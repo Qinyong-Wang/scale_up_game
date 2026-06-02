@@ -381,6 +381,28 @@ func test_new_product_dialog_create_defaults_price_to_guidance() -> void:
 	assert_eq(int(dlg._price_spinbox.value), int(spec.subscription_price_guidance),
 			"chatbot 默认订阅价应取 guidance, 而不是写死的 99")
 
+func test_new_product_dialog_preview_uses_weekly_token_tps() -> void:
+	# chatbot: 250k tokens/周 ÷ 604800 ≈ 0.4 t/s。旧月秒口径会显示 0.1 t/s。
+	const Dialog := preload("res://scenes/ui/new_product_dialog/new_product_dialog.gd")
+	var dl: Dictionary = CommandBus.send(&"research.download_open_source",
+		{release_id = _OS_TEST_RELEASE})
+	CommandBus.send(&"research.publish_model", {
+		model_id = dl.model_id, is_open_source = false, per_token_price = 0.000002})
+	var dlg = Dialog.new()
+	add_child_autofree(dlg)
+	dlg.setup_create()
+	await get_tree().process_frame
+	var chatbot_idx: int = -1
+	for i in range(dlg._type_dropdown.item_count):
+		if dlg._type_dropdown.get_item_metadata(i) == &"chatbot":
+			chatbot_idx = i
+			break
+	assert_gt(chatbot_idx, -1)
+	dlg._type_dropdown.select(chatbot_idx)
+	dlg._on_type_changed()
+	assert_true(String(dlg._preview_label.text).find("0.4 t/s") != -1,
+			"新建产品预览应按每周 token 折算 t/s, 实际: %s" % dlg._preview_label.text)
+
 func test_new_product_dialog_edit_mode_prefills_fields() -> void:
 	# §0bis: setup_edit(product_id) 把表单填好, type 锁死.
 	const Dialog := preload("res://scenes/ui/new_product_dialog/new_product_dialog.gd")

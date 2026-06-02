@@ -8,12 +8,11 @@ extends GutTest
 ## GameState.last_revenue_breakdown. These tests pin the breakdown shape,
 ## §6.1–§6.4 algorithm, and the side-effects on cash / signals.
 ##
-## Capacity formula (§6.2, post-Infra-v3 — model-aware serving capacity is
-## already baked into dc.serving_tokens_per_sec at deploy_model time):
+## Capacity formula (§5, post-Infra-v4 — model-aware serving capacity and
+## engineering multipliers are baked into dc.serving_tokens_per_sec):
 ##   capacity_tokens_per_week
 ##     = dc.serving_tokens_per_sec
 ##       × arch_inference_coef
-##       × engineering_throughput_multiplier
 ##       × product_throughput_multiplier (chief_engineer lead)
 ##       × SECONDS_PER_WEEK (= 604_800)
 ##
@@ -165,8 +164,8 @@ func test_zero_state_emits_zero_breakdown_and_no_award() -> void:
 # ---- §6.2 API 营收 -----------------------------------------------------
 
 func test_api_revenue_equals_demand_times_price_when_capacity_sufficient() -> void:
-	# §6.2: api 产品 demand 满足 → served = demand, rev = served × price.
-	# baseline model + capacity 1e9 tokens/月, demand 10k, 单 api 产品.
+	# §5.1: api 产品 demand 满足 → served = demand, rev = served × price.
+	# baseline model + capacity 1e9 tokens/周, demand 10k, 单 api 产品.
 	var m: Model = _make_published_model(&"m1", 0.01)
 	_make_serving_dc(&"dc1", m.id, 1_000_000_000.0)
 	_make_api_product(m.id)
@@ -181,7 +180,7 @@ func test_api_revenue_equals_demand_times_price_when_capacity_sufficient() -> vo
 func test_api_revenue_capped_by_capacity_records_lost_demand() -> void:
 	# §6.2: lost = max(0, api_demand - api_capacity); 算力不足时丢 api 需求.
 	var m: Model = _make_published_model(&"m1", 0.01)
-	_make_serving_dc(&"dc1", m.id, 1_000.0)   # capacity = 1000 tokens/月
+	_make_serving_dc(&"dc1", m.id, 1_000.0)   # capacity = 1000 tokens/周
 	_make_api_product(m.id)
 	GameState.api_token_demand[m.id] = 5_000   # api demand > capacity
 	EventBus.users_resolved.emit(1, 0)
@@ -307,7 +306,7 @@ func test_dc_pointing_at_undeployed_model_is_ignored_for_capacity() -> void:
 # ---- §6.2 capacity formula invariants ----------------------------------
 
 func test_seconds_per_week_constant_value() -> void:
-	# §6.2: SECONDS_PER_WEEK = 30 × 24 × 3600.
+	# §4: SECONDS_PER_WEEK = 7 × 24 × 3600.
 	const MS = preload("res://scripts/systems/monetization_system.gd")
 	assert_eq(MS.SECONDS_PER_WEEK, 604_800)
 
@@ -319,7 +318,7 @@ func test_monetization_does_not_rescale_by_flops_per_token() -> void:
 			{&"general": 50.0}, &"ant_v1", BASELINE_FLOPS_PER_TOKEN)
 	var m_large: Model = _make_published_model(&"m_large", 0.01, false,
 			{&"general": 50.0}, &"ant_v1", BASELINE_FLOPS_PER_TOKEN * 10.0)
-	# 两个 dc 都被 fixture 写成同样的 serving_tokens_per_sec → 容量 1000 t/月.
+	# 两个 dc 都被 fixture 写成同样的 serving_tokens_per_sec → 容量 1000 tokens/周.
 	_make_serving_dc(&"dc1", m_small.id, 1_000.0)
 	_make_serving_dc(&"dc2", m_large.id, 1_000.0)
 	_make_api_product(m_small.id)
@@ -390,14 +389,14 @@ func test_capacity_unaffected_when_engineering_command_missing() -> void:
 	assert_eq(int(br.api_demand_lost), 1000)
 
 func test_capacity_uses_serving_tokens_per_sec_field() -> void:
-	# §6.2 (v3): 容量字段是 dc.serving_tokens_per_sec (deploy_model 写, 月度 settle 读).
+	# §5 (v4): 容量字段是 dc.serving_tokens_per_sec (deploy_model 写, 周度 settle 读).
 	var m: Model = _make_published_model(&"m1", 0.0)
 	var dc := Datacenter.new()
 	dc.id = &"dc1"
 	dc.facility_spec_id = &"facility_solo"
 	dc.status = &"serving"
 	dc.deployed_model_id = m.id
-	dc.serving_tokens_per_sec = 1.0   # 1 token/sec → 604_800 tokens/月
+	dc.serving_tokens_per_sec = 1.0   # 1 token/sec → 604_800 tokens/周
 	GameState.datacenters.append(dc)
 	_make_api_product(m.id)
 	GameState.api_token_demand[m.id] = 3_000_000
@@ -575,15 +574,15 @@ func test_subscription_priority_eats_capacity_first_api_gets_remainder() -> void
 	EventBus.users_resolved.emit(1, 0)
 	var br: Dictionary = GameState.last_revenue_breakdown
 	# api_served = 5e4, rev = 5e4 × 1e-3 = 50; lost = 3e4;
-	# 订阅 rev = 1 × 99 = 99, 不受算力影响.
+	# 订阅 demand 未超过 capacity, 因此 rev = 1 × 99 = 99.
 	assert_eq(int(br.api_per_model[m.id]), 50)
 	assert_eq(int(br.api_demand_lost), 30_000)
 	assert_eq(int(br.subscription_total), 99)
 
 func test_subscription_demand_exceeds_capacity_revenue_scales_down() -> void:
 	# §5.2 (v9): 订阅 demand 超 capacity → 营收按 ratio 缩减.
-	# 准备: chatbot 1000 用户 × 5e4 = 5e7 tokens/周; capacity = 1000 tok/周;
-	# ratio = 1000 / 5e7 = 2e-5 → revenue ≈ 1000 × 99 × 2e-5 ≈ 2 (round).
+	# 准备: chatbot 1000 用户 × 2.5e5 = 2.5e8 tokens/周; capacity = 1000 tok/周;
+	# ratio = 1000 / 2.5e8 = 4e-6 → revenue < 1 (round 后 0).
 	# api demand 0 → lost = 0.
 	var m: Model = _make_published_model(&"m1", 1.0)
 	_make_serving_dc(&"dc1", m.id, 1_000.0)

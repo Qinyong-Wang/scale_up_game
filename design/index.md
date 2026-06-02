@@ -54,6 +54,6 @@
 - [公共枚举表.md](公共枚举表.md) — 跨系统 StringName (specialty / arch / product.type / effect.kind 等); **§16 命名约定**: GPU 用植物族 (cypress/maple/bamboo), 模型/架构用动物族 (sparrow/orca/ant_v2/octopus_v2 等), 不出现真实品牌名.
 - [命令总线表.md](命令总线表.md) — 所有 CommandBus 命令的入参 / 出参 / 错误码 / 所有者.
 - [事件总线信号表.md](事件总线信号表.md) — 所有 EventBus 信号 + 订阅方 + 关键信号链.
-- [平衡参数.md](平衡参数.md) — 数值常量集中登记, **真实量纲** (FLOPs / TFLOPs / B tokens / token/s); GPU 表 / 供电表 / 训练模板 / LEAD_BONUS_TABLE / 产品类型阈值 / scaling law 常数 / fame 衰减 / 贷款利率 等.
+- [平衡参数.md](平衡参数.md) — 数值常量集中登记, **真实量纲** (FLOPs / TFLOPs / B tokens / token/s); GPU 表 / 供电表 / 训练模板 / LEAD_BONUS_TABLE / 产品类型阈值 / scaling law 常数 / 用户增长 / 贷款利率 等.
 - [NPC配置.md](NPC配置.md) — 23 家 NPC 配置 (5 主榜 + 18 家分榜, 其中 10 家开源); 时间线驱动 (每家 .tres 写整条 release 时间线), NPC 当前能力 = 最新已发布 release 的 capability.
 - [事件库.md](事件库.md) — 事件卡牌具体内容.

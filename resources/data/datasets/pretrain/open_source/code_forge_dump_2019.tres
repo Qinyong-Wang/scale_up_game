@@ -4,8 +4,8 @@
 
 [resource]
 script = ExtResource("1_pdt")
-id = &"github_dump_2019"
-display_name = "GitHub Dump 2019"
+id = &"code_forge_dump_2019"
+display_name = "Code Forge Dump 2019"
 source = &"open_source"
 size = 12.0
 quality = 0.50

@@ -27,7 +27,7 @@ extends Resource
 @export var base_attraction_rank_else: float = 0.0
 
 # --- API product token unit conversion ---
-@export var api_tokens_per_sub_per_week: int = 2_000_000
+@export var api_tokens_per_sub_per_week: int = 10_000_000
 
 # --- Orphan product churn (bound model unpublished) ---
 @export var orphan_product_churn: int = 5

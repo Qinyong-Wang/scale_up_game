@@ -13,7 +13,7 @@ Release tuple format (one row per release):
      kind, gpu_id, gpu_count, weeks, params_b, active_b, tokens_b, arch)
 
 - turn 0 = 2017-06-12; turn 52 ≈ 1 year. The timeline cluster size cadence
-  follows 设计文档 §2.1 (V100 → A100 → H100 → B200 → future).
+  follows 设计文档 §2.1 (early → mid → high-end → frontier → future).
 - Sub-board NPCs use one tier smaller clusters than the main-board frontier of
   the same year; they specialize in one axis.
 - Open-source NPCs lag ~25-35 weeks behind closed-source same-gen models.
@@ -260,7 +260,7 @@ TERMITE_DEVKIT: List[Release] = [
     ("termite_8",   "Termite-8",   1200, [195, 258, 215, 178, 228], "pretrain",      "cypress_t3", 4500000, 28, 48000, 5500, 350000, "octopus_super_sparse"),
 ]
 
-BAMBOO_COMPILER: List[Release] = [  # uses bamboo (TPU) family for code+reasoning.
+BAMBOO_COMPILER: List[Release] = [  # uses bamboo accelerator family for code+reasoning.
     ("bamboo_1",    "Bamboo-1",    330,  [22, 55, 48, 8, 5],  "pretrain",            "bamboo_t2",  8000,   24, 350,  350,  5000,   "ant_v4"),
     ("bamboo_1_5",  "Bamboo-1.5",  370,  [28, 65, 58, 12, 12], "rlhf",               "",           0,      0,  0,    0,    0,      ""),
     ("bamboo_2",    "Bamboo-2",    410,  [55, 88, 82, 32, 28], "pretrain",           "bamboo_t3",  24000,  26, 1200, 180,  14000,  "octopus_v2"),

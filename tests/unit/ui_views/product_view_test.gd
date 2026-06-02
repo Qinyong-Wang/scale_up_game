@@ -218,30 +218,53 @@ func test_product_card_uses_bound_model_display_label() -> void:
 	assert_eq(subtitle.find("wolf_os"), -1, "产品卡片不应显示绑定模型内部 id")
 
 func test_product_card_uses_compact_tps_fields() -> void:
-	# Bug 1: ProductCard 也走 _format_tps_compact, 同样要 tok/月 → t/s. 21.95B
-	# tok/月 ≈ 8.5k t/s (而不是 22.0B t/s)。
+	# ProductCard 也走每周 token → t/s. 5.1408B tok/周 ≈ 8.5k t/s。
 	var v := _make()
 	var data := _default_data()
 	data["products"] = [
 		_product(&"p_sub", "OpenChat Pro", &"chatbot", 439),
 		_product(&"p_api", "API endpoint", &"api"),
 	]
-	data["api_demand_per_product"] = {&"p_api": 21_950_000_000}
-	data["sub_tps_per_product"] = {&"p_sub": 21_950_000_000}
+	data["api_demand_per_product"] = {&"p_api": 5_140_800_000}
+	data["sub_tps_per_product"] = {&"p_sub": 5_140_800_000}
 	v.refresh(data)
 	await get_tree().process_frame
 	var sub_fields: Dictionary = v.get_card_fields_for_test(&"p_sub")
 	var api_fields: Dictionary = v.get_card_fields_for_test(&"p_api")
 	assert_eq(sub_fields.get("t/s 占用", ""), "8.5k t/s")
 	assert_eq(api_fields.get("需求", ""), "8.5k t/s")
-	assert_false(str(sub_fields).find("21,950,000,000") != -1,
+	assert_false(str(sub_fields).find("5,140,800,000") != -1,
 		"订阅产品卡片不应显示十位以上裸整数")
-	assert_false(str(api_fields).find("21,950,000,000") != -1,
+	assert_false(str(api_fields).find("5,140,800,000") != -1,
 		"API 产品卡片不应显示十位以上裸整数")
 	assert_false(str(sub_fields).find("B t/s") != -1,
 		"订阅卡片不应出现 'B t/s' (单位错位)")
 	assert_false(str(api_fields).find("B t/s") != -1,
 		"API 卡片不应出现 'B t/s' (单位错位)")
+
+func test_pool_and_product_card_render_same_weekly_demand_tps() -> void:
+	# 横向一致性: 同一份 weekly demand 进入 pool row 和 ProductCard 时, 两处 t/s
+	# 文案必须一致; 防止某个局部 helper 又退回按月秒数折算。
+	var v := _make()
+	var data := _default_data()
+	data["products"] = [_product(&"p_sub", "OpenChat Pro", &"chatbot", 439)]
+	data["pool_rows"] = [{
+		"model_id": &"wolf_os", "display_name": "Wolf",
+		"capacity": 10_000_000_000, "demand": 5_140_800_000,
+		"sub_demand": 5_140_800_000, "api_demand": 0,
+		"util_pct": 51.4,
+	}]
+	data["sub_tps_per_product"] = {&"p_sub": 5_140_800_000}
+	v.refresh(data)
+	await get_tree().process_frame
+	var pool_header: Label = v.find_pool_header_for_test(&"wolf_os")
+	assert_not_null(pool_header)
+	if pool_header != null:
+		assert_ne(pool_header.text.find("8.5k t/s"), -1,
+			"算力池需求应按周量折算, 实际: %s" % pool_header.text)
+	var fields: Dictionary = v.get_card_fields_for_test(&"p_sub")
+	assert_eq(fields.get("t/s 占用", ""), "8.5k t/s",
+			"产品卡片应与算力池需求使用同一周量 t/s 口径")
 
 func test_api_product_shows_api_badge_or_label() -> void:
 	# 老集成测试要求 "[API]" 字符串出现。

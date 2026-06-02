@@ -680,7 +680,7 @@ func _apply_debug_starter_kit(inst: EventInstance) -> Dictionary:
 	Log.info(&"event", "debug_starter_kit_leads", {count = _seq})
 
 	# 3. Instant 72-card self-built datacenter (facility_rack + cypress_t0, grid power).
-	# cypress_t0 (V100-era) is the 2017 game-start GPU; cypress_t1 (A100) only
+	# cypress_t0 is the 2017 game-start GPU; cypress_t1 only
 	# unlocks at turn=152 (2020-05) and would be timeline-inconsistent here.
 	var dc_result := CommandBus.send(&"infra.debug_instant_owned_dc", {
 		facility_spec_id = &"facility_rack",

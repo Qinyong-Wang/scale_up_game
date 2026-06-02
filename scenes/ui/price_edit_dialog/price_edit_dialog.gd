@@ -11,7 +11,7 @@ extends ConfirmationDialog
 ##   4. 确认 → research.set_api_price.
 ##
 ## 单位约定: 内部 ResearchSystem 用 $/tok (per_token_price), 玩家面板用
-## $/M tok (× 1e6) — 大众理解的 GPT/Claude 定价单位。
+## $/M tok (× 1e6) — 大众理解的模型 API 定价单位。
 
 signal price_updated(model_id: StringName, applied_price: float)
 

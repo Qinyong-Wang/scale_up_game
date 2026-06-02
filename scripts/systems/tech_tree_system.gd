@@ -78,8 +78,8 @@ const NODES: Dictionary = {
 	&"squirrel_int8": "res://resources/data/tech/engineering/squirrel_int8.tres",
 	&"squirrel_int4": "res://resources/data/tech/engineering/squirrel_int4.tres",
 	&"otter_paged_attn": "res://resources/data/tech/engineering/otter_paged_attn.tres",
-	# v4 (PR-B): FP8 / FP4 quantization (real low-precision red carpet for
-	# H100 / B200 era hardware). flops_per_token_reduction-bearing nodes.
+	# v4 (PR-B): FP8 / FP4 quantization for fictionalized accelerator eras.
+	# These are flops_per_token_reduction-bearing nodes.
 	&"firefly_fp8": "res://resources/data/tech/engineering/firefly_fp8.tres",
 	&"glowworm_fp4": "res://resources/data/tech/engineering/glowworm_fp4.tres",
 	# v7 PR-G future

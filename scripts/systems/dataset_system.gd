@@ -31,7 +31,7 @@ const PRETRAIN_PATHS: Dictionary = {
 	&"fineweb2_multi_v1": "res://resources/data/datasets/pretrain/open_source/fineweb2_multi_v1.tres",
 	&"fineweb_15t_v1": "res://resources/data/datasets/pretrain/open_source/fineweb_15t_v1.tres",
 	&"fineweb_edu_v1": "res://resources/data/datasets/pretrain/open_source/fineweb_edu_v1.tres",
-	&"github_dump_2019": "res://resources/data/datasets/pretrain/open_source/github_dump_2019.tres",
+	&"code_forge_dump_2019": "res://resources/data/datasets/pretrain/open_source/code_forge_dump_2019.tres",
 	&"image_caption_5b": "res://resources/data/datasets/pretrain/open_source/image_caption_5b.tres",
 	&"image_corpus_v1": "res://resources/data/datasets/pretrain/open_source/image_corpus_v1.tres",
 	&"imdb_reviews_v1": "res://resources/data/datasets/pretrain/open_source/imdb_reviews_v1.tres",

@@ -6,7 +6,7 @@
 script = ExtResource("1_tn")
 id = &"bee_v1"
 tree = &"arch"
-display_name = "Bee v1 Dense Scaling (~GPT-3 era)"
+display_name = "Bee v1 Dense Scaling (大规模稠密时代)"
 description = "进一步堆 dense 参数; 训练吞吐 +30%, 推理略升. 是 MoE 之前的最后一档 dense."
 prerequisites = Array[StringName]([&"ant_v2"])
 research_cost = 0

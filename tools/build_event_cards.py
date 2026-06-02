@@ -185,7 +185,7 @@ CARDS = [
             [(AWARD, {"pct": 0.008, "floor": 1500, "cap": 150000})]),
          ("encourage", "鼓励一下, 继续观察", [])],
         requires_staff_min=1, max_triggers=1),
-    routine("routine_open_source_pr", "GitHub 上来了个神秘 PR",
+    routine("routine_open_source_pr", "代码托管平台上来了个神秘 PR",
         "一位昵称叫『404NotFound』的陌生人给你的开源仓库提了个 PR。",
         [("merge", "合并并公开致谢",
             [(AWARD, {"pct": 0.006, "floor": 1000, "cap": 300000})]),
@@ -356,7 +356,7 @@ CARDS = [
     # 全部化名/泛指, 不出现真实公司/人名/品牌。两个选项都挂真生效 effect。
     # ≈ 注释仅做现实对照, 不进游戏文案。
 
-    # ≈ 创始人被董事会闪电解雇又被员工逼宫复职 (OpenAI 2023-11)
+    # ≈ 创始人被董事会闪电解雇又被员工逼宫复职的行业戏剧
     drama("board_coup", "董事会要罢免你",
         "一个周五傍晚, 董事会毫无征兆地发了份措辞含糊的声明, 把你这位创始人『请』出了公司。第二天一早, 大半个团队在内部群里炸了锅, 扬言要集体辞职跟你走。",
         [("fight", "硬刚到底, 让员工逼宫复职",
@@ -388,7 +388,7 @@ CARDS = [
              (SPEND, {"pct": 0.05, "floor": 30000, "cap": 20000000})])],
         category="opportunity", min_turn=120, requires_published_model=True),
 
-    # ≈ 出版巨头起诉违规抓取训练数据 (NYT v. OpenAI 2023)
+    # ≈ 出版巨头起诉违规抓取训练数据的行业诉讼
     drama("data_lawsuit", "出版巨头起诉你违规抓取训练数据",
         "一家老牌出版巨头把你告上法庭, 声称你的模型是『逐字背诵』它家几十年的文章训练出来的, 索赔金额后面跟着一长串零。",
         [("settle", "高价庭外和解 + 补签数据授权",

@@ -1,6 +1,6 @@
 extends GutTest
 
-## UserSystem v1 — 派生计算器, 把 fame + 营销 + 产品组合折算成
+## UserSystem v7 — 派生计算器, 把 rank / 价格 / 营销 + 产品组合折算成
 ## paid_users + token_demand. 无切片 (资源型).
 ## Per design/用户系统设计.md.
 ##
@@ -45,7 +45,7 @@ func _make_campaign(id: StringName, segment: StringName, weekly_budget: int) -> 
 	GameState.campaigns.append(c)
 	return c
 
-# ---- §6.1 月度主入口 / signal ------------------------------------------
+# ---- §6.1 周度主入口 / signal ------------------------------------------
 
 func test_action_phase_triggers_users_resolved_signal() -> void:
 	# §6.1: phase_started(action) → _resolve_action → emit users_resolved.
@@ -68,7 +68,7 @@ func test_upkeep_phase_does_not_trigger_users_resolved() -> void:
 	assert_signal_not_emitted(EventBus, "users_resolved")
 
 func test_last_user_resolved_turn_updated_after_action() -> void:
-	# §1: last_user_resolved_turn 起手 -1, 月度结算后 = current turn.
+	# §1: last_user_resolved_turn 起手 -1, 每周 action 结算后 = current turn.
 	GameState.turn = 5
 	EventBus.phase_started.emit(&"action", 5)
 	assert_eq(GameState.last_user_resolved_turn, 5)
@@ -106,7 +106,7 @@ func test_paid_users_zero_when_no_products() -> void:
 
 func test_token_demand_populated_only_for_published_models() -> void:
 	# §6.4: 仅 status==published 进 token_demand.
-	# 用 user.recompute_now 隔离, 否则 MarketSystem 会改 fame.
+	# 用 user.recompute_now 隔离, 避免其它 action-phase 系统改动场景。
 	var m_pub: Model = _make_published_model(&"m1")
 	var m_int := Model.new()
 	m_int.id = &"m_internal"
@@ -157,7 +157,7 @@ func test_api_product_skipped_in_subscriber_evolution() -> void:
 	assert_eq(ap.subscribers, 0, "api 产品 subscribers 不应被增长改动")
 
 func test_token_demand_zero_when_fame_zero_and_no_subscribers() -> void:
-	# §6.4: base = K × fame × cap; fame=0 → base=0; 无 product → product_part=0.
+	# §6.4: 无 product / api pool 时, published model 的 demand 为 0。
 	var m: Model = _make_published_model(&"m1")
 	CommandBus.send(&"user.recompute_now", {})
 	assert_eq(int(GameState.token_demand[m.id]), 0)
@@ -314,7 +314,7 @@ func test_quality_share_treats_total_as_at_least_one() -> void:
 	assert_gte(GameState.paid_users, 0)
 
 func test_resolve_does_not_crash_with_zero_products_and_models() -> void:
-	# 月度结算应该健壮: 没有任何 model / product 时不能炸.
+	# 周度结算应该健壮: 没有任何 model / product 时不能炸.
 	EventBus.phase_started.emit(&"action", 1)
 	assert_eq(GameState.paid_users, 0)
 	assert_eq(GameState.token_demand, {})

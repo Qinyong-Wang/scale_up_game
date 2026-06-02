@@ -26,7 +26,7 @@ extends Resource
 @export var release_turn: int = 0             # turn this GPU goes on sale
 @export var rent_weekly_cost: int = 0         # ¥/card/week for cloud GPU rental (no upfront, whole-cluster only)
                                               # 2026-05: = purchase_price / 40 (cloud rents pay off a card in 40 weeks).
-@export var power_factor: float = 1.0         # relative power draw; cypress_t1 (≈A100) anchored at 1.0.
+@export var power_factor: float = 1.0         # relative power draw; cypress_t1 anchored at 1.0.
                                               # weekly electricity = power.weekly_cost_per_card × power_factor.
                                               # set per 功耗 ∝ 算力^0.45 (perf/watt improves each gen, so
                                               # power grows far slower than compute). See 基础设施系统设计.md §1.5.

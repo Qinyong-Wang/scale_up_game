@@ -6,8 +6,8 @@
 script = ExtResource("1_tn")
 id = &"firefly_fp8"
 tree = &"engineering"
-display_name = "FP8 推理 (H100+)"
-description = "H100+ 时代的 FP8 原生支持; 推理 token 算力减半 (与量化节点累乘)."
+display_name = "FP8 推理 (高阶卡族)"
+description = "高阶加速卡时代的 FP8 原生支持; 推理 token 算力减半 (与量化节点累乘)."
 prerequisites = Array[StringName]([])
 research_cost = 0
 research_months = 32

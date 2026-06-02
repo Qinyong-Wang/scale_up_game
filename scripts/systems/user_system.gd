@@ -11,9 +11,9 @@ extends Node
 ## api_product.subscribers × API_TOKENS_PER_SUB_PER_WEEK). Emits
 ## `users_resolved` so MonetizationSystem can settle revenue immediately.
 ##
-## v7 PR-F replaces the fame-driven attract/churn from v6. Fame field
-## itself remains on GameState/MarketSystem during the migration but is
-## no longer read by this system.
+## v7 PR-F replaces the fame-driven attract/churn from v6. The fame field
+## and signal were deleted; this system reads rank, price and marketing
+## state instead.
 
 
 # Table-driven, see design/用户系统设计.md §6. Authoritative source:
@@ -36,8 +36,8 @@ var BASE_ATTRACTION_RANK_2: float = 0.5
 var BASE_ATTRACTION_RANK_3: float = 0.25
 var BASE_ATTRACTION_RANK_ELSE: float = 0.0
 
-# API product token unit conversion. v7 PR-F3 校准: 2M tokens / unit / 周
-# (= $20 / M tokens·周 marketing CAC, 接近真实小开发者档).
+# API product token unit conversion. Authoritative value is loaded from
+# user/tuning.tres; this fallback matches the current 2026-05 x5 rebalance.
 var API_TOKENS_PER_SUB_PER_WEEK: int = 10_000_000
 
 # v7 PR-F: orphan product churn (bound model is unpublished or missing).

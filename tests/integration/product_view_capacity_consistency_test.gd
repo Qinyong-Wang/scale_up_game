@@ -2,8 +2,8 @@ extends GutTest
 
 ## 钉住产品 tab 算力池的 capacity / util_pct 与 MonetizationSystem 实际结算一致。
 ##
-## 历史 bug: main.gd `_capacity_for_model` 用 SECONDS_PER_MONTH 算 capacity (单位
-## tokens/月), 但 `GameState.token_demand` 单位是 tokens/周, 而且还又乘了一次
+## 历史 bug: main.gd `_capacity_for_model` 用 SECONDS_PER_MONTH 算 capacity (旧月秒口径),
+## 但 `GameState.token_demand` 单位是 tokens/周, 而且还又乘了一次
 ## engineering 树乘数 (v4 PR-B 已下沉到 dc.serving_tokens_per_sec)。结果显示的
 ## util_pct 大概是真实值的 1/4, 玩家看到的池子永远不满, 实际营收按算力截断丢了。
 ##

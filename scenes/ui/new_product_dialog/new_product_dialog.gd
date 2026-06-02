@@ -14,7 +14,7 @@ extends ConfirmationDialog
 signal product_created(product_id: StringName)
 signal product_edited(product_id: StringName)
 
-const SECONDS_PER_MONTH: int = 2_592_000
+const SECONDS_PER_WEEK: int = 604_800
 
 # 哪些 type 在 UI 里列出 + 渲染顺序.
 const TYPE_ORDER: Array[StringName] = [
@@ -536,9 +536,9 @@ func _find_model(model_id: StringName) -> Model:
 			return m
 	return null
 
-func _format_tps(tokens_per_month: int) -> String:
+func _format_tps(tokens_per_week: int) -> String:
 	# 走 UITheme 统一格式化, 自动升档 k → M → G (与营收 / 顶栏一致)。
-	return UITheme.format_tps(float(tokens_per_month) / float(SECONDS_PER_MONTH))
+	return UITheme.format_tps(float(tokens_per_week) / float(SECONDS_PER_WEEK))
 
 func _money(n) -> String:
 	var v: int = int(n)

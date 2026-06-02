@@ -28,6 +28,14 @@ func test_user_tuning_values_match_balance_doc() -> void:
 	# v12 (2026-05): CAC $40 → $80, conversion_rate 0.025→0.0125. 仍线性.
 	assert_almost_eq(float(t.marketing_conversion_rate), 0.0125, 0.0001)
 
+func test_user_tuning_resource_defaults_match_data_table() -> void:
+	# 新建 UserTuning 资源时的默认值也必须和 tuning.tres 主表一致, 否则测试夹具
+	# 或未来新增 data 资源会悄悄退回旧 2M API 单位。
+	var t := UserTuning.new()
+	assert_eq(int(t.api_tokens_per_sub_per_week), 10_000_000)
+	assert_eq(int(t.orphan_product_churn), 5)
+	assert_almost_eq(float(t.marketing_conversion_rate), 0.0125, 0.0001)
+
 func test_runtime_rank_rates_from_table() -> void:
 	assert_almost_eq(float(UserSystem.TOTAL_RANK_1_RATE), 0.01, 0.0001)
 	assert_almost_eq(float(UserSystem.TOTAL_RANK_BELOW_RATE), -0.02, 0.0001)

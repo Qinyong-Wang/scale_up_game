@@ -40,9 +40,9 @@ keys,en
 A 轮,Series A
 AGI 时间表正在压缩,The AGI timeline is compressing
 Ant v1 基线注意力,Ant v1 baseline attention
-Ant v2 Dense 精炼 (~GPT-2 era),Ant v2 dense refinement (~GPT-2 era)
+Ant v2 Dense 精炼 (早期稠密时代),Ant v2 dense refinement (early dense era)
 B 轮,Series B
-"B200+ 时代的 FP4 原生支持; 单 token 算力降到 25%, 推理吞吐 4× (与 fp8/int8 累乘).","Native FP4 for the B200+ era; per-token compute down to 25%, inference throughput 4× (stacks with fp8/int8)."
+"前沿加速卡时代的 FP4 原生支持; 单 token 算力降到 25%, 推理吞吐 4× (与 fp8/int8 累乘).","Native FP4 for the frontier accelerator era; per-token compute down to 25%, inference throughput 4× (stacks with fp8/int8)."
 BERT Giant 编码器,BERT Giant encoder
 BERT 编码器,BERT encoder
 BERT 规模化编码器,BERT scaled encoder
@@ -59,11 +59,11 @@ ELECTRA 判别式预训练,ELECTRA discriminative pretraining
 "Encoder-Decoder 架构, 2019 主流. 比 BERT 强些 (cap=45), 仍输给 dense decoder 路线.","Encoder-decoder architecture, mainstream 2019. A bit stronger than BERT (cap=45) but still loses to the dense-decoder line."
 "Encoder-only 架构, 2018 主流方向. 训练快, 但评分硬上限 30 — 再大也上不去, 不可 scale 到 LLM.","Encoder-only architecture, the mainstream 2018 direction. Trains fast, but score hard-caps at 30 — scaling up won't help, can't scale to an LLM."
 F 轮,Series F
-FP4 推理 (Blackwell),FP4 inference (Blackwell)
-FP8 推理 (H100+),FP8 inference (H100+)
-GitHub 上来了个神秘 PR,A mysterious PR showed up on GitHub
+FP4 推理 (前沿卡族),FP4 inference (frontier accelerator family)
+FP8 推理 (高阶卡族),FP8 inference (advanced accelerator family)
+代码托管平台上来了个神秘 PR,A mysterious PR showed up on the code forge
 "Grouped-Query Attention: 减少 KV head 数, 训练略加速, 推理大幅省 fpt.","Grouped-Query Attention: fewer KV heads, slightly faster training, much lower inference fpt."
-H100+ 时代的 FP8 原生支持; 推理 token 算力减半 (与量化节点累乘).,Native FP8 support in the H100+ era; inference token compute is halved (stacks with quantization nodes).
+高阶加速卡时代的 FP8 原生支持; 推理 token 算力减半 (与量化节点累乘).,Native FP8 support in the advanced accelerator era; inference token compute is halved (stacks with quantization nodes).
 "HR 在群里发了个问号, 大家都懂——团建该安排了。",HR dropped a single question mark in the group chat — everyone gets it: time for a team outing.
 Int4 量化,Int4 quantization
 Int8 量化,Int8 quantization

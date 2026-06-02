@@ -142,13 +142,12 @@ static func _format_per_token_price(per_token: float) -> String:
 		return "$%.2f/M" % per_m
 	return "$%.1f/M" % per_m
 
-# Bug 1: 上游传 tok/月, 先转 t/s 再展示, 与营收 tab 同源, 避免显示成 16B t/s
-# 这种数量级错误 (那是 16G tok/月)。SECONDS_PER_MONTH 与 main._format_tps 对齐。
-const _SECONDS_PER_MONTH: int = 2_592_000
+# 上游传 tokens/周 (1 turn = 1 week), 先转 t/s 再展示, 与产品池 / 营收 tab 同源。
+const _SECONDS_PER_WEEK: int = 604_800
 
-static func _format_tps_compact(tokens_per_month: int) -> String:
+static func _format_tps_compact(tokens_per_week: int) -> String:
 	# 走 UITheme 统一格式化, 自动升档 k → M → G (与营收 / 顶栏一致)。
-	return UITheme.format_tps(float(tokens_per_month) / float(_SECONDS_PER_MONTH))
+	return UITheme.format_tps(float(tokens_per_week) / float(_SECONDS_PER_WEEK))
 
 static func _comma(n: int) -> String:
 	var s := str(abs(n))
