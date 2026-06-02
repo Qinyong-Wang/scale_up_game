@@ -280,6 +280,36 @@ func test_lead_dropdown_filters_to_marketing_lead_only() -> void:
 	assert_eq(dlg._lead_dropdown.item_count, 2)
 	assert_eq(StringName(dlg._lead_dropdown.get_item_metadata(1)), &"lead_mk")
 
+func test_released_repaired_campaign_lead_returns_to_dropdown() -> void:
+	GameState.cash = 1_000_000
+	var product := _make_product()
+	var first := Campaign.new()
+	first.id = &"campaign_0001"
+	GameState.campaigns.append(first)
+	var lead := Lead.new()
+	lead.id = &"lead_mk_repaired"
+	lead.specialty = &"marketing_lead"
+	lead.ability = 75.0
+	lead.locked_by_task_id = &"campaign_0001"
+	GameState.leads.append(lead)
+	var duplicate := Campaign.new()
+	duplicate.id = &"campaign_0001"
+	duplicate.lead_id = lead.id
+	duplicate.target_product_id = product.id
+	GameState.campaigns.append(duplicate)
+
+	EventBus.save_loaded.emit()
+	var r: Dictionary = CommandBus.send(&"marketing.terminate_campaign", {
+			campaign_id = duplicate.id,
+	})
+	assert_true(r.ok)
+
+	var dlg = _make_dialog()
+	dlg.refresh()
+	assert_eq(dlg._lead_dropdown.item_count, 2)
+	assert_eq(StringName(dlg._lead_dropdown.get_item_metadata(1)), lead.id,
+			"released marketing lead should be selectable for the next campaign")
+
 func test_marketing_system_rejects_wrong_specialty_when_lead_id_provided() -> void:
 	GameState.cash = 1_000_000
 	var p := _make_product()

@@ -48,8 +48,43 @@ func _on_save_loaded() -> void:
 	_next_campaign_seq = maxi(_next_campaign_seq,
 			GameState.max_seq_for_prefix([GameState.campaigns], "campaign_") + 1)
 	for ch in GameState.dedup_ids([GameState.campaigns], _gen_campaign_id):
+		_retag_repaired_campaign_lead_lock(ch.obj, ch.old_id, ch.new_id)
 		Log.warn(&"marketing", "save_loaded_duplicate_campaign_id_repaired",
 				{old_id = ch.old_id, new_id = ch.new_id})
+	_repair_campaign_lead_locks()
+
+func _retag_repaired_campaign_lead_lock(c: Campaign, old_id: StringName,
+		new_id: StringName) -> void:
+	if c == null or c.lead_id == &"":
+		return
+	var lead = HiringSystem.find_lead(c.lead_id)
+	if lead == null:
+		return
+	if lead.locked_by_task_id != old_id:
+		return
+	lead.locked_by_task_id = new_id
+	Log.info(&"marketing", "campaign_lead_lock_retagged", {
+		lead_id = lead.id, old_id = old_id, new_id = new_id,
+	})
+
+func _repair_campaign_lead_locks() -> void:
+	for c in GameState.campaigns:
+		if c == null or c.lead_id == &"":
+			continue
+		var lead = HiringSystem.find_lead(c.lead_id)
+		if lead == null or lead.locked_by_task_id == c.id:
+			continue
+		if lead.locked_by_task_id == &"" or _is_stale_campaign_lock(lead.locked_by_task_id):
+			var old_lock: StringName = lead.locked_by_task_id
+			lead.locked_by_task_id = c.id
+			Log.warn(&"marketing", "campaign_lead_lock_repaired", {
+				campaign_id = c.id, lead_id = lead.id, old_lock = old_lock,
+			})
+
+func _is_stale_campaign_lock(holder_id: StringName) -> bool:
+	if not String(holder_id).begins_with("campaign_"):
+		return false
+	return _find(holder_id) == null
 
 func _load_tables() -> void:
 	var t := load(TUNING_PATH)

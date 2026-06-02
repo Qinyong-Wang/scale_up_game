@@ -267,3 +267,25 @@ func test_save_loaded_repairs_duplicate_campaign_ids() -> void:
 	for c in GameState.campaigns:
 		assert_false(seen.has(c.id), "campaign id %s 读档后仍重复" % c.id)
 		seen[c.id] = true
+
+func test_save_loaded_retags_marketing_lead_lock_when_campaign_id_repaired() -> void:
+	var first := _seed_campaign(&"campaign_0001")
+	GameState.campaigns.append(first)
+	var lead := _make_marketing_lead(&"lead_mkt_dup")
+	lead.locked_by_task_id = &"campaign_0001"
+	var duplicate := _seed_campaign(&"campaign_0001")
+	duplicate.lead_id = lead.id
+	GameState.campaigns.append(duplicate)
+
+	EventBus.save_loaded.emit()
+
+	assert_ne(duplicate.id, &"campaign_0001",
+			"duplicate campaign should receive a fresh ID on load")
+	assert_eq(lead.locked_by_task_id, duplicate.id,
+			"lead lock holder should follow the repaired campaign ID")
+	var r: Dictionary = CommandBus.send(&"marketing.terminate_campaign", {
+			campaign_id = duplicate.id,
+	})
+	assert_true(r.ok)
+	assert_true(lead.is_idle(),
+			"terminating a repaired campaign should release its marketing lead")
