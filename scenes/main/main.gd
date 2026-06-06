@@ -1513,23 +1513,26 @@ func sidebar_badge_text_for_test(nav_id: StringName) -> String:
 func _render_overview_tab() -> void:
 	_clear(_tab_overview)
 	_tab_overview.add_child(_make_section(tr("SECTION_OVERVIEW_COMPANY")))
-	var kpis := HBoxContainer.new()
-	kpis.add_theme_constant_override(&"separation", UITheme.S_3)
-	kpis.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
+	var kpis := HFlowContainer.new()
+	kpis.set_meta(&"ui_role", &"overview_kpi_flow")
+	kpis.add_theme_constant_override(&"h_separation", UITheme.S_3)
+	kpis.add_theme_constant_override(&"v_separation", UITheme.S_3)
+	kpis.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	_tab_overview.add_child(kpis)
-	_add_stat_chip(kpis, tr("TOPBAR_TURN"), TurnManager.turn_label())
-	_add_stat_chip(kpis, tr("TOPBAR_CASH"), "$%s" % _format_money(GameState.cash))
-	_add_stat_chip(kpis, tr("TOPBAR_PAID_USERS"), _format_money(GameState.paid_users))
+	_add_stat_chip(kpis, tr("TOPBAR_TURN"), TurnManager.turn_label(), "", 244.0)
+	_add_stat_chip(kpis, tr("TOPBAR_CASH"), "$%s" % _format_money(GameState.cash), "", 244.0)
+	_add_stat_chip(kpis, tr("TOPBAR_PAID_USERS"), _format_money(GameState.paid_users), "", 244.0)
 
 	# U-1: "下一步" 引导. 扫几个常见瓶颈, 给玩家一条最高优先级的提示。
 	# 新手不知下一步该干啥时, 这条比纯资产清单有用得多。
 	_tab_overview.add_child(_make_section(tr("SECTION_OVERVIEW_NEXT_STEPS")))
 	var hints_panel := _make_surface_panel(&"overview_next_steps_panel")
-	hints_panel.custom_minimum_size.x = float(UITheme.LIST_MAX_W)
+	hints_panel.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	var hints_col := VBoxContainer.new()
 	hints_col.add_theme_constant_override(&"separation", UITheme.S_2)
 	hints_panel.add_child(hints_col)
-	for hint_text in _build_next_step_hints():
+	var hints := _build_next_step_hints()
+	for hint_text in hints:
 		hints_col.add_child(_make_hint_row(hint_text))
 	_tab_overview.add_child(hints_panel)
 
@@ -1547,6 +1550,8 @@ func _render_overview_tab() -> void:
 		{label = tr("OV_ASSET_FLOW"), value = tr("OV_TASKS_EVENTS") % [
 			GameState.active_tasks.size(), GameState.pending_events.size()]},
 	], &"overview_assets_table"))
+	Log.trace(&"ui", "overview_layout_rendered",
+		{hint_count = hints.size(), asset_groups = 5})
 
 # U-1: 按优先级返回最多 3 条"下一步"提示。空数组 → 给"运营顺畅"的默认信息。
 # 优先级: 待处理事件 > 算力不足 > 无产品 > 无 published 模型 > 无 DC > 无 lead > 默认。
@@ -3485,9 +3490,9 @@ func _gameover_reason_text(reason: StringName) -> String:
 # ---- low-level UI helpers -----------------------------------------------
 
 func _add_stat_chip(parent: Control, label_text: String, value_text: String,
-		delta_text: String = "") -> Control:
+		delta_text: String = "", min_width: float = 164.0) -> Control:
 	var chip: Control = StatChipScene.instantiate()
-	chip.custom_minimum_size = Vector2(164.0, 0.0)
+	chip.custom_minimum_size = Vector2(min_width, 0.0)
 	parent.add_child(chip)
 	if delta_text.is_empty():
 		chip.set_data(label_text, value_text, NAN, "")
@@ -3532,19 +3537,47 @@ func _make_hint_row(text: String) -> Control:
 
 func _make_key_value_table(rows: Array, role: StringName) -> Control:
 	var panel := _make_surface_panel(role)
-	panel.custom_minimum_size.x = float(UITheme.LIST_MAX_W)
-	var grid := GridContainer.new()
-	grid.columns = 2
-	grid.add_theme_constant_override(&"h_separation", UITheme.S_4)
-	grid.add_theme_constant_override(&"v_separation", UITheme.S_2)
+	panel.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	var grid := HFlowContainer.new()
+	grid.set_meta(&"ui_role", &"overview_assets_flow")
+	grid.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	grid.add_theme_constant_override(&"h_separation", UITheme.S_3)
+	grid.add_theme_constant_override(&"v_separation", UITheme.S_3)
 	panel.add_child(grid)
 	for row in rows:
 		var label_text := String(row.get("label", ""))
 		var value_text := String(row.get("value", ""))
-		grid.add_child(_table_cell(label_text, 112.0, HORIZONTAL_ALIGNMENT_LEFT,
-			UITheme.TEXT_SECONDARY, true))
-		grid.add_child(_table_cell(value_text, 540.0, HORIZONTAL_ALIGNMENT_LEFT,
-			UITheme.TEXT_PRIMARY))
+		grid.add_child(_make_overview_asset_block(label_text, value_text))
+	return panel
+
+func _make_overview_asset_block(label_text: String, value_text: String) -> Control:
+	var panel := PanelContainer.new()
+	panel.set_meta(&"ui_role", &"overview_asset_block")
+	panel.custom_minimum_size = Vector2(320.0, 0.0)
+	panel.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
+	panel.add_theme_stylebox_override(&"panel", _make_surface_style(UITheme.BG_BASE))
+	var col := VBoxContainer.new()
+	col.add_theme_constant_override(&"separation", UITheme.S_1)
+	panel.add_child(col)
+	var label := Label.new()
+	label.text = label_text
+	label.add_theme_font_override(&"font", UITheme.get_ui_font_bold())
+	label.add_theme_font_size_override(&"font_size", UITheme.FS_SM)
+	label.add_theme_color_override(&"font_color", UITheme.TEXT_SECONDARY)
+	label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	label.text_overrun_behavior = TextServer.OVERRUN_NO_TRIMMING
+	label.clip_text = false
+	col.add_child(label)
+	var value := Label.new()
+	value.set_meta(&"ui_role", &"overview_asset_value")
+	value.text = value_text
+	value.add_theme_font_size_override(&"font_size", UITheme.FS_BASE)
+	value.add_theme_color_override(&"font_color", UITheme.TEXT_PRIMARY)
+	value.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	value.text_overrun_behavior = TextServer.OVERRUN_NO_TRIMMING
+	value.clip_text = false
+	value.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	col.add_child(value)
 	return panel
 
 func _make_ledger_detail_table(title: String, entries: Dictionary, is_income: bool,

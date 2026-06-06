@@ -522,16 +522,50 @@ func test_overview_tab_uses_styled_dashboard_blocks() -> void:
 	GameState.cash = 1_250_000
 	GameState.paid_users = 42_000
 	_hud._refresh()
+	var kpi_flows := _all_nodes_with_meta(_hud._tab_overview, &"ui_role", &"overview_kpi_flow")
+	assert_gt(kpi_flows.size(), 0,
+		"概览 KPI 应使用可折行流式容器, 避免窄窗口裁切大数字")
+	if not kpi_flows.is_empty():
+		assert_true(kpi_flows[0] is HFlowContainer,
+			"概览 KPI 容器应为 HFlowContainer")
 	var chips: Array = _all_nodes_with_script(_hud._tab_overview, StatChipScript)
 	assert_gte(chips.size(), 3, "概览顶部应至少有 3 块 StatChip KPI")
+	for chip in chips:
+		assert_gte((chip as Control).custom_minimum_size.x, 220.0,
+			"概览 KPI chip 应给周次+日期和大额数字留出宽度, 不靠省略号")
 	var hint_panels := _all_nodes_with_meta(_hud._tab_overview, &"ui_role", &"overview_next_steps_panel")
 	assert_gt(hint_panels.size(), 0,
 		"下一步建议应在样式化提示面板内")
 	if not hint_panels.is_empty():
-		assert_gte((hint_panels[0] as Control).custom_minimum_size.x, float(UITheme.LIST_MAX_W),
-			"下一步建议面板应有稳定宽度, 避免长提示被挤成竖排文字")
+		assert_eq((hint_panels[0] as Control).custom_minimum_size.x, 0.0,
+			"下一步建议面板不应强制 720px 最小宽, 由外层可用宽度决定换行")
 	assert_gt(_all_nodes_with_meta(_hud._tab_overview, &"ui_role", &"overview_assets_table").size(), 0,
 		"资产清单应使用样式化字段表")
+	var asset_flows := _all_nodes_with_meta(_hud._tab_overview, &"ui_role", &"overview_assets_flow")
+	assert_gt(asset_flows.size(), 0,
+		"资产清单应使用可折行字段块, 不再用固定两列硬宽表格")
+	if not asset_flows.is_empty():
+		assert_true(asset_flows[0] is HFlowContainer,
+			"资产清单字段块容器应为 HFlowContainer")
+	var asset_blocks := _all_nodes_with_meta(_hud._tab_overview, &"ui_role", &"overview_asset_block")
+	assert_gte(asset_blocks.size(), 5,
+		"资产清单每个字段块都应可测试地标记出来")
+	for node in asset_blocks:
+		assert_gte((node as Control).custom_minimum_size.x, 300.0,
+			"资产字段块应给中文短语和数字留出完整阅读宽度")
+	var asset_values := _all_nodes_with_meta(_hud._tab_overview, &"ui_role", &"overview_asset_value")
+	assert_gte(asset_values.size(), 5,
+		"资产清单每个 value label 都应可测试地标记出来")
+	for node in asset_values:
+		var lbl := node as Label
+		assert_not_null(lbl, "资产 value 节点应为 Label")
+		if lbl == null:
+			continue
+		assert_false(lbl.clip_text, "资产 value label 不应裁字")
+		assert_eq(lbl.text_overrun_behavior, TextServer.OVERRUN_NO_TRIMMING,
+			"资产 value label 不应使用省略号")
+		assert_eq(lbl.autowrap_mode, TextServer.AUTOWRAP_WORD_SMART,
+			"资产 value label 应智能换行")
 
 func test_economy_tab_shows_last_week_category_detail_with_one_time_expense() -> void:
 	# 经济系统设计 §4.8: 经济页明细读最近完成周 ledger_history[0],
