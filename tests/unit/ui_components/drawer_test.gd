@@ -25,7 +25,7 @@ func test_starts_hidden() -> void:
 func test_drawer_width_matches_design_token() -> void:
 	var d := _make()
 	await get_tree().process_frame
-	assert_eq(d.custom_minimum_size.x, UITheme.DRAWER_W)
+	assert_eq(int(d.custom_minimum_size.x), UITheme.DRAWER_W)
 
 # ─── open / close ───────────────────────────────────────────
 

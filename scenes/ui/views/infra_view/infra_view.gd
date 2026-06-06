@@ -80,11 +80,15 @@ var _size_filter_state: Dictionary = {}   # 上次卡数量 FilterBar 状态
 var _status_filter_state: Dictionary = {} # 上次运行状态 FilterBar 状态
 
 func _exit_tree() -> void:
-	# detached 节点 (queue 空时不挂在树里) 必须手动 free, 否则 orphan 泄漏。
+	# Detached nodes (empty queue state) are not children of this view anymore.
+	# Free them synchronously; GUT checks orphans before deferred queue_free
+	# would run for nodes that are already outside the tree.
 	if _construction_section != null and _construction_section.get_parent() == null:
-		_construction_section.queue_free()
+		_construction_section.free()
+		_construction_section = null
 	if _construction_rows != null and _construction_rows.get_parent() == null:
-		_construction_rows.queue_free()
+		_construction_rows.free()
+		_construction_rows = null
 
 func _ready() -> void:
 	add_theme_constant_override(&"separation", UITheme.S_4)

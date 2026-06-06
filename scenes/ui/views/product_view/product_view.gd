@@ -79,11 +79,14 @@ func _ready() -> void:
 	add_child(_products_empty)
 
 func _exit_tree() -> void:
-	# detached 节点手动释放, 避免 orphan。
+	# Detached pool nodes are not children of this view when pool_rows is empty.
+	# Free synchronously so GUT does not count them as orphans during teardown.
 	if _pool_section != null and _pool_section.get_parent() == null:
-		_pool_section.queue_free()
+		_pool_section.free()
+		_pool_section = null
 	if _pool_body != null and _pool_body.get_parent() == null:
-		_pool_body.queue_free()
+		_pool_body.free()
+		_pool_body = null
 
 func refresh(data: Dictionary) -> void:
 	_refresh_create(bool(data.get("has_published_model", false)))

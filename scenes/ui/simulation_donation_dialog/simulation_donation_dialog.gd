@@ -81,7 +81,7 @@ func open_for_stage(stage: Dictionary, dcs: Array) -> void:
 func _rebuild_list(dcs: Array) -> void:
 	for c in _list.get_children():
 		_list.remove_child(c)
-		c.queue_free()
+		c.free()
 	_dc_ids.clear()
 	_selected = &""
 	_group = ButtonGroup.new()

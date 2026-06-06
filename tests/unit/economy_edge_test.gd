@@ -68,8 +68,17 @@ func test_take_loan_interest_rate_reflects_rating() -> void:
 	var loan: Loan = GameState.loans[0]
 	assert_almost_eq(loan.weekly_interest_rate, 0.0025, 0.0001)
 
-func test_take_loan_high_fame_lowers_rate() -> void:
-	pending("v7 PR-F: fame field deleted; assertion no longer meaningful")
+func test_take_loan_high_revenue_lowers_rate() -> void:
+	# §4.3: credit rating is revenue/debt driven. High revenue + no debt → S,
+	# so a newly signed loan should get the S-rate discount.
+	GameState.quarterly_revenue = 30_000_000
+	GameState.debt = 0
+	var r: Dictionary = CommandBus.send(&"economy.take_loan",
+			{amount = 10_000, term_weeks = 12})
+	assert_true(r.ok)
+	var loan: Loan = GameState.loans[0]
+	assert_almost_eq(loan.weekly_interest_rate,
+			EconomySystem.BASE_INTEREST_RATE * 0.25, 0.000001)
 
 func test_repay_full_amount_marks_loan_repaid_fully() -> void:
 	var t: Dictionary = CommandBus.send(&"economy.take_loan",
@@ -143,8 +152,12 @@ func test_preview_credit_returns_rating_string() -> void:
 	assert_true(r.ok)
 	assert_eq(r.rating, &"C")
 
-func test_preview_credit_S_rating_at_high_fame() -> void:
-	pending("v7 PR-F: fame field deleted; assertion no longer meaningful")
+func test_preview_credit_S_rating_at_high_revenue_low_debt() -> void:
+	GameState.quarterly_revenue = 30_000_000
+	GameState.debt = 0
+	var r: Dictionary = CommandBus.send(&"economy.preview_credit", {})
+	assert_eq(r.rating, &"S")
+	assert_almost_eq(float(r.rate), EconomySystem.BASE_INTEREST_RATE * 0.25, 0.000001)
 
 func test_preview_credit_max_loan_responds_to_debt_after_cash_spent() -> void:
 	# 取贷后即便把借来的钱花掉, debt 仍在 → max_loan 应低于"借之前".
@@ -278,11 +291,24 @@ func test_bankruptcy_depth_floor_protects_brand_new_company() -> void:
 
 # ---- §6.5 信用评级 (考虑 debt/revenue, 不再 fame-only) ------------------
 
-func test_credit_rating_S_requires_low_debt_and_high_fame() -> void:
-	pending("v7 PR-F: fame field deleted; assertion no longer meaningful")
+func test_credit_rating_S_requires_low_debt_and_high_revenue() -> void:
+	# S requires both ratio < 0.5 and quarterly_revenue >= 30M.
+	GameState.quarterly_revenue = 30_000_000
+	GameState.debt = 0
+	var s: Dictionary = CommandBus.send(&"economy.preview_credit", {})
+	assert_eq(s.rating, &"S")
 
-func test_credit_rating_drops_to_C_when_debt_ratio_high_despite_fame() -> void:
-	# fame 高但 debt/revenue 比值大, 不能给 S/A/B.
+	GameState.quarterly_revenue = 29_999_999
+	var below_revenue: Dictionary = CommandBus.send(&"economy.preview_credit", {})
+	assert_ne(below_revenue.rating, &"S")
+
+	GameState.quarterly_revenue = 30_000_000
+	GameState.debt = 15_000_000
+	var high_debt: Dictionary = CommandBus.send(&"economy.preview_credit", {})
+	assert_ne(high_debt.rating, &"S")
+
+func test_credit_rating_drops_to_C_when_debt_ratio_is_high() -> void:
+	# debt/revenue 比值大时不能给 S/A/B.
 	GameState.quarterly_revenue = 1_000_000
 	GameState.debt = 3_000_000  # ratio 3 → 既不 < 0.5/1/2, 但 < 4 → C
 	var r: Dictionary = CommandBus.send(&"economy.preview_credit", {})

@@ -183,9 +183,9 @@ func test_base_attraction_rank_factors() -> void:
 	# rank=1 → full curve; rank=2 → 0.5×; rank=3 → 0.25×; rank ≥4 → 0.
 	# Pick turn 280 (curve value 10_000) and check the four ranks.
 	var v: float = UserSystem._base_demand_curve(280)
-	assert_almost_eq(UserSystem._base_attraction(280, 1), v, 2.0)
-	assert_almost_eq(UserSystem._base_attraction(280, 2), v * 0.5, 2.0)
-	assert_almost_eq(UserSystem._base_attraction(280, 3), v * 0.25, 2.0)
+	assert_almost_eq(float(UserSystem._base_attraction(280, 1)), v, 2.0)
+	assert_almost_eq(float(UserSystem._base_attraction(280, 2)), v * 0.5, 2.0)
+	assert_almost_eq(float(UserSystem._base_attraction(280, 3)), v * 0.25, 2.0)
 	assert_eq(UserSystem._base_attraction(280, 4), 0)
 	assert_eq(UserSystem._base_attraction(280, 0), 0,
 			"rank=0 (not on board) maps to else factor = 0")

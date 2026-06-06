@@ -117,11 +117,20 @@ func test_token_demand_populated_only_for_published_models() -> void:
 	assert_true(GameState.token_demand.has(m_pub.id))
 	assert_false(GameState.token_demand.has(m_int.id))
 
-func test_token_demand_proportional_to_capability_and_fame() -> void:
-	# v7 PR-F (2026-05): 旧 fame×cap api_part 公式已删. api_part 现在派生自
-	# api_product.subscribers × API_TOKENS_PER_SUB_PER_WEEK; capability 与
-	# fame 不再直接驱动 api demand. 新行为由 demand_v7_test 覆盖.
-	pending("v7 PR-F: fame×cap api demand 公式废弃, 见 demand_v7_test")
+func test_api_token_demand_ignores_model_capability_directly() -> void:
+	# v7 PR-F: api_part derives only from api_product.subscribers ×
+	# API_TOKENS_PER_SUB_PER_WEEK. Capability can affect rank/growth elsewhere,
+	# but it does not directly multiply token demand anymore.
+	var low: Model = _make_published_model(&"m_low", {&"general": 10.0})
+	var high: Model = _make_published_model(&"m_high", {&"general": 1000.0})
+	var ap_low := _make_api_product(low.id)
+	var ap_high := _make_api_product(high.id)
+	ap_low.subscribers = 123
+	ap_high.subscribers = 123
+	var low_split: Dictionary = UserSystem._compute_demand_split_for_model(low)
+	var high_split: Dictionary = UserSystem._compute_demand_split_for_model(high)
+	assert_eq(int(low_split.api), int(high_split.api))
+	assert_eq(int(low_split.api), 123 * UserSystem.API_TOKENS_PER_SUB_PER_WEEK)
 
 func _make_api_product(model_id: StringName) -> Product:
 	var p := Product.new()
@@ -156,7 +165,7 @@ func test_api_product_skipped_in_subscriber_evolution() -> void:
 	EventBus.phase_started.emit(&"action", 1)
 	assert_eq(ap.subscribers, 0, "api 产品 subscribers 不应被增长改动")
 
-func test_token_demand_zero_when_fame_zero_and_no_subscribers() -> void:
+func test_token_demand_zero_when_no_products_or_api_subscribers() -> void:
 	# §6.4: 无 product / api pool 时, published model 的 demand 为 0。
 	var m: Model = _make_published_model(&"m1")
 	CommandBus.send(&"user.recompute_now", {})
@@ -197,16 +206,21 @@ func test_token_demand_includes_subscriber_part_for_bound_product() -> void:
 
 # ---- §6.2 _resolve_per_product / churn / attract -----------------------
 
-func test_high_quality_product_attracts_more_at_same_fame() -> void:
-	# v7 PR-F: quality_share × fame 公式已删. 用户增长改由 rank + 价格 + 营销
-	# 驱动. product.quality 仍是产品质量指标但不进 UserSystem rate 公式.
-	pending("v7 PR-F: 用户增长不再读 product.quality, 见 demand_v7_test")
+func test_product_quality_does_not_enter_user_growth_rate() -> void:
+	# v7 PR-F: quality_share × fame formula is gone. UserSystem rate is now
+	# rank + price + capability penalty; product.quality is not an input.
+	var m: Model = _make_published_model(&"m1", {&"general": 100.0})
+	var low_q := _make_product(&"p_low_q", &"chatbot", 5, 100, 0.1, m.id)
+	var high_q := _make_product(&"p_high_q", &"chatbot", 5, 100, 1.0, m.id)
+	var low_breakdown: Dictionary = UserSystem.compute_rate_breakdown(low_q)
+	var high_breakdown: Dictionary = UserSystem.compute_rate_breakdown(high_q)
+	assert_almost_eq(float(low_breakdown.total_rate), float(high_breakdown.total_rate), 0.000001)
+	assert_eq(int(low_breakdown.marketing_attract), int(high_breakdown.marketing_attract))
 
-func test_zero_fame_zero_attract() -> void:
-	# §6.2: fame=0 → attract = 0. 无营销时 subscribers 不应增长.
+func test_no_model_no_campaign_no_existing_pool_keeps_subscribers_zero() -> void:
+	# 无绑定模型、无营销、无既有池时 subscribers 不应增长。
 	_make_product(&"p1", &"chatbot", 99, 0, 0.7)
 	CommandBus.send(&"user.recompute_now", {})
-	# 无 fame, 无 campaign, 无既有用户 → subscribers 应保持 0.
 	assert_eq(GameState.products[0].subscribers, 0)
 
 func test_churn_reduces_subscribers_when_quality_below_base() -> void:
@@ -226,10 +240,9 @@ func test_quality_above_base_has_only_base_churn() -> void:
 
 func test_base_churn_rate_independent_of_quality() -> void:
 	# §6.2: BASE_CHURN_RATE=0.01 对所有非 api 产品生效, 无关质量.
-	# 高质量 (quality=1.0) + 0 fame: 唯一的流失来源就是 1% 基础.
+	# 这里没有绑定模型, 实际走孤儿产品扣减路径; 只守护质量不导致崩溃或增长。
 	_make_product(&"p1", &"chatbot", 99, 1000, 1.0)
 	CommandBus.send(&"user.recompute_now", {})
-	# 1000 × 0.01 = 10 churn → 990; attract=0. 预期约 990.
 	assert_lt(GameState.products[0].subscribers, 1000, "最高质量产品仍有基础流失")
 	assert_gte(GameState.products[0].subscribers, 985, "基础流失不应超过 1.5%")
 
@@ -267,28 +280,28 @@ func test_campaign_targeting_chatbot_boosts_only_chatbot_products() -> void:
 	assert_eq(GameState.products[1].subscribers, 0,
 			"非目标 product 不应受 campaign 影响")
 
-func test_campaign_segment_all_boosts_every_product_DISABLED() -> void:
-	pending("v7 PR-F: campaign now needs bound model to avoid orphan churn path")
-func _disabled_test_campaign_segment_all_boosts_every_product() -> void:
-	# &"all" segment 应同时加成 chatbot + agent.
-	_make_product(&"p_chat", &"chatbot", 99, 0, 0.7)
-	_make_product(&"p_agent", &"agent", 99, 0, 0.7)
+func test_legacy_campaign_without_target_product_boosts_no_products() -> void:
+	# v7 PR-F3: campaigns target one product by target_product_id. Legacy
+	# segment-only campaigns are ignored here and terminated by MarketingSystem.
+	var m: Model = _make_published_model(&"m_campaign", {&"general": 80.0})
+	var p_chat := _make_product(&"p_chat", &"chatbot", 5, 0, 0.7, m.id)
+	var p_agent := _make_product(&"p_agent", &"agent", 50, 0, 0.7, m.id)
 	_make_campaign(&"c1", &"all", 1_000_000)
-	CommandBus.send(&"user.recompute_now", {})
-	assert_gt(GameState.products[0].subscribers, 0)
-	assert_gt(GameState.products[1].subscribers, 0)
+	assert_eq(UserSystem._marketing_attract(p_chat), 0)
+	assert_eq(UserSystem._marketing_attract(p_agent), 0)
 
 # ---- §2 命令 ------------------------------------------------------------
 
-func test_preview_demand_returns_predicted_for_known_model_DISABLED() -> void:
-	pending("v7 PR-F: predicted=fame×cap formula deleted; use api_product.subscribers seeding")
-func _disabled_test_preview_demand_returns_predicted_for_known_model() -> void:
-	# §6.4 (新): demand 需要 api 产品才有 base, 或绑订阅产品.
+func test_preview_demand_returns_subscriber_derived_prediction_for_known_model() -> void:
+	# §5.7: preview is a pure token-demand snapshot from current product pools.
 	var m: Model = _make_published_model(&"m1")
-	_make_api_product(m.id)
+	var api := _make_api_product(m.id)
+	api.subscribers = 123
+	_make_product(&"p_chat", &"chatbot", 5, 2, 0.7, m.id)
 	var r: Dictionary = CommandBus.send(&"user.preview_demand", {model_id = m.id})
 	assert_true(r.ok)
-	assert_gt(int(r.predicted), 0)
+	assert_eq(int(r.predicted),
+			123 * UserSystem.API_TOKENS_PER_SUB_PER_WEEK + 2 * 250_000)
 
 func test_preview_demand_unknown_model_returns_error() -> void:
 	# §2: error code = &"unknown_model".
@@ -329,22 +342,22 @@ func test_users_resolved_emits_zero_delta_when_no_subscriber_change() -> void:
 	var p: Array = get_signal_parameters(EventBus, "users_resolved")
 	assert_eq(int(p[1]), 0, "无产品时 delta 应为 0")
 
-func test_users_resolved_emits_positive_delta_when_users_grow_DISABLED() -> void:
-	pending("v7 PR-F: fame-driven growth removed; positive delta needs rank or marketing path")
-func _disabled_test_users_resolved_emits_positive_delta_when_users_grow() -> void:
+func test_users_resolved_emits_positive_delta_when_marketing_grows_users() -> void:
 	# §3 / §6.1: 当 paid_users 增加, delta 应 = new - old > 0.
-	_make_product(&"p1", &"chatbot", 99, 0, 1.0)  # quality=1, 几乎不流失
+	var m: Model = _make_published_model(&"m_growth", {&"general": 80.0})
+	var p := _make_product(&"p1", &"chatbot", 5, 0, 1.0, m.id)
+	_campaign_targeting(p.id, 80)
 	GameState.paid_users = 0
 	watch_signals(EventBus)
 	CommandBus.send(&"user.recompute_now", {})
-	var p: Array = get_signal_parameters(EventBus, "users_resolved")
-	assert_eq(int(p[1]), GameState.paid_users,
+	var params: Array = get_signal_parameters(EventBus, "users_resolved")
+	assert_eq(int(params[1]), GameState.paid_users,
 			"用户从 0 增长, delta 应等于新的 paid_users")
-	assert_gt(int(p[1]), 0, "增长时 delta 应为正")
+	assert_gt(int(params[1]), 0, "增长时 delta 应为正")
 
 func test_users_resolved_emits_negative_delta_when_users_shrink() -> void:
 	# §3 / §6.1: 用户流失时 delta 应为负.
-	# 低 quality (0.3) + 0 fame + 0 campaign → 必有 churn, 无 attract.
+	# 绑定模型缺失的孤儿产品会流失, 无营销补偿。
 	var prod := _make_product(&"p1", &"chatbot", 99, 1000, 0.3)
 	GameState.paid_users = 1000
 	watch_signals(EventBus)
@@ -402,29 +415,22 @@ func test_token_demand_per_type_differs_with_same_subscribers() -> void:
 
 # ---- §6.4 (v3) API demand 100× 校准 ------------------------------------
 
-func test_api_token_demand_calibration_at_fame100_cap300_DISABLED() -> void:
-	pending("v7 PR-F: fame×cap API demand formula deleted; calibration tracked in demand_v7_test")
-func _disabled_test_api_token_demand_calibration_at_fame100_cap300() -> void:
-	# §7 校准点 (v3): fame=100, cap_total=300 → 4.5e9 tokens/月.
-	# 公式: api_part = TOKEN_BASE_PER_FAME × fame × cap_total / 100
-	#               = 15_000_000 × 100 × 300 / 100 = 4.5e9
-	var m: Model = _make_published_model(&"m1", {&"general": 100.0,
-			&"code": 100.0, &"reasoning": 100.0})  # cap_total = 300
-	_make_api_product(m.id)
-	CommandBus.send(&"user.recompute_now", {})
-	var demand: int = int(GameState.api_token_demand[m.id])
-	# Allow ±1% tolerance for int rounding in implementation.
-	assert_almost_eq(float(demand), 4.5e9, 4.5e7)
-
-func test_api_token_demand_scales_linear_with_fame() -> void:
-	# §6.4: 同 cap, fame ×2 → demand ×2.
+func test_api_token_demand_calibrates_from_api_subscriber_units() -> void:
 	var m: Model = _make_published_model(&"m1", {&"general": 60.0})
-	_make_api_product(m.id)
-	CommandBus.send(&"user.recompute_now", {})
-	var d50: int = int(GameState.api_token_demand[m.id])
-	CommandBus.send(&"user.recompute_now", {})
-	var d100: int = int(GameState.api_token_demand[m.id])
-	assert_almost_eq(float(d100), float(d50) * 2.0, float(d50) * 0.01)
+	var api := _make_api_product(m.id)
+	api.subscribers = 450
+	var split: Dictionary = UserSystem._compute_demand_split_for_model(m)
+	assert_eq(int(split.api), 4_500_000_000)
+
+func test_api_token_demand_scales_linearly_with_api_subscribers() -> void:
+	# §5.7: 同一模型下, api subscriber pool ×2 → api demand ×2.
+	var m: Model = _make_published_model(&"m1", {&"general": 60.0})
+	var api := _make_api_product(m.id)
+	api.subscribers = 50
+	var d50: int = int(UserSystem._compute_demand_split_for_model(m).api)
+	api.subscribers = 100
+	var d100: int = int(UserSystem._compute_demand_split_for_model(m).api)
+	assert_eq(d100, d50 * 2)
 
 # ---- §6.4 (v3) CAC 校准 + 线性 ----------------------------------------
 

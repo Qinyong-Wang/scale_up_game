@@ -80,14 +80,18 @@ func test_bankruptcy_warning_reason_for_cash_negative() -> void:
 
 # ---- InfraSystem error codes --------------------------------------------
 
-func test_rent_facility_returns_facility_unlock_required_when_low_fame() -> void:
-	pending("v7 PR-F: fame field deleted; assertion no longer meaningful")
+func test_rent_facility_returns_facility_unlock_required_when_cash_below_gate() -> void:
+	# v7 PR-F: facility gate is now cash, not fame. Error code stays
+	# facility_unlock_required for UI/back-compat.
+	GameState.cash = 100_000
+	var r: Dictionary = CommandBus.send(&"infra.rent_facility",
+			{facility_spec_id = &"facility_hall", power_supply_id = &"grid"})
+	assert_false(r.ok)
+	assert_eq(r.error, &"facility_unlock_required")
 
-func test_build_facility_returns_facility_unlock_required_when_low_fame() -> void:
-	# v7 PR-F: gate is now cash, not fame. Starting cash (1M) is below
-	# facility_hall's unlock_cash_required (500k? actually 500_000) — wait,
-	# hall needs 500_000 and starting is 1M. So at starting cash the player
-	# CAN unlock hall. Force a lower cash to retain the original test's intent.
+func test_build_facility_returns_facility_unlock_required_when_cash_below_gate() -> void:
+	# v7 PR-F: gate is now cash, not fame. Force low cash below
+	# facility_hall.unlock_cash_required to retain the original test intent.
 	GameState.cash = 100_000
 	var r: Dictionary = CommandBus.send(&"infra.build_facility",
 			{facility_spec_id = &"facility_hall", power_supply_id = &"grid"})
