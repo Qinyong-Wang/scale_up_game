@@ -96,10 +96,10 @@
 
 ### 5.1 玩家可选公司标志 (LOGO_MARKS)
 
-新游戏时玩家可为公司选一个**程序化预设标记**, 顶栏 monogram 据 `GameState.company_logo` 绘制 (默认 `&""` = 上面的「Ascent A」, 即不选时与旧档行为一致)。
+新游戏时玩家可为公司选一个**确定性生成的品牌贴图标记**, 顶栏 monogram 据 `GameState.company_logo` 绘制 (默认 `&""` = 上面的「Ascent A」, 即不选时与旧档行为一致)。
 
-- 事实源 `UITheme.LOGO_MARKS`: 一个有序数组, 每项 `{id, shape, color}`。`shape` ∈ 程序化形状集 (`circle / square / diamond / triangle / hexagon / sparkle`), `color` 取一组在炭黑底上够亮的强调色 (`UITheme.LOGO_PALETTE`)。**不引入位图 logo 文件**, 全部 `UITheme.draw_company_logo()` 画出来。
-- `draw_company_logo(ci, rect, logo_id, draw_background=true)`: `logo_id` 为 `&""` 或未知时回退到 `draw_brand_mark()` (经典 A); 否则在炭黑圆角方块上居中画该形状 (取强调色)。顶栏标记、新游戏标志网格共用本函数, 不各自硬编码几何。
+- 事实源 `assets/sprites/ui/brand/brand-NN.png` + `IconRegistry.company_logo_keys()` / `IconRegistry.company_logo_texture()`：品牌标记由 `tools/art/build_deterministic_ui_icons.py` 生成，必须是实心、透明缺块少的小尺寸可读图。旧的 `UITheme.LOGO_MARKS` 只作为旧档程序化 id 的兼容路径保留。
+- `draw_company_logo(ci, rect, logo_id, draw_background=true)`: `logo_id` 为 `brand-NN` 时从 `IconRegistry` 取贴图并画在浅灰圆角底上；`&""` 或未知时回退到默认「上升 A」；旧档程序化形状 id 仍按兼容路径绘制。顶栏标记、新游戏标志网格、起始页 showcase 共用本函数, 不各自硬编码几何。
 - 颜色仅是玩家**个人品牌**的选择, 不改变全站「黑灰白」基调 (基调指 app 自身 UI; 公司 logo 允许彩色)。
 - 指标用 `StatChip`, 顶栏走它的 **flat 变体** (`set_flat(true)`): 去掉每块的边框/底色/圆角, 改用块间 **1px 渐变细刻线** (中段 `TOPBAR_GLASS_DIVIDER` 亮玻璃白、上下淡入透明、纵向铺满, 像玻璃上的刻度线) 分隔成仪表簇; value 字号提到 `FS_MD` (15) 粗体当主读数 (深色玻璃上走 `TEXT_ON_DARK`), label 仍 `FS_XS` (11) 浅灰 (`TEXT_ON_DARK_SECONDARY`)。flat 变体即"顶栏深色玻璃上下文", 文字自动走 on-dark 档。**默认 `StatChip` 仍是白底描边的独立卡** (营收 tab 复用, 深灰文字), flat 只是顶栏 opt-in, 不改默认契约。一排 5 项: 回合 (周 + 年)、现金、周净流、付费用户、算力 (旧"已发布模型数"chip 已移除)。具体 chip 集合与值来源以 `main.gd` 的顶栏装配为准。**默认 `StatChip` 仍是白底描边的独立卡** (营收 tab 复用), flat 只是顶栏 opt-in, 不改默认契约。一排 5 项: 回合 (周 + 年)、现金、周净流、付费用户、算力 (旧"已发布模型数"chip 已移除)。具体 chip 集合与值来源以 `main.gd` 的顶栏装配为准。
 - **金额防溢出**: 顶栏现金 / 周净流 / 付费用户走 `UITheme.format_money_compact()` —— `< 100 万`保持千分位精确 (`-272,360`), `≥ 100 万`缩成 `1.2M / 3.4B / 5.6T`, 配合 flat chip 不裁字 (value 不 clip, size-to-content), 大额营收不再被截断成省略号。其它页面 (经济明细 / 贷款 / 结算) 仍用精确 `_format_money`, 不缩写。

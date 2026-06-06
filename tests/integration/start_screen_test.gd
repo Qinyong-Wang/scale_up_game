@@ -56,6 +56,23 @@ func test_hero_layout_has_decorative_showcase_panel() -> void:
 	assert_eq(s._showcase_panel.mouse_filter, Control.MOUSE_FILTER_IGNORE,
 		"右侧仪表预览是纯装饰, 不应拦截鼠标")
 
+func test_showcase_uses_exported_logo_and_task_icons() -> void:
+	# 发布包里右侧 showcase 不能看起来像 logo / 任务头像缺失:
+	# 应实际加载 brand 与 task 贴图, 只有贴图缺失时才回退几何占位。
+	var s = _make_screen()
+	assert_true(s._showcase_panel.has_method(&"loaded_company_logo_for_test"),
+		"showcase 应暴露公司 logo 资源加载状态供导出回归测试使用")
+	assert_true(s._showcase_panel.has_method(&"loaded_task_icon_count_for_test"),
+		"showcase 应暴露任务图标加载数量供导出回归测试使用")
+	if not s._showcase_panel.has_method(&"loaded_company_logo_for_test"):
+		return
+	if not s._showcase_panel.has_method(&"loaded_task_icon_count_for_test"):
+		return
+	assert_true(s._showcase_panel.loaded_company_logo_for_test(),
+		"showcase 应加载真实 brand-01 公司标记贴图")
+	assert_gte(s._showcase_panel.loaded_task_icon_count_for_test(), 4,
+		"showcase 至少应加载 4 个真实 task 图标, 避免任务头像显示为灰色占位")
+
 func test_hero_card_uses_translucent_surface() -> void:
 	# 主面板要像欢迎页玻璃/磨砂面板, 不是完全不透明的旧白卡。
 	var s = _make_screen()

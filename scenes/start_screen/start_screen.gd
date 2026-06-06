@@ -522,8 +522,31 @@ class _LogoMark extends Control:
 
 ## 右侧装饰仪表: 小型算力曲线 / 任务轨道 / 排名线框。纯视觉, 不承载真实状态。
 class _ShowcasePanel extends Control:
+	const _COMPANY_LOGO_KEY := &"brand-01"
+	const _TASK_ICON_KEYS := [
+		&"pretrain",
+		&"posttrain",
+		&"evaluate",
+		&"data_collection",
+		&"tech_research",
+	]
+
+	var _company_logo_texture: Texture2D
+	var _task_icons: Array[Texture2D] = []
+
 	func _ready() -> void:
+		_load_showcase_assets()
 		resized.connect(queue_redraw)
+
+	func loaded_company_logo_for_test() -> bool:
+		return _company_logo_texture != null
+
+	func loaded_task_icon_count_for_test() -> int:
+		var count := 0
+		for tex in _task_icons:
+			if tex != null:
+				count += 1
+		return count
 
 	func _draw() -> void:
 		if size.x <= 0.0 or size.y <= 0.0:
@@ -537,10 +560,27 @@ class _ShowcasePanel extends Control:
 		_draw_ranks()
 		_draw_tracks()
 
+	func _load_showcase_assets() -> void:
+		var missing: Array[String] = []
+		_company_logo_texture = IconRegistry.company_logo_texture(_COMPANY_LOGO_KEY)
+		if _company_logo_texture == null:
+			missing.append("brand/%s" % String(_COMPANY_LOGO_KEY))
+		_task_icons.clear()
+		for key in _TASK_ICON_KEYS:
+			var tex: Texture2D = IconRegistry.get_icon(&"task", key)
+			_task_icons.append(tex)
+			if tex == null:
+				missing.append("task/%s" % String(key))
+		if not missing.is_empty():
+			Log.warn(&"ui", "start_screen_showcase_assets_missing", {missing = missing})
+
 	func _draw_header() -> void:
+		var logo_rect := Rect2(UITheme.S_6, UITheme.S_5, 48, 48)
+		UITheme.draw_company_logo(self, logo_rect, _COMPANY_LOGO_KEY, true)
+		var label_x := logo_rect.end.x + UITheme.S_4
 		var chip_col := Color(UITheme.TEXT_PRIMARY, 0.74)
-		draw_rect(Rect2(UITheme.S_6, UITheme.S_6, 72, 8), chip_col)
-		draw_rect(Rect2(UITheme.S_6, UITheme.S_6 + 18, 128, 5),
+		draw_rect(Rect2(label_x, UITheme.S_6 + 4, 86, 8), chip_col)
+		draw_rect(Rect2(label_x, UITheme.S_6 + 22, 138, 5),
 			Color(UITheme.BORDER_STRONG, 0.38))
 		for i in range(3):
 			var x := size.x - UITheme.S_6 - 18 - float(i) * 26.0
@@ -570,12 +610,11 @@ class _ShowcasePanel extends Control:
 		var left := UITheme.S_6
 		var top := 244.0
 		for i in range(4):
-			var y := top + float(i) * 34.0
+			var y := top + float(i) * 36.0
 			draw_rect(Rect2(left, y, size.x - UITheme.S_6 * 2, 1),
 				Color(UITheme.BORDER_SUBTLE, 0.58))
-			draw_circle(Vector2(left + 16, y + 17), 8,
-				Color(UITheme.TEXT_PRIMARY, 0.10 + float(i) * 0.025))
-			draw_rect(Rect2(left + 38, y + 11, 84 + float(3 - i) * 16.0, 7),
+			_draw_icon_tile(Rect2(left + 4, y + 6, 24, 24), _task_icon(i), i)
+			draw_rect(Rect2(left + 42, y + 12, 84 + float(3 - i) * 16.0, 7),
 				Color(UITheme.TEXT_PRIMARY, 0.42))
 			draw_rect(Rect2(size.x - UITheme.S_6 - 72, y + 10, 54, 8),
 				Color(UITheme.ACCENT_INFO, 0.18 + float(i) * 0.035))
@@ -585,11 +624,34 @@ class _ShowcasePanel extends Control:
 		var left := UITheme.S_6
 		for i in range(3):
 			var y := top + float(i) * 30.0
-			var rail := Rect2(left, y, size.x - UITheme.S_6 * 2, 10)
+			_draw_icon_tile(Rect2(left + 2, y - 8, 24, 24), _task_icon(i + 2), i + 2)
+			var rail_left := left + 36.0
+			var rail := Rect2(rail_left, y, size.x - UITheme.S_6 - rail_left, 10)
 			draw_rect(rail, Color(UITheme.BORDER_SUBTLE, 0.56))
 			var fill_w := rail.size.x * (0.28 + float(i) * 0.22)
 			draw_rect(Rect2(rail.position, Vector2(fill_w, rail.size.y)),
 				Color(UITheme.TEXT_PRIMARY, 0.42))
+
+	func _task_icon(index: int) -> Texture2D:
+		if _task_icons.is_empty():
+			return null
+		return _task_icons[index % _task_icons.size()]
+
+	func _draw_icon_tile(rect: Rect2, tex: Texture2D, seed: int) -> void:
+		draw_style_box(_box(Color(UITheme.BG_ELEVATED, 0.96),
+			Color(UITheme.BORDER_SUBTLE, 0.78), UITheme.R_SM, 0), rect)
+		var inset: float = maxf(3.0, rect.size.x * 0.16)
+		var icon_rect := rect.grow(-inset)
+		if tex != null:
+			draw_texture_rect(tex, icon_rect, false)
+			return
+		var center := rect.get_center()
+		var radius: float = minf(rect.size.x, rect.size.y) * 0.22
+		var alpha := 0.18 + float(seed % 3) * 0.04
+		draw_circle(center, radius, Color(UITheme.TEXT_PRIMARY, alpha))
+		draw_line(center + Vector2(-radius * 0.9, radius * 0.2),
+			center + Vector2(radius * 0.9, -radius * 0.2),
+			Color(UITheme.ACCENT_PRIMARY, 0.34), maxf(1.0, radius * 0.22), true)
 
 	func _box(bg: Color, border: Color, radius: int, margin: int) -> StyleBoxFlat:
 		var sb := StyleBoxFlat.new()
