@@ -9,6 +9,6 @@ display_name = "News Archive 2017 Q2"
 source = &"purchased"
 size = 5.0
 quality = 0.78
-coverage_tags = Array[StringName]([&"news"])
+coverage_tags = Array[StringName]([&"news", &"business_analysis"])
 price = 50000
 released_at_week = 0

@@ -219,6 +219,25 @@ func test_refresh_skips_locked_datasets() -> void:
 		"only the unlocked dataset should be offered")
 	assert_eq(StringName(dlg._dataset_checkboxes[0].id), &"codebase_v1")
 
+func test_dataset_checkbox_hides_business_analysis_tag() -> void:
+	var ds := Dataset.new()
+	ds.id = &"ds_business_dialog"
+	ds.display_name = "Business Dialog"
+	ds.kind = &"pretrain"
+	ds.source = &"purchased"
+	ds.size = 5.0
+	ds.quality = 0.78
+	ds.coverage_tags = [&"news", &"business_analysis"] as Array[StringName]
+	GameState.datasets.append(ds)
+	var dlg = _make_dialog()
+	dlg.refresh()
+	assert_eq(dlg._dataset_checkboxes.size(), 1)
+	var text: String = String(dlg._dataset_checkboxes[0].box.text)
+	var tooltip: String = String(dlg._dataset_checkboxes[0].box.tooltip_text)
+	assert_true(text.find("news") != -1, "visible dataset tag should still render")
+	assert_eq(text.find("business_analysis"), -1, "hidden tag must not appear in checkbox text")
+	assert_eq(tooltip.find("business_analysis"), -1, "hidden tag must not appear in tooltip")
+
 func test_start_emits_signal_and_creates_active_task() -> void:
 	var dlg = _make_dialog()
 	dlg.refresh()

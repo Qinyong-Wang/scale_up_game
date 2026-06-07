@@ -281,6 +281,26 @@ func test_owned_card_shows_coverage_tags() -> void:
 	assert_string_contains(tags_val, "书籍", "我的数据集卡片应显示 coverage_tags 中的 'books' 中文标签")
 	assert_eq(tags_val.find("books"), -1, "玩家界面不应显示内部 tag id")
 
+func test_dataset_cards_hide_business_analysis_tag() -> void:
+	var v := _make()
+	var data := _default_data()
+	data["market_templates"] = [_tmpl(&"ds_business", "Business Set", &"purchased",
+			&"pretrain", 100, 5.0, [&"news", &"business_analysis"])]
+	data["owned_datasets"] = [_ds(&"mine_business", "Mine", &"purchased",
+			&"pretrain", 5.0, [&"web", &"business_analysis"])]
+	v.refresh(data)
+	await get_tree().process_frame
+	var market_fields: Dictionary = v.get_market_card_fields_for_test(&"ds_business")
+	var market_tags: String = String(market_fields.get("标签", ""))
+	assert_string_contains(market_tags, "新闻", "普通可见 tag 仍应显示")
+	assert_eq(market_tags.find("business"), -1, "隐藏标签不应在市场卡片显示")
+	assert_eq(market_tags.find("商业"), -1, "隐藏标签不应在市场卡片显示")
+	var owned_fields: Dictionary = _owned_fields(v, &"mine_business")
+	var owned_tags: String = String(owned_fields.get("标签", ""))
+	assert_string_contains(owned_tags, "网页", "普通可见 tag 仍应显示")
+	assert_eq(owned_tags.find("business"), -1, "隐藏标签不应在我的数据集卡片显示")
+	assert_eq(owned_tags.find("商业"), -1, "隐藏标签不应在我的数据集卡片显示")
+
 func test_dataset_cards_hide_internal_source_enums() -> void:
 	var v := _make()
 	var data := _default_data()

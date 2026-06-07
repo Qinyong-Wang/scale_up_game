@@ -383,8 +383,13 @@ func _fmt_tags(tags) -> String:
 		return ""
 	var parts := PackedStringArray()
 	for t in tags:
+		if _is_hidden_tag(StringName(t)):
+			continue
 		parts.append(_tag_label(StringName(t)))
 	return ", ".join(parts)
+
+func _is_hidden_tag(tag: StringName) -> bool:
+	return tag == &"business_analysis"
 
 func _source_label(source: StringName) -> String:
 	match source:

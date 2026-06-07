@@ -87,6 +87,10 @@ const GENERAL_DATA_TAGS: Array[StringName] = [
 	&"web", &"books", &"encyclopedia", &"edu", &"news", &"arxiv",
 	&"multilingual", &"textbook", &"chat",
 ]
+const BUSINESS_ANALYSIS_TAG: StringName = &"business_analysis"
+const BUSINESS_ANALYSIS_CODE_MIN_FACTOR: float = 0.96
+const BUSINESS_ANALYSIS_REASONING_MIN_FACTOR: float = 0.97
+const BUSINESS_ANALYSIS_AGENT_MIN_FACTOR: float = 0.95
 
 # Per-arch capability coefficient (multiplicative on raw evaluate score).
 # Authoritative: 平衡参数.md §evaluate产出 (`arch_capability_coef`).
@@ -1096,6 +1100,22 @@ func _compute_capability_measured(model, eval_lead) -> Dictionary:
 	var code_ratio: float = _dataset_tag_ratio(model.dataset_ids, &"code")
 	var reasoning_ratio: float = _dataset_tag_ratio(model.dataset_ids, &"reasoning",
 			[&"chat", &"reasoning"])
+	var business_share: float = _dataset_weighted_tag_share(model.dataset_ids,
+			[BUSINESS_ANALYSIS_TAG])
+	var business_code_factor: float = _business_analysis_axis_factor(
+			business_share, BUSINESS_ANALYSIS_CODE_MIN_FACTOR)
+	var business_reasoning_factor: float = _business_analysis_axis_factor(
+			business_share, BUSINESS_ANALYSIS_REASONING_MIN_FACTOR)
+	var business_agent_factor: float = _business_analysis_axis_factor(
+			business_share, BUSINESS_ANALYSIS_AGENT_MIN_FACTOR)
+	if business_share > 0.0:
+		Log.debug(&"task", "business_analysis_axis_penalty", {
+			model_id = model.id,
+			share = business_share,
+			code_factor = business_code_factor,
+			reasoning_factor = business_reasoning_factor,
+			agent_factor = business_agent_factor,
+		})
 	# v7 PR-G: multimodal axis gets a method-specific bonus from PretrainDialog
 	# E-axis. cross_train = 1.0 (baseline); diffusion_ar / pixel_ar / native_ar
 	# scale up. `none` (single-modality model) → no multi axis regardless.
@@ -1113,11 +1133,11 @@ func _compute_capability_measured(model, eval_lead) -> Dictionary:
 		agent_ratio *= _tool_use_tech_bonus()
 		var ctx_bonus: float = _context_agent_bonus(
 				int(model.context_length_tokens) if "context_length_tokens" in model else 4096)
-		agent_score = maxf(0.0, raw * agent_ratio) + ctx_bonus
+		agent_score = (maxf(0.0, raw * agent_ratio) + ctx_bonus) * business_agent_factor
 	return {
 		general = maxf(0.0, raw * general_ratio),
-		code = maxf(0.0, raw * code_ratio),
-		reasoning = maxf(0.0, raw * reasoning_ratio),
+		code = maxf(0.0, raw * code_ratio * business_code_factor),
+		reasoning = maxf(0.0, raw * reasoning_ratio * business_reasoning_factor),
 		multimodal = maxf(0.0, raw * multimodal_ratio),
 		agent = agent_score,
 	}
@@ -1567,6 +1587,10 @@ func _dataset_weighted_tag_share(dataset_ids: Array, tags: Array,
 	if total_weight <= 0.0:
 		return 0.0
 	return hit_weight / total_weight
+
+func _business_analysis_axis_factor(share: float, min_factor: float) -> float:
+	var s: float = clampf(share, 0.0, 1.0)
+	return 1.0 - s * (1.0 - min_factor)
 
 # ---- locks --------------------------------------------------------------
 

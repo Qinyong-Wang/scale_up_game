@@ -103,6 +103,21 @@ func test_list_market_hides_already_owned() -> void:
 		assert_ne(StringName(item.id), &"bookcorpus_v1",
 			"owned templates should not appear in market list")
 
+func test_news_archive_carries_hidden_business_analysis_tag() -> void:
+	# The tag is hidden in UI, but the template must carry it so evaluate can
+	# apply the small code/reasoning/agent black-humor penalty.
+	GameState.turn = 0
+	var r: Dictionary = CommandBus.send(&"dataset.list_market", {kind = &"pretrain"})
+	assert_true(r.ok)
+	var found: bool = false
+	for item in (r.items as Array):
+		if StringName(item.id) != &"news_archive_2017q2":
+			continue
+		found = true
+		assert_true((item.coverage_tags as Array).has("business_analysis"),
+				"news archive should carry hidden business_analysis tag")
+	assert_true(found, "news_archive_2017q2 should be available at turn 0")
+
 # ---- dataset_market_updated signal at half-year boundary ----------------
 
 func test_market_updated_signal_fires_at_half_year() -> void:

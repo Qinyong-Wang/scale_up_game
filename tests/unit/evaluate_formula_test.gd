@@ -277,6 +277,34 @@ func test_breadth_penalty_is_neutral_at_realistic_general_share() -> void:
 			general * _expected_ratio(0.55), 0.5,
 			"v10: code axis should still follow token×quality tag share")
 
+func test_business_analysis_hidden_tag_slightly_hurts_technical_axes_only() -> void:
+	# Hidden corporate-analysis data is black humor, not a visible product tag:
+	# it leaves raw/general alone but slightly hurts coding, reasoning, and agent.
+	var opt: float = _optimal_tokens_b(70_000.0)
+	var base_ds := _make_dataset(&"ds_business_clean", 0.5,
+			[&"web", &"code", &"chat", &"agent"], opt)
+	var clean := _make_model(&"ant_v1", 70_000.0, [base_ds.id])
+	var clean_caps: Dictionary = TaskSystem._compute_capability_measured(clean, null)
+	GameState.models.clear()
+	GameState.datasets.clear()
+	var business_ds := _make_dataset(&"ds_business_polluted", 0.5,
+			[&"web", &"code", &"chat", &"agent", &"business_analysis"], opt)
+	var polluted := _make_model(&"ant_v1", 70_000.0, [business_ds.id])
+	var polluted_caps: Dictionary = TaskSystem._compute_capability_measured(polluted, null)
+
+	assert_almost_eq(float(polluted_caps.get(&"general", 0.0)),
+			float(clean_caps.get(&"general", 0.0)), 0.001,
+			"business_analysis must not change raw/general score")
+	assert_almost_eq(float(polluted_caps.get(&"multimodal", 0.0)),
+			float(clean_caps.get(&"multimodal", 0.0)), 0.001,
+			"business_analysis must not touch multimodal score")
+	assert_almost_eq(float(polluted_caps.get(&"code", 0.0)) /
+			float(clean_caps.get(&"code", 1.0)), 0.96, 0.01)
+	assert_almost_eq(float(polluted_caps.get(&"reasoning", 0.0)) /
+			float(clean_caps.get(&"reasoning", 1.0)), 0.97, 0.01)
+	assert_almost_eq(float(polluted_caps.get(&"agent", 0.0)) /
+			float(clean_caps.get(&"agent", 1.0)), 0.95, 0.01)
+
 func test_full_share_yields_ratio_one() -> void:
 	# Single dataset tagged code → 100% share → ratio = 1.0.
 	var ds := _make_dataset(&"d_code", 0.5, [&"code"], _optimal_tokens_b(800.0))

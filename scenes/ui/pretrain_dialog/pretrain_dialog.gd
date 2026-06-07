@@ -46,6 +46,7 @@ const _DS_SOURCE_LABELS: Dictionary = {
 	&"open_source": "DATASET_SRC_OPEN", &"purchased": "DATASET_SRC_PURCHASED",
 	&"collected": "DATASET_SRC_COLLECTED",
 }
+const _HIDDEN_DATASET_TAGS: Array[StringName] = [&"business_analysis"]
 
 # v7 (PR-G) — E-axis multimodal method options. Each label maps to a method id
 # the player can pick when the model has non-text input modalities.
@@ -615,12 +616,7 @@ func _build_dataset_checkbox(ds) -> CheckBox:
 	# v9 (2026-05): pretrain math now reads ds.quality + ds.size; source is
 	# audit-only. 在分组标题下不再重复 source, 字段更紧凑。
 	var q_pct: int = int(round(float(ds.quality) * 100.0))
-	var tag_str: String = ""
-	if ds.coverage_tags.size() > 0:
-		var parts: Array = []
-		for t in ds.coverage_tags:
-			parts.append(String(t))
-		tag_str = " · " + ", ".join(parts)
+	var tag_str: String = _format_visible_dataset_tags(ds.coverage_tags)
 	box.text = "  %s [q=%d%%%s]  %.0fB tokens" % [
 		ds.display_name, q_pct, tag_str, ds.size]
 	box.tooltip_text = tr("PRETRAIN_DS_TOOLTIP") % [
@@ -628,6 +624,19 @@ func _build_dataset_checkbox(ds) -> CheckBox:
 	box.toggled.connect(func(_p): _refresh_preview())
 	_dataset_checkboxes.append({box = box, id = ds.id})
 	return box
+
+func _format_visible_dataset_tags(tags: Array[StringName]) -> String:
+	var parts: Array = []
+	for t in tags:
+		if _is_hidden_dataset_tag(t):
+			continue
+		parts.append(String(t))
+	if parts.is_empty():
+		return ""
+	return " · " + ", ".join(parts)
+
+func _is_hidden_dataset_tag(tag: StringName) -> bool:
+	return _HIDDEN_DATASET_TAGS.has(tag)
 
 ## Per design/招聘系统设计.md §5.4: pretrain 强制 chief_scientist。下拉只列匹配
 ## specialty 的 idle lead (含创始人 — is_player_scientist 万能 lead), 默认选中
