@@ -416,6 +416,46 @@ func test_complete_posttrain_produces_dataset_with_target_capability() -> void:
 	assert_true(tag_set.has(&"code"))
 	assert_true(tag_set.has(&"instruction"))
 
+func test_complete_posttrain_employee_monitoring_slightly_improves_quality() -> void:
+	GameState.cash = 5_000_000
+	var base_preview: Dictionary = CommandBus.send(&"task.preview", {
+		template_id = &"data_collection_dynamic",
+		kind = &"posttrain",
+		target_size = 0.05,
+		target_capability = &"code",
+		target_quality = 0.65,
+	})
+	var monitored_preview: Dictionary = CommandBus.send(&"task.preview", {
+		template_id = &"data_collection_dynamic",
+		kind = &"posttrain",
+		target_size = 0.05,
+		target_capability = &"code",
+		target_quality = 0.65,
+		monitor_employee_work_data = true,
+	})
+	assert_true(base_preview.ok)
+	assert_true(monitored_preview.ok)
+	assert_eq(int(monitored_preview.total_cost), int(base_preview.total_cost),
+			"employee work monitoring is an internal-signal bonus, not a labor-price tier")
+
+	var r: Dictionary = CommandBus.send(&"task.start", {
+		template_id = &"data_collection_dynamic",
+		kind = &"posttrain",
+		target_size = 0.05,
+		target_capability = &"code",
+		target_quality = 0.65,
+		monitor_employee_work_data = true,
+		lead_ids = [_ds_zero_id], staff = {&"data_eng": 1},
+	})
+	assert_true(r.ok)
+	for i in range(int(r.total_weeks)):
+		EventBus.phase_started.emit(&"action", i + 1)
+	assert_eq(GameState.datasets.size(), 1)
+	var ds = GameState.datasets[0]
+	assert_eq(ds.kind, &"posttrain")
+	assert_almost_eq(float(ds.quality), 0.68, 0.001,
+			"monitoring employee daily work data adds a small +0.03 quality bonus")
+
 # ---- weekly cost uses override (not template default 0) -------------------
 
 func test_weekly_cost_uses_dynamic_override_during_upkeep() -> void:

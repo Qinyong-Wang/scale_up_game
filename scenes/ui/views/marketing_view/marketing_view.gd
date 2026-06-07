@@ -124,6 +124,9 @@ func _populate_card(card: Control, c: Dictionary) -> void:
 	var is_api: bool = bool(c.get("target_is_api", false))
 	var lead_label: String = String(c.get("lead_label", tr("MSG_NONE")))
 	var lead_mult: float = float(c.get("lead_mult", 1.0))
+	var fake_score_label: String = String(c.get("fake_score_label", tr("CAMPAIGN_FAKE_SCORE_NONE")))
+	var fake_score_mult: float = float(c.get("fake_score_conversion_mult", 1.0))
+	var fake_score_penalty: float = float(c.get("fake_score_retention_penalty", 0.0))
 	var per_week: int = int(c.get("expected_per_week", 0))
 
 	var fields: Array = []
@@ -136,6 +139,11 @@ func _populate_card(card: Control, c: Dictionary) -> void:
 	if lead_mult > 1.0:
 		lead_value += "  (×%.2f)" % lead_mult
 	fields.append({"label": "Lead", "value": lead_value})
+	var fake_score_value: String = fake_score_label \
+			+ " · " + tr("MARKETING_FAKE_SCORE_ACQUIRE_PREFIX") + String.num(fake_score_mult, 2) \
+			+ " · " + tr("MARKETING_FAKE_SCORE_RETENTION_PREFIX") \
+			+ " " + _format_pct_signed(fake_score_penalty) + tr("MARKETING_PER_WEEK_SUFFIX")
+	fields.append({"label": tr("FIELD_FAKE_SCORE"), "value": fake_score_value})
 	if is_api:
 		var tokens: int = per_week * UserSystem.API_TOKENS_PER_SUB_PER_WEEK
 		fields.append({"label": tr("FIELD_WEEKLY_API_DEMAND"),
@@ -195,6 +203,18 @@ func _format_tokens(n: int) -> String:
 	if v >= 1_000:
 		return "%.1fK" % (float(n) / 1_000.0)
 	return str(n)
+
+func _format_pct_signed(r: float) -> String:
+	var pct: float = r * 100.0
+	var sign_str: String = ""
+	if pct > 0.0:
+		sign_str = "+"
+	elif pct == 0.0:
+		return "0%"
+	var formatted: String = "%.1f" % pct
+	if formatted.ends_with(".0"):
+		formatted = formatted.substr(0, formatted.length() - 2)
+	return sign_str + formatted + "%"
 
 # ─── 测试 introspection ──────────────────────────────────────
 

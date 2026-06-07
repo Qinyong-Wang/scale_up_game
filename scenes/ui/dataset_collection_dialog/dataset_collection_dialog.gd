@@ -74,6 +74,8 @@ var _target_cap_row: Control
 var _target_cap_dropdown: OptionButton
 var _quality_tier_row: Control          # posttrain-only labor-grade selector
 var _quality_tier_dropdown: OptionButton
+var _employee_monitor_row: Control      # posttrain-only internal work-data option
+var _employee_monitor_checkbox: CheckBox
 var _lead_dropdown: OptionButton
 var _staff_label: Label
 
@@ -235,6 +237,15 @@ func _build_form(root: VBoxContainer) -> void:
 	_quality_tier_row = _label_row(tr("COLLECT_QUALITY_TIER"), _quality_tier_dropdown)
 	root.add_child(_quality_tier_row)
 
+	# Posttrain-only internal signal: employee daily work traces provide a small
+	# quality bump without changing the annotation labor pricing curve.
+	_employee_monitor_checkbox = CheckBox.new()
+	_employee_monitor_checkbox.text = tr("COLLECT_EMPLOYEE_MONITOR")
+	_employee_monitor_checkbox.tooltip_text = tr("COLLECT_EMPLOYEE_MONITOR_TOOLTIP")
+	_employee_monitor_checkbox.toggled.connect(func(_p): _refresh_preview())
+	_employee_monitor_row = _label_row(tr("COLLECT_EXTRA_DATA"), _employee_monitor_checkbox)
+	root.add_child(_employee_monitor_row)
+
 	# Lead — optional, data_scientist boosts quality.
 	_lead_dropdown = OptionButton.new()
 	_lead_dropdown.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -303,6 +314,8 @@ func _apply_kind_to_widgets() -> void:
 	_target_cap_row.visible = (_kind == _KIND_POSTTRAIN)
 	if _quality_tier_row != null:
 		_quality_tier_row.visible = (_kind == _KIND_POSTTRAIN)
+	if _employee_monitor_row != null:
+		_employee_monitor_row.visible = (_kind == _KIND_POSTTRAIN)
 	if _pretrain_tags_row != null:
 		_pretrain_tags_row.visible = (_kind == _KIND_PRETRAIN)
 	_size_spin.set_block_signals(true)
@@ -388,6 +401,16 @@ func _selected_target_quality() -> float:
 		return 0.65
 	return float(_quality_tier_dropdown.get_item_metadata(i))
 
+func _uses_employee_work_monitoring() -> bool:
+	return _kind == _KIND_POSTTRAIN \
+			and _employee_monitor_checkbox != null \
+			and _employee_monitor_checkbox.button_pressed
+
+func _employee_work_monitoring_bonus() -> float:
+	if not _uses_employee_work_monitoring():
+		return 0.0
+	return TaskSystem.POSTTRAIN_EMPLOYEE_WORK_DATA_QUALITY_ADD
+
 func _selected_pretrain_tags() -> Array[StringName]:
 	var out: Array[StringName] = []
 	for entry in _pretrain_tag_checkboxes:
@@ -437,6 +460,8 @@ func _build_payload() -> Dictionary:
 		payload[&"target_capability"] = _selected_target_capability()
 		# Labor-grade tier → target_quality; task_system prices by effective q.
 		payload[&"target_quality"] = _selected_target_quality()
+		if _uses_employee_work_monitoring():
+			payload[&"monitor_employee_work_data"] = true
 	else:
 		# v9: pretrain coverage_tags chosen by player (1-2 of the menu).
 		# task_system reads `target_tags` and writes into the new Dataset.
@@ -474,9 +499,10 @@ func _refresh_preview() -> void:
 	# Mirror task_system._data_collection_quality for the quality preview.
 	# Posttrain base = selected labor-grade tier; pretrain fixed 0.55.
 	var base_q: float = (_selected_target_quality() if _kind == _KIND_POSTTRAIN else 0.55)
-	var quality: float = _preview_quality(base_q, _selected_lead_id())
+	var quality: float = _preview_quality(
+			base_q, _selected_lead_id(), _employee_work_monitoring_bonus())
 	_quality_label.text = tr("COLLECT_QUALITY") % [
-			quality, base_q, _lead_quality_hint()]
+			quality, base_q, _quality_bonus_hint()]
 
 	var tags: Array
 	if _kind == _KIND_POSTTRAIN:
@@ -528,16 +554,23 @@ func _refresh_preview() -> void:
 		get_ok_button().disabled = true
 
 # Mirror task_system._data_collection_quality so preview matches apply.
-func _preview_quality(base: float, lead_id: StringName) -> float:
+func _preview_quality(base: float, lead_id: StringName, option_bonus: float = 0.0) -> float:
 	if lead_id == &"":
-		return clampf(base, 0.0, 1.0)
+		return clampf(base + option_bonus, 0.0, 1.0)
 	var lead = HiringSystem.find_lead(lead_id)
 	if lead == null or lead.specialty != &"data_scientist":
-		return clampf(base, 0.0, 1.0)
+		return clampf(base + option_bonus, 0.0, 1.0)
 	var table: Dictionary = HiringSystem.LEAD_BONUS_TABLE.get(&"data_scientist", {})
 	var coef: float = float(table.get(&"data_quality_add", 0.0))
 	var bonus: float = (float(lead.ability) / 100.0) * coef
-	return clampf(base + bonus, 0.0, 1.0)
+	return clampf(base + bonus + option_bonus, 0.0, 1.0)
+
+func _quality_bonus_hint() -> String:
+	var hint: String = _lead_quality_hint()
+	if _uses_employee_work_monitoring():
+		hint += tr("COLLECT_EMPLOYEE_MONITOR_HINT") \
+				% TaskSystem.POSTTRAIN_EMPLOYEE_WORK_DATA_QUALITY_ADD
+	return hint
 
 func _lead_quality_hint() -> String:
 	var lid := _selected_lead_id()
@@ -558,7 +591,8 @@ func _on_start_pressed() -> void:
 	if r.ok:
 		Log.info(&"ui", "DatasetCollectionDialog launched task", {
 				task_id = r.get(&"task_id", &""), kind = _kind,
-				size = payload.get(&"target_size", 0.0)})
+				size = payload.get(&"target_size", 0.0),
+				monitor_employee_work_data = payload.get(&"monitor_employee_work_data", false)})
 		task_started_via_dialog.emit(r)
 		hide()
 	else:

@@ -57,7 +57,7 @@ resources/             静态数据 .tres
     products/types/    产品类型模板
     tech/              科技树节点: arch / attention / loss / engineering / application / context
     codenames/         化名词库 (animals.txt / plants.txt)
-    events/            事件卡牌
+	    events/            事件卡牌 (含一次性黑色幽默事件)
     charity/           公益方向 (causes: bio_science / fundamental_compute / social_welfare)
     collectibles/      收藏品 (AI训练卡/炎兽闪卡/创世币/超跑/名画, 增值曲线+2070上限)
     trophies/          荣誉桌奖杯 spec (展示框架)

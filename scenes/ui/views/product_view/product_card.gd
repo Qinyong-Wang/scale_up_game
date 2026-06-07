@@ -109,6 +109,9 @@ static func _append_rate_rows(rows: Array, _p, is_api: bool, rate: Dictionary) -
 	var cap_pen: float = float(rate.get("capability_penalty", 0.0))
 	if cap_pen != 0.0:
 		rows.append({"label": _t("PRODUCT_CAP_GATE"), "value": _t("PRODUCT_CAP_LOW") % _format_pct_signed(cap_pen)})
+	var fake_pen: float = float(rate.get("fake_score_retention_penalty", 0.0))
+	if fake_pen != 0.0:
+		rows.append({"label": _t("PRODUCT_FAKE_SCORE_RETENTION"), "value": _format_pct_signed(fake_pen)})
 	# 外部绝对引流 — marketing / base 各占一行, 仅在非零时显示。
 	var unit: String = _t("PRODUCT_UNIT_API") if is_api else _t("PRODUCT_UNIT_SUB")
 	var mk: int = int(rate.get("marketing_attract", 0))

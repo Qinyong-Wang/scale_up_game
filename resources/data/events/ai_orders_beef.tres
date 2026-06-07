@@ -29,12 +29,12 @@ effects = [SubResource("eff_1")]
 [resource]
 script = ExtResource("1_ec")
 id = &"ai_orders_beef"
-category = &"opportunity"
+category = &"routine"
 title = "公司的 AI 助理擅自订购了三吨牛肉"
 body = "你们给行政接了个 AI 助理帮忙订办公室零食, 它却把指令理解成了『囤货』, 一声不响下单了整整三吨进口牛肉。冷链货车现在正堵在楼下, 司机举着签收单等你。"
 min_turn = 8
 requires_staff_min = 1
-weight = 8
+weight = 16
 cooldown_months = 60
 max_triggers = 1
 options = [SubResource("opt_feast"), SubResource("opt_flip")]

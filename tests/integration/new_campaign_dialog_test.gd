@@ -52,6 +52,8 @@ func test_dialog_instantiates_and_refresh_does_not_crash() -> void:
 	assert_not_null(dlg._lead_dropdown)
 	assert_not_null(dlg._product_dropdown,
 			"v7 PR-F3: dialog 应有产品下拉")
+	assert_not_null(dlg._fake_score_dropdown,
+			"dialog 应提供性能分数表述下拉")
 	# 旧字段不再存在。
 	assert_false("_fame_boost_checkbox" in dlg)
 	assert_false("_type_checkboxes" in dlg,
@@ -146,6 +148,14 @@ func test_build_payload_includes_target_product_id() -> void:
 	assert_eq(int(payload.get(&"weekly_budget", 0)), 5000)
 	assert_eq(int(payload.get(&"total_weeks", 0)), 10)
 	assert_eq(StringName(payload.get(&"target_product_id", &"")), p.id)
+	assert_eq(StringName(payload.get(&"fake_score_level", &"")), &"none")
+
+func test_build_payload_includes_fake_score_level_when_selected() -> void:
+	_make_product()
+	var dlg = _make_dialog()
+	dlg._fake_score_dropdown.select(2)
+	var payload: Dictionary = dlg._build_payload()
+	assert_eq(StringName(payload.get(&"fake_score_level", &"")), &"medium")
 
 func test_build_payload_no_legacy_fields() -> void:
 	# v7 PR-F3: 不再写 target_product_types / fame_boost。
@@ -201,6 +211,22 @@ func test_preview_subscription_product_shows_users_per_week() -> void:
 	assert_string_contains(dlg._attract_label.text, "100")
 	assert_string_contains(dlg._attract_label.text, "人")
 
+func test_preview_fake_score_level_boosts_attract_and_shows_retention_penalty() -> void:
+	TranslationServer.set_locale("zh_CN")
+	_make_product(&"p_chat", &"chatbot")
+	var dlg = _make_dialog()
+	dlg._budget_spin.value = 800_000
+	dlg._weeks_spin.value = 1
+	dlg._fake_score_dropdown.select(0)
+	dlg._refresh_preview()
+	var truthful := _attract_number(dlg)
+	dlg._fake_score_dropdown.select(3)
+	dlg._refresh_preview()
+	var exaggerated := _attract_number(dlg)
+	assert_almost_eq(float(exaggerated), float(truthful) * 1.25, 1.0)
+	assert_true(dlg._fake_score_label.text.contains("-100"),
+			"高度夸大应显示 -100%%/周留存惩罚, 实际: %s" % dlg._fake_score_label.text)
+
 func test_preview_api_product_shows_tokens_per_week() -> void:
 	_make_product(&"p_api", &"api")
 	var dlg = _make_dialog()
@@ -252,6 +278,7 @@ func test_start_pressed_creates_campaign_via_command_bus() -> void:
 	dlg._weeks_spin.value = 8
 	dlg._name_input.text = "Launch wave"
 	dlg._product_dropdown.select(0)
+	dlg._fake_score_dropdown.select(1)
 	watch_signals(dlg)
 	dlg._on_start_pressed()
 	assert_eq(GameState.campaigns.size(), 1)
@@ -260,6 +287,7 @@ func test_start_pressed_creates_campaign_via_command_bus() -> void:
 	assert_eq(c.total_weeks, 8)
 	assert_eq(c.display_name, "Launch wave")
 	assert_eq(StringName(c.target_product_id), p.id)
+	assert_eq(StringName(c.fake_score_level), &"low")
 	assert_signal_emitted(dlg, "campaign_started_via_dialog")
 
 func test_lead_dropdown_filters_to_marketing_lead_only() -> void:

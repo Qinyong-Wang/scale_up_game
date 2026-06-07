@@ -22,11 +22,13 @@ var _budget_spin: SpinBox
 var _weeks_spin: SpinBox
 var _product_dropdown: OptionButton
 var _lead_dropdown: OptionButton
+var _fake_score_dropdown: OptionButton
 var _staff_label: Label
 
 # Preview widgets
 var _total_label: Label
 var _cac_label: Label
+var _fake_score_label: Label
 var _attract_label: Label
 var _api_demand_label: Label
 var _warning_label: Label
@@ -111,6 +113,12 @@ func _build_form(root: VBoxContainer) -> void:
 	_product_dropdown.item_selected.connect(func(_i): _refresh_preview())
 	root.add_child(_label_row(tr("CAMPAIGN_TARGET_PRODUCT"), _product_dropdown))
 
+	_fake_score_dropdown = OptionButton.new()
+	_fake_score_dropdown.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	_fake_score_dropdown.item_selected.connect(func(_i): _refresh_preview())
+	_populate_fake_score_dropdown()
+	root.add_child(_label_row(tr("CAMPAIGN_FAKE_SCORE_FIELD"), _fake_score_dropdown))
+
 	_lead_dropdown = OptionButton.new()
 	_lead_dropdown.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	_lead_dropdown.item_selected.connect(func(_i): _refresh_preview())
@@ -130,6 +138,9 @@ func _build_preview(root: VBoxContainer) -> void:
 	root.add_child(_total_label)
 	_cac_label = Label.new()
 	root.add_child(_cac_label)
+	_fake_score_label = Label.new()
+	_fake_score_label.add_theme_color_override(&"font_color", UITheme.TEXT_SECONDARY)
+	root.add_child(_fake_score_label)
 	# 订阅产品: 显示「人/周」; api 产品: 显示「tokens/周」(只一行根据 type 切换)。
 	_attract_label = Label.new()
 	_attract_label.add_theme_color_override(&"font_color", UITheme.ACCENT_PRIMARY)
@@ -164,6 +175,20 @@ func _populate_product_dropdown() -> void:
 		_product_dropdown.set_item_metadata(idx, prod.id)
 	if _product_dropdown.item_count > 0:
 		_product_dropdown.select(0)
+
+func _populate_fake_score_dropdown() -> void:
+	_fake_score_dropdown.clear()
+	var rows: Array = [
+		{level = &"none", label = "CAMPAIGN_FAKE_SCORE_NONE"},
+		{level = &"low", label = "CAMPAIGN_FAKE_SCORE_LOW"},
+		{level = &"medium", label = "CAMPAIGN_FAKE_SCORE_MEDIUM"},
+		{level = &"high", label = "CAMPAIGN_FAKE_SCORE_HIGH"},
+	]
+	for row in rows:
+		var idx: int = _fake_score_dropdown.item_count
+		_fake_score_dropdown.add_item(tr(row.label))
+		_fake_score_dropdown.set_item_metadata(idx, row.level)
+	_fake_score_dropdown.select(0)
 
 func _product_label(prod) -> String:
 	var name: String = String(prod.display_name) if "display_name" in prod \
@@ -213,6 +238,23 @@ func _selected_target_product_id() -> StringName:
 		return &""
 	return StringName(_product_dropdown.get_item_metadata(i))
 
+func _selected_fake_score_level() -> StringName:
+	var i := _fake_score_dropdown.selected
+	if i < 0:
+		return &"none"
+	return Campaign.normalize_fake_score_level(_fake_score_dropdown.get_item_metadata(i))
+
+func _fake_score_level_label(level: StringName) -> String:
+	match Campaign.normalize_fake_score_level(level):
+		&"low":
+			return tr("CAMPAIGN_FAKE_SCORE_LOW")
+		&"medium":
+			return tr("CAMPAIGN_FAKE_SCORE_MEDIUM")
+		&"high":
+			return tr("CAMPAIGN_FAKE_SCORE_HIGH")
+		_:
+			return tr("CAMPAIGN_FAKE_SCORE_NONE")
+
 func _selected_target_product():
 	var pid := _selected_target_product_id()
 	if pid == &"":
@@ -227,6 +269,7 @@ func _build_payload() -> Dictionary:
 		weekly_budget = int(_budget_spin.value),
 		total_weeks = int(_weeks_spin.value),
 		target_product_id = _selected_target_product_id(),
+		fake_score_level = _selected_fake_score_level(),
 	}
 	var disp: String = _name_input.text.strip_edges()
 	if disp != "":
@@ -257,15 +300,22 @@ func _refresh_preview() -> void:
 	# 整体 ×该系数, 营销拉新是其中一部分, 因此活动预期人数也应体现 (见 design/
 	# 营销系统设计.md §4 + 出身系统设计.md §5)。
 	var founder_mult: float = FounderSystem.user_growth_multiplier()
-	var growth_mult: float = lead_mult * founder_mult
+	var fake_level: StringName = _selected_fake_score_level()
+	var fake_mult: float = UserSystem.fake_score_conversion_multiplier(fake_level)
+	var fake_penalty: float = UserSystem.fake_score_retention_penalty(fake_level)
+	var growth_mult: float = lead_mult * founder_mult * fake_mult
 	var rate: float = UserSystem.MARKETING_CONVERSION_RATE
 	var cac: float = 1.0 / max(rate * growth_mult, 1e-9)
 	var cac_suffix: String = ""
 	if lead_mult > 1.0:
 		cac_suffix += " (lead ×%.2f)" % lead_mult
+	if fake_mult > 1.0:
+		cac_suffix += " · " + (tr("CAMPAIGN_FAKE_SCORE_CONVERSION") % fake_mult)
 	if not is_equal_approx(founder_mult, 1.0):
 		cac_suffix += " · " + (tr("CAMPAIGN_FOUNDER_GROWTH") % founder_mult)
 	_cac_label.text = tr("CAMPAIGN_CAC") % [cac, cac_suffix]
+	_fake_score_label.text = tr("CAMPAIGN_FAKE_SCORE_PREVIEW") % [
+			_fake_score_level_label(fake_level), fake_mult, _format_pct_signed(fake_penalty)]
 
 	# 按目标产品类型切换显示。
 	var per_week: float = float(budget) * rate * growth_mult
@@ -357,3 +407,15 @@ func _format_tokens(n: int) -> String:
 	if v >= 1_000:
 		return "%.1fK" % (float(n) / 1_000.0)
 	return str(n)
+
+func _format_pct_signed(r: float) -> String:
+	var pct: float = r * 100.0
+	var sign_str: String = ""
+	if pct > 0.0:
+		sign_str = "+"
+	elif pct == 0.0:
+		return "0%"
+	var formatted: String = "%.1f" % pct
+	if formatted.ends_with(".0"):
+		formatted = formatted.substr(0, formatted.length() - 2)
+	return sign_str + formatted + "%"

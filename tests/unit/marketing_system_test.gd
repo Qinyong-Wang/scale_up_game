@@ -68,6 +68,20 @@ func test_start_campaign_creates_active_campaign() -> void:
 	assert_true(r.ok)
 	assert_eq(GameState.campaigns.size(), 1)
 	assert_eq(StringName(GameState.campaigns[0].target_product_id), p.id)
+	assert_eq(StringName(GameState.campaigns[0].fake_score_level), &"none",
+			"new campaigns default to truthful score claims")
+
+func test_start_campaign_stores_fake_score_level() -> void:
+	var p := _make_product()
+	var r: Dictionary = _start(p.id, {fake_score_level = &"medium"})
+	assert_true(r.ok)
+	assert_eq(StringName(GameState.campaigns[0].fake_score_level), &"medium")
+
+func test_start_campaign_rejects_unknown_fake_score_level() -> void:
+	var p := _make_product()
+	var r: Dictionary = _start(p.id, {fake_score_level = &"extreme"})
+	assert_false(r.ok)
+	assert_eq(r.error, &"invalid_fake_score_level")
 
 func test_terminate_unknown_returns_error() -> void:
 	var r: Dictionary = CommandBus.send(&"marketing.terminate_campaign", {campaign_id = &"x"})

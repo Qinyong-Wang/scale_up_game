@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="EventCard" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/event_card.gd" id="1_ec"]
+[ext_resource type="Script" path="res://scripts/resources/event_option.gd" id="2_eo"]
+[ext_resource type="Script" path="res://scripts/resources/event_effect.gd" id="3_ef"]
+
+[sub_resource type="Resource" id="eff_0"]
+script = ExtResource("3_ef")
+kind = &"economy_spend"
+params = {"pct": 0.02, "floor": 4000, "cap": 7000000}
+
+[sub_resource type="Resource" id="opt_pull"]
+script = ExtResource("2_eo")
+id = &"pull"
+label = "下线合规助手并人工复核"
+effects = [SubResource("eff_0")]
+
+[sub_resource type="Resource" id="eff_1"]
+script = ExtResource("3_ef")
+kind = &"product_boost_subscribers"
+params = {"pct": -0.04, "floor": 50, "cap": 40000000}
+
+[sub_resource type="Resource" id="eff_2"]
+script = ExtResource("3_ef")
+kind = &"economy_spend"
+params = {"pct": 0.005, "floor": 1000, "cap": 2000000}
+
+[sub_resource type="Resource" id="opt_disclaimer"]
+script = ExtResource("2_eo")
+id = &"disclaimer"
+label = "加粗免责声明后继续上线"
+effects = [SubResource("eff_1"), SubResource("eff_2")]
+
+[resource]
+script = ExtResource("1_ec")
+id = &"compliance_bot_illegal_advice"
+category = &"crisis"
+title = "合规助手教客户如何违规"
+body = "你们新推出的企业合规助手回答得非常自信, 只是结论刚好建议客户违反当地规定。它甚至把步骤写得比官方指南更清楚。"
+min_turn = 26
+requires_product = true
+weight = 10
+cooldown_months = 80
+max_triggers = 1
+options = [SubResource("opt_pull"), SubResource("opt_disclaimer")]

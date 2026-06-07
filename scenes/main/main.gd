@@ -2589,7 +2589,12 @@ func _build_marketing_view_data() -> Dictionary:
 		var is_api: bool = prod != null and "type" in prod and prod.type == &"api"
 		var target_label: String = _product_label(prod) if prod != null else tr("PRODUCT_LABEL_DELETED")
 		var lead_mult: float = _marketing_lead_mult(c.lead_id if "lead_id" in c else &"")
-		var per_week: int = int(round(float(c.weekly_budget) * conv * lead_mult * founder_mult))
+		var fake_level: StringName = c.fake_score_level if "fake_score_level" in c else &"none"
+		fake_level = Campaign.normalize_fake_score_level(fake_level)
+		var fake_mult: float = UserSystem.fake_score_conversion_multiplier(fake_level)
+		var fake_penalty: float = UserSystem.fake_score_retention_penalty(fake_level)
+		var per_week: int = int(round(float(c.weekly_budget) * conv * lead_mult
+				* founder_mult * fake_mult))
 		rows.append({
 			id = c.id,
 			display_name = c.display_name,
@@ -2601,6 +2606,9 @@ func _build_marketing_view_data() -> Dictionary:
 			target_is_api = is_api,
 			lead_label = _marketing_lead_label(c.lead_id if "lead_id" in c else &""),
 			lead_mult = lead_mult,
+			fake_score_label = _fake_score_level_label(fake_level),
+			fake_score_conversion_mult = fake_mult,
+			fake_score_retention_penalty = fake_penalty,
 			expected_per_week = per_week,
 		})
 	return {
@@ -2657,6 +2665,17 @@ func _marketing_lead_label(lead_id: StringName) -> String:
 	var spec_cn: String = tr(_SPECIALTY_CN.get(lead.specialty, String(lead.specialty)))
 	return tr("LEAD_LABEL_FULL") % [NameRomanizer.localized(lead.display_name),
 			spec_cn, String(lead.level), float(lead.ability)]
+
+func _fake_score_level_label(level: StringName) -> String:
+	match Campaign.normalize_fake_score_level(level):
+		&"low":
+			return tr("CAMPAIGN_FAKE_SCORE_LOW")
+		&"medium":
+			return tr("CAMPAIGN_FAKE_SCORE_MEDIUM")
+		&"high":
+			return tr("CAMPAIGN_FAKE_SCORE_HIGH")
+		_:
+			return tr("CAMPAIGN_FAKE_SCORE_NONE")
 
 # ---- charity tab --------------------------------------------------------
 

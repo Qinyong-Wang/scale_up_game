@@ -26,6 +26,8 @@ extends Resource
 # v7 PR-F3: 主要匹配字段。
 @export var target_product_id: StringName = &""
 @export var lead_id: StringName = &""
+# Performance-score claim honesty. See design/营销系统设计.md §5.2.
+@export var fake_score_level: StringName = &"none"
 @export var started_at_turn: int = 0
 # v8 (2026-05): 活动占用的资源 — marketing 员工数 (role → count)。开活动时
 # hiring.lock_staff, 结束 (终止 / 自然结束 / 孤儿) 时按这里登记的数量释放。
@@ -48,6 +50,7 @@ func to_dict() -> Dictionary:
 		# Legacy fields preserved for old-save round-trip.
 		target_product_types = _sn_array_to_strings(target_product_types),
 		lead_id = String(lead_id),
+		fake_score_level = String(fake_score_level),
 		target_segment = String(target_segment),
 		started_at_turn = started_at_turn,
 		locked_staff = _staff_to_strings(locked_staff),
@@ -63,6 +66,7 @@ static func from_dict(d: Dictionary) -> Campaign:
 	c.total_weeks = int(d.get("total_weeks", d.get("total_months", 0)))
 	c.started_at_turn = int(d.get("started_at_turn", 0))
 	c.lead_id = StringName(d.get("lead_id", ""))
+	c.fake_score_level = normalize_fake_score_level(d.get("fake_score_level", "none"))
 	# Old saves (pre-v8) have no locked_staff; leave empty so release is a no-op.
 	var ls: Dictionary = d.get("locked_staff", {})
 	var typed_ls: Dictionary = {}
@@ -97,6 +101,18 @@ static func _legacy_segment_to_types(segment: StringName) -> Array[StringName]:
 		_:
 			# &"all" and &"open_source_devs" both map to "no target type filter".
 			return [] as Array[StringName]
+
+static func fake_score_levels() -> Array[StringName]:
+	return [&"none", &"low", &"medium", &"high"] as Array[StringName]
+
+static func is_valid_fake_score_level(value) -> bool:
+	return fake_score_levels().has(StringName(value))
+
+static func normalize_fake_score_level(value) -> StringName:
+	var level := StringName(value)
+	if is_valid_fake_score_level(level):
+		return level
+	return &"none"
 
 static func _sn_array_to_strings(arr: Array[StringName]) -> Array:
 	var out: Array = []

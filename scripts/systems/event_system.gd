@@ -104,6 +104,13 @@ const EVENTS: Dictionary = {
 	# v11: 非技术向纯喜剧 (只玩钱和团队, 不碰订阅/技术).
 	&"ai_orders_beef": _EVENT_DIR + "ai_orders_beef.tres",
 	&"doomsday_bunker": _EVENT_DIR + "doomsday_bunker.tres",
+	# v17: AI 行业黑色幽默一次性卡.
+	&"support_bot_refund_policy": _EVENT_DIR + "support_bot_refund_policy.tres",
+	&"forum_wisdom_summary": _EVENT_DIR + "forum_wisdom_summary.tres",
+	&"fictional_case_law": _EVENT_DIR + "fictional_case_law.tres",
+	&"history_image_overfit": _EVENT_DIR + "history_image_overfit.tres",
+	&"support_bot_self_roast": _EVENT_DIR + "support_bot_self_roast.tres",
+	&"compliance_bot_illegal_advice": _EVENT_DIR + "compliance_bot_illegal_advice.tres",
 	# v11: 灰暗 / 伦理向 (利润 vs 良心的两难).
 	&"labeling_sweatshop": _EVENT_DIR + "labeling_sweatshop.tres",
 	&"surveillance_contract": _EVENT_DIR + "surveillance_contract.tres",
@@ -113,6 +120,7 @@ const EVENTS: Dictionary = {
 
 # Routine event cadence in weeks. v16: 8 → 12 to fix over-frequent mature games.
 const ROUTINE_INTERVAL: int = 12
+const GLOBAL_MAX_TRIGGERS_PER_CARD: int = 3
 
 # Paradigm cards trigger deterministically by turn threshold (NPC配置.md §1.4).
 # Iteration order is preserved — earliest min_turn first.
@@ -188,6 +196,8 @@ func _on_trigger_card(p: Dictionary) -> Dictionary:
 	var card := _load_card(template_id)
 	if card == null:
 		return {ok = false, error = &"unknown_template"}
+	if _triggers_exhausted(card):
+		return {ok = false, error = &"event_trigger_exhausted"}
 	var inst := _trigger(card)
 	return {ok = true, event_id = inst.id}
 
@@ -350,12 +360,15 @@ func _trigger(card: EventCard) -> EventInstance:
 func _cooldown_turns(card: EventCard) -> int:
 	return maxi(0, int(card.cooldown_months)) * TurnManager.WEEKS_PER_MONTH
 
-## v11 §4.7: 该卡是否已达全局触发上限。max_triggers<=0 表示不限。
+## v17 §4.7: 所有卡都有 3 次硬上限; max_triggers>0 可设更严格单卡上限。
 func _triggers_exhausted(card: EventCard) -> bool:
+	return int(GameState.event_trigger_counts.get(card.id, 0)) >= _effective_max_triggers(card)
+
+func _effective_max_triggers(card: EventCard) -> int:
 	var maxt: int = int(card.max_triggers) if "max_triggers" in card else 0
 	if maxt <= 0:
-		return false
-	return int(GameState.event_trigger_counts.get(card.id, 0)) >= maxt
+		return GLOBAL_MAX_TRIGGERS_PER_CARD
+	return mini(maxt, GLOBAL_MAX_TRIGGERS_PER_CARD)
 
 func _conditions_met(card: EventCard) -> bool:
 	if GameState.turn < card.min_turn: return false

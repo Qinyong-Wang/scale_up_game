@@ -30,9 +30,10 @@ extends Resource
 @export var weight: int = 10
 # Authored in design months; EventSystem converts to weekly turns on trigger.
 @export var cooldown_months: int = 12
-# v11 (2026-05): 全局最多触发次数, 0 = 不限。重大 drama 卡设为 1 (一辈子只来
-# 一次), 比硬塞 cooldown_months=9999 更语义化。计数存 GameState.event_trigger_counts,
-# 见 事件系统设计.md §4.7。
+# v11/v17: 单卡触发次数; 0 = 使用 EventSystem 的全局 3 次硬上限。
+# 重大 drama / 黑色幽默卡设为 1 (一辈子只来一次), 比硬塞
+# cooldown_months=9999 更语义化。计数存 GameState.event_trigger_counts, 见
+# 事件系统设计.md §4.7。
 @export var max_triggers: int = 0
 
 @export var options: Array[Resource] = []  # Array[EventOption]

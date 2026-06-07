@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="EventCard" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/event_card.gd" id="1_ec"]
+[ext_resource type="Script" path="res://scripts/resources/event_option.gd" id="2_eo"]
+[ext_resource type="Script" path="res://scripts/resources/event_effect.gd" id="3_ef"]
+
+[sub_resource type="Resource" id="eff_0"]
+script = ExtResource("3_ef")
+kind = &"product_boost_subscribers"
+params = {"pct": 0.05, "floor": 60, "cap": 50000000}
+
+[sub_resource type="Resource" id="eff_1"]
+script = ExtResource("3_ef")
+kind = &"economy_spend"
+params = {"pct": 0.005, "floor": 1000, "cap": 2000000}
+
+[sub_resource type="Resource" id="opt_meme"]
+script = ExtResource("2_eo")
+id = &"meme"
+label = "顺势做成自黑营销"
+effects = [SubResource("eff_0"), SubResource("eff_1")]
+
+[sub_resource type="Resource" id="eff_2"]
+script = ExtResource("3_ef")
+kind = &"economy_spend"
+params = {"pct": 0.01, "floor": 2000, "cap": 3000000}
+
+[sub_resource type="Resource" id="opt_disable"]
+script = ExtResource("2_eo")
+id = &"disable"
+label = "立刻关闭客服机器人"
+effects = [SubResource("eff_2")]
+
+[resource]
+script = ExtResource("1_ec")
+id = &"support_bot_self_roast"
+category = &"opportunity"
+title = "客服机器人公开吐槽公司"
+body = "一个愤怒用户诱导客服机器人写诗批评你们的产品, 它写得意外押韵。市场部读完沉默了三秒, 然后问能不能买热搜。"
+min_turn = 18
+requires_product = true
+weight = 12
+cooldown_months = 80
+max_triggers = 1
+options = [SubResource("opt_meme"), SubResource("opt_disable")]

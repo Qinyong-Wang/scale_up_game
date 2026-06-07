@@ -382,8 +382,8 @@ func test_routine_pool_never_empty_at_interval() -> void:
 
 func test_low_gate_routine_pool_has_recurring_variety() -> void:
 	# v16: 无产品/无员工局不能只剩 routine_lawsuit_spam 一张反复刷屏。
-	# 至少 5 张 routine 只 gate min_turn 且不限次, 让长期停滞局也有分布。
-	var low_gate_unlimited: Array = []
+	# v17: 至少 5 张 routine 只 gate min_turn 且走默认 3 次硬上限, 让长期停滞局也有分布。
+	var low_gate_default_cap: Array = []
 	for tid in EventSystem.EVENTS.keys():
 		var card := EventSystem._load_card(tid)
 		if card == null or card.category != &"routine":
@@ -414,10 +414,10 @@ func test_low_gate_routine_pool_has_recurring_variety() -> void:
 			continue
 		if int(card.weight) <= 0:
 			continue
-		low_gate_unlimited.append(card.id)
-	assert_true(low_gate_unlimited.size() >= 5,
-			"低门槛不限次 routine 至少 5 张, 实际 %d: %s"
-			% [low_gate_unlimited.size(), str(low_gate_unlimited)])
+		low_gate_default_cap.append(card.id)
+	assert_true(low_gate_default_cap.size() >= 5,
+			"低门槛默认 3 次硬上限 routine 至少 5 张, 实际 %d: %s"
+			% [low_gate_default_cap.size(), str(low_gate_default_cap)])
 
 # ---- v10 §2 回合推进门禁 ------------------------------------------------
 
@@ -1062,6 +1062,15 @@ const _V11_DRAMA_CARDS: Array[StringName] = [
 	&"crunch_culture",
 ]
 
+const _V17_BLACK_HUMOR_CARDS: Array[StringName] = [
+	&"support_bot_refund_policy",
+	&"forum_wisdom_summary",
+	&"fictional_case_law",
+	&"history_image_overfit",
+	&"support_bot_self_roast",
+	&"compliance_bot_illegal_advice",
+]
+
 ## drama 卡两难选项只允许用这些**已实现**的 effect kind (真生效)。
 const _IMPLEMENTED_EFFECT_KINDS: Array[StringName] = [
 	&"economy_spend", &"economy_award", &"product_boost_subscribers",
@@ -1077,6 +1086,11 @@ func test_event_card_has_max_triggers_field() -> void:
 	var card := load("res://resources/data/events/board_coup.tres") as EventCard
 	assert_not_null(card, "board_coup.tres 应存在")
 	assert_eq(int(card.max_triggers), 1, "board_coup 应是一次性事件 max_triggers=1")
+
+func test_global_event_trigger_cap_is_three() -> void:
+	# v17: 即使卡片 max_triggers=0, 单卡最多也只能触发三次。
+	assert_eq(EventSystem.GLOBAL_MAX_TRIGGERS_PER_CARD, 3,
+			"单个事件全局硬上限应固定为 3 次")
 
 func test_routine_chore_cards_have_trigger_caps() -> void:
 	# 用户反馈: 养猫 / 咖啡机坏 出现 1-2 次就够, 实习生 demo 一次就够 —
@@ -1146,12 +1160,35 @@ func test_triggers_exhausted_blocks_card_at_limit() -> void:
 	GameState.event_trigger_counts[card.id] = 1
 	assert_true(EventSystem._triggers_exhausted(card), "达到 max_triggers(=1) 后应耗尽")
 
-func test_unlimited_card_never_exhausted() -> void:
-	# debug_test_offer max_triggers=0 (不限) → 即使触发很多次也不耗尽。
+func test_default_max_triggers_uses_global_hard_cap() -> void:
+	# v17: max_triggers=0 表示走系统默认硬上限 3, 不再是真正无限。
 	var card := load("res://resources/data/events/debug_test_offer.tres") as EventCard
-	GameState.event_trigger_counts[card.id] = 999
+	GameState.event_trigger_counts[card.id] = 2
 	assert_false(EventSystem._triggers_exhausted(card),
-			"max_triggers=0 (不限) 的卡永不耗尽")
+			"默认硬上限下, 第 3 次触发前不应耗尽")
+	GameState.event_trigger_counts[card.id] = 3
+	assert_true(EventSystem._triggers_exhausted(card),
+			"max_triggers=0 的卡达到全局 3 次硬上限后应耗尽")
+
+func test_authored_max_triggers_cannot_exceed_global_hard_cap() -> void:
+	# 单卡显式写大于 3 也不能绕过系统硬上限。
+	var card := EventSystem._load_card(&"debug_test_offer")
+	var saved_max: int = int(card.max_triggers)
+	card.max_triggers = 10
+	GameState.event_trigger_counts[card.id] = 3
+	assert_true(EventSystem._triggers_exhausted(card),
+			"显式 max_triggers>3 也应被全局硬上限压到 3")
+	card.max_triggers = saved_max
+
+func test_trigger_card_respects_global_hard_cap() -> void:
+	var card := EventSystem._load_card(&"debug_test_offer")
+	GameState.event_trigger_counts[card.id] = EventSystem.GLOBAL_MAX_TRIGGERS_PER_CARD
+	var r: Dictionary = CommandBus.send(&"event.trigger_card",
+			{template_id = &"debug_test_offer"})
+	assert_false(r.ok)
+	assert_eq(r.error, &"event_trigger_exhausted")
+	assert_eq(GameState.pending_events.size(), 0,
+			"强制触发命令也不能绕过单卡 3 次硬上限")
 
 func test_exhausted_card_excluded_from_random_pool() -> void:
 	# debug_test_offer 在空状态/turn=1 时是随机池唯一候选。临时给它 max_triggers=1,
@@ -1211,6 +1248,35 @@ func test_v11_drama_cards_have_max_triggers() -> void:
 		assert_not_null(card)
 		assert_gt(int(card.max_triggers), 0,
 				"drama 卡 %s 应设 max_triggers>0 (不无限重复)" % tid)
+
+func test_ai_orders_beef_is_one_time_routine_candidate() -> void:
+	# 用户反馈随机池里很难看到这个梗; v17 改为 routine 候选, 但仍一局只来一次。
+	var card := EventSystem._load_card(&"ai_orders_beef")
+	assert_not_null(card, "ai_orders_beef 应在 EVENTS 注册")
+	assert_eq(card.category, &"routine", "AI 擅自采购牛肉应作为公司日常事故进入 routine 池")
+	assert_eq(int(card.max_triggers), 1, "AI 订牛肉梗一局只出现一次")
+	assert_eq(int(card.requires_staff_min), 1, "至少有员工后才触发 AI 助理采购事故")
+
+func test_v17_black_humor_cards_registered_once_only() -> void:
+	for tid in _V17_BLACK_HUMOR_CARDS:
+		assert_true(EventSystem.EVENTS.has(tid), "EVENTS 应注册黑色幽默卡 %s" % tid)
+		var card := EventSystem._load_card(tid)
+		assert_not_null(card, "%s.tres 应可加载" % tid)
+		assert_eq(int(card.max_triggers), 1, "%s 应是一局只出现一次" % tid)
+
+func test_v17_black_humor_cards_have_real_two_way_effects() -> void:
+	for tid in _V17_BLACK_HUMOR_CARDS:
+		var card := EventSystem._load_card(tid)
+		assert_not_null(card, "%s 应可加载" % tid)
+		assert_eq(card.requires_product, true,
+				"%s 都围绕已上线产品/助手事故, 应 gate requires_product" % tid)
+		assert_gt(card.options.size(), 1, "%s 应有两个选择" % tid)
+		for opt in card.options:
+			assert_gt(opt.effects.size(), 0,
+					"黑色幽默卡 %s 的选项 %s 必须有真生效 effect" % [tid, opt.id])
+			for eff in opt.effects:
+				assert_true(_IMPLEMENTED_EFFECT_KINDS.has(eff.kind),
+						"%s/%s 用了未实现/废弃的 effect kind: %s" % [tid, opt.id, eff.kind])
 
 func test_retrofit_old_cards_now_have_dual_real_branches() -> void:
 	# v11: 给 3 张老 opportunity 卡补齐"空选项", 变成双支真两难。

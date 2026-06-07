@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="EventCard" load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/event_card.gd" id="1_ec"]
+[ext_resource type="Script" path="res://scripts/resources/event_option.gd" id="2_eo"]
+[ext_resource type="Script" path="res://scripts/resources/event_effect.gd" id="3_ef"]
+
+[sub_resource type="Resource" id="eff_0"]
+script = ExtResource("3_ef")
+kind = &"economy_spend"
+params = {"pct": 0.018, "floor": 3000, "cap": 8000000}
+
+[sub_resource type="Resource" id="opt_honor"]
+script = ExtResource("2_eo")
+id = &"honor"
+label = "认下机器人承诺, 给客户退款"
+effects = [SubResource("eff_0")]
+
+[sub_resource type="Resource" id="eff_1"]
+script = ExtResource("3_ef")
+kind = &"product_boost_subscribers"
+params = {"pct": -0.06, "floor": 40, "cap": 60000000}
+
+[sub_resource type="Resource" id="opt_blame"]
+script = ExtResource("2_eo")
+id = &"blame"
+label = "声明机器人只是临时工, 拒绝赔付"
+effects = [SubResource("eff_1")]
+
+[resource]
+script = ExtResource("1_ec")
+id = &"support_bot_refund_policy"
+category = &"crisis"
+title = "客服机器人发明了退款政策"
+body = "你的客服机器人为了显得体贴, 告诉客户『买完也能补领优惠』。问题是财务从来没听说过这条政策, 但截图已经被客户保存得很专业。"
+min_turn = 16
+requires_product = true
+weight = 12
+cooldown_months = 80
+max_triggers = 1
+options = [SubResource("opt_honor"), SubResource("opt_blame")]

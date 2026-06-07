@@ -185,11 +185,16 @@ MARKETING_PROGRESS_VALUE,%d%% (%d / %d 周),%d%% (%d / %d wk)
 FIELD_WEEKLY_BUDGET,周预算,Weekly budget
 FIELD_WEEKLY_API_DEMAND,每周 API 需求,Weekly API demand
 FIELD_WEEKLY_NEW_USERS,每周新用户,Weekly new users
+FIELD_FAKE_SCORE,性能分数表述,Performance claim
 MARKETING_API_DEMAND_VALUE,+%s tokens/周,+%s tokens/wk
 MARKETING_NEW_USERS_VALUE,+%s 人,+%s
 MARKETING_SUBTITLE,$%s/周  ·  %d 周,$%s/wk  ·  %d wk
 MARKETING_TERMINATE,终止,Terminate
 MARKETING_FOUNDER_BONUS,创始人加成 · 新增用户 ×%.2f,Founder perk · new users ×%.2f
+MARKETING_FAKE_SCORE_VALUE,%s · 获客 ×%.2f · 留存 %s/周,%s · conversion ×%.2f · retention %s/wk
+MARKETING_FAKE_SCORE_ACQUIRE_PREFIX,获客 ×,conversion ×
+MARKETING_FAKE_SCORE_RETENTION_PREFIX,留存,retention
+MARKETING_PER_WEEK_SUFFIX,/周,/wk
 INFRA_SECTION,数据中心,Datacenters
 INFRA_NEW_DC,+ 新建数据中心...,+ New datacenter...
 INFRA_OWN_RENTED,租用,Rented
@@ -347,6 +352,13 @@ CAMPAIGN_FOUNDER_SUFFIX, (创始人 · 无加成), (founder · no bonus)
 CAMPAIGN_LEAD_ITEM,%s [%s 级 · 能力 %.0f]%s,%s [tier %s · ability %.0f]%s
 CAMPAIGN_TOTAL,总投入: $%s (%d 周),Total: $%s (%d wk)
 CAMPAIGN_FOUNDER_GROWTH,创始人 ×%.2f,founder ×%.2f
+CAMPAIGN_FAKE_SCORE_FIELD,性能分数表述,Performance claim
+CAMPAIGN_FAKE_SCORE_NONE,真实表述,Truthful
+CAMPAIGN_FAKE_SCORE_LOW,轻微夸大,Slightly exaggerated
+CAMPAIGN_FAKE_SCORE_MEDIUM,中度夸大,Moderately exaggerated
+CAMPAIGN_FAKE_SCORE_HIGH,高度夸大,Heavily exaggerated
+CAMPAIGN_FAKE_SCORE_CONVERSION,表述 ×%.2f,claim ×%.2f
+CAMPAIGN_FAKE_SCORE_PREVIEW,性能表述: %s · 获客 ×%.2f · 留存 %s/周,Performance claim: %s · conversion ×%.2f · retention %s/wk
 CAMPAIGN_CAC,预计获客成本: $%.2f / 用户%s,Est. CAC: $%.2f / user%s
 CAMPAIGN_ATTRACT_NONE,预计每周拉新: (无产品),Est. weekly new: (no product)
 CAMPAIGN_ATTRACT_API,预计每周新需求单位: %s 单位 ($%.0f/单位),Est. weekly new demand: %s units ($%.0f/unit)
@@ -559,6 +571,10 @@ COLLECT_TIER_T2,专业 · 领域标注 (q0.80),Pro · domain (q0.80)
 COLLECT_TIER_T3,专家 · 资深 (q0.90),Expert · senior (q0.90)
 COLLECT_TIER_T4,PhD 专家 (q0.95),PhD expert (q0.95)
 COLLECT_TIER_TOOLTIP,质量越高标注人力越贵: 众包→领域→资深→PhD; 每条约 $1/$10/$60/$800; 成本按 (选档 + lead 加成) 的有效质量定档。,Higher quality = pricier labelers: crowd→domain→senior→PhD; ~$1/$10/$60/$800 per example; tier set by effective quality (tier + lead bonus).
+COLLECT_EXTRA_DATA,额外数据,Extra data
+COLLECT_EMPLOYEE_MONITOR,监控员工日常工作数据,Monitor employee daily work data
+COLLECT_EMPLOYEE_MONITOR_TOOLTIP,"记录员工日常工作流作为后训练轨迹; 产出 quality +0.03, 不改变采集价格或时长.","Logs internal work routines as post-training traces; output quality +0.03, without changing collection cost or duration."
+COLLECT_EMPLOYEE_MONITOR_HINT,", 员工工作数据 +%.2f",", employee work data +%.2f"
 COLLECT_SIZE_HINT_POST,(0.01 – 0.5 B tokens; SFT/RLHF 集典型 0.05B ≈ 50k examples),(0.01 – 0.5 B tokens; SFT/RLHF sets typically 0.05B ≈ 50k examples)
 COLLECT_SIZE_HINT_PRE,"(1 – 100000 B tokens, 即 100T; web 清洗规模, FineWeb ≈ 15T)","(1 – 100000 B tokens = 100T; web-clean scale, FineWeb ≈ 15T)"
 COLLECT_NO_LEAD,(无 data_scientist 可用),(no data_scientist available)
@@ -647,6 +663,7 @@ PRODUCT_RANK_SUB,竞品子榜,Sub-board rank
 PRODUCT_RANK_GROWTH_LABEL,排名增长,Rank growth
 PRODUCT_RANK_GROWTH,%s (总/子榜取较优),%s (best of overall/sub)
 PRODUCT_PRICE_ELASTIC,价格弹性,Price elasticity
+PRODUCT_FAKE_SCORE_RETENTION,性能夸大留存,Claim retention
 PRODUCT_CAP_GATE,能力门槛,Capability gate
 PRODUCT_CAP_LOW,%s (模型能力偏低),%s (model capability low)
 PRODUCT_UNIT_API,tokens 需求/周,tokens demand/wk

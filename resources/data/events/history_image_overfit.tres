@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="EventCard" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/event_card.gd" id="1_ec"]
+[ext_resource type="Script" path="res://scripts/resources/event_option.gd" id="2_eo"]
+[ext_resource type="Script" path="res://scripts/resources/event_effect.gd" id="3_ef"]
+
+[sub_resource type="Resource" id="eff_0"]
+script = ExtResource("3_ef")
+kind = &"economy_spend"
+params = {"pct": 0.018, "floor": 3500, "cap": 6000000}
+
+[sub_resource type="Resource" id="opt_hotfix"]
+script = ExtResource("2_eo")
+id = &"hotfix"
+label = "回炉调图像安全和历史测试集"
+effects = [SubResource("eff_0")]
+
+[sub_resource type="Resource" id="eff_1"]
+script = ExtResource("3_ef")
+kind = &"product_boost_subscribers"
+params = {"pct": -0.03, "floor": 40, "cap": 30000000}
+
+[sub_resource type="Resource" id="eff_2"]
+script = ExtResource("3_ef")
+kind = &"economy_spend"
+params = {"pct": 0.006, "floor": 1200, "cap": 2000000}
+
+[sub_resource type="Resource" id="opt_spin"]
+script = ExtResource("2_eo")
+id = &"spin"
+label = "发布声明称这是积极纠偏"
+effects = [SubResource("eff_1"), SubResource("eff_2")]
+
+[resource]
+script = ExtResource("1_ec")
+id = &"history_image_overfit"
+category = &"crisis"
+title = "历史图片生成器安全过拟合"
+body = "用户让模型生成一张古代会议照, 它给出了一个跨越时空、服装和制度史的梦幻合影。安全团队说模型没有偏见, 历史团队说模型也没有历史。"
+min_turn = 28
+requires_product = true
+weight = 10
+cooldown_months = 80
+max_triggers = 1
+options = [SubResource("opt_hotfix"), SubResource("opt_spin")]

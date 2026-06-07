@@ -38,7 +38,8 @@ func _make_product(id: StringName, type: StringName, model_id: StringName,
 	GameState.products.append(p)
 	return p
 
-func _make_campaign(target_product_id: StringName, budget: int) -> Campaign:
+func _make_campaign(target_product_id: StringName, budget: int,
+		fake_score_level: StringName = &"none") -> Campaign:
 	var c := Campaign.new()
 	c.id = StringName("camp_%d" % GameState.campaigns.size())
 	c.display_name = "Test"
@@ -46,6 +47,7 @@ func _make_campaign(target_product_id: StringName, budget: int) -> Campaign:
 	c.total_weeks = 6
 	c.remaining_weeks = 6
 	c.target_product_id = target_product_id
+	c.fake_score_level = fake_score_level
 	GameState.campaigns.append(c)
 	return c
 
@@ -120,6 +122,35 @@ func test_marketing_lead_campaign_efficiency_increases_attract() -> void:
 	# Per 平衡参数.md §LEAD_BONUS_TABLE: marketing_lead.campaign_efficiency = 0.55;
 	# ability=100 → 1 + 1.0 × 0.55 = 1.55 (CAC ÷ 1.55 ≈ -35%).
 	assert_almost_eq(float(boosted), float(baseline) * 1.55, float(baseline) * 0.001)
+
+func test_fake_score_level_increases_campaign_attract() -> void:
+	var m := _make_published_model(&"m1")
+	var p := _make_product(&"p_chat", &"chatbot", m.id, 0)
+	var c := _make_campaign(p.id, 800_000)
+	var baseline: int = UserSystem._marketing_attract(p)
+	c.fake_score_level = &"high"
+	var boosted: int = UserSystem._marketing_attract(p)
+	assert_almost_eq(float(boosted), float(baseline) * 1.25, 1.0,
+			"high fake score claim should lift conversion by 25%")
+
+func test_fake_score_level_reduces_retention_rate_for_target_product() -> void:
+	var m := _make_published_model(&"m1")
+	var p := _make_product(&"p_chat", &"chatbot", m.id, 1000)
+	var baseline: Dictionary = UserSystem.compute_rate_breakdown(p)
+	_make_campaign(p.id, 1_000, &"high")
+	var penalized: Dictionary = UserSystem.compute_rate_breakdown(p)
+	assert_almost_eq(float(penalized.fake_score_retention_penalty), -1.0, 0.000001)
+	assert_almost_eq(float(penalized.total_rate),
+			float(baseline.total_rate) - 1.0, 0.000001)
+
+func test_fake_score_retention_penalty_clamps_when_multiple_campaigns_stack() -> void:
+	var m := _make_published_model(&"m1")
+	var p := _make_product(&"p_chat", &"chatbot", m.id, 1000)
+	_make_campaign(p.id, 1_000, &"high")
+	_make_campaign(p.id, 1_000, &"high")
+	var breakdown: Dictionary = UserSystem.compute_rate_breakdown(p)
+	assert_almost_eq(float(breakdown.fake_score_retention_penalty), -1.0, 0.000001,
+			"multiple fake campaigns should not push retention below -100%/week")
 
 # ---- tokens_per_user defaults match design table -----------------------
 

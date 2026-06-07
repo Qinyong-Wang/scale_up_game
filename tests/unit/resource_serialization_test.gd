@@ -302,6 +302,7 @@ func test_campaign_roundtrip_preserves_all_fields() -> void:
 	src.total_weeks = 3
 	src.target_segment = &"chatbot_users"
 	src.lead_id = &"lead_marketing_01"
+	src.fake_score_level = &"high"
 	src.started_at_turn = 4
 	var dst: Campaign = Campaign.from_dict(src.to_dict())
 	assert_eq(dst.id, src.id)
@@ -310,11 +311,16 @@ func test_campaign_roundtrip_preserves_all_fields() -> void:
 	assert_eq(dst.total_weeks, src.total_weeks)
 	assert_eq(dst.target_segment, src.target_segment)
 	assert_eq(dst.lead_id, src.lead_id)
+	assert_eq(dst.fake_score_level, src.fake_score_level)
 	assert_eq(dst.started_at_turn, src.started_at_turn)
 
 func test_campaign_default_target_segment_is_all() -> void:
 	var dst: Campaign = Campaign.from_dict({})
 	assert_eq(dst.target_segment, &"all")
+
+func test_campaign_default_fake_score_level_is_none() -> void:
+	var dst: Campaign = Campaign.from_dict({})
+	assert_eq(dst.fake_score_level, &"none")
 
 # ---- Loan --------------------------------------------------------------
 

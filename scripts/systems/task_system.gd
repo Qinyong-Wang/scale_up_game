@@ -993,8 +993,15 @@ func _resolve_completion_payload(template: TaskTemplate, p: Dictionary, inst: Ta
 			var dc_kind: StringName = StringName(p.get(&"kind", &"pretrain"))
 			var default_q: float = 0.65 if dc_kind == &"posttrain" else 0.55
 			var base_quality: float = float(p.get(&"target_quality", default_q))
+			var option_quality_bonus: float = _data_collection_option_quality_bonus(dc_kind, p)
 			var quality_final: float = _data_collection_quality(
-					base_quality, p.get(&"lead_ids", []))
+					base_quality, p.get(&"lead_ids", []), option_quality_bonus)
+			if option_quality_bonus > 0.0:
+				Log.info(&"tasks", "data_collection_employee_work_monitoring", {
+					bonus = option_quality_bonus,
+					quality = quality_final,
+					kind = dc_kind,
+				})
 			var tags: Array
 			if p.has(&"target_tags"):
 				tags = p.get(&"target_tags", [])
@@ -1435,9 +1442,19 @@ func _data_collection_lead_bonus(lead_ids: Array) -> float:
 	var coef: float = float(table.get(&"data_quality_add", 0.0))
 	return (float(lead.ability) / 100.0) * coef
 
-# Produced dataset quality (clamped to [0,1]); pricing uses the UNCLAMPED value.
-func _data_collection_quality(target_quality: float, lead_ids: Array) -> float:
-	return clampf(target_quality + _data_collection_lead_bonus(lead_ids), 0.0, 1.0)
+# Produced dataset quality (clamped to [0,1]); pricing uses the UNCLAMPED labor
+# quality and intentionally excludes posttrain-only internal-signal bonuses.
+func _data_collection_quality(target_quality: float, lead_ids: Array,
+		option_bonus: float = 0.0) -> float:
+	return clampf(target_quality + _data_collection_lead_bonus(lead_ids)
+			+ option_bonus, 0.0, 1.0)
+
+func _data_collection_option_quality_bonus(kind: StringName, p: Dictionary) -> float:
+	if kind != &"posttrain":
+		return 0.0
+	if not bool(p.get(&"monitor_employee_work_data", false)):
+		return 0.0
+	return POSTTRAIN_EMPLOYEE_WORK_DATA_QUALITY_ADD
 
 # v2.1: dynamic pricing/duration for self-collected datasets. Per
 # design/数据集系统设计.md §5.1ter. kind ∈ {pretrain, posttrain}; size in B tokens.
@@ -1446,6 +1463,7 @@ func _data_collection_quality(target_quality: float, lead_ids: Array) -> float:
 ## 2026-05-19: 采集再提速 ×2 + 单任务硬上限 20 周。pretrain 100T 等超大数据
 ## 不再要 1000 周, 走到上限就 cap 在 20 周 — 后期玩家肯花钱就能短周期拿到大数据。
 const _DATA_COLLECTION_MAX_WEEKS: int = 20
+const POSTTRAIN_EMPLOYEE_WORK_DATA_QUALITY_ADD: float = 0.03
 
 # Posttrain self-collect labor cost curve (2026-05 rev). Posttrain data cost is
 # driven by annotation labor, not token volume — higher quality means pricier
@@ -1499,7 +1517,8 @@ func _data_collection_pricing(p: Dictionary) -> Dictionary:
 		# Effective quality = chosen target + lead bonus, so price tracks what you
 		# get. UNCLAMPED (no 1.0 ceiling) so the rate curve keeps rising for a
 		# PhD-tier pick + strong lead instead of saturating; the produced dataset
-		# quality is still clamped in _data_collection_quality.
+		# quality is still clamped in _data_collection_quality. Internal employee
+		# work monitoring is not annotation labor, so it does not affect this rate.
 		var target_q: float = float(p.get(&"target_quality", 0.65))
 		var eff_q: float = target_q + _data_collection_lead_bonus(p.get(&"lead_ids", []))
 		var rate: float = _posttrain_labor_rate(eff_q)

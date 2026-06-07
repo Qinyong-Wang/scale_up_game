@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="EventCard" load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/event_card.gd" id="1_ec"]
+[ext_resource type="Script" path="res://scripts/resources/event_option.gd" id="2_eo"]
+[ext_resource type="Script" path="res://scripts/resources/event_effect.gd" id="3_ef"]
+
+[sub_resource type="Resource" id="eff_0"]
+script = ExtResource("3_ef")
+kind = &"economy_spend"
+params = {"pct": 0.015, "floor": 2500, "cap": 5000000}
+
+[sub_resource type="Resource" id="opt_patch"]
+script = ExtResource("2_eo")
+id = &"patch"
+label = "加急修检索和讽刺内容过滤"
+effects = [SubResource("eff_0")]
+
+[sub_resource type="Resource" id="eff_1"]
+script = ExtResource("3_ef")
+kind = &"product_boost_subscribers"
+params = {"pct": -0.04, "floor": 40, "cap": 40000000}
+
+[sub_resource type="Resource" id="opt_defend"]
+script = ExtResource("2_eo")
+id = &"defend"
+label = "坚持说这是开放网络的真实声音"
+effects = [SubResource("eff_1")]
+
+[resource]
+script = ExtResource("1_ec")
+id = &"forum_wisdom_summary"
+category = &"crisis"
+title = "检索增强学会了论坛智慧"
+body = "产品的答案摘要把一条阴阳怪气的论坛回复当成了操作建议, 还贴心地整理成了三步教程。用户现在知道了: 互联网确实有答案, 但不是每个答案都想救你。"
+min_turn = 20
+requires_product = true
+weight = 12
+cooldown_months = 80
+max_triggers = 1
+options = [SubResource("opt_patch"), SubResource("opt_defend")]

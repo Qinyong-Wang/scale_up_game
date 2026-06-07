@@ -131,6 +131,10 @@ func _on_start_campaign(p: Dictionary) -> Dictionary:
 
 	# v8: 硬性要求营销员工, 数量随周预算缩放 (2..8)。启动前确认有足够空闲营销员工。
 	var weekly_budget: int = int(p.get(&"weekly_budget", p.get(&"monthly_budget", 0)))
+	var fake_score_level: StringName = StringName(p.get(&"fake_score_level", &"none"))
+	if not Campaign.is_valid_fake_score_level(fake_score_level):
+		Log.warn(&"marketing", "invalid_fake_score_level", {level = fake_score_level})
+		return {ok = false, error = &"invalid_fake_score_level"}
 	var need_staff: int = required_staff_for_budget(weekly_budget)
 	if need_staff > 0 and _idle_staff(MARKETING_STAFF_ROLE) < need_staff:
 		Log.warn(&"marketing", "insufficient_staff", {
@@ -147,6 +151,7 @@ func _on_start_campaign(p: Dictionary) -> Dictionary:
 	c.remaining_weeks = c.total_weeks
 	c.target_product_id = target_product_id
 	c.lead_id = lead_id
+	c.fake_score_level = fake_score_level
 	c.started_at_turn = GameState.turn
 
 	# Lock lead (so it can't run a second campaign / a training task) then staff.
@@ -170,7 +175,8 @@ func _on_start_campaign(p: Dictionary) -> Dictionary:
 	GameState.campaigns.append(c)
 	Log.info(&"marketing", "campaign_started", {
 		id = c.id, target_product_id = target_product_id,
-		lead_id = lead_id, staff = c.locked_staff,
+		lead_id = lead_id, fake_score_level = fake_score_level,
+		staff = c.locked_staff,
 	})
 	EventBus.campaign_started.emit(c.id)
 	return {ok = true, campaign_id = c.id}

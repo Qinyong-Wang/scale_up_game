@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="EventCard" load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/event_card.gd" id="1_ec"]
+[ext_resource type="Script" path="res://scripts/resources/event_option.gd" id="2_eo"]
+[ext_resource type="Script" path="res://scripts/resources/event_effect.gd" id="3_ef"]
+
+[sub_resource type="Resource" id="eff_0"]
+script = ExtResource("3_ef")
+kind = &"economy_spend"
+params = {"pct": 0.02, "floor": 4000, "cap": 8000000}
+
+[sub_resource type="Resource" id="opt_audit"]
+script = ExtResource("2_eo")
+id = &"audit"
+label = "建立引用核验流程"
+effects = [SubResource("eff_0")]
+
+[sub_resource type="Resource" id="eff_1"]
+script = ExtResource("3_ef")
+kind = &"product_boost_subscribers"
+params = {"pct": -0.05, "floor": 50, "cap": 50000000}
+
+[sub_resource type="Resource" id="opt_excuse"]
+script = ExtResource("2_eo")
+id = &"excuse"
+label = "解释说平行宇宙判例也是判例"
+effects = [SubResource("eff_1")]
+
+[resource]
+script = ExtResource("1_ec")
+id = &"fictional_case_law"
+category = &"crisis"
+title = "法务材料里出现了平行宇宙判例"
+body = "客户用你的模型生成合规材料, 里面列了六个听起来庄严无比、实际并不存在的判例。最可怕的是, 模型还附上了页码。"
+min_turn = 24
+requires_product = true
+weight = 10
+cooldown_months = 80
+max_triggers = 1
+options = [SubResource("opt_audit"), SubResource("opt_excuse")]

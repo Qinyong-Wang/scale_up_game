@@ -47,6 +47,20 @@ var ORPHAN_PRODUCT_CHURN: int = 5
 # 订阅产品与 API 共用此率。权威源 user/tuning.tres, 这里只是 .tres 缺失时的兜底.
 var MARKETING_CONVERSION_RATE: float = 0.0125
 
+# Campaign fake performance-score claim knobs. See design/营销系统设计.md §5.2.
+const FAKE_SCORE_CONVERSION_MULT: Dictionary = {
+	&"none": 1.0,
+	&"low": 1.05,
+	&"medium": 1.12,
+	&"high": 1.25,
+}
+const FAKE_SCORE_RETENTION_PENALTY: Dictionary = {
+	&"none": 0.0,
+	&"low": -0.10,
+	&"medium": -0.40,
+	&"high": -1.0,
+}
+
 # v7 PR-F: API cliff threshold (price-vs-guidance ratio at which API demand
 # is zero this week). Matches ResearchSystem.weekly_growth_rate's sentinel.
 const API_PRICE_CLIFF_RATIO: float = 2.5
@@ -151,7 +165,8 @@ func _resolve_per_product() -> void:
 
 		var rate: float = _rank_rate(m, total_rank, p.type) \
 				+ _price_rate(p, m) \
-				+ _capability_penalty(m, p.type)
+				+ _capability_penalty(m, p.type) \
+				+ _fake_score_retention_penalty_for_product(p)
 		var pool_delta: int = int(round(float(p.subscribers) * rate))
 		var attract: int = _marketing_attract(p)
 		var base: int = _base_attraction(GameState.turn, total_rank)
@@ -260,6 +275,7 @@ func compute_rate_breakdown(p) -> Dictionary:
 		rank_rate = 0.0,
 		price_rate = 0.0,
 		capability_penalty = 0.0,
+		fake_score_retention_penalty = 0.0,
 		marketing_attract = 0,
 		base_attraction = 0,
 		is_orphan = false,
@@ -283,7 +299,9 @@ func compute_rate_breakdown(p) -> Dictionary:
 		return out
 	out.price_rate = _price_rate(p, m)
 	out.capability_penalty = _capability_penalty(m, p.type)
-	out.total_rate = out.rank_rate + out.price_rate + out.capability_penalty
+	out.fake_score_retention_penalty = _fake_score_retention_penalty_for_product(p)
+	out.total_rate = out.rank_rate + out.price_rate + out.capability_penalty \
+			+ out.fake_score_retention_penalty
 	out.marketing_attract = _marketing_attract(p)
 	out.base_attraction = _base_attraction(GameState.turn, out.total_rank)
 	return out
@@ -405,10 +423,30 @@ func _marketing_attract(p) -> int:
 	for c in GameState.campaigns:
 		if _campaign_targets_product(c, p):
 			boost += float(c.weekly_budget) * MARKETING_CONVERSION_RATE \
-					* _campaign_efficiency_multiplier(c)
+					* _campaign_efficiency_multiplier(c) \
+					* fake_score_conversion_multiplier(_campaign_fake_score_level(c))
 	# 慈善系统设计 §6: social_welfare 捐助直接抬高营销转化率 (中性 1.0)。这条同时
 	# 进实际拉新与预览 (out.marketing_attract 复用本函数), 显示与实际一致。
 	return int(round(boost * CharitySystem.conversion_multiplier()))
+
+func fake_score_conversion_multiplier(level: StringName) -> float:
+	return float(FAKE_SCORE_CONVERSION_MULT.get(
+			Campaign.normalize_fake_score_level(level), 1.0))
+
+func fake_score_retention_penalty(level: StringName) -> float:
+	return float(FAKE_SCORE_RETENTION_PENALTY.get(
+			Campaign.normalize_fake_score_level(level), 0.0))
+
+func _fake_score_retention_penalty_for_product(p) -> float:
+	var penalty: float = 0.0
+	for c in GameState.campaigns:
+		if _campaign_targets_product(c, p):
+			penalty += fake_score_retention_penalty(_campaign_fake_score_level(c))
+	return clampf(penalty, -1.0, 0.0)
+
+func _campaign_fake_score_level(c) -> StringName:
+	var level: StringName = c.fake_score_level if "fake_score_level" in c else &"none"
+	return Campaign.normalize_fake_score_level(level)
 
 func _campaign_efficiency_multiplier(c) -> float:
 	if not ("lead_id" in c) or c.lead_id == &"":
