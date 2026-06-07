@@ -224,8 +224,8 @@ func test_preview_fake_score_level_boosts_attract_and_shows_retention_penalty() 
 	dlg._refresh_preview()
 	var exaggerated := _attract_number(dlg)
 	assert_almost_eq(float(exaggerated), float(truthful) * 1.25, 1.0)
-	assert_true(dlg._fake_score_label.text.contains("-100"),
-			"高度夸大应显示 -100%%/周留存惩罚, 实际: %s" % dlg._fake_score_label.text)
+	assert_true(dlg._fake_score_label.text.contains("-1%"),
+			"高度夸大应显示 -1%%/周留存惩罚, 实际: %s" % dlg._fake_score_label.text)
 
 func test_preview_api_product_shows_tokens_per_week() -> void:
 	_make_product(&"p_api", &"api")

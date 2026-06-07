@@ -139,9 +139,9 @@ func test_fake_score_level_reduces_retention_rate_for_target_product() -> void:
 	var baseline: Dictionary = UserSystem.compute_rate_breakdown(p)
 	_make_campaign(p.id, 1_000, &"high")
 	var penalized: Dictionary = UserSystem.compute_rate_breakdown(p)
-	assert_almost_eq(float(penalized.fake_score_retention_penalty), -1.0, 0.000001)
+	assert_almost_eq(float(penalized.fake_score_retention_penalty), -0.01, 0.000001)
 	assert_almost_eq(float(penalized.total_rate),
-			float(baseline.total_rate) - 1.0, 0.000001)
+			float(baseline.total_rate) - 0.01, 0.000001)
 
 func test_fake_score_retention_penalty_clamps_when_multiple_campaigns_stack() -> void:
 	var m := _make_published_model(&"m1")
@@ -149,8 +149,8 @@ func test_fake_score_retention_penalty_clamps_when_multiple_campaigns_stack() ->
 	_make_campaign(p.id, 1_000, &"high")
 	_make_campaign(p.id, 1_000, &"high")
 	var breakdown: Dictionary = UserSystem.compute_rate_breakdown(p)
-	assert_almost_eq(float(breakdown.fake_score_retention_penalty), -1.0, 0.000001,
-			"multiple fake campaigns should not push retention below -100%/week")
+	assert_almost_eq(float(breakdown.fake_score_retention_penalty), -0.01, 0.000001,
+			"multiple fake campaigns should not push retention below -1%/week")
 
 # ---- tokens_per_user defaults match design table -----------------------
 

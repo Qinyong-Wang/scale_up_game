@@ -136,12 +136,12 @@ func test_card_shows_fake_score_strategy() -> void:
 	var row := _campaign_row("c_fake", "MyBot (chatbot · m1)", false, 125)
 	row.fake_score_label = "高度夸大"
 	row.fake_score_conversion_mult = 1.25
-	row.fake_score_retention_penalty = -1.0
+	row.fake_score_retention_penalty = -0.01
 	_view.refresh(_data([row]))
 	var labels: PackedStringArray = _view.all_label_texts_for_test()
 	assert_true(_has_label_containing(labels, "高度夸大"),
 			"campaign 卡片应显示性能分数表述档位")
-	assert_true(_has_label_containing(labels, "-100%"),
+	assert_true(_has_label_containing(labels, "-1%"),
 			"campaign 卡片应显示留存惩罚")
 
 func test_terminate_action_emits_signal() -> void:

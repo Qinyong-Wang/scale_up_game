@@ -56,9 +56,9 @@ const FAKE_SCORE_CONVERSION_MULT: Dictionary = {
 }
 const FAKE_SCORE_RETENTION_PENALTY: Dictionary = {
 	&"none": 0.0,
-	&"low": -0.10,
-	&"medium": -0.40,
-	&"high": -1.0,
+	&"low": -0.001,
+	&"medium": -0.004,
+	&"high": -0.01,
 }
 
 # v7 PR-F: API cliff threshold (price-vs-guidance ratio at which API demand
@@ -442,7 +442,7 @@ func _fake_score_retention_penalty_for_product(p) -> float:
 	for c in GameState.campaigns:
 		if _campaign_targets_product(c, p):
 			penalty += fake_score_retention_penalty(_campaign_fake_score_level(c))
-	return clampf(penalty, -1.0, 0.0)
+	return clampf(penalty, -0.01, 0.0)
 
 func _campaign_fake_score_level(c) -> StringName:
 	var level: StringName = c.fake_score_level if "fake_score_level" in c else &"none"
