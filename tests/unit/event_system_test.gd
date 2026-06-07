@@ -487,18 +487,12 @@ func test_routine_coffee_machine_requires_staff() -> void:
 	assert_true(EventSystem._conditions_met(card),
 			"有 1 个员工后 routine_coffee_machine 可触发")
 
-func test_routine_all_hands_requires_staff() -> void:
-	# 一个人开"全员大会"叙事荒诞。
-	GameState.turn = 10
-	GameState.staff_pool.clear()
-	GameState.leads.clear()
-	_seed_founder_lead()
-	var card := load("res://resources/data/events/routine_all_hands.tres") as EventCard
-	assert_false(EventSystem._conditions_met(card),
-			"无员工时 routine_all_hands 不应触发")
-	GameState.staff_pool[&"ml_eng"] = 1
-	assert_true(EventSystem._conditions_met(card),
-			"有 1 个员工后 routine_all_hands 可触发")
+func test_milk_tea_all_hands_event_removed() -> void:
+	# 2026-06 审计: "全员奶茶 (小额开销)" 最后能算到 $100k, 不再保留。
+	assert_false(EventSystem.EVENTS.has(&"routine_all_hands"),
+			"routine_all_hands 不应再注册到事件表")
+	assert_false(FileAccess.file_exists("res://resources/data/events/routine_all_hands.tres"),
+			"routine_all_hands.tres 应删除, 避免生成/注册残留")
 
 func test_routine_office_move_requires_staff() -> void:
 	# 单人创始人时期"工位挤到叠罗汉 / 搬大办公室"叙事不符, 不应弹。
@@ -886,7 +880,7 @@ func test_event_copy_does_not_promise_unimplemented_hiring_changes() -> void:
 
 func test_v10_cards_registered_in_events_table() -> void:
 	# 代表性事件都应在 EVENTS 表注册且 .tres 可加载.
-	for tid in [&"routine_all_hands", &"big_client_hotpot", &"dc_meltdown",
+	for tid in [&"routine_coffee_machine", &"big_client_hotpot", &"dc_meltdown",
 			&"rank_one_party", &"first_revenue", &"agi_rumor"]:
 		assert_true(EventSystem.EVENTS.has(tid), "EVENTS 应注册 %s" % tid)
 		var card := EventSystem._load_card(tid)
@@ -1123,11 +1117,15 @@ func test_open_source_pr_routine_has_trigger_cap() -> void:
 	assert_eq(int(card.max_triggers), 2, "routine_open_source_pr 一局最多触发 2 次")
 
 func test_routine_chore_caps_stay_small_late_game() -> void:
-	# 后期现金可达数十亿, 琐事 cap 不应再算出 100w 量级 (喝奶茶 100w 出戏)。
+	# 后期现金可达数十亿, 琐事 cap 不应把日常小物算成百万级消费。
 	var caps := {
-		&"routine_all_hands": 100_000,   # 喝奶茶
-		&"routine_office_pet": 60_000,   # 养猫
-		&"routine_coffee_machine": 100_000,  # 咖啡机
+		&"routine_domain_renewal": 5_000,  # 单个域名续费
+		&"routine_chair_squeak": 8_000,  # 单把人体工学椅
+		&"routine_office_pet": 12_000,  # 办公室宠物预算
+		&"routine_coffee_machine": 25_000,  # 咖啡机
+		&"routine_receipt_pile": 25_000,  # 临时记账
+		&"routine_password_rotation": 30_000,  # 密码管理器
+		&"routine_team_building": 250_000,  # 多人豪华团建
 		&"routine_lawsuit_spam": 150_000,  # 无厘头律师函"小钱私了"
 	}
 	for cid in caps:

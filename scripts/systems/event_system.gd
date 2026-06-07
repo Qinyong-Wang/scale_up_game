@@ -47,7 +47,6 @@ const EVENTS: Dictionary = {
 	&"history_long_context_race": _EVENT_DIR + "history_long_context_race.tres",
 	&"history_verifiable_reasoning_wave": _EVENT_DIR + "history_verifiable_reasoning_wave.tres",
 	# v10/v16: routine events (now forced every 12 weeks; see §4.5).
-	&"routine_all_hands": _EVENT_DIR + "routine_all_hands.tres",
 	&"routine_office_pet": _EVENT_DIR + "routine_office_pet.tres",
 	&"routine_coffee_machine": _EVENT_DIR + "routine_coffee_machine.tres",
 	&"routine_team_building": _EVENT_DIR + "routine_team_building.tres",

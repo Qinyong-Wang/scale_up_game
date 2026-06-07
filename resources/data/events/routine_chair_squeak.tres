@@ -7,7 +7,7 @@
 [sub_resource type="Resource" id="eff_0"]
 script = ExtResource("3_ef")
 kind = &"economy_spend"
-params = {"pct": 0.004, "floor": 800, "cap": 90000}
+params = {"pct": 0.004, "floor": 800, "cap": 8000}
 
 [sub_resource type="Resource" id="opt_new_chair"]
 script = ExtResource("2_eo")

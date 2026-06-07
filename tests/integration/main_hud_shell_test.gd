@@ -268,14 +268,14 @@ func test_event_tab_shows_placeholder_when_pending_template_is_missing() -> void
 		"缺模板占位事件也应能点「知道了」清掉, 避免永久卡住推进")
 
 func test_event_card_choice_defers_resolution_until_next_frame() -> void:
-	var r: Dictionary = CommandBus.send(&"event.trigger_card", {template_id = &"routine_all_hands"})
-	assert_true(r.ok, "测试应能预置 routine_all_hands 事件")
+	var r: Dictionary = CommandBus.send(&"event.trigger_card", {template_id = &"routine_coffee_machine"})
+	assert_true(r.ok, "测试应能预置 routine_coffee_machine 事件")
 	_hud.click_sidebar_for_test(&"events")
 	_hud._refresh()
 	await get_tree().process_frame
 
 	_hud.reset_refresh_count_for_test()
-	_hud._event_view.click_option_for_test(StringName(r.event_id), &"adjourn")
+	_hud._event_view.click_option_for_test(StringName(r.event_id), &"instant")
 
 	assert_eq(GameState.pending_events.size(), 1,
 		"事件卡 action 不应在按钮 pressed 同帧内结算并触发 HUD 重建")

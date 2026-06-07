@@ -7,7 +7,7 @@
 [sub_resource type="Resource" id="eff_0"]
 script = ExtResource("3_ef")
 kind = &"economy_spend"
-params = {"pct": 0.012, "floor": 2500, "cap": 5000000}
+params = {"pct": 0.012, "floor": 2500, "cap": 250000}
 
 [sub_resource type="Resource" id="opt_fancy"]
 script = ExtResource("2_eo")
@@ -18,7 +18,7 @@ effects = [SubResource("eff_0")]
 [sub_resource type="Resource" id="eff_1"]
 script = ExtResource("3_ef")
 kind = &"economy_spend"
-params = {"pct": 0.002, "floor": 300, "cap": 200000}
+params = {"pct": 0.002, "floor": 300, "cap": 30000}
 
 [sub_resource type="Resource" id="opt_cheap"]
 script = ExtResource("2_eo")
