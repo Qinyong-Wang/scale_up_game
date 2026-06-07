@@ -37,9 +37,10 @@
 
 - Godot Engine **4.4.1 stable**
 - Git
-- GUT 9.x Godot 4 兼容版，用于测试
+- GUT 9.x Godot 4 兼容版，用于测试，需本地安装到 `addons/gut/`
+- Godot 4.4.1 macOS 导出模板与本地 `export_presets.cfg`，仅打包时需要
 
-macOS 上的完整安装说明见 [docs/开发环境配置.md](docs/开发环境配置.md)。
+macOS 上的完整安装说明见 [docs/开发环境配置.md](docs/开发环境配置.md)，打包配置见 [docs/构建与发布.md](docs/构建与发布.md)。
 
 ### 打开工程
 
@@ -54,9 +55,21 @@ godot --path .
 
 ### 运行测试
 
+测试依赖本地 `addons/gut/`。干净 clone 后先按 [docs/开发环境配置.md](docs/开发环境配置.md) 安装 GUT，再运行命令行测试。
+
+贡献开发时建议先跑干净的单元测试：
+
 ```bash
-godot --headless --path . -s addons/gut/gut_cmdln.gd -gdir=res://tests -gexit
+godot --headless --path . -s addons/gut/gut_cmdln.gd -gdir=res://tests/unit -gexit
 ```
+
+发布前再跑集成测试：
+
+```bash
+godot --headless --path . -s addons/gut/gut_cmdln.gd -gdir=res://tests/integration -gexit
+```
+
+集成测试退出码必须为 `0`。当前集成套件仍可能打印少量已知 pending/risky/orphan 诊断，发布前按 [docs/构建与发布.md](docs/构建与发布.md) 的检查清单确认。
 
 只跑某个测试文件：
 
@@ -73,7 +86,9 @@ godot --headless --path . -s addons/gut/gut_cmdln.gd -gselect=start_screen_test.
 简化流程：
 
 ```bash
-godot --headless --path . -s addons/gut/gut_cmdln.gd -gdir=res://tests -gexit
+# 先在 Godot 编辑器里创建本地 export_presets.cfg，见 docs/构建与发布.md §4
+godot --headless --path . -s addons/gut/gut_cmdln.gd -gdir=res://tests/unit -gexit
+godot --headless --path . -s addons/gut/gut_cmdln.gd -gdir=res://tests/integration -gexit
 mkdir -p build/macos
 godot --headless --path . --export-release "macOS" build/macos/Scaling-Up.app
 ```
