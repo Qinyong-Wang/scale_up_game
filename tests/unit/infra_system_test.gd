@@ -700,6 +700,19 @@ func test_idle_owned_dc_rents_out_when_enabled() -> void:
 	assert_eq(int(ledger.income.get("ECO_CAT_GPU_RENTAL", 0)), gross)
 	assert_eq(int(ledger.expense.get("ECO_CAT_RENTAL_FEE", 0)), fee)
 
+func test_rent_out_enabled_dc_rejected_for_task_assignment() -> void:
+	var r: Dictionary = CommandBus.send(&"infra.debug_instant_owned_dc",
+		{facility_spec_id = &"facility_pod", gpu_id = &"cypress_t0"})
+	var dc = InfraSystem.find_dc(r.dc_id)
+	var sr: Dictionary = CommandBus.send(&"infra.set_dc_rent_out",
+		{dc_id = r.dc_id, enabled = true})
+	assert_true(sr.ok)
+	var assign: Dictionary = CommandBus.send(&"infra.assign_to_task",
+		{dc_id = r.dc_id, task_id = &"task_training"})
+	assert_false(assign.ok)
+	assert_eq(assign.error, &"dc_rented_out")
+	assert_eq(dc.status, &"idle", "被拒绝后仍应保持 idle")
+
 func test_set_dc_rent_out_rejected_for_cloud() -> void:
 	var r: Dictionary = CommandBus.send(&"infra.create_cloud_dc",
 		{gpu_id = &"cypress_t0", count = 4})

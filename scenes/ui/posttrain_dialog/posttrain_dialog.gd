@@ -295,6 +295,8 @@ func _populate_dc_dropdown() -> void:
 	for dc in GameState.datacenters:
 		if dc.status != &"idle":
 			continue
+		if dc.rent_out_enabled:
+			continue
 		var gpu_count: int = int(dc.gpu_count) if "gpu_count" in dc else 0
 		var label: String = tr("POST_DC_ITEM") % [dc.display_label(), gpu_count]
 		var idx := _dc_dropdown.item_count

@@ -462,7 +462,7 @@ func _validate(template: TaskTemplate, p: Dictionary) -> StringName:
 		if dc_id == &"":
 			return &"datacenter_unavailable"
 		var dc = _find_dc(dc_id)
-		if dc == null or dc.status != &"idle":
+		if dc == null or dc.status != &"idle" or dc.rent_out_enabled:
 			return &"datacenter_unavailable"
 	# Dataset requirement.
 	if bool(schema.get(&"needs_dataset", false)):

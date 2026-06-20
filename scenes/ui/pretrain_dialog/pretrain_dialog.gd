@@ -552,7 +552,7 @@ func _populate_dc_dropdown() -> void:
 	_dc_dropdown.add_item(tr("MSG_NONE"))
 	_dc_dropdown.set_item_metadata(0, &"")
 	for dc in GameState.datacenters:
-		if dc.status == &"idle":
+		if dc.status == &"idle" and not dc.rent_out_enabled:
 			var tflop_str: String = tr("PRETRAIN_NO_GPU") if dc.train_tflops <= 0.0 else UITheme.format_compute(dc.train_tflops)
 			var own_label: String = tr("DC_OWNERSHIP_" + String(dc.ownership).to_upper())
 			var lbl: String = "%s [%s · %s]" % [dc.display_label(), own_label, tflop_str]

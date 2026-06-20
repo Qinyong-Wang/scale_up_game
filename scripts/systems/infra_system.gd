@@ -514,6 +514,10 @@ func _on_assign_to_task(p: Dictionary) -> Dictionary:
 		return {ok = false, error = &"unknown_dc"}
 	if dc.status != &"idle":
 		return {ok = false, error = &"dc_not_idle"}
+	if dc.rent_out_enabled:
+		Log.warn(&"infra", "assign_to_task_rejected_rent_out",
+			{dc_id = dc.id, task_id = p.get(&"task_id", &"")})
+		return {ok = false, error = &"dc_rented_out"}
 	# Zero-card dcs cannot accept training tasks (they would never make progress).
 	if dc.gpu_count <= 0:
 		return {ok = false, error = &"no_gpus"}

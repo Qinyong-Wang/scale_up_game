@@ -126,6 +126,22 @@ func test_lead_dropdown_prefers_ml_research_lead_over_chief_scientist() -> void:
 	assert_eq(StringName(dlg._selected_lead_id()), ml_id,
 			"PosttrainDialog 默认应优先选主职能 ml_research_lead")
 
+func test_dc_dropdown_hides_rent_out_enabled_idle_dcs() -> void:
+	var mid := _seed_evaluated_model()
+	var rdc_available: Dictionary = CommandBus.send(&"infra.debug_instant_owned_dc",
+		{facility_spec_id = &"facility_room", gpu_id = &"cypress_t0"})
+	var rdc_rented: Dictionary = CommandBus.send(&"infra.debug_instant_owned_dc",
+		{facility_spec_id = &"facility_room", gpu_id = &"cypress_t0"})
+	var rent_r: Dictionary = CommandBus.send(&"infra.set_dc_rent_out",
+		{dc_id = rdc_rented.dc_id, enabled = true})
+	assert_true(rent_r.ok)
+	var dlg = _make_dialog(mid)
+	dlg.refresh()
+	assert_true(_dropdown_has_metadata(dlg._dc_dropdown, rdc_available.dc_id),
+		"未出租的 idle DC 应仍出现在后训练下拉")
+	assert_false(_dropdown_has_metadata(dlg._dc_dropdown, rdc_rented.dc_id),
+		"正在出租的 idle DC 不应出现在后训练下拉")
+
 func test_dialog_uses_panelized_two_column_layout() -> void:
 	# design/UI视觉系统设计.md §7.2: 后训练 Dialog 与预训练同构, 左配置右预览,
 	# 两侧独立滚动, 预览分组进子面板, 启动按钮使用 create CTA。
@@ -152,6 +168,12 @@ func _count_descendants_of_type(root: Node, type) -> int:
 			count += 1
 		count += _count_descendants_of_type(c, type)
 	return count
+
+func _dropdown_has_metadata(dropdown: OptionButton, value) -> bool:
+	for i in range(dropdown.item_count):
+		if dropdown.get_item_metadata(i) == value:
+			return true
+	return false
 
 # ---- preview ------------------------------------------------------------
 

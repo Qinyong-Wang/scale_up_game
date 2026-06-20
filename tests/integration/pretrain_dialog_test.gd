@@ -187,6 +187,22 @@ func test_refresh_fills_dc_dropdown_with_idle_dcs_only() -> void:
 	assert_eq(dlg._dc_dropdown.item_count, 2,
 		"only the idle DC and the (无) placeholder should appear")
 
+func test_refresh_hides_rent_out_enabled_idle_dcs() -> void:
+	var rdc_available: Dictionary = CommandBus.send(&"infra.debug_instant_owned_dc",
+		{facility_spec_id = &"facility_room", gpu_id = &"cypress_t0"})
+	var rdc_rented: Dictionary = CommandBus.send(&"infra.debug_instant_owned_dc",
+		{facility_spec_id = &"facility_room", gpu_id = &"cypress_t0"})
+	var rent_r: Dictionary = CommandBus.send(&"infra.set_dc_rent_out",
+		{dc_id = rdc_rented.dc_id, enabled = true})
+	assert_true(rent_r.ok)
+
+	var dlg = _make_dialog()
+	dlg.refresh()
+	assert_true(_dropdown_has_metadata(dlg._dc_dropdown, rdc_available.dc_id),
+		"未出租的 idle DC 应仍出现在预训练下拉")
+	assert_false(_dropdown_has_metadata(dlg._dc_dropdown, rdc_rented.dc_id),
+		"正在出租的 idle DC 不应出现在预训练下拉")
+
 func test_space_dc_dropdown_shows_train_bonus_suffix() -> void:
 	# 太空数据中心 (space_l +20%) 的下拉选项应带 "太空 +20%" 后缀, 让玩家在
 	# 预训练面板直接看到训练加速。见 design/基础设施系统设计.md §4.1。
@@ -341,6 +357,12 @@ func _count_descendants_of_type(root: Node, type) -> int:
 			count += 1
 		count += _count_descendants_of_type(c, type)
 	return count
+
+func _dropdown_has_metadata(dropdown: OptionButton, value) -> bool:
+	for i in range(dropdown.item_count):
+		if dropdown.get_item_metadata(i) == value:
+			return true
+	return false
 
 func test_dialog_min_size_fits_within_min_viewport() -> void:
 	# Per design/任务系统设计.md §5.1.1: 两栏布局后不再用 max_size 截断, 实际
