@@ -150,7 +150,7 @@ STAFF_PLUS_ONE,+1 (+%s/周),+1 (+%s/wk)
 STAFF_CANT_FIRE_BUSY,"在忙员工不能解雇, 等任务完成再试",Busy staff can't be fired — wait for the task to finish
 STAFF_TOTAL_SALARY,本周总工资: %s  (lead %s + staff %s),This week's payroll: %s  (lead %s + staff %s)
 STAFF_ROLE_ML_ENG,ML 工程师,ML Engineer
-STAFF_ROLE_INFRA_ENG,基建工程师,Infra Engineer
+STAFF_ROLE_INFRA_ENG,软件工程师,Software Engineer
 STAFF_ROLE_DATA_ENG,数据工程师,Data Engineer
 STAFF_ROLE_MARKETING,营销,Marketing
 STAFF_ROLE_OPS,运维,Ops

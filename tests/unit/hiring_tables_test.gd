@@ -22,6 +22,12 @@ func test_staff_salary_tres_files_load() -> void:
 		var r := load(path)
 		assert_true(r is StaffRoleSpec, "%s did not load as StaffRoleSpec" % path)
 
+func test_infra_eng_display_name_is_software_engineer() -> void:
+	# infra_eng 保留作内部 id; 玩家可见职能名按设计显示为“软件工程师”。
+	var r: StaffRoleSpec = load("res://resources/data/hiring/staff_salaries/infra_eng.tres")
+	assert_eq(r.id, &"infra_eng")
+	assert_eq(r.display_name, "软件工程师")
+
 func test_lead_bonus_tres_files_load() -> void:
 	for sp in [
 		&"chief_scientist", &"ml_research_lead", &"eval_lead",

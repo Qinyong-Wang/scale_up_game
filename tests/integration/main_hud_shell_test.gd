@@ -400,15 +400,23 @@ func test_staff_rows_use_translated_role_labels() -> void:
 	# main.gd 组装 staff_rows 时, label 应是翻译后的职能名 (经 _staff_role_label),
 	# 不再是未翻译的枚举名 (ml_eng / infra_eng …)。locale 已在 before_each 钉 zh_CN。
 	GameState.staff_pool[&"ml_eng"] = 2
+	GameState.staff_pool[&"infra_eng"] = 1
 	var data: Dictionary = _hud._build_hiring_view_data()
 	var ml_label := ""
+	var infra_label := ""
 	for row in (data.get("staff_rows", []) as Array):
 		if StringName(row.get("role", &"")) == &"ml_eng":
 			ml_label = String(row.get("label", ""))
+		if StringName(row.get("role", &"")) == &"infra_eng":
+			infra_label = String(row.get("label", ""))
 	assert_eq(ml_label, tr("STAFF_ROLE_ML_ENG"),
 		"ml_eng 行 label 应等于 tr(\"STAFF_ROLE_ML_ENG\")")
 	assert_ne(ml_label, "ml_eng",
 		"label 不应是未翻译的枚举名 ml_eng")
+	assert_eq(infra_label, "软件工程师",
+		"infra_eng 行玩家可见 label 应为软件工程师")
+	assert_ne(infra_label, "infra_eng",
+		"label 不应是未翻译的枚举名 infra_eng")
 
 # ─── 抽屉默认隐藏 ────────────────────────────────────────────
 

@@ -137,6 +137,12 @@ func test_action_keys_available_in_both_locales() -> void:
 	assert_eq(tr("ACTION_CANCEL"), "Cancel")
 	assert_eq(tr("ACTION_CONFIRM"), "Confirm")
 
+func test_staff_infra_role_label_is_software_engineer() -> void:
+	TranslationServer.set_locale("zh_CN")
+	assert_eq(tr("STAFF_ROLE_INFRA_ENG"), "软件工程师")
+	TranslationServer.set_locale("en")
+	assert_eq(tr("STAFF_ROLE_INFRA_ENG"), "Software Engineer")
+
 # ─── 下拉框文案补翻译 (问题4) ────────────────────────────────
 
 func test_dc_ownership_labels_translate() -> void:
