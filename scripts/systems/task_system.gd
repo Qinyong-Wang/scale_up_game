@@ -483,10 +483,11 @@ func _validate(template: TaskTemplate, p: Dictionary) -> StringName:
 				return &"dataset_locked"
 			if required_kind != &"" and ds.kind != required_kind:
 				return &"dataset_kind_mismatch"
-	# v7 PR-G: pretrain dataset.modality ⊂ model.input_modalities ∪ {text}.
+	# v7 PR-G: pretrain effective dataset.modality ⊂ model.input_modalities ∪ {text}.
 	# Validated independently of `needs_dataset` since the pretrain template
 	# doesn't set that flag but still receives dataset_ids from PretrainDialog.
-	# text is always allowed (any model needs a text backbone).
+	# text is always allowed (any model needs a text backbone). Legacy `code`
+	# modality is a text subset; code specialization lives in coverage_tags.
 	if template.subtype == &"pretrain":
 		var pretrain_dsids: Array = p.get(&"dataset_ids", [])
 		if not pretrain_dsids.is_empty():
@@ -500,6 +501,8 @@ func _validate(template: TaskTemplate, p: Dictionary) -> StringName:
 				var ds_mod: StringName = &"text"
 				if "modality" in ds and StringName(ds.modality) != &"":
 					ds_mod = StringName(ds.modality)
+				if ds_mod == &"code":
+					ds_mod = &"text"
 				if not allowed_modalities.has(ds_mod):
 					return &"dataset_modality_mismatch"
 	# Base model requirement (posttrain / evaluate).

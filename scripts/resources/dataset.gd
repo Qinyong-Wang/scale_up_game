@@ -8,8 +8,9 @@ extends Resource
 @export var display_name: String = ""
 @export var kind: StringName = &"pretrain"  # &"pretrain" / &"posttrain" (v2)
 @export var source: StringName  # &"open_source" / &"purchased" / &"collected"
-## v7 PR-G: 单模态; text/image/audio/video/code. 默认 text (旧存档兼容).
-## pretrain 训练时校验 dataset.modality ∈ model.input_modalities ∪ {text}.
+	## v7 PR-G: 单模态; text/image/audio/video. 默认 text (旧存档兼容).
+	## 旧 code modality 是 text 子集; 代码专精用 coverage_tags 区分。
+	## pretrain 训练时校验有效 dataset.modality ∈ model.input_modalities ∪ {text}.
 @export var modality: StringName = &"text"
 @export var size: float = 0.0
 @export var quality: float = 0.0

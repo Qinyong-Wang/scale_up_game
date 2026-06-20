@@ -130,7 +130,8 @@ func _on_add(p: Dictionary) -> Dictionary:
 	ds.display_name = p.get(&"display_name", "Collected #%d" % _next_dataset_seq)
 	ds.kind = StringName(p.get(&"kind", &"pretrain"))
 	ds.source = p.get(&"source", &"collected")
-	# v7 PR-G: modality (text/image/audio/video/code). Defaults to text for legacy callers.
+	# v7 PR-G: modality (text/image/audio/video). Legacy code values are read
+	# as a text subset by TaskSystem. Defaults to text for legacy callers.
 	ds.modality = StringName(p.get(&"modality", &"text"))
 	ds.size = float(p.get(&"size", 0.0))
 	ds.quality = float(p.get(&"quality", 0.0))

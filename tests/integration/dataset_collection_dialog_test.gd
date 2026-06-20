@@ -40,6 +40,26 @@ func test_dialog_instantiates_and_refresh_does_not_crash() -> void:
 	assert_eq(dlg._quality_tier_dropdown.item_count, 4, "4 labor-grade tiers")
 	assert_not_null(dlg._employee_monitor_checkbox, "employee monitoring checkbox built")
 
+func test_modality_dropdown_does_not_offer_code() -> void:
+	var dlg = _make_dialog(&"pretrain")
+	var seen: Dictionary = {}
+	for idx in range(dlg._modality_dropdown.item_count):
+		seen[dlg._modality_dropdown.get_item_metadata(idx)] = true
+	assert_true(seen.has(&"text"))
+	assert_true(seen.has(&"image"))
+	assert_true(seen.has(&"audio"))
+	assert_true(seen.has(&"video"))
+	assert_false(seen.has(&"code"),
+			"code is a text coverage tag, not a standalone dataset modality")
+
+func test_pretrain_tag_picker_still_offers_code() -> void:
+	var dlg = _make_dialog(&"pretrain")
+	var seen: Dictionary = {}
+	for entry in dlg._pretrain_tag_checkboxes:
+		seen[entry.tag] = true
+	assert_true(seen.has(&"code"),
+			"players should express code data via coverage_tags")
+
 # ---- tier row visibility (assert the row container, not the dropdown) -----
 
 func test_quality_tier_row_visible_for_posttrain() -> void:

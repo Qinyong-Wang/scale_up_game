@@ -210,6 +210,23 @@ func test_pretrain_accepts_text_dataset_for_text_only_model() -> void:
 	var err: StringName = TaskSystem._validate(template, payload)
 	assert_ne(err, &"dataset_modality_mismatch")
 
+func test_pretrain_treats_code_dataset_modality_as_text() -> void:
+	_make_chief_scientist_lead(&"l_cs")
+	var code_ds := _make_pretrain_dataset(&"d_code", 0.9, 50.0, [&"code"])
+	code_ds.modality = &"code"
+	var template := load("res://resources/data/tasks/pretrain/pretrain_model.tres")
+	var payload := {
+		template_id = &"pretrain_model",
+		lead_ids = [&"l_cs"],
+		size_params = 1000.0,
+		arch_id = &"ant_v1",
+		input_modalities = [&"text"],
+		dataset_ids = [&"d_code"],
+	}
+	var err: StringName = TaskSystem._validate(template, payload)
+	assert_ne(err, &"dataset_modality_mismatch",
+			"code data is a text subset; code specialization lives in coverage_tags")
+
 func test_pretrain_accepts_image_dataset_when_model_has_image_modality() -> void:
 	_make_chief_scientist_lead(&"l_cs")
 	var image_ds := _make_pretrain_dataset(&"d_img", 0.9, 50.0)

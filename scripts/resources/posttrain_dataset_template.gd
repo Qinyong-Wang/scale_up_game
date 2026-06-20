@@ -13,7 +13,7 @@ extends Resource
 @export var display_name: String = ""
 @export var source: StringName  # &"open_source" / &"purchased"
 ## v7 PR-G: 单模态; 默认 text. posttrain 数据集通常都是 text 指令, 但为保持
-## 数据资产模型一致性也声明 modality.
+## 数据资产模型一致性也声明 modality. code 不作为独立模态。
 @export var modality: StringName = &"text"
 @export var size: float = 0.0   # B tokens (典型 0.01 ~ 0.5)
 @export var quality: float = 0.0

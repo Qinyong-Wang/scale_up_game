@@ -51,11 +51,12 @@ const _PRETRAIN_TAG_LABELS: Dictionary = {
 const _PRETRAIN_TAG_DEFAULT: Array[StringName] = [&"web"]
 const _PRETRAIN_TAG_MAX: int = 2
 
-# v7 PR-G — single-modality enum exposed to player.
-const _MODALITIES: Array[StringName] = [&"text", &"image", &"audio", &"video", &"code"]
+# v7 PR-G — single-modality enum exposed to player. `code` is expressed through
+# pretrain coverage_tags, not as a standalone modality.
+const _MODALITIES: Array[StringName] = [&"text", &"image", &"audio", &"video"]
 const _MODALITY_LABELS: Dictionary = {
 	&"text": "DATASET_MOD_TEXT", &"image": "DATASET_MOD_IMAGE", &"audio": "COLLECT_MOD_AUDIO",
-	&"video": "COLLECT_MOD_VIDEO", &"code": "DATASET_MOD_CODE",
+	&"video": "COLLECT_MOD_VIDEO",
 }
 
 var _kind: StringName = _KIND_PRETRAIN
