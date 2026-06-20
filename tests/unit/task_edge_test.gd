@@ -524,6 +524,34 @@ func test_validate_player_scientist_passes_any_specialty_gate() -> void:
 	assert_true(r.ok, "founder 应能通过 eval_lead specialty 校验, 实际: %s" % str(r))
 	t.input_schema = saved
 
+func test_posttrain_model_accepts_chief_scientist_secondary_lead() -> void:
+	# chief_scientist 在公共枚举表中是 posttrain 副职能, 且数据表带 posttrain_speed。
+	# 玩家签下这种 lead 后, posttrain_model 不能只因不是 ml_research_lead 而拒绝。
+	var l := Lead.new()
+	l.id = &"l_cs_posttrain"
+	l.specialty = &"chief_scientist"
+	l.ability = 80.0
+	GameState.leads.append(l)
+	var mid := _add_pretrained_model()
+	var ds := Dataset.new()
+	ds.id = &"ds_posttrain_secondary"
+	ds.kind = &"posttrain"
+	ds.size = 0.05
+	ds.quality = 0.8
+	ds.target_capability = &"code"
+	GameState.datasets.append(ds)
+	var rdc: Dictionary = CommandBus.send(&"infra.debug_instant_owned_dc",
+			{facility_spec_id = &"facility_room", gpu_id = &"cypress_t0"})
+	var r: Dictionary = CommandBus.send(&"task.start", {
+		template_id = &"posttrain_model",
+		base_model_id = mid,
+		datacenter_id = rdc.dc_id,
+		dataset_ids = [ds.id],
+		lead_ids = [l.id],
+		staff = {},
+	})
+	assert_true(r.ok, "posttrain_model 应接受 chief_scientist 后训练副职能: %s" % str(r))
+
 func test_validate_dataset_required_but_empty() -> void:
 	var t := load("res://resources/data/tasks/posttrain/general.tres")
 	var saved: Dictionary = t.input_schema.duplicate()

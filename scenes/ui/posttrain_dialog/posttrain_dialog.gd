@@ -32,6 +32,12 @@ const SOURCE_LABELS: Dictionary = {
 # saturated), so the dialog no longer mirrors the per-dataset gain/forget constants.
 const POSTTRAIN_TOKENS_PER_WEEK_B: float = 1.0
 
+const POSTTRAIN_PRIMARY_LEAD_SPECIALTY := &"ml_research_lead"
+const POSTTRAIN_LEAD_SPECIALTIES: Array[StringName] = [
+	POSTTRAIN_PRIMARY_LEAD_SPECIALTY,
+	&"chief_scientist",
+]
+
 # Posttrain tier table (mirror TaskSystem so preview matches start duration).
 const TIER_TABLE: Array = [
 	{cap_m = 10_000.0,  min_gpu = 8,    weeks = 1, label = "S"},
@@ -327,35 +333,53 @@ func _populate_dataset_checkboxes() -> void:
 		_dataset_box.add_child(dim)
 
 func _populate_lead_dropdown() -> void:
-	# Per design/招聘系统设计.md §5.4: posttrain 强制 ml_research_lead.
-	# 只列匹配 specialty 的 idle lead (含创始人), 默认选第一个真正 ml_research_lead,
-	# 没有时退到创始人。
+	# Per design/招聘系统设计.md §1.1: posttrain 接受 ml_research_lead 主职能,
+	# chief_scientist 副职能, 以及创始人兜底。默认优先真正 ml_research_lead。
 	_lead_dropdown.clear()
-	var first_match: int = -1
+	var first_primary: int = -1
+	var first_secondary: int = -1
 	var founder_index: int = -1
 	for lead in GameState.leads:
-		if lead.locked_by_task_id != &"" or lead.assigned_to_product_id != &"":
+		if not lead.is_idle():
 			continue
-		if not HiringSystem.lead_matches_specialty(lead, &"ml_research_lead"):
+		if not _lead_can_posttrain(lead):
 			continue
 		var suffix: String = tr("CAMPAIGN_FOUNDER_SUFFIX") if lead.is_player_scientist else ""
 		var idx := _lead_dropdown.item_count
-		# 下拉已按 specialty 过滤 (ml_research_lead), 不再露出 raw 枚举。
+		# 下拉已按后训练可用 lead 过滤, 不再露出 raw 枚举。
 		_lead_dropdown.add_item(tr("POST_LEAD_ITEM") % [
 			NameRomanizer.localized(lead.display_name), String(lead.level), lead.ability, suffix])
 		_lead_dropdown.set_item_metadata(idx, lead.id)
 		if lead.is_player_scientist:
 			if founder_index < 0:
 				founder_index = idx
+		elif lead.specialty == POSTTRAIN_PRIMARY_LEAD_SPECIALTY:
+			if first_primary < 0:
+				first_primary = idx
 		else:
-			if first_match < 0:
-				first_match = idx
+			if first_secondary < 0:
+				first_secondary = idx
 	if _lead_dropdown.item_count == 0:
 		_lead_dropdown.add_item(tr("POST_NO_LEAD"))
 		_lead_dropdown.set_item_metadata(0, &"")
 		_lead_dropdown.select(0)
 	else:
-		_lead_dropdown.select(first_match if first_match >= 0 else founder_index)
+		if first_primary >= 0:
+			_lead_dropdown.select(first_primary)
+		elif first_secondary >= 0:
+			_lead_dropdown.select(first_secondary)
+		else:
+			_lead_dropdown.select(founder_index)
+
+func _lead_can_posttrain(lead) -> bool:
+	if lead == null:
+		return false
+	if lead.is_player_scientist:
+		return true
+	for specialty in POSTTRAIN_LEAD_SPECIALTIES:
+		if lead.specialty == specialty:
+			return true
+	return false
 
 # ---- preview math --------------------------------------------------------
 

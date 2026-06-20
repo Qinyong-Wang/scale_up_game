@@ -481,7 +481,7 @@ VALUE_NONE,无,none
 VALUE_UNEVALUATED,未评估,not evaluated
 POST_TITLE,启动后训练,Start Post-training
 POST_DS_SECTION,数据集 (多选; 同目标轴按 token 加权合并后朝天花板饱和):,Datasets (multi-select; same-axis merged by token weight then saturates):
-POST_LEAD,Lead (可选),Lead (optional)
+POST_LEAD,后训练 Lead,Post-training lead
 POST_MODEL_NOTFOUND,目标模型: (未找到) %s,Target model: (not found) %s
 POST_MODEL,目标模型: %s · %s · %.0f M params,Target model: %s · %s · %.0f M params
 POST_CURRENT_CAP,当前能力: ,Current capability:
@@ -492,7 +492,7 @@ POST_DS_ITEM,%s [%s] · 目标 %s · %.3fB token · q %.2f,%s [%s] · target %s 
 POST_DS_TOOLTIP,"目标轴: %s · token: %.0fM · 质量 q: %.2f\n同轴多份按 token 加权合并 (q̄ = Σ q·size / Σ size) 后统一结算;\n目标轴朝软天花板饱和; 堆份数/拆碎都不再刷分, 只能靠更大基座抬天花板。\nq 越高净分越稳 (gain∝q̄², forget∝1-q̄); 实际累加见下方预览。","Target axis: %s · token: %.0fM · quality q: %.2f\nSame-axis copies are token-weighted (q̄ = Σ q·size / Σ size) then settled together;\ntarget axis saturates toward a soft cap — splitting/stacking no longer grinds score, only a bigger base raises the cap.\nHigher q means steadier net (gain∝q̄², forget∝1-q̄); see preview below."
 POST_NO_DS,(没有可用的后训练数据集; 去数据 tab 获取或购买),(No post-training datasets — get or buy them in the Data tab)
 POST_LEAD_ITEM,%s (%s 级 · 能力 %.0f)%s,%s (%s · ability %.0f)%s
-POST_NO_LEAD,(无 ml_research_lead 可用),(no ml_research_lead available)
+POST_NO_LEAD,(无后训练 Lead 可用),(no post-training lead available)
 POST_MODEL_MISSING,目标模型不存在,Target model not found
 POST_DURATION_FULL,时长: %d 周 (档位 %s %d 周 + 数据量 %d 周),Duration: %d wk (tier %s %d wk + data %d wk)
 POST_DURATION,时长: %d 周 (档位 %s),Duration: %d wk (tier %s)
@@ -512,7 +512,7 @@ POST_NET,净分: %s,Net: %s
 POST_PRED,预估完成后: ,Predicted after:
 POST_LEAD_BONUS,科学家后训练加分: 能力上限 +%.0f%%,Scientist post-train bonus: +%.0f%% capability ceiling
 POST_ERR_DS,请选择至少 1 个后训练数据集,Select at least 1 post-training dataset
-POST_ERR_LEAD,请招聘并选择一位 ml_research_lead,Hire and select an ml_research_lead
+POST_ERR_LEAD,请招聘并空出一位后训练 Lead,Hire and free up a post-training lead
 FIELD_TYPE,类型,Type
 PRODUCT_DLG_TITLE,新建产品,New Product
 PRODUCT_EDIT_TITLE,编辑产品,Edit Product

@@ -422,8 +422,17 @@ func _validate(template: TaskTemplate, p: Dictionary) -> StringName:
 	if bool(schema.get(&"needs_lead", false)) and lead_ids.is_empty():
 		return &"missing_lead"
 	# Specialty requirement. Per 招聘系统设计 §2 (2026-05): player_scientist 万能匹配.
+	var needs_specs: Array = schema.get(&"needs_lead_specialties", [])
 	var needs_spec: StringName = schema.get(&"needs_lead_specialty", &"")
-	if needs_spec != &"":
+	if not needs_specs.is_empty():
+		if lead_ids.is_empty():
+			return &"missing_lead"
+		var first_multi_lead = HiringSystem.find_lead(StringName(lead_ids[0]))
+		if first_multi_lead == null:
+			return &"missing_lead"
+		if not _lead_matches_any_specialty(first_multi_lead, needs_specs):
+			return &"lead_specialty_mismatch"
+	elif needs_spec != &"":
 		if lead_ids.is_empty():
 			return &"missing_lead"
 		var first_lead = HiringSystem.find_lead(StringName(lead_ids[0]))
@@ -563,6 +572,14 @@ func _validate(template: TaskTemplate, p: Dictionary) -> StringName:
 		if dc_size <= 0.0:
 			return &"target_size_required"
 	return &""
+
+func _lead_matches_any_specialty(lead, needs: Array) -> bool:
+	if lead == null:
+		return false
+	for spec in needs:
+		if HiringSystem.lead_matches_specialty(lead, StringName(spec)):
+			return true
+	return false
 
 # ---- duration / completion payload --------------------------------------
 

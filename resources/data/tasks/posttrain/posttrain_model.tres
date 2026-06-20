@@ -13,7 +13,7 @@ duration_func = &"posttrain_fixed_tier"
 base_duration = 1
 input_schema = {
 	&"needs_lead": true,
-	&"needs_lead_specialty": &"ml_research_lead",
+	&"needs_lead_specialties": [&"ml_research_lead", &"chief_scientist"],
 	&"needs_dc": true,
 	&"needs_dataset": true,
 	&"needs_base_model": true,

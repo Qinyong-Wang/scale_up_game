@@ -63,6 +63,19 @@ func _seed_posttrain_ds(id: StringName, axis: StringName, quality: float,
 
 # ---- list / filter -------------------------------------------------------
 
+func _seed_hired_lead(id: StringName, specialty: StringName,
+		ability: float = 75.0) -> StringName:
+	var l := Lead.new()
+	l.id = id
+	l.display_name = String(id)
+	l.specialty = specialty
+	l.level = &"B"
+	l.ability = ability
+	l.signing_fee = 0
+	l.weekly_salary = 0
+	GameState.leads.append(l)
+	return l.id
+
 func test_dataset_list_only_includes_posttrain_kind() -> void:
 	# Seed a posttrain ds AND a pretrain ds — only the posttrain should appear.
 	_seed_posttrain_ds(&"d_pt", &"code", 0.80)
@@ -90,6 +103,28 @@ func test_dataset_list_skips_locked() -> void:
 	dlg.refresh()
 	assert_eq(dlg._dataset_checkboxes.size(), 1)
 	assert_eq(StringName(dlg._dataset_checkboxes[0].id), &"d_idle")
+
+func test_lead_dropdown_includes_hired_chief_scientist_posttrain_secondary() -> void:
+	# chief_scientist 带 posttrain_speed, 公共枚举表定义为 posttrain 副职能。
+	# 玩家签下这类“可做后训练”的 lead 后, PosttrainDialog 不能把人藏掉。
+	GameState.leads.clear()
+	var lead_id := _seed_hired_lead(&"lead_cs_posttrain", &"chief_scientist")
+	var mid := _seed_evaluated_model()
+	var dlg = _make_dialog(mid)
+	dlg.refresh()
+	assert_eq(dlg._lead_dropdown.item_count, 1)
+	assert_eq(StringName(dlg._lead_dropdown.get_item_metadata(0)), lead_id)
+	assert_eq(StringName(dlg._selected_lead_id()), lead_id)
+
+func test_lead_dropdown_prefers_ml_research_lead_over_chief_scientist() -> void:
+	GameState.leads.clear()
+	_seed_hired_lead(&"lead_cs_posttrain", &"chief_scientist")
+	var ml_id := _seed_hired_lead(&"lead_ml_posttrain", &"ml_research_lead")
+	var mid := _seed_evaluated_model()
+	var dlg = _make_dialog(mid)
+	dlg.refresh()
+	assert_eq(StringName(dlg._selected_lead_id()), ml_id,
+			"PosttrainDialog 默认应优先选主职能 ml_research_lead")
 
 func test_dialog_uses_panelized_two_column_layout() -> void:
 	# design/UI视觉系统设计.md §7.2: 后训练 Dialog 与预训练同构, 左配置右预览,
