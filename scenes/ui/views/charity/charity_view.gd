@@ -62,6 +62,8 @@ func _ready() -> void:
 	_sim_answer.add_theme_font_override(&"font", UITheme.get_ui_font_bold())
 	_sim_answer.add_theme_font_size_override(&"font_size", UITheme.FS_HERO if "FS_HERO" in UITheme else 32)
 	_sim_answer.add_theme_color_override(&"font_color", UITheme.ACCENT_INFO)
+	_sim_answer.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	_sim_answer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	_sim_answer.visible = false
 	add_child(_sim_answer)
 	_sim_body = HFlowContainer.new()
@@ -132,7 +134,11 @@ func _populate_sim_card(card: Control, s: Dictionary) -> void:
 		fields.append({"label": tr("SIM_FIELD_REMAINING"),
 				"value": tr("SIM_WEEKS_FMT") % int(s.get("remaining_weeks", 0))})
 	elif status == "available" and not bool(s.get("can_start", false)):
-		fields.append({"label": tr("OFFICE_FIELD_HINT"), "value": String(s.get("gate_reason", ""))})
+		fields.append({
+			"label": tr("OFFICE_FIELD_HINT"),
+			"value": String(s.get("gate_reason", "")),
+			"max_lines": -1,
+		})
 	var actions: Array = []
 	if status == "available":
 		actions.append({
@@ -143,6 +149,7 @@ func _populate_sim_card(card: Control, s: Dictionary) -> void:
 	card.set_data({
 		"title": tr(String(s.get("display_name", String(sid)))),
 		"subtitle": tr(String(s.get("description", ""))),
+		"subtitle_max_lines": -1,
 		"avatar": {"texture": IconRegistry.simulation_icon(sid), "fallback_text": String(sid), "seed_id": sid, "kind": &"simulation"},
 		"status": {"label": status_label, "kind": status_kind},
 		"fields": fields,

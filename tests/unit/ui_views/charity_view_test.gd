@@ -105,10 +105,12 @@ func test_in_progress_shown_as_field() -> void:
 
 # ---- 宇宙模拟工程段 ----------------------------------------------------
 
-func _sim_stage(id: String, status: String, can_start: bool = false) -> Dictionary:
-	return {id = StringName(id), display_name = "阶段", description = "描述",
+func _sim_stage(id: String, status: String, can_start: bool = false,
+		description: String = "描述", gate_reason: String = "") -> Dictionary:
+	return {id = StringName(id), display_name = "阶段", description = description,
 			order = 0, cost = 1_000_000_000, weeks = 8, min_tflops = 2.0e7,
-			status = status, can_start = can_start, gate_reason = "", remaining_weeks = 0}
+			status = status, can_start = can_start, gate_reason = gate_reason,
+			remaining_weeks = 0}
 
 func _sim(stages: Array, stages_done: int, revealed: bool) -> Dictionary:
 	return {stages_done = stages_done, total = stages.size(),
@@ -136,3 +138,22 @@ func test_sim_answer_revealed_when_all_done() -> void:
 	var sim: Dictionary = _sim([_sim_stage("universe", "done")], 5, true)
 	_view.refresh({cash = 0, causes = [], simulation = sim})
 	assert_true(_view.is_answer_revealed_for_test(), "全部完成应揭晓终极答案")
+
+func test_sim_stage_description_is_not_line_clamped() -> void:
+	var long_desc := "终极尺度——从大爆炸到星系网络，模拟整个宇宙的演化，去求那个关于生命、宇宙以及一切的终极答案。"
+	var sim: Dictionary = _sim([_sim_stage("universe", "available", true, long_desc)], 4, false)
+	_view.refresh({cash = 0, causes = [], simulation = sim})
+	var card: Control = _view.get_sim_card_for_test(&"universe")
+	assert_not_null(card)
+	assert_eq(card.get_subtitle_text(), long_desc)
+	assert_eq(card.get_subtitle_max_lines_for_test(), -1,
+			"宇宙模拟阶段说明必须完整显示, 不能被普通卡片 3 行副标题截断")
+
+func test_sim_gate_reason_is_not_line_clamped() -> void:
+	var reason := "没有满足算力门槛的空闲、未出租自有数据中心。先把一座数据中心堆到足够算力并停止出租再来。"
+	var sim: Dictionary = _sim([_sim_stage("universe", "available", false, "描述", reason)], 4, false)
+	_view.refresh({cash = 0, causes = [], simulation = sim})
+	var card: Control = _view.get_sim_card_for_test(&"universe")
+	assert_not_null(card)
+	assert_eq(card.get_field_value_max_lines_for_test(3), -1,
+			"禁用原因可能较长, 必须完整显示")

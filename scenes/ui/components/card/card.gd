@@ -158,6 +158,7 @@ func set_data(data: Dictionary) -> void:
 	# subtitle
 	var subtitle: String = String(data.get("subtitle", ""))
 	_subtitle_label.text = subtitle
+	_subtitle_label.max_lines_visible = int(data.get("subtitle_max_lines", 3))
 	_subtitle_label.visible = not subtitle.is_empty()
 
 	# avatar

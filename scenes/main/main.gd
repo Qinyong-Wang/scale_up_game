@@ -2883,10 +2883,13 @@ func _open_honor_dialog(trophy_id: StringName) -> void:
 	add_child(dlg)
 	dlg.confirmed.connect(func(): dlg.queue_free())
 	dlg.close_requested.connect(func(): dlg.queue_free())
+	var answer_text := "42" if spec.form == &"answer_box" else ""
+	Log.info(&"ui", "honor_dialog_opened", {id = trophy_id, answer_box = not answer_text.is_empty()})
 	dlg.refresh({
 		name = tr(spec.display_name),
 		description = tr(spec.description),
 		flavor = tr(spec.flavor),
+		answer = answer_text,
 	})
 	dlg.popup_centered()
 
