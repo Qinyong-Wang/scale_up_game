@@ -121,6 +121,8 @@ NPC 是 MarketSystem 唯一的"对手", 在排行榜里和玩家模型同台。
 
 NPC release 的 5 轴 capability 直接写在 .tres 里, 取值锚定到 `research_system / task_system §6.7` 的 evaluate 公式 — 同年代、同 params/tokens 量级的玩家自训模型评分应大致对齐, 让 NPC 时间线与玩家成长曲线落在同一坐标系。具体数值见 `resources/data/npcs/*.tres`。5 轴中 general / code / reasoning 是基础, multimodal / agent 是后期解锁 (multimodal 2022+, agent 2024+), 早期 release 这两轴接近 0。
 
+**v13 总分上限 (2026-06)**: NPC release 不是玩家 evaluate 公式的实时产物, 而是手写时间线; 后期手写值一度把总榜推到 1500+，超过玩家合法构筑约 1000-1100 的可达区间。为避免竞争曲线失真, 生成脚本 `tools/build_npc_timelines.py` 定义 `NPC_TOTAL_CAP = 1100.0`: 若某条 release 的五轴合计超过 1100, 写入 `.tres` 前按同一倍率缩放五轴, 保留该公司强项结构。这个 cap 只约束 NPC release 数据, 不约束玩家模型能力。
+
 ### 2.6 release 与"可下载/可部署 OS 模型" (v9 PR-I)
 
 玩家通过两条入口消费 NPC 时间线里的开源 release:

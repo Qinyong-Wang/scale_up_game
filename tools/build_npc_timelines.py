@@ -17,6 +17,8 @@ Release tuple format (one row per release):
 - Sub-board NPCs use one tier smaller clusters than the main-board frontier of
   the same year; they specialize in one axis.
 - Open-source NPCs lag ~25-35 weeks behind closed-source same-gen models.
+- NPC release total capability is capped at 1100 by proportional scaling before
+  writing .tres, keeping competitors in the player-reachable 1000-1100 band.
 
 Run after editing this file. The script is idempotent (overwrites .tres).
 """
@@ -27,6 +29,7 @@ from typing import List, Tuple
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT_DIR = ROOT / "resources" / "data" / "npcs"
+NPC_TOTAL_CAP = 1100.0
 
 Release = Tuple[
     str,           # id_suffix
@@ -493,9 +496,25 @@ def _cap_dict(caps: List[float]) -> str:
             ', "agent": ' + _fmt_float(a) + '}')
 
 
+def _cap_total(caps: List[float]) -> List[float]:
+    total = sum(caps)
+    if total <= NPC_TOTAL_CAP:
+        return caps
+    scale = NPC_TOTAL_CAP / total
+    scaled = [round(v * scale, 3) for v in caps]
+    # Rounding can push the sum a hair over the cap. Pull the excess from the
+    # largest axis so the visible total remains <= cap without changing flavor.
+    excess = round(sum(scaled) - NPC_TOTAL_CAP, 6)
+    if excess > 0:
+        idx = max(range(len(scaled)), key=lambda i: scaled[i])
+        scaled[idx] = round(max(0.0, scaled[idx] - excess), 3)
+    return scaled
+
+
 def _release_block(npc_id: str, rel: Release) -> str:
     (id_suffix, name, turn, caps, kind, gpu_id, gpu_count, weeks,
      params_b, active_b, tokens_b, arch) = rel
+    caps = _cap_total(caps)
     sub_id = f"release_{id_suffix}"
     lines = [
         f'[sub_resource type="Resource" id="{sub_id}"]',

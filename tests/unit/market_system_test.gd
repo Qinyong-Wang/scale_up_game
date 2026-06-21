@@ -16,6 +16,7 @@ const ALL_BOARDS_INCLUDING_TOTAL: Array[StringName] = [
 	&"closed_source", &"open_source",
 	&"sub_general", &"sub_code", &"sub_reasoning", &"sub_multimodal", &"sub_agent",
 ]
+const NPC_TOTAL_CAP: float = 1100.0
 
 func before_each() -> void:
 	GameState.reset()
@@ -49,6 +50,12 @@ func _make_release(rid: StringName, label: String, turn: int, caps: Dictionary) 
 	r.capability = caps
 	r.release_kind = &"pretrain"
 	return r
+
+func _cap_total(caps: Dictionary) -> float:
+	var total: float = 0.0
+	for axis in NpcCompany.AXES:
+		total += float(caps.get(String(axis), 0.0))
+	return total
 
 func _assert_source_board_contains_exact_npc_releases(board_id: StringName, expected: Dictionary) -> void:
 	var actual := {}
@@ -221,6 +228,22 @@ func test_npc_capability_is_5d_dict() -> void:
 	for axis in NpcCompany.AXES:
 		assert_true(npc.model_capability.has(String(axis)),
 				"NPC 应有 axis %s" % axis)
+
+func test_npc_release_totals_are_capped_to_player_reachable_band() -> void:
+	var max_total: float = 0.0
+	var max_label: String = ""
+	for npc in GameState.npc_companies:
+		for release in npc.model_releases:
+			var total: float = _cap_total(release.capability)
+			if total > max_total:
+				max_total = total
+				max_label = "%s / %s" % [String(npc.id), String(release.id)]
+			assert_lte(total, NPC_TOTAL_CAP + 0.001,
+					"NPC release 总分不得超过 %.0f: %s %.1f" %
+					[NPC_TOTAL_CAP, String(release.id), total])
+	assert_gt(max_total, 1000.0,
+			"测试前提: 后期 NPC 仍应接近 1000-1100 竞争带; max %s %.1f" %
+			[max_label, max_total])
 
 func test_default_npcs_cover_every_sub_board() -> void:
 	var coverage := {}
