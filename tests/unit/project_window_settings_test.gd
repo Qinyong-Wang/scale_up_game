@@ -18,7 +18,7 @@ func test_stretch_mode_is_disabled_to_avoid_fullscreen_menu_clipping() -> void:
 	assert_eq(String(ProjectSettings.get_setting("display/window/stretch/mode", "")),
 			"disabled")
 
-func test_project_and_macos_app_icons_exist() -> void:
+func test_project_and_export_icons_exist() -> void:
 	var project_icon := String(ProjectSettings.get_setting("application/config/icon", ""))
 	assert_eq(project_icon, "res://icon.svg")
 	assert_true(FileAccess.file_exists(project_icon), "工程 SVG 图标必须存在")
@@ -28,3 +28,9 @@ func test_project_and_macos_app_icons_exist() -> void:
 	assert_not_null(f, "icon.icns 应可读取")
 	if f != null:
 		assert_gt(f.get_length(), 100_000, "icon.icns 应包含完整多尺寸图层")
+	assert_true(FileAccess.file_exists("res://icon.ico"),
+			"Windows 导出必须有原生 icon.ico, 避免 exe 图标为空")
+	var win_icon := FileAccess.open("res://icon.ico", FileAccess.READ)
+	assert_not_null(win_icon, "icon.ico 应可读取")
+	if win_icon != null:
+		assert_gt(win_icon.get_length(), 10_000, "icon.ico 应包含多尺寸图层")

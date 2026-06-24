@@ -16,6 +16,7 @@ project.godot          Godot 工程入口
 README.md              GitHub 项目介绍与快速开始
 icon.svg               应用图标
 icon.icns              macOS 原生应用图标（export_presets.cfg 的 application/icon）
+icon.ico               Windows 原生应用图标（export_presets.cfg 的 application/icon）
 scenes/                按功能划分（不按资源类型）
   start_screen/        起始页 StartScreen (工程 main_scene)
   main/                根场景 Main

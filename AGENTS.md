@@ -12,6 +12,8 @@
 ```
 project.godot          Godot 工程入口
 icon.svg               应用图标
+icon.icns              macOS 原生应用图标
+icon.ico               Windows 原生应用图标
 scenes/                按功能划分（不按资源类型）
   main/                根场景 Main
   ui/                  HUD、面板、弹窗
