@@ -46,32 +46,17 @@ func test_title_uses_hero_font_size() -> void:
 	assert_eq(s._title_label.get_theme_font_size(&"font_size"), UITheme.FS_HERO,
 		"标题字号必须等于 hero 主标题档 FS_HERO")
 
-func test_hero_layout_has_decorative_showcase_panel() -> void:
-	# 新首屏不是孤立小白卡: 左侧主操作面板 + 右侧纯装饰仪表预览,
-	# 让题材感在第一眼可见 (design/出身系统设计.md §1)。
+func test_hero_layout_uses_promo_background_image() -> void:
+	# 起始页题材感由全屏宣传底图承载, 不再靠右侧小排行榜装饰面板。
 	var s = _make_screen()
 	assert_not_null(s._hero_card, "起始页应有主操作面板引用")
-	assert_not_null(s._showcase_panel, "起始页应有右侧仪表装饰面板")
-	assert_true(s._showcase_panel is Control, "仪表装饰应是 Control")
-	assert_eq(s._showcase_panel.mouse_filter, Control.MOUSE_FILTER_IGNORE,
-		"右侧仪表预览是纯装饰, 不应拦截鼠标")
-
-func test_showcase_uses_exported_logo_and_task_icons() -> void:
-	# 发布包里右侧 showcase 不能看起来像 logo / 任务头像缺失:
-	# 应实际加载 brand 与 task 贴图, 只有贴图缺失时才回退几何占位。
-	var s = _make_screen()
-	assert_true(s._showcase_panel.has_method(&"loaded_company_logo_for_test"),
-		"showcase 应暴露公司 logo 资源加载状态供导出回归测试使用")
-	assert_true(s._showcase_panel.has_method(&"loaded_task_icon_count_for_test"),
-		"showcase 应暴露任务图标加载数量供导出回归测试使用")
-	if not s._showcase_panel.has_method(&"loaded_company_logo_for_test"):
-		return
-	if not s._showcase_panel.has_method(&"loaded_task_icon_count_for_test"):
-		return
-	assert_true(s._showcase_panel.loaded_company_logo_for_test(),
-		"showcase 应加载真实 brand-01 公司标记贴图")
-	assert_gte(s._showcase_panel.loaded_task_icon_count_for_test(), 4,
-		"showcase 至少应加载 4 个真实 task 图标, 避免任务头像显示为灰色占位")
+	assert_not_null(s._background_image, "起始页应创建全屏背景 TextureRect")
+	assert_not_null(s._background_image.texture, "起始页背景贴图应可加载")
+	assert_eq(s._background_image.texture.resource_path, StartScreen.START_BACKGROUND_PATH)
+	assert_eq(s._background_image.stretch_mode, TextureRect.STRETCH_KEEP_ASPECT_COVERED,
+		"背景图应 cover 铺满窗口, 不能留黑边")
+	assert_eq(s._background_image.mouse_filter, Control.MOUSE_FILTER_IGNORE,
+		"背景图是纯装饰, 不应拦截鼠标")
 
 func test_hero_card_uses_translucent_surface() -> void:
 	# 主面板要像欢迎页玻璃/磨砂面板, 不是完全不透明的旧白卡。

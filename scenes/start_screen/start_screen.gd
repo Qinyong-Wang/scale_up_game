@@ -12,6 +12,7 @@ const NewGameDialog := preload("res://scenes/ui/new_game_dialog/new_game_dialog.
 const SaveLoadDialog := preload("res://scenes/ui/save_load_dialog/save_load_dialog.gd")
 const SettingsDialog := preload("res://scenes/ui/settings_dialog/settings_dialog.gd")
 const MAIN_SCENE := "res://scenes/main/main.tscn"
+const START_BACKGROUND_PATH := "res://assets/sprites/ui/start_screen/start-background.png"
 
 ## 菜单按钮视觉权重: 主操作 / 次操作 / 幽灵 (设置·退出)。见 design/出身系统设计.md §1。
 enum _BtnVariant { PRIMARY, SECONDARY, GHOST }
@@ -21,8 +22,8 @@ var _continue_btn: Button
 var _load_btn: Button
 var _settings_btn: Button
 var _quit_btn: Button
+var _background_image: TextureRect
 var _hero_card: PanelContainer
-var _showcase_panel: Control
 var _title_label: Label
 var _subtitle_label: Label
 var _status_label: Label
@@ -66,11 +67,7 @@ func _apply_theme() -> void:
 # ---- UI -----------------------------------------------------------------
 
 func _build_ui() -> void:
-	# 程序化办公室 / 数据中心背景, 让首屏题材感比纯灰底更强。
-	var backdrop := _HeroBackdrop.new()
-	backdrop.set_anchors_preset(Control.PRESET_FULL_RECT)
-	backdrop.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	add_child(backdrop)
+	_add_background()
 
 	var center := CenterContainer.new()
 	center.set_anchors_preset(Control.PRESET_FULL_RECT)
@@ -154,12 +151,36 @@ func _build_ui() -> void:
 	version.add_theme_color_override(&"font_color", UITheme.TEXT_DISABLED)
 	col.add_child(version)
 
-	_showcase_panel = _ShowcasePanel.new()
-	_showcase_panel.custom_minimum_size = Vector2(396, 520)
-	_showcase_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	stage.add_child(_showcase_panel)
+	# 保留右侧呼吸空间, 让菜单仍落在背景左侧留白区, 不压住中景数据中心。
+	var right_spacer := Control.new()
+	right_spacer.custom_minimum_size = Vector2(396, 1)
+	right_spacer.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	stage.add_child(right_spacer)
 
 	_refresh_continue_state()
+
+func _add_background() -> void:
+	var tex := load(START_BACKGROUND_PATH) as Texture2D
+	if tex == null:
+		Log.warn(&"ui", "start_screen_background_missing", {path = START_BACKGROUND_PATH})
+		var fallback := _HeroBackdrop.new()
+		fallback.set_anchors_preset(Control.PRESET_FULL_RECT)
+		fallback.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		add_child(fallback)
+	else:
+		_background_image = TextureRect.new()
+		_background_image.name = "BackgroundImage"
+		_background_image.texture = tex
+		_background_image.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		_background_image.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+		_background_image.set_anchors_preset(Control.PRESET_FULL_RECT)
+		_background_image.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		add_child(_background_image)
+
+	var scrim := _BackgroundScrim.new()
+	scrim.set_anchors_preset(Control.PRESET_FULL_RECT)
+	scrim.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	add_child(scrim)
 
 ## hero 字标的一段 (双色字标拆成两个 Label, 颜色不同)。
 func _make_title_part(text: String, color: Color) -> Label:
@@ -451,6 +472,23 @@ func _capture_saveload_shot() -> void:
 
 # ---- 装饰用内部控件 ------------------------------------------------------
 
+## 背景遮罩: 轻微压低远景对比, 同时给左侧菜单区域一个稳定可读的底。
+class _BackgroundScrim extends Control:
+	func _ready() -> void:
+		resized.connect(queue_redraw)
+
+	func _draw() -> void:
+		if size.x <= 0.0 or size.y <= 0.0:
+			return
+		draw_rect(Rect2(Vector2.ZERO, size), Color(0, 0, 0, 0.06))
+		var left_w: float = minf(size.x, 760.0)
+		for i in range(28):
+			var t := float(i) / 27.0
+			var alpha := lerpf(0.32, 0.0, t)
+			var x := t * left_w
+			draw_rect(Rect2(x, 0, left_w / 28.0 + 1.0, size.y),
+				Color(UITheme.BG_SURFACE, alpha))
+
 ## 全屏背景: 浅灰底 + 几块大半径低透明度中性灰柔光, 给欢迎页柔和现代质感。
 ## 品牌走黑灰白, 这里不用蓝/绿色块; 颜色取 UITheme 中性灰 token, 仅叠低 alpha。
 class _HeroBackdrop extends Control:
@@ -519,148 +557,3 @@ class _LogoMark extends Control:
 
 	func _draw() -> void:
 		UITheme.draw_brand_mark(self, Rect2(Vector2.ZERO, size), true)
-
-## 右侧装饰仪表: 小型算力曲线 / 任务轨道 / 排名线框。纯视觉, 不承载真实状态。
-class _ShowcasePanel extends Control:
-	const _COMPANY_LOGO_KEY := &"brand-01"
-	const _TASK_ICON_KEYS := [
-		&"pretrain",
-		&"posttrain",
-		&"evaluate",
-		&"data_collection",
-		&"tech_research",
-	]
-
-	var _company_logo_texture: Texture2D
-	var _task_icons: Array[Texture2D] = []
-
-	func _ready() -> void:
-		_load_showcase_assets()
-		resized.connect(queue_redraw)
-
-	func loaded_company_logo_for_test() -> bool:
-		return _company_logo_texture != null
-
-	func loaded_task_icon_count_for_test() -> int:
-		var count := 0
-		for tex in _task_icons:
-			if tex != null:
-				count += 1
-		return count
-
-	func _draw() -> void:
-		if size.x <= 0.0 or size.y <= 0.0:
-			return
-		var panel := _box(Color(UITheme.BG_SURFACE, 0.78),
-			Color(UITheme.BORDER_SUBTLE, 0.76), UITheme.R_LG, UITheme.S_6)
-		var outer := Rect2(Vector2.ZERO, size)
-		draw_style_box(panel, outer)
-		_draw_header()
-		_draw_curve()
-		_draw_ranks()
-		_draw_tracks()
-
-	func _load_showcase_assets() -> void:
-		var missing: Array[String] = []
-		_company_logo_texture = IconRegistry.company_logo_texture(_COMPANY_LOGO_KEY)
-		if _company_logo_texture == null:
-			missing.append("brand/%s" % String(_COMPANY_LOGO_KEY))
-		_task_icons.clear()
-		for key in _TASK_ICON_KEYS:
-			var tex: Texture2D = IconRegistry.get_icon(&"task", key)
-			_task_icons.append(tex)
-			if tex == null:
-				missing.append("task/%s" % String(key))
-		if not missing.is_empty():
-			Log.warn(&"ui", "start_screen_showcase_assets_missing", {missing = missing})
-
-	func _draw_header() -> void:
-		var logo_rect := Rect2(UITheme.S_6, UITheme.S_5, 48, 48)
-		UITheme.draw_company_logo(self, logo_rect, _COMPANY_LOGO_KEY, true)
-		var label_x := logo_rect.end.x + UITheme.S_4
-		var chip_col := Color(UITheme.TEXT_PRIMARY, 0.74)
-		draw_rect(Rect2(label_x, UITheme.S_6 + 4, 86, 8), chip_col)
-		draw_rect(Rect2(label_x, UITheme.S_6 + 22, 138, 5),
-			Color(UITheme.BORDER_STRONG, 0.38))
-		for i in range(3):
-			var x := size.x - UITheme.S_6 - 18 - float(i) * 26.0
-			draw_circle(Vector2(x, UITheme.S_6 + 7), 5.0,
-				Color(UITheme.ACCENT_PRIMARY, 0.28 + float(i) * 0.08))
-
-	func _draw_curve() -> void:
-		var chart := Rect2(UITheme.S_6, 86, size.x - UITheme.S_6 * 2, 128)
-		draw_style_box(_box(Color(UITheme.BG_BASE, 0.72),
-			Color(UITheme.BORDER_SUBTLE, 0.70), UITheme.R_MD, UITheme.S_3), chart)
-		for i in range(4):
-			var y := chart.position.y + 24.0 + float(i) * 24.0
-			draw_line(Vector2(chart.position.x + 16, y),
-				Vector2(chart.end.x - 16, y), Color(UITheme.BORDER_SUBTLE, 0.52), 1.0)
-		var pts := PackedVector2Array()
-		for i in range(7):
-			var t := float(i) / 6.0
-			var x := chart.position.x + 18.0 + t * (chart.size.x - 36.0)
-			var y := chart.end.y - 28.0 - pow(t, 1.45) * 70.0 + sin(t * 9.0) * 7.0
-			pts.append(Vector2(x, y))
-		draw_polyline(pts, Color(UITheme.ACCENT_PRIMARY, 0.78), 3.0, true)
-		for p in pts:
-			draw_circle(p, 4.2, Color(UITheme.BG_SURFACE, 0.95))
-			draw_circle(p, 2.3, Color(UITheme.ACCENT_PRIMARY, 0.88))
-
-	func _draw_ranks() -> void:
-		var left := UITheme.S_6
-		var top := 244.0
-		for i in range(4):
-			var y := top + float(i) * 36.0
-			draw_rect(Rect2(left, y, size.x - UITheme.S_6 * 2, 1),
-				Color(UITheme.BORDER_SUBTLE, 0.58))
-			_draw_icon_tile(Rect2(left + 4, y + 6, 24, 24), _task_icon(i), i)
-			draw_rect(Rect2(left + 42, y + 12, 84 + float(3 - i) * 16.0, 7),
-				Color(UITheme.TEXT_PRIMARY, 0.42))
-			draw_rect(Rect2(size.x - UITheme.S_6 - 72, y + 10, 54, 8),
-				Color(UITheme.ACCENT_INFO, 0.18 + float(i) * 0.035))
-
-	func _draw_tracks() -> void:
-		var top := size.y - 118.0
-		var left := UITheme.S_6
-		for i in range(3):
-			var y := top + float(i) * 30.0
-			_draw_icon_tile(Rect2(left + 2, y - 8, 24, 24), _task_icon(i + 2), i + 2)
-			var rail_left := left + 36.0
-			var rail := Rect2(rail_left, y, size.x - UITheme.S_6 - rail_left, 10)
-			draw_rect(rail, Color(UITheme.BORDER_SUBTLE, 0.56))
-			var fill_w := rail.size.x * (0.28 + float(i) * 0.22)
-			draw_rect(Rect2(rail.position, Vector2(fill_w, rail.size.y)),
-				Color(UITheme.TEXT_PRIMARY, 0.42))
-
-	func _task_icon(index: int) -> Texture2D:
-		if _task_icons.is_empty():
-			return null
-		return _task_icons[index % _task_icons.size()]
-
-	func _draw_icon_tile(rect: Rect2, tex: Texture2D, seed: int) -> void:
-		draw_style_box(_box(Color(UITheme.BG_ELEVATED, 0.96),
-			Color(UITheme.BORDER_SUBTLE, 0.78), UITheme.R_SM, 0), rect)
-		var inset: float = maxf(3.0, rect.size.x * 0.16)
-		var icon_rect := rect.grow(-inset)
-		if tex != null:
-			draw_texture_rect(tex, icon_rect, false)
-			return
-		var center := rect.get_center()
-		var radius: float = minf(rect.size.x, rect.size.y) * 0.22
-		var alpha := 0.18 + float(seed % 3) * 0.04
-		draw_circle(center, radius, Color(UITheme.TEXT_PRIMARY, alpha))
-		draw_line(center + Vector2(-radius * 0.9, radius * 0.2),
-			center + Vector2(radius * 0.9, -radius * 0.2),
-			Color(UITheme.ACCENT_PRIMARY, 0.34), maxf(1.0, radius * 0.22), true)
-
-	func _box(bg: Color, border: Color, radius: int, margin: int) -> StyleBoxFlat:
-		var sb := StyleBoxFlat.new()
-		sb.bg_color = bg
-		sb.border_color = border
-		sb.set_border_width_all(1)
-		sb.set_corner_radius_all(radius)
-		sb.content_margin_left = margin
-		sb.content_margin_right = margin
-		sb.content_margin_top = margin
-		sb.content_margin_bottom = margin
-		return sb

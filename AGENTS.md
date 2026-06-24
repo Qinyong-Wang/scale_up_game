@@ -45,7 +45,9 @@ resources/             静态数据 .tres
     events/            事件卡牌 (routine / crisis / opportunity / flavor)
     npcs/              NPC 公司预设 (23 家, 取代旧的 _install_default_npcs 硬编码)
 assets/
-  sprites/  fonts/  audio/
+  sprites/
+    ui/start_screen/   起始页全屏宣传背景图
+  fonts/  audio/
 addons/
   gut/                 GUT 测试框架
 tests/                 自动化测试
@@ -53,6 +55,7 @@ tests/                 自动化测试
   integration/         系统集成测试
 design/                设计文档（中文）
 docs/                  开发文档（环境配置 / 构建发布 / 端到端调试）
+  media/readme/        GitHub README 用封面图与界面截图
 tools/                 一次性脚本与诊断工具（如 font_diag.gd）
 ```
 

@@ -69,12 +69,14 @@ resources/             静态数据 .tres
 assets/
   sprites/              运行时图片素材
     ui/                 运行时 UI 图标 / 卡片缩略图 PNG (product/task/event/marketing 等)
+      start_screen/     起始页全屏宣传背景图
   fonts/
   audio/music/         背景音乐 BGM (15 首 .mp3, 由 tools/generate_music.py 经 Replicate MusicGen 生成)
 addons/gut/            GUT 测试框架
 tests/                 自动化测试: unit / integration / support
 design/                设计文档（中文）
 docs/                  开发文档（环境配置 / 构建发布 / 端到端调试）
+  media/readme/        GitHub README 用封面图与界面截图
 tools/                 一次性脚本与诊断工具 (process_asset.py / qa_assets.py / build_theme.gd /
                         build_translations.gd / extract_content_strings.py /
                         build_npc_timelines.py / build_event_cards.py /
