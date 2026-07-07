@@ -14,6 +14,9 @@
 ```
 project.godot          Godot 工程入口
 README.md              GitHub 项目介绍与快速开始
+LICENSE                GNU GPL v3.0 许可证文本
+THIRD_PARTY_NOTICES.md 第三方组件与素材说明
+CLAUDE_en.md           CLAUDE.md 的英文参考翻译
 icon.svg               应用图标
 icon.icns              macOS 原生应用图标（export_presets.cfg 的 application/icon）
 icon.ico               Windows 原生应用图标（export_presets.cfg 的 application/icon）
