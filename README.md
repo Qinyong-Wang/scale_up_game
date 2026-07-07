@@ -166,34 +166,79 @@ tools/                 一次性脚本、素材管线与诊断工具
 
 ## English
 
-**Scaling Up** is a 2D management simulation game about running an AI model company. The player starts from a small lab in 2017 and advances one week per turn: train models, build compute infrastructure, hire talent, launch products, compete on leaderboards, raise funding, and grow a small team into a more ambitious technology company.
+<div align="center">
+  <img src="icon.svg" alt="Scaling Up app icon" width="96">
+  <h1>Scaling Up</h1>
+  <p><strong>Run an AI model company, one week at a time.</strong></p>
+  <p>
+    <a href="https://github.com/Qinyong-Wang/scale_up_game/releases/latest"><img alt="Latest release" src="https://img.shields.io/badge/release-v0.1.1--alpha.2-202124"></a>
+    <img alt="Godot 4.4.1" src="https://img.shields.io/badge/Godot-4.4.1-478cbf">
+    <a href="LICENSE"><img alt="License: GPL-3.0-only" src="https://img.shields.io/badge/license-GPL--3.0--only-202124"></a>
+    <img alt="Platforms: macOS and Windows" src="https://img.shields.io/badge/platform-macOS%20%7C%20Windows-666666">
+  </p>
+  <p>
+    <a href="#download">Download</a> ·
+    <a href="#screenshots">Screenshots</a> ·
+    <a href="#gameplay-highlights">Features</a> ·
+    <a href="#running-tests">Tests</a> ·
+    <a href="#license">License</a>
+  </p>
+</div>
 
-The project is built with **Godot 4.4.1 stable**. Current version: **0.1.1-alpha**.
+![Scaling Up cover](docs/media/readme/cover.png)
+
+**Scaling Up** is a 2D management simulation game about building an AI model company from a small 2017 lab into a serious technology player. Each turn is one week: train models, build compute infrastructure, hire specialists, launch products, manage cash, react to events, and race against fictional competitors.
+
+| Current build | Engine | Language | Platforms | License |
+|---|---|---|---|---|
+| `0.1.1-alpha` | Godot `4.4.1 stable` | Chinese default, English pipeline | macOS, Windows x86_64 | `GPL-3.0-only` |
+
+## Download
+
+The latest playable build is available on [GitHub Releases](https://github.com/Qinyong-Wang/scale_up_game/releases/latest).
+
+| Platform | Asset | Notes |
+|---|---|---|
+| macOS | `Scaling-Up-0.1.1-alpha.zip` | Unzip and run `Scaling-Up.app`. The current build is unsigned, so first launch may require right-clicking and choosing "Open". |
+| Windows x86_64 | `Scaling-Up-0.1.1-alpha-windows-x86_64.zip` | Unzip and keep `Scaling-Up.exe` and `Scaling-Up.pck` in the same folder before running the game. |
+
+## Screenshots
+
+| Start Screen | Model Management |
+|---|---|
+| <img src="docs/media/readme/start-screen.png" alt="Scaling Up start screen" width="480"> | <img src="docs/media/readme/models-panel.png" alt="Model management screen" width="480"> |
+
+| Infrastructure | Tech Tree |
+|---|---|
+| <img src="docs/media/readme/infra-panel.png" alt="Infrastructure management screen" width="480"> | <img src="docs/media/readme/tech-panel.png" alt="Technology tree screen" width="480"> |
+
+| Office |
+|---|
+| <img src="docs/media/readme/office-panel.png" alt="Office screen" width="720"> |
 
 ## Gameplay Highlights
 
-- **Weekly turns**: payroll, datacenter costs, task progress, user growth, revenue, and events resolve every week.
-- **Model lifecycle**: pretrain, posttrain, evaluate, publish, and serve models. Capability affects product unlocks, user growth, and leaderboard performance.
-- **Real-world units**: training and inference use FLOPs, TFLOPs, B tokens, tokens/s, and similar units instead of abstract compute points.
-- **Compute infrastructure**: rent or build datacenters, buy GPUs, choose power supplies, and split resources between training and serving.
-- **Hiring and organization**: recruit leads and staff with different specialties to improve training, research, marketing, and operations.
-- **Products and monetization**: launch APIs, chatbots, agents, multimodal assistants, and coding agents, then earn revenue through subscriptions and usage.
-- **Tech tree and competitors**: progress through architecture, attention, loss, engineering, application, and context-length research lines.
-- **Events, charity, and collections**: opportunities, crises, fundraising, charity projects, office honors, and collectibles provide long-term goals.
+| System | What You Manage |
+|---|---|
+| Weekly operations | Payroll, facility costs, task progress, user growth, revenue, and events resolve every week. |
+| Model lifecycle | Pretrain, posttrain, evaluate, publish, price, and serve models. Capability drives products, users, and rankings. |
+| Compute infrastructure | Rent or build datacenters, buy GPU codenames, choose power supplies, and split capacity between training and serving. |
+| Organization | Recruit leads and staff with different specialties to improve research, training, marketing, and operations. |
+| Products | Launch APIs, chatbots, agents, multimodal assistants, and coding agents, then monetize through subscriptions and usage. |
+| Long-term goals | Progress through the tech tree, compete with NPC companies, fund charity projects, collect rare office items, and unlock honors. |
 
-GPU, model, architecture, and company names use fictional plant / animal codenames. Real brand names are intentionally avoided in code, resources, and UI copy.
+Training and inference use real units such as FLOPs, TFLOPs, B tokens, and tokens/s instead of abstract compute points. GPU, model, architecture, and company names use fictional plant / animal codenames; real brand names are intentionally avoided in code, resources, and UI copy.
 
 ## Current Status
 
-This is an alpha-stage project. The core management loop is already in place:
+Scaling Up is an alpha-stage project with the core management loop already in place.
 
-- Start screen, new game flow, save/load, settings, and tutorial
-- Main HUD with multi-tab management views
-- Economy, hiring, infrastructure, dataset, research, task, tech tree, market, user, product, monetization, marketing, event, charity, collection, and simulation systems
-- Chinese as the default language, with an English translation pipeline
-- GUT unit and integration tests
-
-Balancing, content volume, release workflow, and cross-platform exports are still under active development.
+| Ready Today | Still Evolving |
+|---|---|
+| Start screen, new game flow, save/load, settings, tutorial | Balance tuning and long-run pacing |
+| Main HUD with multi-tab management views | More content, events, and late-game goals |
+| Economy, hiring, infrastructure, datasets, research, tasks, products, revenue, marketing, charity, collection, and simulation systems | Release automation and broader platform coverage |
+| GUT unit and integration test coverage | Visual regression automation |
 
 ## Quick Start
 
@@ -205,13 +250,6 @@ Balancing, content volume, release workflow, and cross-platform exports are stil
 - Godot 4.4.1 macOS / Windows export templates, only needed for packaging
 
 For macOS setup details, see [docs/开发环境配置.md](docs/开发环境配置.md). For packaging, see [docs/构建与发布.md](docs/构建与发布.md).
-
-## Download
-
-The latest playable build is available on [GitHub Releases](https://github.com/Qinyong-Wang/scale_up_game/releases/latest).
-
-- macOS: download `Scaling-Up-0.1.1-alpha.zip`, unzip it, and run `Scaling-Up.app`. Because the app is not signed yet, first launch may require right-clicking and choosing "Open".
-- Windows: download `Scaling-Up-0.1.1-alpha-windows-x86_64.zip`, unzip it, keep `Scaling-Up.exe` and `Scaling-Up.pck` in the same folder, then run `Scaling-Up.exe`.
 
 ### Open the Project
 
