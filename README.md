@@ -56,9 +56,16 @@
 - Godot Engine **4.4.1 stable**
 - Git
 - GUT 9.x Godot 4 兼容版，用于测试，需本地安装到 `addons/gut/`
-- Godot 4.4.1 macOS 导出模板，仅打包时需要
+- Godot 4.4.1 macOS / Windows 导出模板，仅打包时需要
 
 macOS 上的完整安装说明见 [docs/开发环境配置.md](docs/开发环境配置.md)，打包配置见 [docs/构建与发布.md](docs/构建与发布.md)。
+
+## 下载试玩
+
+最新试玩版见 [GitHub Releases](https://github.com/Qinyong-Wang/scale_up_game/releases/latest)。
+
+- macOS: 下载 `Scaling-Up-0.1.1-alpha.zip`，解压后运行 `Scaling-Up.app`。未签名版本首次打开时可能需要右键选择“打开”。
+- Windows: 下载 `Scaling-Up-0.1.1-alpha-windows-x86_64.zip`，解压后保持 `Scaling-Up.exe` 与 `Scaling-Up.pck` 在同一目录，再运行 `Scaling-Up.exe`。
 
 ### 打开工程
 
@@ -107,7 +114,7 @@ godot --headless --path . -s addons/gut/gut_cmdln.gd -gselect=start_screen_test.
 
 ## 构建
 
-当前首发导出目标是 macOS。发布流程、版本号约定和导出预设说明见 [docs/构建与发布.md](docs/构建与发布.md)。
+当前首发导出目标是 macOS 与 Windows x86_64。发布流程、版本号约定和导出预设说明见 [docs/构建与发布.md](docs/构建与发布.md)。
 
 简化流程：
 
@@ -117,6 +124,8 @@ godot --headless --path . -s addons/gut/gut_cmdln.gd -gdir=res://tests/unit -gex
 godot --headless --path . -s addons/gut/gut_cmdln.gd -gdir=res://tests/integration -gexit
 mkdir -p build/macos
 godot --headless --path . --export-release "macOS" build/macos/Scaling-Up.app
+mkdir -p build/windows
+godot --headless --path . --export-release "Windows Desktop" build/windows/Scaling-Up.exe
 ```
 
 ## 项目结构
@@ -124,6 +133,8 @@ godot --headless --path . --export-release "macOS" build/macos/Scaling-Up.app
 ```text
 project.godot          Godot 工程入口
 README.md              GitHub 项目介绍与快速开始
+LICENSE                GNU GPL v3.0 许可证文本
+THIRD_PARTY_NOTICES.md 第三方组件与素材说明
 CLAUDE.md / AGENTS.md  协作约定、目录职责与开发工作流
 scenes/                场景与 UI，按功能组织
 scripts/               Autoload、业务系统与 Resource 脚本
@@ -147,7 +158,9 @@ tools/                 一次性脚本、素材管线与诊断工具
 
 ## 许可证
 
-暂未声明开源许可证。公开发布或允许外部复用前，请先补充 `LICENSE`。
+本项目采用 [GNU General Public License v3.0 only](LICENSE) (`GPL-3.0-only`) 发布。
+
+第三方组件、字体与素材说明见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
 
 ---
 
@@ -189,9 +202,16 @@ Balancing, content volume, release workflow, and cross-platform exports are stil
 - Godot Engine **4.4.1 stable**
 - Git
 - GUT 9.x for Godot 4, installed locally at `addons/gut/`
-- Godot 4.4.1 macOS export templates, only needed for packaging
+- Godot 4.4.1 macOS / Windows export templates, only needed for packaging
 
 For macOS setup details, see [docs/开发环境配置.md](docs/开发环境配置.md). For packaging, see [docs/构建与发布.md](docs/构建与发布.md).
+
+## Download
+
+The latest playable build is available on [GitHub Releases](https://github.com/Qinyong-Wang/scale_up_game/releases/latest).
+
+- macOS: download `Scaling-Up-0.1.1-alpha.zip`, unzip it, and run `Scaling-Up.app`. Because the app is not signed yet, first launch may require right-clicking and choosing "Open".
+- Windows: download `Scaling-Up-0.1.1-alpha-windows-x86_64.zip`, unzip it, keep `Scaling-Up.exe` and `Scaling-Up.pck` in the same folder, then run `Scaling-Up.exe`.
 
 ### Open the Project
 
@@ -240,7 +260,7 @@ For more debugging workflows, see [docs/端到端调试.md](docs/端到端调试
 
 ## Build
 
-The first export target is macOS. Release steps, versioning, and export preset notes are documented in [docs/构建与发布.md](docs/构建与发布.md).
+The first export targets are macOS and Windows x86_64. Release steps, versioning, and export preset notes are documented in [docs/构建与发布.md](docs/构建与发布.md).
 
 Short version:
 
@@ -250,6 +270,8 @@ godot --headless --path . -s addons/gut/gut_cmdln.gd -gdir=res://tests/unit -gex
 godot --headless --path . -s addons/gut/gut_cmdln.gd -gdir=res://tests/integration -gexit
 mkdir -p build/macos
 godot --headless --path . --export-release "macOS" build/macos/Scaling-Up.app
+mkdir -p build/windows
+godot --headless --path . --export-release "Windows Desktop" build/windows/Scaling-Up.exe
 ```
 
 ## Project Layout
@@ -257,6 +279,8 @@ godot --headless --path . --export-release "macOS" build/macos/Scaling-Up.app
 ```text
 project.godot          Godot project entry
 README.md              GitHub overview and quick start
+LICENSE                GNU GPL v3.0 license text
+THIRD_PARTY_NOTICES.md Third-party component and asset notices
 CLAUDE.md / AGENTS.md  Collaboration rules, directory ownership, and workflow
 scenes/                Feature-organized scenes and UI
 scripts/               Autoloads, gameplay systems, and Resource scripts
@@ -280,4 +304,6 @@ See [CLAUDE.md](CLAUDE.md) for the full project conventions and [design/index.md
 
 ## License
 
-No open-source license has been declared yet. Add a `LICENSE` file before publishing this repository for external reuse.
+This project is licensed under the [GNU General Public License v3.0 only](LICENSE) (`GPL-3.0-only`).
+
+Third-party component, font, and asset notices are listed in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).

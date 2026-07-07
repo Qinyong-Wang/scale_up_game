@@ -26,7 +26,8 @@ Noto Sans CJK 是 Google 的开源字体, 风格干净现代, 覆盖中英文与
 
 ## 许可
 
-SIL Open Font License 1.1 — 自由使用 / 嵌入 / 分发, 需在仓库 LICENSE 登记。
+SIL Open Font License 1.1 — 自由使用 / 嵌入 / 分发；仓库级登记见
+`THIRD_PARTY_NOTICES.md`。
 
 ## 导入参数
 
