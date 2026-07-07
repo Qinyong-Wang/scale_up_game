@@ -1,7 +1,7 @@
 <div align="center">
-  <img src="icon.svg" alt="Scaling Up app icon" width="96">
-  <h1>Scaling Up</h1>
-  <p><strong>经营 AI 模型公司，一周一回合。</strong></p>
+  <img src="icon.svg" alt="一亿张 GPU：Scaling Up app icon" width="96">
+  <h1>一亿张 GPU：Scaling Up</h1>
+  <p><strong>经营 AI 模型公司，一周一回合，冲向一亿张 GPU 的终局。</strong></p>
   <p>
     <a href="https://github.com/Qinyong-Wang/scale_up_game/releases/latest"><img alt="Latest release" src="https://img.shields.io/badge/release-v0.1.1--alpha.2-202124"></a>
     <img alt="Godot 4.4.1" src="https://img.shields.io/badge/Godot-4.4.1-478cbf">
@@ -17,11 +17,13 @@
   </p>
 </div>
 
-![Scaling Up cover](docs/media/readme/cover.png)
+![一亿张 GPU：Scaling Up cover](docs/media/readme/cover.png)
 
 ## 游戏与玩法
 
-**Scaling Up** 是一款以「经营 AI 模型公司」为题材的 2D 模拟经营游戏。玩家从 2017 年的早期实验室起步，以每周一回合推进公司发展：训练模型、建设算力、招募人才、上线产品、融资求生，并在长期经营中把一家小团队带向更大的技术野心。
+**一亿张 GPU：Scaling Up** 是一款以「经营 AI 模型公司」为题材的 2D 模拟经营游戏。玩家从 2017 年的早期实验室起步，以每周一回合推进公司发展：训练模型、建设算力、招募人才、上线产品、融资求生，并在长期经营中把一家小团队带向更大的技术野心。
+
+游戏的终极目标是建造一个有一亿张卡的太空计算中心，用于计算宇宙的终极答案。
 
 你面对的不是单一数值增长，而是一组会互相拉扯的经营系统：现金流决定扩张速度，算力决定训练节奏，模型能力影响产品增长，人才结构改变研发效率，事件会在最紧张的时候打乱计划。
 
@@ -32,7 +34,7 @@
 | 算力基础设施 | 租赁或自建数据中心，购买 GPU 化名型号，选择供电方式，并在训练与推理之间分配资源。 |
 | 人才与组织 | 招募不同专长的 lead 与 staff，用团队能力影响训练、研究、营销和运营。 |
 | 产品与商业化 | 发布 API、聊天产品、智能体、多模态助手和代码助手，通过订阅与调用量获得收入。 |
-| 科技树与长期目标 | 沿架构、注意力、损失函数、工程优化、应用能力和上下文长度六条线推进研发。 |
+| 科技树与长期目标 | 沿架构、注意力、损失函数、工程优化、应用能力和上下文长度六条线推进研发，最终走向一亿张卡的太空计算中心。 |
 | 事件、公益和收藏 | 机会、危机、融资、慈善项目、办公室荣誉与收藏品共同构成长线经营叙事。 |
 
 游戏中的 GPU、模型、架构和公司命名采用植物 / 动物化名，避免在代码、资源和 UI 中直接出现现实品牌名。训练和推理使用 FLOPs、TFLOPs、B tokens、tokens/s 等真实单位，数值系统尽量贴近现实工程尺度。
@@ -83,7 +85,7 @@ git clone --depth 1 --branch godot_4 https://github.com/bitwes/Gut.git gut
 
 | 起始页 / Start Screen | 模型管理 / Model Management |
 |---|---|
-| <img src="docs/media/readme/start-screen.png" alt="Scaling Up start screen" width="480"> | <img src="docs/media/readme/models-panel.png" alt="Model management screen" width="480"> |
+| <img src="docs/media/readme/start-screen.png" alt="一亿张 GPU：Scaling Up start screen" width="480"> | <img src="docs/media/readme/models-panel.png" alt="Model management screen" width="480"> |
 
 | 基建与算力 / Infrastructure | 科技树 / Tech Tree |
 |---|---|
@@ -199,9 +201,9 @@ tools/                 一次性脚本、素材管线与诊断工具
 ## English
 
 <div align="center">
-  <img src="icon.svg" alt="Scaling Up app icon" width="96">
-  <h1>Scaling Up</h1>
-  <p><strong>Run an AI model company, one week at a time.</strong></p>
+  <img src="icon.svg" alt="100 Million GPUs: Scaling Up app icon" width="96">
+  <h1>100 Million GPUs: Scaling Up</h1>
+  <p><strong>Run an AI model company, one week at a time, toward a 100-million-GPU endgame.</strong></p>
   <p>
     <a href="https://github.com/Qinyong-Wang/scale_up_game/releases/latest"><img alt="Latest release" src="https://img.shields.io/badge/release-v0.1.1--alpha.2-202124"></a>
     <img alt="Godot 4.4.1" src="https://img.shields.io/badge/Godot-4.4.1-478cbf">
@@ -218,11 +220,13 @@ tools/                 一次性脚本、素材管线与诊断工具
   </p>
 </div>
 
-![Scaling Up cover](docs/media/readme/cover.png)
+![100 Million GPUs: Scaling Up cover](docs/media/readme/cover.png)
 
 ## Game and Systems
 
-**Scaling Up** is a 2D management simulation game about building an AI model company from a small 2017 lab into a serious technology player. Each turn is one week: train models, build compute infrastructure, hire specialists, launch products, manage cash, and react to events while the company grows from a fragile lab into an ambitious technical organization.
+**100 Million GPUs: Scaling Up** is a 2D management simulation game about building an AI model company from a small 2017 lab into a serious technology player. Each turn is one week: train models, build compute infrastructure, hire specialists, launch products, manage cash, and react to events while the company grows from a fragile lab into an ambitious technical organization.
+
+The ultimate objective is to build a space-based compute center with 100 million GPUs and use it to calculate the ultimate answer of the universe.
 
 The core fantasy is not just watching numbers go up. You are balancing systems that push against each other: cash controls expansion speed, compute controls training pace, model quality shapes product growth, staff composition changes execution, and events can disrupt a plan right when the runway gets tight.
 
@@ -233,7 +237,7 @@ The core fantasy is not just watching numbers go up. You are balancing systems t
 | Compute infrastructure | Rent or build datacenters, buy fictional GPU codenames, choose power supplies, and split capacity between training and serving. |
 | Organization | Recruit leads and staff with different specialties to improve research, training, marketing, and operations. |
 | Products | Launch APIs, chatbots, agents, multimodal assistants, and coding agents, then monetize through subscriptions and usage. |
-| Tech tree and long-term goals | Advance through architecture, attention, loss, engineering, application, and context-length research lines. |
+| Tech tree and long-term goals | Advance through architecture, attention, loss, engineering, application, and context-length research lines, eventually reaching the 100-million-GPU space compute center. |
 | Events, charity, and collection | Opportunities, crises, fundraising, charity projects, office honors, and collectibles create the long-run company story. |
 
 Training and inference use real units such as FLOPs, TFLOPs, B tokens, and tokens/s instead of abstract compute points. GPU, model, architecture, and company names use fictional plant / animal codenames; real brand names are intentionally avoided in code, resources, and UI copy.
@@ -284,7 +288,7 @@ Then enable it in the editor: `Project -> Project Settings -> Plugins -> GUT -> 
 
 | Start Screen | Model Management |
 |---|---|
-| <img src="docs/media/readme/start-screen.png" alt="Scaling Up start screen" width="480"> | <img src="docs/media/readme/models-panel.png" alt="Model management screen" width="480"> |
+| <img src="docs/media/readme/start-screen.png" alt="100 Million GPUs: Scaling Up start screen" width="480"> | <img src="docs/media/readme/models-panel.png" alt="Model management screen" width="480"> |
 
 | Infrastructure | Tech Tree |
 |---|---|
@@ -296,7 +300,7 @@ Then enable it in the editor: `Project -> Project Settings -> Plugins -> GUT -> 
 
 ## Current Status
 
-Scaling Up is an alpha-stage project with the core management loop already in place.
+100 Million GPUs: Scaling Up is an alpha-stage project with the core management loop already in place.
 
 | Ready Today | Still Evolving |
 |---|---|
