@@ -12,6 +12,7 @@
     <a href="#游戏与玩法">游戏与玩法</a> ·
     <a href="#下载试玩">下载试玩</a> ·
     <a href="#开始-vibe-game-developing">Vibe Game Developing</a> ·
+    <a href="#联系">联系</a> ·
     <a href="#english">English</a>
   </p>
 </div>
@@ -183,6 +184,10 @@ tools/                 一次性脚本、素材管线与诊断工具
 - 面向玩家的文案走 i18n 管线，不在 UI 代码中硬编码中文。
 - 资源文件优先使用 `.tres`。
 
+## 联系
+
+项目联系邮箱：[qinyong_wang@hotmail.com](mailto:qinyong_wang@hotmail.com)。
+
 ## 许可证
 
 本项目采用 [GNU General Public License v3.0 only](LICENSE) (`GPL-3.0-only`) 发布。
@@ -208,7 +213,8 @@ tools/                 一次性脚本、素材管线与诊断工具
     <a href="#download">Download</a> ·
     <a href="#vibe-game-developing">Vibe Game Developing</a> ·
     <a href="#screenshots">Screenshots</a> ·
-    <a href="#developer-details">Developer Details</a>
+    <a href="#developer-details">Developer Details</a> ·
+    <a href="#contact">Contact</a>
   </p>
 </div>
 
@@ -377,6 +383,10 @@ See [CLAUDE.md](CLAUDE.md) for the full project conventions and [design/index.md
 - Code, Godot files, and commit messages are written in English. `design/` and collaboration docs are written in Chinese.
 - Player-facing copy should go through the i18n pipeline instead of being hardcoded in UI scripts.
 - Prefer `.tres` resources over `.res`.
+
+## Contact
+
+Project contact: [qinyong_wang@hotmail.com](mailto:qinyong_wang@hotmail.com).
 
 ## License
 
