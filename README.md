@@ -1,4 +1,14 @@
 <div align="center">
+  <p><strong>语言 / Language</strong></p>
+  <p>
+    <a href="#chinese"><img alt="中文" src="https://img.shields.io/badge/中文-进入中文版-202124?style=for-the-badge"></a>
+    <a href="#english"><img alt="English" src="https://img.shields.io/badge/English-Read%20in%20English-666666?style=for-the-badge"></a>
+  </p>
+</div>
+
+<a id="chinese"></a>
+
+<div align="center">
   <img src="icon.svg" alt="一亿张 GPU：Scaling Up app icon" width="96">
   <h1>一亿张 GPU：Scaling Up</h1>
   <p><strong>经营 AI 模型公司，一周一回合，冲向一亿张 GPU 的终局。</strong></p>
