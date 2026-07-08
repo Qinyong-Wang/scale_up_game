@@ -161,7 +161,7 @@ godot --headless --path . -s addons/gut/gut_cmdln.gd -gselect=start_screen_test.
 
 ### 构建
 
-当前首发导出目标是 macOS 与 Windows x86_64。发布流程、版本号约定和导出预设说明见 [docs/构建与发布.md](docs/构建与发布.md)。
+当前首发导出目标是 macOS、Windows x86_64 与 Web。发布流程、版本号约定和导出预设说明见 [docs/构建与发布.md](docs/构建与发布.md)。
 
 简化流程：
 
@@ -173,6 +173,10 @@ mkdir -p build/macos
 godot --headless --path . --export-release "macOS" build/macos/Scaling-Up.app
 mkdir -p build/windows
 godot --headless --path . --export-release "Windows Desktop" build/windows/Scaling-Up.exe
+mkdir -p build/web
+godot --headless --path . --export-release "Web" build/web/index.html
+python3 tools/web_release.py check --export-dir build/web
+python3 tools/web_release.py package --export-dir build/web
 ```
 
 ### 项目结构
@@ -370,7 +374,7 @@ For more debugging workflows, see [docs/端到端调试.md](docs/端到端调试
 
 ### Build
 
-The first export targets are macOS and Windows x86_64. Release steps, versioning, and export preset notes are documented in [docs/构建与发布.md](docs/构建与发布.md).
+The first export targets are macOS, Windows x86_64, and Web. Release steps, versioning, and export preset notes are documented in [docs/构建与发布.md](docs/构建与发布.md).
 
 Short version:
 
@@ -382,6 +386,10 @@ mkdir -p build/macos
 godot --headless --path . --export-release "macOS" build/macos/Scaling-Up.app
 mkdir -p build/windows
 godot --headless --path . --export-release "Windows Desktop" build/windows/Scaling-Up.exe
+mkdir -p build/web
+godot --headless --path . --export-release "Web" build/web/index.html
+python3 tools/web_release.py check --export-dir build/web
+python3 tools/web_release.py package --export-dir build/web
 ```
 
 ### Project Layout

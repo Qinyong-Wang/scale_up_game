@@ -85,7 +85,7 @@ tools/                 一次性脚本与诊断工具 (process_asset.py / qa_ass
                         build_translations.gd / extract_content_strings.py /
                         build_npc_timelines.py / build_event_cards.py /
                         build_collectibles.py / build_deterministic_ui_icons.py /
-                        generate_music.py / screenshot.sh)
+                        generate_music.py / web_release.py / screenshot.sh)
 ```
 
 ## 约定
