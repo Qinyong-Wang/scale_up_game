@@ -16,7 +16,11 @@
     <a href="https://github.com/Qinyong-Wang/scale_up_game/releases/latest"><img alt="Latest release" src="https://img.shields.io/badge/release-v0.1.1--alpha.3-202124"></a>
     <img alt="Godot 4.4.1" src="https://img.shields.io/badge/Godot-4.4.1-478cbf">
     <a href="LICENSE"><img alt="License: GPL-3.0-only" src="https://img.shields.io/badge/license-GPL--3.0--only-202124"></a>
-    <img alt="Platforms: macOS and Windows" src="https://img.shields.io/badge/platform-macOS%20%7C%20Windows-666666">
+    <img alt="Platforms: macOS, Windows, and Web" src="https://img.shields.io/badge/platform-macOS%20%7C%20Windows%20%7C%20Web-666666">
+  </p>
+  <p><strong>在线试玩 / Play in Browser</strong></p>
+  <p>
+    <a href="https://qinyong-wang.github.io/scale_up_game/"><img alt="在线试玩 Web 版" src="https://img.shields.io/badge/在线试玩-Web%20版-202124?style=for-the-badge"></a>
   </p>
   <p><strong>直接下载试玩版 / Direct Download</strong></p>
   <p>
@@ -56,10 +60,11 @@
 
 ## 下载试玩
 
-最新试玩版见 [GitHub Releases](https://github.com/Qinyong-Wang/scale_up_game/releases/latest)。
+最新试玩版见 [在线 Web 版](https://qinyong-wang.github.io/scale_up_game/) 与 [GitHub Releases](https://github.com/Qinyong-Wang/scale_up_game/releases/latest)。
 
 | 平台 | 下载文件 | 运行方式 |
 |---|---|---|
+| Web | [在线试玩](https://qinyong-wang.github.io/scale_up_game/) | 直接用浏览器打开。存档保存在当前浏览器与当前站点数据里, 清浏览器数据或换浏览器/设备会丢失。 |
 | Windows x86_64 | [点击下载 Windows 版](https://github.com/Qinyong-Wang/scale_up_game/releases/download/v0.1.1-alpha.3/Scaling-Up-0.1.1-alpha-windows-x86_64.zip) | 解压后保持 `Scaling-Up.exe` 与 `Scaling-Up.pck` 在同一目录，再运行 `Scaling-Up.exe`。 |
 | macOS | [点击下载 macOS 版](https://github.com/Qinyong-Wang/scale_up_game/releases/download/v0.1.1-alpha.3/Scaling-Up-0.1.1-alpha.zip) | 解压后运行 `Scaling-Up.app`。ad-hoc 签名版本首次打开时可能需要右键选择“打开”。 |
 
@@ -131,7 +136,7 @@ git clone --depth 1 --branch godot_4 https://github.com/bitwes/Gut.git gut
 - Godot Engine **4.4.1 stable**
 - Git
 - GUT 9.x Godot 4 兼容版，用于测试，需本地安装到 `addons/gut/`
-- Godot 4.4.1 macOS / Windows 导出模板，仅打包时需要
+- Godot 4.4.1 macOS / Windows / Web 导出模板，仅打包时需要
 
 macOS 上的完整安装说明见 [docs/开发环境配置.md](docs/开发环境配置.md)，打包配置见 [docs/构建与发布.md](docs/构建与发布.md)。
 
@@ -179,10 +184,13 @@ python3 tools/web_release.py check --export-dir build/web
 python3 tools/web_release.py package --export-dir build/web
 ```
 
+Web 在线试玩由 GitHub Actions 自动部署到 GitHub Pages。push 到 `main` 后会运行 `.github/workflows/deploy-web.yml`, 导出并发布 `build/web/`。
+
 ### 项目结构
 
 ```text
 project.godot          Godot 工程入口
+.github/workflows/     GitHub Actions: Web 导出与 Pages 部署
 README.md              GitHub 项目介绍与快速开始
 LICENSE                GNU GPL v3.0 许可证文本
 THIRD_PARTY_NOTICES.md 第三方组件与素材说明

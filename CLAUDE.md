@@ -13,6 +13,7 @@
 
 ```
 project.godot          Godot 工程入口
+.github/workflows/     GitHub Actions: Web 导出与 Pages 部署
 README.md              GitHub 项目介绍与快速开始
 LICENSE                GNU GPL v3.0 许可证文本
 THIRD_PARTY_NOTICES.md 第三方组件与素材说明

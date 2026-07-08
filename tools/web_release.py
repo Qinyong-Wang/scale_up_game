@@ -1,10 +1,5 @@
 #!/usr/bin/env python3
-"""Web release checks and packaging for Scaling Up.
-
-This helper deliberately does not generate Godot export presets. The local
-export_presets.cfg remains developer-specific and gitignored; this script only
-validates the Web preset contract and packages an already-exported build/web.
-"""
+"""Web release checks, CI preset generation, and packaging for Scaling Up."""
 
 from __future__ import annotations
 
@@ -20,6 +15,39 @@ REQUIRED_WEB_FILES = ("index.html",)
 REQUIRED_WEB_PATTERNS = ("*.js", "*.wasm", "*.pck")
 EXCLUDED_DIRS = {".godot", "addons", "assets", "design", "docs", "resources", "scenes", "scripts", "tests", "tools"}
 EXCLUDED_SUFFIXES = {".zip", ".DS_Store"}
+CI_WEB_PRESET = """[preset.0]
+name="Web"
+platform="Web"
+runnable=true
+advanced_options=false
+dedicated_server=false
+custom_features=""
+export_filter="all_resources"
+include_filter=""
+exclude_filter="tests/*, addons/gut/*, tools/*, design/*, docs/*, build/*, exports/*"
+export_path="build/web/index.html"
+encryption_include_filters=""
+encryption_exclude_filters=""
+encrypt_pck=false
+encrypt_directory=false
+script_export_mode=2
+
+[preset.0.options]
+
+custom_template/debug=""
+custom_template/release=""
+variant/extensions_support=false
+variant/thread_support=false
+vram_texture_compression/for_desktop=true
+vram_texture_compression/for_mobile=true
+html/export_icon=true
+html/custom_html_shell=""
+html/head_include=""
+html/canvas_resize_policy=2
+html/focus_canvas_on_start=true
+html/experimental_virtual_keyboard=false
+progressive_web_app/enabled=false
+"""
 
 
 def _read_version(project_root: Path) -> str:
@@ -94,6 +122,16 @@ def check_preset(args: argparse.Namespace) -> int:
     if export_path != "build/web/index.html":
         return _die(f"Web export_path must be build/web/index.html, got {export_path or '<empty>'}")
     print(f"ok: Web preset exports to {export_path}")
+    return 0
+
+
+def write_preset(args: argparse.Namespace) -> int:
+    presets_path = Path(args.presets).expanduser()
+    if presets_path.exists() and not args.force:
+        return _die(f"{presets_path} already exists; pass --force to overwrite it")
+    presets_path.parent.mkdir(parents=True, exist_ok=True)
+    presets_path.write_text(CI_WEB_PRESET, encoding="utf-8")
+    print(f"ok: wrote CI Web export preset to {presets_path}")
     return 0
 
 
@@ -175,6 +213,11 @@ def build_parser() -> argparse.ArgumentParser:
     preset = sub.add_parser("check-preset", help="Validate the local Godot Web export preset.")
     preset.add_argument("--presets", default="export_presets.cfg", help="Path to local export_presets.cfg.")
     preset.set_defaults(func=check_preset)
+
+    write = sub.add_parser("write-preset", help="Write a CI-only Godot Web export preset.")
+    write.add_argument("--presets", default="export_presets.cfg", help="Path to write export_presets.cfg.")
+    write.add_argument("--force", action="store_true", help="Overwrite an existing preset file.")
+    write.set_defaults(func=write_preset)
 
     check_cmd = sub.add_parser("check", help="Validate an already-exported Web directory.")
     check_cmd.add_argument("--project-root", default=".", help="Project root containing project.godot.")

@@ -96,6 +96,46 @@ class WebReleaseCliTest(unittest.TestCase):
             ok = self.run_cli("check-preset", "--presets", str(presets), cwd=root)
             self.assertEqual(ok.returncode, 0, ok.stderr)
 
+    def test_write_preset_creates_ci_web_export_preset(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            presets = root / "export_presets.cfg"
+
+            write = self.run_cli("write-preset", "--presets", str(presets), cwd=root)
+            self.assertEqual(write.returncode, 0, write.stderr)
+            contents = presets.read_text(encoding="utf-8")
+            self.assertIn('name="Web"', contents)
+            self.assertIn('platform="Web"', contents)
+            self.assertIn('export_path="build/web/index.html"', contents)
+            self.assertIn("variant/thread_support=false", contents)
+            self.assertIn("variant/extensions_support=false", contents)
+            self.assertIn("progressive_web_app/enabled=false", contents)
+
+            ok = self.run_cli("check-preset", "--presets", str(presets), cwd=root)
+            self.assertEqual(ok.returncode, 0, ok.stderr)
+
+            refused = self.run_cli("write-preset", "--presets", str(presets), cwd=root)
+            self.assertNotEqual(refused.returncode, 0)
+            self.assertIn("--force", refused.stderr)
+
+            forced = self.run_cli("write-preset", "--presets", str(presets), "--force", cwd=root)
+            self.assertEqual(forced.returncode, 0, forced.stderr)
+
+    def test_github_pages_workflow_builds_and_deploys_web_export(self):
+        workflow = ROOT / ".github" / "workflows" / "deploy-web.yml"
+        self.assertTrue(workflow.exists(), "missing GitHub Pages deployment workflow")
+        text = workflow.read_text(encoding="utf-8")
+
+        self.assertIn("chickensoft-games/setup-godot@v2", text)
+        self.assertIn("include-templates: true", text)
+        self.assertIn("python3 tools/web_release.py write-preset --force", text)
+        self.assertIn('godot --headless --path . --export-release "Web" build/web/index.html', text)
+        self.assertIn("python3 tools/web_release.py check --export-dir build/web", text)
+        self.assertIn("actions/configure-pages@v5", text)
+        self.assertIn("actions/upload-pages-artifact@v4", text)
+        self.assertIn("actions/deploy-pages@v4", text)
+        self.assertIn("path: build/web", text)
+
 
 if __name__ == "__main__":
     unittest.main()
