@@ -13,15 +13,15 @@
   <h1>一亿张 GPU：Scaling Up</h1>
   <p><strong>经营 AI 模型公司，一周一回合，冲向一亿张 GPU 的终局。</strong></p>
   <p>
-    <a href="https://github.com/Qinyong-Wang/scale_up_game/releases/latest"><img alt="Latest release" src="https://img.shields.io/badge/release-v0.1.1--alpha.2-202124"></a>
+    <a href="https://github.com/Qinyong-Wang/scale_up_game/releases/latest"><img alt="Latest release" src="https://img.shields.io/badge/release-v0.1.1--alpha.3-202124"></a>
     <img alt="Godot 4.4.1" src="https://img.shields.io/badge/Godot-4.4.1-478cbf">
     <a href="LICENSE"><img alt="License: GPL-3.0-only" src="https://img.shields.io/badge/license-GPL--3.0--only-202124"></a>
     <img alt="Platforms: macOS and Windows" src="https://img.shields.io/badge/platform-macOS%20%7C%20Windows-666666">
   </p>
   <p><strong>直接下载试玩版 / Direct Download</strong></p>
   <p>
-    <a href="https://github.com/Qinyong-Wang/scale_up_game/releases/download/v0.1.1-alpha.2/Scaling-Up-0.1.1-alpha-windows-x86_64.zip"><img alt="点击下载 Windows 版" src="https://img.shields.io/badge/点击下载-Windows%20版-202124?style=for-the-badge"></a>
-    <a href="https://github.com/Qinyong-Wang/scale_up_game/releases/download/v0.1.1-alpha.2/Scaling-Up-0.1.1-alpha.zip"><img alt="点击下载 macOS 版" src="https://img.shields.io/badge/点击下载-macOS%20版-666666?style=for-the-badge"></a>
+    <a href="https://github.com/Qinyong-Wang/scale_up_game/releases/download/v0.1.1-alpha.3/Scaling-Up-0.1.1-alpha-windows-x86_64.zip"><img alt="点击下载 Windows 版" src="https://img.shields.io/badge/点击下载-Windows%20版-202124?style=for-the-badge"></a>
+    <a href="https://github.com/Qinyong-Wang/scale_up_game/releases/download/v0.1.1-alpha.3/Scaling-Up-0.1.1-alpha.zip"><img alt="点击下载 macOS 版" src="https://img.shields.io/badge/点击下载-macOS%20版-666666?style=for-the-badge"></a>
   </p>
   <p>
     <a href="#游戏与玩法">游戏与玩法</a> ·
@@ -60,14 +60,14 @@
 
 | 平台 | 下载文件 | 运行方式 |
 |---|---|---|
-| Windows x86_64 | [点击下载 Windows 版](https://github.com/Qinyong-Wang/scale_up_game/releases/download/v0.1.1-alpha.2/Scaling-Up-0.1.1-alpha-windows-x86_64.zip) | 解压后保持 `Scaling-Up.exe` 与 `Scaling-Up.pck` 在同一目录，再运行 `Scaling-Up.exe`。 |
-| macOS | [点击下载 macOS 版](https://github.com/Qinyong-Wang/scale_up_game/releases/download/v0.1.1-alpha.2/Scaling-Up-0.1.1-alpha.zip) | 解压后运行 `Scaling-Up.app`。未签名版本首次打开时可能需要右键选择“打开”。 |
+| Windows x86_64 | [点击下载 Windows 版](https://github.com/Qinyong-Wang/scale_up_game/releases/download/v0.1.1-alpha.3/Scaling-Up-0.1.1-alpha-windows-x86_64.zip) | 解压后保持 `Scaling-Up.exe` 与 `Scaling-Up.pck` 在同一目录，再运行 `Scaling-Up.exe`。 |
+| macOS | [点击下载 macOS 版](https://github.com/Qinyong-Wang/scale_up_game/releases/download/v0.1.1-alpha.3/Scaling-Up-0.1.1-alpha.zip) | 解压后运行 `Scaling-Up.app`。ad-hoc 签名版本首次打开时可能需要右键选择“打开”。 |
 
 macOS 包已做 ad-hoc 签名，但尚未 Apple 公证。若 macOS 提示无法验证开发者，请右键选择“打开”；若你下载过旧包并看到“已损坏”，请删除旧 zip / app 后重新下载最新版。
 
 | 当前试玩包 | 游戏版本 | 引擎 | 语言 | 许可证 |
 |---|---|---|---|---|
-| `v0.1.1-alpha.2` | `0.1.1-alpha` | Godot `4.4.1 stable` | 中文默认，英文翻译管线 | `GPL-3.0-only` |
+| `v0.1.1-alpha.3` | `0.1.1-alpha` | Godot `4.4.1 stable` | 中文默认，英文翻译管线 | `GPL-3.0-only` |
 
 ## 开始 Vibe Game Developing
 
@@ -222,15 +222,15 @@ tools/                 一次性脚本、素材管线与诊断工具
   <h1>100 Million GPUs: Scaling Up</h1>
   <p><strong>Run an AI model company, one week at a time, toward a 100-million-GPU endgame.</strong></p>
   <p>
-    <a href="https://github.com/Qinyong-Wang/scale_up_game/releases/latest"><img alt="Latest release" src="https://img.shields.io/badge/release-v0.1.1--alpha.2-202124"></a>
+    <a href="https://github.com/Qinyong-Wang/scale_up_game/releases/latest"><img alt="Latest release" src="https://img.shields.io/badge/release-v0.1.1--alpha.3-202124"></a>
     <img alt="Godot 4.4.1" src="https://img.shields.io/badge/Godot-4.4.1-478cbf">
     <a href="LICENSE"><img alt="License: GPL-3.0-only" src="https://img.shields.io/badge/license-GPL--3.0--only-202124"></a>
     <img alt="Platforms: macOS and Windows" src="https://img.shields.io/badge/platform-macOS%20%7C%20Windows-666666">
   </p>
   <p><strong>Direct download playable build</strong></p>
   <p>
-    <a href="https://github.com/Qinyong-Wang/scale_up_game/releases/download/v0.1.1-alpha.2/Scaling-Up-0.1.1-alpha-windows-x86_64.zip"><img alt="Download for Windows" src="https://img.shields.io/badge/Download-Windows-202124?style=for-the-badge"></a>
-    <a href="https://github.com/Qinyong-Wang/scale_up_game/releases/download/v0.1.1-alpha.2/Scaling-Up-0.1.1-alpha.zip"><img alt="Download for macOS" src="https://img.shields.io/badge/Download-macOS-666666?style=for-the-badge"></a>
+    <a href="https://github.com/Qinyong-Wang/scale_up_game/releases/download/v0.1.1-alpha.3/Scaling-Up-0.1.1-alpha-windows-x86_64.zip"><img alt="Download for Windows" src="https://img.shields.io/badge/Download-Windows-202124?style=for-the-badge"></a>
+    <a href="https://github.com/Qinyong-Wang/scale_up_game/releases/download/v0.1.1-alpha.3/Scaling-Up-0.1.1-alpha.zip"><img alt="Download for macOS" src="https://img.shields.io/badge/Download-macOS-666666?style=for-the-badge"></a>
   </p>
   <p>
     <a href="#game-and-systems">Game and Systems</a> ·
@@ -270,12 +270,12 @@ The latest playable build is available on [GitHub Releases](https://github.com/Q
 
 | Current playable release | Game version | Engine | Languages | Platforms | License |
 |---|---|---|---|---|---|
-| `v0.1.1-alpha.2` | `0.1.1-alpha` | Godot `4.4.1 stable` | Chinese default, English pipeline | macOS, Windows x86_64 | `GPL-3.0-only` |
+| `v0.1.1-alpha.3` | `0.1.1-alpha` | Godot `4.4.1 stable` | Chinese default, English pipeline | macOS, Windows x86_64 | `GPL-3.0-only` |
 
 | Platform | Asset | Notes |
 |---|---|---|
-| Windows x86_64 | [Download for Windows](https://github.com/Qinyong-Wang/scale_up_game/releases/download/v0.1.1-alpha.2/Scaling-Up-0.1.1-alpha-windows-x86_64.zip) | Unzip and keep `Scaling-Up.exe` and `Scaling-Up.pck` in the same folder before running the game. |
-| macOS | [Download for macOS](https://github.com/Qinyong-Wang/scale_up_game/releases/download/v0.1.1-alpha.2/Scaling-Up-0.1.1-alpha.zip) | Unzip and run `Scaling-Up.app`. The current build is unsigned, so first launch may require right-clicking and choosing "Open". |
+| Windows x86_64 | [Download for Windows](https://github.com/Qinyong-Wang/scale_up_game/releases/download/v0.1.1-alpha.3/Scaling-Up-0.1.1-alpha-windows-x86_64.zip) | Unzip and keep `Scaling-Up.exe` and `Scaling-Up.pck` in the same folder before running the game. |
+| macOS | [Download for macOS](https://github.com/Qinyong-Wang/scale_up_game/releases/download/v0.1.1-alpha.3/Scaling-Up-0.1.1-alpha.zip) | Unzip and run `Scaling-Up.app`. The ad-hoc signed build may require right-clicking and choosing "Open" on first launch. |
 
 The macOS build is ad-hoc signed but not Apple-notarized. If macOS says it cannot verify the developer, right-click and choose "Open". If you downloaded an earlier copy that says it is damaged, delete the old zip / app and download the latest copy again.
 
