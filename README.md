@@ -18,16 +18,18 @@
     <a href="LICENSE"><img alt="License: GPL-3.0-only" src="https://img.shields.io/badge/license-GPL--3.0--only-202124"></a>
     <img alt="Platforms: macOS, Windows, and Web" src="https://img.shields.io/badge/platform-macOS%20%7C%20Windows%20%7C%20Web-666666">
   </p>
-  <p><strong>在线试玩 / Play in Browser</strong></p>
+  <p><strong>立即游玩 / Play Now</strong></p>
   <p>
-    <a href="https://qinyong-wang.github.io/scale_up_game/"><img alt="在线试玩 Web 版" src="https://img.shields.io/badge/在线试玩-Web%20版-202124?style=for-the-badge"></a>
+    <a href="https://qinyong-wang.github.io/scale_up_game/"><img alt="浏览器在线试玩 Web 版" src="https://img.shields.io/badge/浏览器在线试玩-Web%20版-202124?style=for-the-badge"></a>
   </p>
+  <p><a href="https://qinyong-wang.github.io/scale_up_game/">https://qinyong-wang.github.io/scale_up_game/</a></p>
   <p><strong>直接下载试玩版 / Direct Download</strong></p>
   <p>
     <a href="https://github.com/Qinyong-Wang/scale_up_game/releases/download/v0.1.1-alpha.3/Scaling-Up-0.1.1-alpha-windows-x86_64.zip"><img alt="点击下载 Windows 版" src="https://img.shields.io/badge/点击下载-Windows%20版-202124?style=for-the-badge"></a>
     <a href="https://github.com/Qinyong-Wang/scale_up_game/releases/download/v0.1.1-alpha.3/Scaling-Up-0.1.1-alpha.zip"><img alt="点击下载 macOS 版" src="https://img.shields.io/badge/点击下载-macOS%20版-666666?style=for-the-badge"></a>
   </p>
   <p>
+    <a href="#立即游玩--play-now">立即游玩</a> ·
     <a href="#游戏与玩法">游戏与玩法</a> ·
     <a href="#下载试玩">下载试玩</a> ·
     <a href="#开始-vibe-game-developing">Vibe Game Developing</a> ·
@@ -35,6 +37,18 @@
     <a href="#english">English</a>
   </p>
 </div>
+
+## 立即游玩 / Play Now
+
+首选入口是 Web 版：直接打开 [浏览器在线试玩](https://qinyong-wang.github.io/scale_up_game/)，无需下载或安装。
+
+Web 存档保存在当前浏览器与当前站点数据中；清理浏览器数据、换浏览器或换设备不会自动同步。
+
+| 平台 | 入口 | 说明 |
+|---|---|---|
+| Web | [浏览器在线试玩](https://qinyong-wang.github.io/scale_up_game/) | 推荐入口，打开即可玩。 |
+| Windows x86_64 | [点击下载 Windows 版](https://github.com/Qinyong-Wang/scale_up_game/releases/download/v0.1.1-alpha.3/Scaling-Up-0.1.1-alpha-windows-x86_64.zip) | 解压后运行桌面版。 |
+| macOS | [点击下载 macOS 版](https://github.com/Qinyong-Wang/scale_up_game/releases/download/v0.1.1-alpha.3/Scaling-Up-0.1.1-alpha.zip) | 解压后运行桌面版。 |
 
 ![一亿张 GPU：Scaling Up cover](docs/media/readme/cover.png)
 
@@ -237,8 +251,13 @@ tools/                 一次性脚本、素材管线与诊断工具
     <a href="https://github.com/Qinyong-Wang/scale_up_game/releases/latest"><img alt="Latest release" src="https://img.shields.io/badge/release-v0.1.1--alpha.3-202124"></a>
     <img alt="Godot 4.4.1" src="https://img.shields.io/badge/Godot-4.4.1-478cbf">
     <a href="LICENSE"><img alt="License: GPL-3.0-only" src="https://img.shields.io/badge/license-GPL--3.0--only-202124"></a>
-    <img alt="Platforms: macOS and Windows" src="https://img.shields.io/badge/platform-macOS%20%7C%20Windows-666666">
+    <img alt="Platforms: macOS, Windows, and Web" src="https://img.shields.io/badge/platform-macOS%20%7C%20Windows%20%7C%20Web-666666">
   </p>
+  <p><strong>Play Now</strong></p>
+  <p>
+    <a href="https://qinyong-wang.github.io/scale_up_game/"><img alt="Play Web build in browser" src="https://img.shields.io/badge/Play%20in%20Browser-Web%20build-202124?style=for-the-badge"></a>
+  </p>
+  <p><a href="https://qinyong-wang.github.io/scale_up_game/">https://qinyong-wang.github.io/scale_up_game/</a></p>
   <p><strong>Direct download playable build</strong></p>
   <p>
     <a href="https://github.com/Qinyong-Wang/scale_up_game/releases/download/v0.1.1-alpha.3/Scaling-Up-0.1.1-alpha-windows-x86_64.zip"><img alt="Download for Windows" src="https://img.shields.io/badge/Download-Windows-202124?style=for-the-badge"></a>
@@ -246,7 +265,7 @@ tools/                 一次性脚本、素材管线与诊断工具
   </p>
   <p>
     <a href="#game-and-systems">Game and Systems</a> ·
-    <a href="#download">Download</a> ·
+    <a href="#download">Play and Download</a> ·
     <a href="#vibe-game-developing">Vibe Game Developing</a> ·
     <a href="#screenshots">Screenshots</a> ·
     <a href="#developer-details">Developer Details</a> ·
@@ -278,14 +297,15 @@ Training and inference use real units such as FLOPs, TFLOPs, B tokens, and token
 
 ## Download
 
-The latest playable build is available on [GitHub Releases](https://github.com/Qinyong-Wang/scale_up_game/releases/latest).
+The latest playable build is available in the browser at [the Web build](https://qinyong-wang.github.io/scale_up_game/) and as desktop packages on [GitHub Releases](https://github.com/Qinyong-Wang/scale_up_game/releases/latest).
 
 | Current playable release | Game version | Engine | Languages | Platforms | License |
 |---|---|---|---|---|---|
-| `v0.1.1-alpha.3` | `0.1.1-alpha` | Godot `4.4.1 stable` | Chinese default, English pipeline | macOS, Windows x86_64 | `GPL-3.0-only` |
+| `v0.1.1-alpha.3` | `0.1.1-alpha` | Godot `4.4.1 stable` | Chinese default, English pipeline | Web, macOS, Windows x86_64 | `GPL-3.0-only` |
 
 | Platform | Asset | Notes |
 |---|---|---|
+| Web | [Play in browser](https://qinyong-wang.github.io/scale_up_game/) | Opens directly in the browser. Saves are stored in the current browser and site data, so clearing site data or switching browser/device will not carry saves over automatically. |
 | Windows x86_64 | [Download for Windows](https://github.com/Qinyong-Wang/scale_up_game/releases/download/v0.1.1-alpha.3/Scaling-Up-0.1.1-alpha-windows-x86_64.zip) | Unzip and keep `Scaling-Up.exe` and `Scaling-Up.pck` in the same folder before running the game. |
 | macOS | [Download for macOS](https://github.com/Qinyong-Wang/scale_up_game/releases/download/v0.1.1-alpha.3/Scaling-Up-0.1.1-alpha.zip) | Unzip and run `Scaling-Up.app`. The ad-hoc signed build may require right-clicking and choosing "Open" on first launch. |
 
