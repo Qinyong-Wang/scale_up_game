@@ -8,6 +8,11 @@
     <a href="LICENSE"><img alt="License: GPL-3.0-only" src="https://img.shields.io/badge/license-GPL--3.0--only-202124"></a>
     <img alt="Platforms: macOS and Windows" src="https://img.shields.io/badge/platform-macOS%20%7C%20Windows-666666">
   </p>
+  <p><strong>直接下载试玩版 / Direct Download</strong></p>
+  <p>
+    <a href="https://github.com/Qinyong-Wang/scale_up_game/releases/download/v0.1.1-alpha.2/Scaling-Up-0.1.1-alpha-windows-x86_64.zip"><img alt="点击下载 Windows 版" src="https://img.shields.io/badge/点击下载-Windows%20版-202124?style=for-the-badge"></a>
+    <a href="https://github.com/Qinyong-Wang/scale_up_game/releases/download/v0.1.1-alpha.2/Scaling-Up-0.1.1-alpha.zip"><img alt="点击下载 macOS 版" src="https://img.shields.io/badge/点击下载-macOS%20版-666666?style=for-the-badge"></a>
+  </p>
   <p>
     <a href="#游戏与玩法">游戏与玩法</a> ·
     <a href="#下载试玩">下载试玩</a> ·
@@ -45,8 +50,8 @@
 
 | 平台 | 下载文件 | 运行方式 |
 |---|---|---|
-| macOS | `Scaling-Up-0.1.1-alpha.zip` | 解压后运行 `Scaling-Up.app`。未签名版本首次打开时可能需要右键选择“打开”。 |
-| Windows x86_64 | `Scaling-Up-0.1.1-alpha-windows-x86_64.zip` | 解压后保持 `Scaling-Up.exe` 与 `Scaling-Up.pck` 在同一目录，再运行 `Scaling-Up.exe`。 |
+| Windows x86_64 | [点击下载 Windows 版](https://github.com/Qinyong-Wang/scale_up_game/releases/download/v0.1.1-alpha.2/Scaling-Up-0.1.1-alpha-windows-x86_64.zip) | 解压后保持 `Scaling-Up.exe` 与 `Scaling-Up.pck` 在同一目录，再运行 `Scaling-Up.exe`。 |
+| macOS | [点击下载 macOS 版](https://github.com/Qinyong-Wang/scale_up_game/releases/download/v0.1.1-alpha.2/Scaling-Up-0.1.1-alpha.zip) | 解压后运行 `Scaling-Up.app`。未签名版本首次打开时可能需要右键选择“打开”。 |
 
 | 当前试玩包 | 游戏版本 | 引擎 | 语言 | 许可证 |
 |---|---|---|---|---|
@@ -210,6 +215,11 @@ tools/                 一次性脚本、素材管线与诊断工具
     <a href="LICENSE"><img alt="License: GPL-3.0-only" src="https://img.shields.io/badge/license-GPL--3.0--only-202124"></a>
     <img alt="Platforms: macOS and Windows" src="https://img.shields.io/badge/platform-macOS%20%7C%20Windows-666666">
   </p>
+  <p><strong>Direct download playable build</strong></p>
+  <p>
+    <a href="https://github.com/Qinyong-Wang/scale_up_game/releases/download/v0.1.1-alpha.2/Scaling-Up-0.1.1-alpha-windows-x86_64.zip"><img alt="Download for Windows" src="https://img.shields.io/badge/Download-Windows-202124?style=for-the-badge"></a>
+    <a href="https://github.com/Qinyong-Wang/scale_up_game/releases/download/v0.1.1-alpha.2/Scaling-Up-0.1.1-alpha.zip"><img alt="Download for macOS" src="https://img.shields.io/badge/Download-macOS-666666?style=for-the-badge"></a>
+  </p>
   <p>
     <a href="#game-and-systems">Game and Systems</a> ·
     <a href="#download">Download</a> ·
@@ -252,8 +262,8 @@ The latest playable build is available on [GitHub Releases](https://github.com/Q
 
 | Platform | Asset | Notes |
 |---|---|---|
-| macOS | `Scaling-Up-0.1.1-alpha.zip` | Unzip and run `Scaling-Up.app`. The current build is unsigned, so first launch may require right-clicking and choosing "Open". |
-| Windows x86_64 | `Scaling-Up-0.1.1-alpha-windows-x86_64.zip` | Unzip and keep `Scaling-Up.exe` and `Scaling-Up.pck` in the same folder before running the game. |
+| Windows x86_64 | [Download for Windows](https://github.com/Qinyong-Wang/scale_up_game/releases/download/v0.1.1-alpha.2/Scaling-Up-0.1.1-alpha-windows-x86_64.zip) | Unzip and keep `Scaling-Up.exe` and `Scaling-Up.pck` in the same folder before running the game. |
+| macOS | [Download for macOS](https://github.com/Qinyong-Wang/scale_up_game/releases/download/v0.1.1-alpha.2/Scaling-Up-0.1.1-alpha.zip) | Unzip and run `Scaling-Up.app`. The current build is unsigned, so first launch may require right-clicking and choosing "Open". |
 
 ## Vibe Game Developing
 
