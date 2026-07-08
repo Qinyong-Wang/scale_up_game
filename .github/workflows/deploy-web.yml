@@ -54,9 +54,7 @@ jobs:
         run: python3 tools/web_release.py package --export-dir build/web
 
       - name: Prepare Pages directory
-        run: |
-          rm -f build/web/*.zip
-          touch build/web/.nojekyll
+        run: rm -f build/web/*.zip
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
@@ -65,7 +63,6 @@ jobs:
         uses: actions/upload-pages-artifact@v4
         with:
           path: build/web
-          include-hidden-files: true
 
   deploy:
     name: Deploy to GitHub Pages
