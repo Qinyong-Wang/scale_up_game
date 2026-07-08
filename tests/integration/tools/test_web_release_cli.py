@@ -131,8 +131,8 @@ class WebReleaseCliTest(unittest.TestCase):
         self.assertIn("python3 tools/web_release.py write-preset --force", text)
         self.assertIn('godot --headless --path . --export-release "Web" build/web/index.html', text)
         self.assertIn("python3 tools/web_release.py check --export-dir build/web", text)
-        self.assertIn("actions/configure-pages@v5", text)
-        self.assertIn("actions/upload-pages-artifact@v4", text)
+        self.assertIn("actions/configure-pages@v6", text)
+        self.assertIn("actions/upload-pages-artifact@v5", text)
         self.assertIn("actions/deploy-pages@v4", text)
         self.assertIn("path: build/web", text)
 
