@@ -20,7 +20,7 @@
 - [UI视觉系统设计.md](UI视觉系统设计.md) — 视觉骨架: 设计 token (深色科技感色板/字号/间距) + 侧栏 Dashboard 布局 + 卡片墙 + FilterBar + 右抽屉; 组件清单与从 TabContainer 的迁移路径。
 - [图片素材管线设计.md](图片素材管线设计.md) — AI 生成图片进入项目的 harness 契约: raw / prompt / pipeline-meta 可追溯, 本地去背裁切验收, 接受后的 PNG 才进入 `assets/sprites/`。
 - [图片素材生成流程.md](图片素材生成流程.md) — 配套操作手册: 角色分工 + 风格一致性 + prompt 写法 (含 19 档机房建筑 subject 清单) + 去哪生成 + harness 后处理命令 + agent 用 Read 读图 inspection + 接受接入路径。
-- [国际化设计.md](国际化设计.md) — i18n 管道: Godot CSV 翻译 + tr() + zh_CN 默认与 fallback; key 命名约定与"何时该 tr/不该 tr"边界; 旧代码跟随 tab 迁移。
+- [国际化设计.md](国际化设计.md) — i18n 管道: Godot CSV 翻译 + tr() + 英文首次启动默认值 + zh_CN fallback; key 命名约定与"何时该 tr/不该 tr"边界; 旧代码跟随 tab 迁移。
 - [音频系统设计.md](音频系统设计.md) — 背景音乐 (BGM) + 按钮点击音效 (SFX): `MusicPlayer` 顺序循环播放纯乐器曲目, `SfxPlayer` 自动注册按钮并播放短 click; 设置里可分别开关 (走 `Preferences.music_enabled/sfx_enabled` 持久化, 单消费者故不走 EventBus); 曲目由 `tools/generate_music.py` 离线 (Vertex AI) 生成入库, 真实模型名仅在生成工具里。
 
 ### 玩法总览

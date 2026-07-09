@@ -12,7 +12,7 @@ extends Node
 ## 只持久化、不广播 (见 design/音频系统设计.md §4)。
 
 const CONFIG_PATH := "user://preferences.cfg"
-const DEFAULT_LOCALE := "zh_CN"
+const DEFAULT_LOCALE := "en"
 const SECTION := "i18n"
 const AUDIO_SECTION := "audio"
 const DISPLAY_SECTION := "display"
