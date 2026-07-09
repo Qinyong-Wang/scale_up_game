@@ -59,6 +59,18 @@ func _remove_test_config() -> void:
 
 # ─── set_locale ───────────────────────────────────────────────
 
+func test_first_launch_without_saved_locale_applies_english_default() -> void:
+	_remove_test_config()
+	var fresh = load("res://scripts/autoload/preferences.gd").new()
+	fresh._config_path = TEST_CONFIG_PATH
+	fresh._load()
+	fresh._apply_locale()
+	assert_eq(fresh.locale, "en",
+		"无保存偏好时 Preferences 默认 locale 应为 en")
+	assert_eq(TranslationServer.get_locale(), "en",
+		"首次启动应用默认 locale 后界面应进入英文")
+	fresh.free()
+
 func test_set_locale_updates_translation_server() -> void:
 	Preferences.set_locale("en")
 	assert_eq(TranslationServer.get_locale(), "en",

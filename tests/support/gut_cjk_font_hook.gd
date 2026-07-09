@@ -10,10 +10,9 @@ const RICH_TEXT_FONT_SLOTS: Array[StringName] = [
 
 
 func run() -> void:
-	# 把测试基线 locale 钉到 zh_CN — 与游戏默认 (无保存偏好时回落 zh_CN,
-	# 国际化设计 §11.3) 一致。headless 默认是 en_US, 否则 UI 文案接 tr() 后,
-	# 断言中文字面量的既有测试会拿到英文而误失败。需要切语言的测试
-	# (localization_test / preferences_test) 自己 set/restore locale。
+	# 把测试基线 locale 钉到 zh_CN。游戏首次启动默认 en (国际化设计 §11.3),
+	# 但大量既有测试仍断言中文 UI 文案; headless 默认又是 en_US, 不钉住会
+	# 产生顺序相关误失败。需要切语言的测试自己 set/restore locale。
 	TranslationServer.set_locale("zh_CN")
 	UITheme.install()
 	var regular := UITheme.get_ui_font()
